@@ -1,24 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red: rgb(255, 73, 49);
-      --red-dark: rgb(204, 45, 24);
-      --red-light: rgb(255, 140, 120);
-      --dark: #111111;
+      --red: #ff4a3d;
+      --red-dark: #d63a2a;
+      --red-light: #ff9a8f;
+      --dark: #0f0f0f;
       --dark2: #1a1a1a;
       --light-bg: #f7f6f4;
-      --text: #1c1c1c;
-      --text-sec: #555555;
+      --text: #111111;
+      --text-sec: #4a4a4a;
+      --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+      --font-body: 'Manrope', 'Segoe UI', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font-body);
       color: var(--text);
       background: #fff;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
     }
 
     /* ── FADE IN ── */
@@ -40,7 +47,7 @@
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .nav-logo svg { display: block; flex-shrink: 0; }
     .nav-logo-text {
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font-display);
       font-size: 15px;
       font-weight: 700;
       color: #FF4931;
@@ -265,6 +272,7 @@
     }
     .hero-btns { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; margin-bottom: 48px; }
     .btn-primary {
+      font-family: var(--font-display);
       background: var(--red);
       color: #fff;
       text-decoration: none;
@@ -276,6 +284,7 @@
     }
     .btn-primary:hover { background: var(--red-dark); }
     .btn-ghost {
+      font-family: var(--font-display);
       background: transparent;
       border: 2px solid rgba(0,0,0,0.2);
       color: #1c1c1c;
@@ -644,9 +653,9 @@
     }
     .contact-form select option { background: #fff; color: var(--text); }
     .btn-submit {
+      font-family: var(--font-display);
       background: var(--red);
       color: #fff;
-      font-family: 'Open Sans', sans-serif;
       font-size: 15px;
       font-weight: 700;
       border: none;
