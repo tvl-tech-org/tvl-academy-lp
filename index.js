@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Email anti-obfuscation
   const emailLink = document.getElementById('emailLink');
   if (emailLink) {
-    const e = 'sales' + '@' + 'tvl.tech';
-    emailLink.href = 'mailto:' + e;
+    const e = 'sales' + '@' + 'tvl' + '.' + 'tech';
     emailLink.textContent = e;
+    emailLink.addEventListener('click', () => window.location = 'mailto:' + e);
   }
 
 });
