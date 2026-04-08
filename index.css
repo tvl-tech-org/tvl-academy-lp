@@ -294,6 +294,8 @@
       border-radius: 12px;
       padding: 32px 28px;
       transition: border-color 0.3s;
+      display: flex;
+      flex-direction: column;
     }
     .step-card:hover { border-color: var(--red); }
     .step-num {
@@ -315,7 +317,7 @@
       margin-bottom: 20px;
     }
     .step-card h3 { color: var(--text); font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .step-card p { color: var(--text-sec); font-size: 14px; line-height: 1.6; }
+    .step-card p { color: var(--text-sec); font-size: 14px; line-height: 1.6; flex: 1; }
     .step-result {
       margin-top: 16px;
       padding: 10px 14px;
@@ -329,6 +331,36 @@
     @media (max-width: 768px) {
       .steps-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── CUSTOMIZAT ── */
+    .customizat {
+      background: #fff;
+      padding: 96px 0;
+      scroll-margin-top: 64px;
+    }
+    .custom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .custom-card {
+      border: 1px solid #ebebeb;
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.3s;
+    }
+    .custom-card:hover { border-color: var(--red); }
+    .custom-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,73,49,0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .custom-icon svg { width: 22px; height: 22px; }
+    .custom-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .custom-card p { font-size: 14px; color: var(--text-sec); line-height: 1.6; }
+
+    @media (max-width: 768px) { .custom-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) and (max-width: 1024px) { .custom-grid { grid-template-columns: repeat(2, 1fr); } }
 
     /* ── AVANTAJE ── */
     .avantaje {
