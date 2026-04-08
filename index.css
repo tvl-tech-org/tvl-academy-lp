@@ -76,6 +76,8 @@
 
     .hamburger {
       display: none;
+      background: none;
+      border: 0;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
@@ -427,7 +429,14 @@
       font-size: 13px;
       margin-bottom: 20px;
     }
-    .step-card h3 { color: var(--text); font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .step-card h3 {
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
     .step-card p { color: var(--text-sec); font-size: 14px; line-height: 1.6; flex: 1; }
     .step-result {
       margin-top: 16px;
