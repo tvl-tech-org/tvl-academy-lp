@@ -846,9 +846,23 @@
       line-height: 1.4;
     }
     .media-pill-arrow {
-      color: #ccc;
-      font-size: 14px;
+      color: var(--red);
+      font-size: 0;
       flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-pill-arrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-top: 2px solid currentColor;
+      transform: rotate(45deg);
+      display: block;
     }
     .trainer-bio { }
     .trainer-bio h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 700; margin-bottom: 6px; }
