@@ -377,14 +377,65 @@
       width: 100%;
     }
 
+    /* ── DE CE ACUM ── */
+    .de-ce-acum {
+      background: #fff;
+      padding: 96px 0;
+      scroll-margin-top: 64px;
+    }
+    .urgenta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .urgenta-card {
+      border: 1px solid #ebebeb;
+      border-radius: 12px;
+      padding: 28px 24px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+    .urgenta-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .urgenta-card p {
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.6;
+    }
+    .urgenta-band {
+      margin-top: 24px;
+      background: rgba(255,73,49,0.1);
+      border: 1px solid rgba(255,73,49,0.2);
+      color: var(--red);
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      padding: 14px 18px;
+      border-radius: 10px;
+    }
+    .urgenta-cta {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
     @media (max-width: 768px) {
       .two-col { grid-template-columns: 1fr; gap: 36px; }
-      .problema, .avantaje, .de-ce, .cum, .customizat, .trainer, .faq, .cta-section { padding: 56px 0; }
+      .problema, .avantaje, .de-ce, .cum, .customizat, .trainer, .faq, .cta-section, .de-ce-acum { padding: 56px 0; }
       .testimonial-strip { padding: 44px 0; }
       .section-title-center { margin-bottom: 36px; }
-      .steps-grid, .features-grid, .custom-grid, .ba-grid { gap: 20px; }
+      .steps-grid, .features-grid, .custom-grid, .ba-grid, .urgenta-grid { gap: 20px; }
       .step-card, .feature-card, .custom-card { padding: 24px 20px; }
+      .urgenta-card { padding: 24px 20px; }
       .contact-form-wrap { padding: 28px 22px; }
+    }
+
+    @media (max-width: 1024px) {
+      .urgenta-grid { grid-template-columns: 1fr; }
     }
 
     /* ── CUM FUNCTIONEAZA ── */
@@ -586,6 +637,33 @@
       margin: 0 auto;
       text-align: center;
       padding: 0 24px;
+    }
+    .testimonial-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .testimonial-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+    .testimonial-header h2 {
+      font-size: clamp(22px, 3.6vw, 32px);
+      color: #fff;
+      margin: 0;
+    }
+    .testimonial-logo {
+      height: 40px;
+      width: auto;
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     .testimonial-inner blockquote {
       font-size: 20px;
