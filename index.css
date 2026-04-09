@@ -619,6 +619,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      margin-bottom: 24px;
     }
     .sprint-gallery-card {
       margin: 0;
@@ -633,9 +634,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: top center;
     }
     .sprint-gallery-card {
-      min-height: 260px;
+      height: 156px;
     }
 
     @media (max-width: 1024px) {
@@ -650,7 +652,7 @@
         padding: 24px 20px;
       }
       .sprint-gallery-card {
-        min-height: 220px;
+        height: 132px;
       }
       .sprint-principle,
       .sprint-formula {
