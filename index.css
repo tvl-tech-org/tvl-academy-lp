@@ -427,7 +427,7 @@
 
     @media (max-width: 768px) {
       .two-col { grid-template-columns: 1fr; gap: 36px; }
-      .problema, .avantaje, .de-ce, .cum, .customizat, .trainer, .faq, .cta-section, .de-ce-acum { padding: 56px 0; }
+      .problema, .avantaje, .de-ce, .cum, .sprint-focus, .customizat, .trainer, .faq, .cta-section, .de-ce-acum { padding: 56px 0; }
       .testimonial-strip { padding: 44px 0; }
       .section-title-center { margin-bottom: 36px; }
       .steps-grid, .features-grid, .custom-grid, .ba-grid, .urgenta-grid { gap: 20px; }
@@ -501,6 +501,163 @@
 
     @media (max-width: 768px) {
       .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── AI DESIGN SPRINT ── */
+    .sprint-focus {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(320px 320px at 12% 18%, rgba(255,73,49,0.08), transparent 65%),
+        radial-gradient(420px 420px at 90% 14%, rgba(255,154,143,0.12), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, #f8f5f1 100%);
+      padding: 96px 0;
+      scroll-margin-top: 64px;
+    }
+    .sprint-focus .section-title-center h2,
+    .sprint-focus .section-title-center p { color: var(--text); }
+    .sprint-focus .section-title-center p { color: var(--text-sec); max-width: 720px; }
+
+    .sprint-top-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .sprint-overview-card,
+    .sprint-formula-card {
+      background: #ffffff;
+      border: 1px solid #ece6df;
+      border-radius: 18px;
+      box-shadow: 0 18px 44px rgba(17,24,39,0.06);
+    }
+    .sprint-overview-card,
+    .sprint-formula-card {
+      padding: 28px 28px 30px;
+    }
+    .sprint-mini-label {
+      display: inline-block;
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .sprint-overview-card p,
+    .sprint-formula-card p {
+      color: var(--text-sec);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .sprint-principle {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 18px;
+      max-width: 14ch;
+    }
+    .sprint-overview-notes {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid #ebe3dc;
+    }
+    .sprint-overview-note {
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f1ebe4;
+    }
+    .sprint-overview-note:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    .sprint-overview-note strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+    .sprint-overview-note p {
+      margin: 0;
+      color: var(--text-sec);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .sprint-formula {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.2vw, 38px);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 18px;
+      max-width: 14ch;
+    }
+    .sprint-factor-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .sprint-factor {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f7f3ef;
+      border: 1px solid #ebe3dc;
+    }
+    .sprint-factor strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .sprint-factor span {
+      color: var(--text-sec);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .sprint-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .sprint-gallery-card {
+      margin: 0;
+      background: #ffffff;
+      border: 1px solid #ece6df;
+      border-radius: 18px;
+      box-shadow: 0 18px 44px rgba(17,24,39,0.06);
+      overflow: hidden;
+    }
+    .sprint-gallery-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .sprint-gallery-card {
+      height: 156px;
+    }
+
+    @media (max-width: 1024px) {
+      .sprint-top-grid,
+      .sprint-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .sprint-overview-card,
+      .sprint-formula-card {
+        padding: 24px 20px;
+      }
+      .sprint-gallery-card {
+        height: 132px;
+      }
+      .sprint-principle,
+      .sprint-formula {
+        max-width: none;
+      }
     }
 
     /* ── CUSTOMIZAT ── */
