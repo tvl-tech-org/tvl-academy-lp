@@ -21,12 +21,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
+  const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+  faqItems.forEach((item, index) => {
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    if (!btn || !answer) return;
+
+    const questionId = `faq-question-${index + 1}`;
+    const answerId = `faq-answer-${index + 1}`;
+    btn.id = questionId;
+    btn.setAttribute('aria-controls', answerId);
+    btn.setAttribute('aria-expanded', 'false');
+    answer.id = answerId;
+    answer.setAttribute('role', 'region');
+    answer.setAttribute('aria-labelledby', questionId);
+    answer.setAttribute('aria-hidden', 'true');
+
     btn.addEventListener('click', () => {
-      const item = btn.parentElement;
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+
+      faqItems.forEach(entry => {
+        entry.classList.remove('open');
+        const entryBtn = entry.querySelector('.faq-question');
+        const entryAnswer = entry.querySelector('.faq-answer');
+        if (entryBtn) entryBtn.setAttribute('aria-expanded', 'false');
+        if (entryAnswer) entryAnswer.setAttribute('aria-hidden', 'true');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.setAttribute('aria-hidden', 'false');
+      }
     });
   });
 
