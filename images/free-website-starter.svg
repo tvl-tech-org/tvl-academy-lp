@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" rx="40" fill="#F7F6F4"/>
+  <rect x="48" y="48" width="1104" height="704" rx="30" fill="#FFFFFF" stroke="#EAE8E5" stroke-width="4"/>
+  <rect x="48" y="48" width="1104" height="84" rx="30" fill="#111111"/>
+  <circle cx="94" cy="90" r="9" fill="#FF7B6E"/>
+  <circle cx="124" cy="90" r="9" fill="#FFD06A"/>
+  <circle cx="154" cy="90" r="9" fill="#64D28F"/>
+  <text x="188" y="98" fill="#D0D0D0" font-family="Manrope, Arial, sans-serif" font-size="24">starter-preview.local</text>
+
+  <text x="96" y="210" fill="#FF4A3D" font-family="Space Grotesk, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">STARTER</text>
+  <text x="96" y="288" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="72" font-weight="700">Build fast.</text>
+  <text x="96" y="356" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="72" font-weight="700">Ship simple.</text>
+  <text x="96" y="422" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="72" font-weight="700">Own your domain.</text>
+
+  <text x="96" y="498" fill="#575757" font-family="Manrope, Arial, sans-serif" font-size="31">Static HTML, CSS, JS. Codex + GitHub Pages.</text>
+
+  <rect x="96" y="552" width="280" height="72" rx="8" fill="#FF4A3D"/>
+  <text x="150" y="598" fill="#FFFFFF" font-family="Space Grotesk, Arial, sans-serif" font-size="30" font-weight="700">Use Template</text>
+
+  <rect x="392" y="552" width="272" height="72" rx="8" fill="#FFFFFF" stroke="#D9D6D2" stroke-width="3"/>
+  <text x="446" y="598" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="30" font-weight="700">Quickstart</text>
+
+  <path d="M804 174L1068 174L1132 252L1132 642L868 642L804 564V174Z" fill="#FF4A3D"/>
+  <rect x="842" y="222" width="252" height="140" rx="16" fill="#FFFFFF"/>
+  <rect x="842" y="384" width="252" height="110" rx="16" fill="#1A1A1A"/>
+  <rect x="842" y="510" width="252" height="88" rx="16" fill="#FFFFFF"/>
+  <text x="874" y="276" fill="#111111" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="700">Preview</text>
+  <text x="874" y="319" fill="#5D5D5D" font-family="Manrope, Arial, sans-serif" font-size="23">localhost:8000</text>
+  <text x="874" y="446" fill="#FFFFFF" font-family="Manrope, Arial, sans-serif" font-size="25">git add .</text>
+  <text x="874" y="478" fill="#FFFFFF" font-family="Manrope, Arial, sans-serif" font-size="25">git commit</text>
+  <text x="874" y="552" fill="#111111" font-family="Manrope, Arial, sans-serif" font-size="24">Pages + Domain</text>
+</svg>
