@@ -427,7 +427,7 @@
 
     @media (max-width: 768px) {
       .two-col { grid-template-columns: 1fr; gap: 36px; }
-      .problema, .avantaje, .de-ce, .cum, .sprint-focus, .customizat, .trainer, .faq, .cta-section, .de-ce-acum { padding: 56px 0; }
+      .problema, .avantaje, .de-ce, .cum, .sprint-focus, .bonus-website, .customizat, .trainer, .faq, .cta-section, .de-ce-acum { padding: 56px 0; }
       .testimonial-strip { padding: 44px 0; }
       .section-title-center { margin-bottom: 36px; }
       .steps-grid, .features-grid, .custom-grid, .ba-grid, .urgenta-grid { gap: 20px; }
@@ -657,6 +657,65 @@
       .sprint-principle,
       .sprint-formula {
         max-width: none;
+      }
+    }
+
+    /* ── BONUS WEBSITE ── */
+    .bonus-website {
+      background: #fff;
+      padding: 96px 0;
+      scroll-margin-top: 64px;
+    }
+    .bonus-website-inner {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .bonus-website-copy p {
+      color: var(--text-sec);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 58ch;
+    }
+    .bonus-website-steps {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .bonus-website-step {
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid #ebe3dc;
+      background: #f8f5f1;
+    }
+    .bonus-website-step strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .bonus-website-step span {
+      color: var(--text-sec);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .bonus-website-preview {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid #ece6df;
+      box-shadow: 0 24px 64px rgba(17,24,39,0.08);
+      background: #fff;
+    }
+    .bonus-website-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 1024px) {
+      .bonus-website-inner {
+        grid-template-columns: 1fr;
       }
     }
 
