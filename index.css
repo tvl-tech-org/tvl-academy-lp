@@ -29,7 +29,31 @@
     }
 
     /* ── FADE IN ── */
-    .fade-in { opacity: 1; }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fade-in-up 0.6s ease-out forwards;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
 
     /* ── NAV ── */
     nav {
@@ -367,18 +391,6 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .img-placeholder {
-      background: #e0ddd8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 14px;
-      border-radius: 8px;
-      min-height: 360px;
-      width: 100%;
-    }
-
     /* ── DE CE ACUM ── */
     .de-ce-acum {
       background: #fff;
@@ -469,24 +481,14 @@
       line-height: 1;
       margin-bottom: 20px;
     }
-    .step-img-placeholder {
-      background: #f0ede9;
-      height: 160px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #aaa;
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
     .step-card h3 {
       color: var(--text);
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 10px;
       letter-spacing: -0.02em;
-      white-space: nowrap;
+      white-space: normal;
+      text-wrap: balance;
     }
     .step-card p { color: var(--text-sec); font-size: 14px; line-height: 1.6; flex: 1; }
     .step-result {
@@ -932,7 +934,7 @@
       border-radius: 6px;
       padding: 12px 16px;
       width: 100%;
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font-body);
       font-size: 14px;
       outline: none;
       transition: border-color 0.2s;
@@ -949,7 +951,7 @@
       border-radius: 6px;
       padding: 12px 16px;
       width: 100%;
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font-body);
       font-size: 14px;
       outline: none;
       cursor: pointer;
@@ -1140,7 +1142,7 @@
       border: none;
       padding: 20px 24px;
       text-align: left;
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font-body);
       font-size: 15px;
       font-weight: 600;
       color: var(--text);
