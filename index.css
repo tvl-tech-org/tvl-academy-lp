@@ -247,6 +247,28 @@
         font-size: 10px;
         letter-spacing: 1.2px;
       }
+      .footer-legal-links {
+        justify-content: flex-start;
+      }
+      .contact-form-embed.is-loading {
+        min-height: 300px;
+      }
+      .cookie-banner {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+      .cookie-banner-inner {
+        padding: 20px 18px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .cookie-banner-actions {
+        justify-content: stretch;
+      }
+      .cookie-btn {
+        width: 100%;
+      }
     }
 
     @keyframes geo-drift {
@@ -925,6 +947,54 @@
       max-width: 560px;
       margin: 0 auto;
     }
+    .contact-form-wrap .contact-form-note {
+      font-size: 13px;
+      line-height: 1.65;
+      color: #666666;
+      margin: 0 0 20px;
+      text-align: left;
+    }
+    .contact-form-wrap .contact-form-note a {
+      color: var(--red);
+      font-weight: 600;
+    }
+    .contact-form-embed {
+      min-height: 320px;
+      text-align: left;
+    }
+    .contact-form-embed[hidden] { display: none; }
+    .contact-form-embed.is-loading {
+      position: relative;
+      min-height: 360px;
+      border: 1px dashed #e2d9d3;
+      border-radius: 10px;
+      background: #faf8f6;
+      overflow: hidden;
+    }
+    .contact-form-embed.is-loading::before {
+      content: 'Se încarcă formularul...';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: var(--text-sec);
+      font-size: 15px;
+      font-weight: 600;
+      background:
+        linear-gradient(90deg, rgba(247,246,244,0.95) 0%, rgba(255,255,255,0.85) 50%, rgba(247,246,244,0.95) 100%);
+    }
+    .contact-form-wrap .contact-form-error {
+      margin: 16px 0 0;
+      font-size: 14px;
+      color: var(--red-dark);
+      text-align: left;
+    }
+    .contact-form-wrap .contact-form-error a {
+      color: inherit;
+      font-weight: 700;
+    }
     .contact-form { display: flex; flex-direction: column; gap: 14px; }
     .contact-form input,
     .contact-form textarea {
@@ -991,9 +1061,99 @@
       flex-wrap: wrap;
       gap: 16px;
     }
+    .footer-legal-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+    }
     footer p { color: #888888; font-size: 13px; }
     footer a { color: #888888; text-decoration: none; font-size: 13px; }
     footer a:hover { color: var(--red); }
+    .footer-link-button {
+      background: none;
+      border: 0;
+      padding: 0;
+      color: #888888;
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .footer-link-button:hover { color: var(--red); }
+
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1200;
+    }
+    .cookie-banner[hidden] { display: none; }
+    .cookie-banner-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: #111111;
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.24);
+      display: flex;
+      gap: 20px;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .cookie-banner-copy p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+      max-width: 720px;
+    }
+    .cookie-banner-kicker {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--red-light);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cookie-banner a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .cookie-banner-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      flex-shrink: 0;
+      justify-content: flex-end;
+    }
+    .cookie-btn {
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .cookie-btn:hover {
+      transform: translateY(-1px);
+    }
+    .cookie-btn-ghost {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.2);
+    }
+    .cookie-btn-primary {
+      background: var(--red);
+      color: #ffffff;
+    }
 
     /* ── TRAINER ── */
     .trainer { background: #fff; padding: 96px 0; }
