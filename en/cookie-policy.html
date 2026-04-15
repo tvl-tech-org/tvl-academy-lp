@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Policy | TVL Academy</title>
+  <meta name="description" content="Cookie Policy for academy.tvl.tech and how Google Analytics and the Pipedrive form are used.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://academy.tvl.tech/en/cookie-policy.html">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/cookie-policy.html">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/cookie-policy.html">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/cookie-policy.html">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --red: #ff4a3d;
+      --red-dark: #d63a2a;
+      --bg: #f7f6f4;
+      --text: #111111;
+      --text-sec: #4a4a4a;
+      --border: #e6e1db;
+      --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+      --font-body: 'Manrope', 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      line-height: 1.7;
+    }
+    a { color: var(--red-dark); }
+    .shell {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+    .topbar {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .brand {
+      font-family: var(--font-display);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--red);
+      text-decoration: none;
+    }
+    .topnav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .topnav a {
+      text-decoration: none;
+      color: var(--text-sec);
+      font-size: 14px;
+    }
+    .topnav a:hover { color: var(--red); }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #ffffff;
+    }
+    .lang-option {
+      min-width: 38px;
+      min-height: 32px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-sec);
+    }
+    .lang-option.is-active {
+      background: var(--red);
+      color: #ffffff;
+    }
+    .hero {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.05);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    h1, h2 {
+      font-family: var(--font-display);
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+    h1 { font-size: clamp(32px, 5vw, 52px); }
+    h2 { font-size: clamp(22px, 3vw, 30px); margin-top: 28px; }
+    p, li { color: var(--text-sec); font-size: 16px; }
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: 15px;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--text);
+      background: #fbfaf8;
+    }
+    tr:last-child td { border-bottom: 0; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(255, 74, 61, 0.08);
+      border-radius: 6px;
+      padding: 2px 6px;
+      color: #8f2f24;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 10px 0 0;
+    }
+    .meta {
+      margin-top: 16px;
+      color: var(--text-sec);
+      font-size: 14px;
+    }
+    .notice {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: rgba(255, 74, 61, 0.08);
+      border: 1px solid rgba(255, 74, 61, 0.16);
+      color: var(--text);
+    }
+    @media (max-width: 740px) {
+      .hero, .card { padding: 22px; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr {
+        border-bottom: 1px solid var(--border);
+        padding: 12px 0;
+      }
+      td {
+        border: 0;
+        padding: 8px 0;
+      }
+      td::before {
+        content: attr(data-label);
+        display: block;
+        font-family: var(--font-display);
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar">
+      <a class="brand" href="index.html">TVL Academy</a>
+      <nav class="topnav" aria-label="Legal navigation">
+        <a href="index.html">Back to site</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <div class="lang-switch" aria-label="Language selector">
+          <a href="../ro/cookie-policy.html" class="lang-option" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+          <a href="../en/cookie-policy.html" class="lang-option is-active" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="eyebrow">Cookie Policy</div>
+      <h1>How we use cookies and local storage</h1>
+      <p>On this landing page we use a minimal set of mechanisms for cookie preferences, analytics and the external contact form. Analytics starts only after consent, while the Pipedrive form is embedded directly on the page.</p>
+      <div class="meta">Last updated: April 15, 2026</div>
+    </section>
+
+    <section class="card">
+      <h2>1. What we actually use on the site</h2>
+      <table aria-label="Cookies and local storage">
+        <thead>
+          <tr>
+            <th>Mechanism</th>
+            <th>Provider</th>
+            <th>Purpose</th>
+            <th>When it appears</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Mechanism"><code>tvl_cookie_consent_v1</code> in local storage</td>
+            <td data-label="Provider">academy.tvl.tech</td>
+            <td data-label="Purpose">Stores your Google Analytics choice.</td>
+            <td data-label="When it appears">After you choose Accept or Decline in the banner.</td>
+            <td data-label="Duration">180 days</td>
+          </tr>
+          <tr>
+            <td data-label="Mechanism"><code>_ga</code> and <code>_ga_*</code> cookies</td>
+            <td data-label="Provider">Google Analytics 4</td>
+            <td data-label="Purpose">Measures traffic and interaction with the page.</td>
+            <td data-label="When it appears">Only after consent for analytics.</td>
+            <td data-label="Duration">According to Google Analytics settings</td>
+          </tr>
+          <tr>
+            <td data-label="Mechanism"><code>__cf_bm</code></td>
+            <td data-label="Provider">Pipedrive / Cloudflare</td>
+            <td data-label="Purpose">Anti-bot protection for the external form.</td>
+            <td data-label="When it appears">When the page loads together with the embedded Pipedrive form.</td>
+            <td data-label="Duration">About 1 hour</td>
+          </tr>
+          <tr>
+            <td data-label="Mechanism"><code>_GRECAPTCHA</code></td>
+            <td data-label="Provider">Google reCAPTCHA</td>
+            <td data-label="Purpose">Anti-spam risk analysis for the form.</td>
+            <td data-label="When it appears">When the page loads, if anti-spam protection is enabled in Pipedrive.</td>
+            <td data-label="Duration">According to the provider configuration</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2. What we do not do</h2>
+      <ul>
+        <li>We do not activate Google Analytics before consent.</li>
+        <li>We do not use Google advertising signals or ad personalization in this analytics setup.</li>
+        <li>We do not use Google advertising cookies in this implementation.</li>
+      </ul>
+
+      <h2>3. How you can change your choice</h2>
+      <ul>
+        <li>On the main page, you can use the <strong>“Cookie Settings”</strong> link in the footer to reopen the banner and change your analytics preference.</li>
+        <li>If you decline analytics, we also attempt to clear the existing Google Analytics cookies from the current browser.</li>
+        <li>The banner preference controls only Google Analytics. The Pipedrive form embedded on the page is not turned on or off by this setting.</li>
+        <li>You can also clear cookies from your browser settings.</li>
+      </ul>
+
+      <h2>4. Additional information</h2>
+      <p>For details about the processing of personal data, see our <a href="privacy-policy.html">Privacy Policy</a>. For questions, you can write to us at <a href="mailto:sales@tvl.tech">sales@tvl.tech</a>.</p>
+
+      <div class="notice">
+        The Pipedrive form is an external integration displayed directly on the page. In practical terms, the resources and technologies associated with that provider may be loaded as soon as the page is displayed.
+      </div>
+    </section>
+  </main>
+  <script>
+    (function syncLocalePreference() {
+      var storageKey = 'tvl_locale_pref';
+      var locale = 'en';
+      try {
+        window.localStorage.setItem(storageKey, locale);
+      } catch (error) {}
+
+      var localeLinks = document.querySelectorAll('[data-locale-switch]');
+      localeLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          try {
+            window.localStorage.setItem(storageKey, link.dataset.localeSwitch || locale);
+          } catch (error) {}
+        });
+      });
+    }());
+  </script>
+</body>
+</html>

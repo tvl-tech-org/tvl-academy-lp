@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const GA_MEASUREMENT_ID = 'G-F67MY1F3KQ';
   const COOKIE_CONSENT_KEY = 'tvl_cookie_consent_v1';
+  const LOCALE_PREFERENCE_KEY = 'tvl_locale_pref';
   const COOKIE_CONSENT_TTL_MS = 180 * 24 * 60 * 60 * 1000;
   const deniedConsent = {
     analytics_storage: 'denied',
@@ -23,7 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const openCookieSettings = document.getElementById('openCookieSettings');
   const contactFormEmbed = document.getElementById('contactFormEmbed');
   const contactFormError = document.getElementById('contactFormError');
+  const localeSwitchLinks = Array.from(document.querySelectorAll('[data-locale-switch]'));
   let pipedriveLoaderPending = false;
+
+  function normalizeLocale(localeCandidate) {
+    if (!localeCandidate || typeof localeCandidate !== 'string') return 'en';
+    const locale = localeCandidate.toLowerCase();
+    return locale.startsWith('ro') ? 'ro' : 'en';
+  }
+
+  function writeLocalePreference(locale) {
+    try {
+      window.localStorage.setItem(LOCALE_PREFERENCE_KEY, normalizeLocale(locale));
+    } catch (error) {
+      // Ignore storage failures and keep navigation functional.
+    }
+  }
 
   function ensureGtag() {
     window.dataLayer = window.dataLayer || [];
@@ -235,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initializeCookieConsent();
   loadPipedriveFormEmbed();
+  writeLocalePreference(document.documentElement.lang);
 
   // Copyright dinamic
   const yearEl = document.getElementById('year');
@@ -314,5 +331,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (acceptAnalytics) acceptAnalytics.focus();
     });
   }
+
+  localeSwitchLinks.forEach(link => {
+    const locale = link.dataset.localeSwitch;
+    if (!locale) return;
+
+    link.addEventListener('click', () => {
+      writeLocalePreference(locale);
+    });
+  });
 
 });

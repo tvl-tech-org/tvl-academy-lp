@@ -1,258 +1,49 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cookie Policy | TVL Academy</title>
-  <meta name="description" content="Cookie Policy pentru academy.tvl.tech și modul în care sunt folosite Google Analytics și formularul Pipedrive.">
+  <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://academy.tvl.tech/cookie-policy.html">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/cookie-policy.html">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/cookie-policy.html">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/cookie-policy.html">
+  <script>
+    (function redirectToLocalizedCookiePolicy() {
+      var storageKey = 'tvl_locale_pref';
 
-    :root {
-      --red: #ff4a3d;
-      --red-dark: #d63a2a;
-      --bg: #f7f6f4;
-      --text: #111111;
-      --text-sec: #4a4a4a;
-      --border: #e6e1db;
-      --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
-      --font-body: 'Manrope', 'Segoe UI', sans-serif;
-    }
+      function normalizeLocale(value) {
+        if (!value || typeof value !== 'string') return 'en';
+        return value.toLowerCase().indexOf('ro') === 0 ? 'ro' : 'en';
+      }
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      color: var(--text);
-      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
-      line-height: 1.7;
-    }
-    a { color: var(--red-dark); }
-    .shell {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 32px 20px 72px;
-    }
-    .topbar {
-      display: flex;
-      gap: 16px;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-    .brand {
-      font-family: var(--font-display);
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--red);
-      text-decoration: none;
-    }
-    .topnav {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .topnav a {
-      text-decoration: none;
-      color: var(--text-sec);
-      font-size: 14px;
-    }
-    .topnav a:hover { color: var(--red); }
-    .hero {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.05);
-      margin-bottom: 28px;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--red);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    h1, h2 {
-      font-family: var(--font-display);
-      letter-spacing: -0.02em;
-      margin: 0 0 12px;
-    }
-    h1 { font-size: clamp(32px, 5vw, 52px); }
-    h2 { font-size: clamp(22px, 3vw, 30px); margin-top: 28px; }
-    p, li { color: var(--text-sec); font-size: 16px; }
-    .card {
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      backdrop-filter: blur(10px);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 18px;
-      font-size: 15px;
-      background: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    th, td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      font-family: var(--font-display);
-      font-size: 13px;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      color: var(--text);
-      background: #fbfaf8;
-    }
-    tr:last-child td { border-bottom: 0; }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      background: rgba(255, 74, 61, 0.08);
-      border-radius: 6px;
-      padding: 2px 6px;
-      color: #8f2f24;
-    }
-    ul {
-      padding-left: 20px;
-      margin: 10px 0 0;
-    }
-    .meta {
-      margin-top: 16px;
-      color: var(--text-sec);
-      font-size: 14px;
-    }
-    .notice {
-      margin-top: 20px;
-      padding: 16px 18px;
-      border-radius: 12px;
-      background: rgba(255, 74, 61, 0.08);
-      border: 1px solid rgba(255, 74, 61, 0.16);
-      color: var(--text);
-    }
-    @media (max-width: 740px) {
-      .hero, .card { padding: 22px; }
-      table, thead, tbody, th, td, tr { display: block; }
-      thead { display: none; }
-      tr {
-        border-bottom: 1px solid var(--border);
-        padding: 12px 0;
+      function readSavedLocale() {
+        try {
+          var saved = window.localStorage.getItem(storageKey);
+          return saved ? normalizeLocale(saved) : null;
+        } catch (error) {
+          return null;
+        }
       }
-      td {
-        border: 0;
-        padding: 8px 0;
+
+      function detectBrowserLocale() {
+        var browserLocales = Array.isArray(navigator.languages) && navigator.languages.length
+          ? navigator.languages
+          : [navigator.language || navigator.userLanguage || 'en'];
+        for (var index = 0; index < browserLocales.length; index += 1) {
+          if (normalizeLocale(browserLocales[index]) === 'ro') return 'ro';
+        }
+        return 'en';
       }
-      td::before {
-        content: attr(data-label);
-        display: block;
-        font-family: var(--font-display);
-        font-size: 12px;
-        text-transform: uppercase;
-        color: var(--text);
-        margin-bottom: 4px;
-      }
-    }
-  </style>
+
+      var locale = readSavedLocale() || detectBrowserLocale();
+      window.location.replace('/' + locale + '/cookie-policy.html');
+    }());
+  </script>
 </head>
 <body>
-  <main class="shell">
-    <div class="topbar">
-      <a class="brand" href="index.html">TVL Academy</a>
-      <nav class="topnav" aria-label="Navigare legală">
-        <a href="index.html">Înapoi la site</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-      </nav>
-    </div>
-
-    <section class="hero">
-      <div class="eyebrow">Cookie Policy</div>
-      <h1>Cum folosim cookie-uri și stocare locală</h1>
-      <p>Pe acest landing page folosim un set minim de mecanisme pentru preferința de cookie, analytics și formularul extern de contact. Analytics pornește doar după accept, iar formularul Pipedrive este integrat direct în pagină.</p>
-      <div class="meta">Ultima actualizare: 15 aprilie 2026</div>
-    </section>
-
-    <section class="card">
-      <h2>1. Ce folosim efectiv pe site</h2>
-      <table aria-label="Cookie-uri și stocare locală">
-        <thead>
-          <tr>
-            <th>Mecanism</th>
-            <th>Furnizor</th>
-            <th>Scop</th>
-            <th>Când apare</th>
-            <th>Durată</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-label="Mecanism"><code>tvl_cookie_consent_v1</code> în local storage</td>
-            <td data-label="Furnizor">academy.tvl.tech</td>
-            <td data-label="Scop">Memorează alegerea ta privind Google Analytics.</td>
-            <td data-label="Când apare">După ce alegi Acceptă sau Refuză în banner.</td>
-            <td data-label="Durată">180 de zile</td>
-          </tr>
-          <tr>
-            <td data-label="Mecanism"><code>_ga</code> și cookie-uri <code>_ga_*</code></td>
-            <td data-label="Furnizor">Google Analytics 4</td>
-            <td data-label="Scop">Măsurarea traficului și a interacțiunilor cu pagina.</td>
-            <td data-label="Când apare">Numai după consimțământ pentru analytics.</td>
-            <td data-label="Durată">Conform setărilor Google Analytics</td>
-          </tr>
-          <tr>
-            <td data-label="Mecanism"><code>__cf_bm</code></td>
-            <td data-label="Furnizor">Pipedrive / Cloudflare</td>
-            <td data-label="Scop">Protecție anti-bot pentru formularul extern.</td>
-            <td data-label="Când apare">La încărcarea paginii, odată cu formularul Pipedrive integrat.</td>
-            <td data-label="Durată">Aproximativ 1 oră</td>
-          </tr>
-          <tr>
-            <td data-label="Mecanism"><code>_GRECAPTCHA</code></td>
-            <td data-label="Furnizor">Google reCAPTCHA</td>
-            <td data-label="Scop">Analiză de risc anti-spam pentru formular.</td>
-            <td data-label="Când apare">La încărcarea paginii, dacă protecția anti-spam este activată în Pipedrive.</td>
-            <td data-label="Durată">Conform configurației furnizorului</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>2. Ce nu facem</h2>
-      <ul>
-        <li>Nu activăm Google Analytics înainte de consimțământ.</li>
-        <li>Nu folosim semnale de publicitate Google sau personalizare de reclame în configurarea analytics.</li>
-        <li>Nu folosim cookie-uri de advertising Google în această implementare.</li>
-      </ul>
-
-      <h2>3. Cum îți poți schimba alegerea</h2>
-      <ul>
-        <li>Pe pagina principală poți folosi linkul <strong>„Setări cookie”</strong> din footer pentru a redeschide bannerul și a modifica preferința pentru analytics.</li>
-        <li>Dacă refuzi analytics, încercăm și ștergerea cookie-urilor Google Analytics existente din browserul curent.</li>
-        <li>Preferința din banner controlează doar Google Analytics. Formularul Pipedrive integrat în pagină nu este activat sau dezactivat din această setare.</li>
-        <li>Poți șterge cookie-urile și din setările browserului tău.</li>
-      </ul>
-
-      <h2>4. Informații suplimentare</h2>
-      <p>Pentru detalii despre prelucrarea datelor personale, vezi și <a href="privacy-policy.html">Privacy Policy</a>. Pentru întrebări, ne poți scrie la <a href="mailto:sales@tvl.tech">sales@tvl.tech</a>.</p>
-
-      <div class="notice">
-        Formularul Pipedrive este o integrare externă afișată direct în pagină. Din punct de vedere practic, resursele și tehnologiile asociate furnizorului pot fi încărcate imediat ce pagina este afișată.
-      </div>
-    </section>
-  </main>
+  <p><a href="/ro/cookie-policy.html">RO</a> | <a href="/en/cookie-policy.html">EN</a></p>
 </body>
 </html>

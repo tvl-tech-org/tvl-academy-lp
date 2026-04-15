@@ -1,726 +1,124 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="apple-touch-icon" href="favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Training AI pentru echipe | TVL Academy</title>
-  <meta name="description" content="Învață-ți echipa să lucreze cu AI. 3 sesiuni practice livrate în compania ta. Rezervă 30 de minute cu Alexandru Dan și vezi dacă se potrivește.">
-  <meta property="og:title" content="Învață-ți echipa să lucreze cu AI — TVL Academy">
-  <meta property="og:description" content="3 sesiuni practice, la sediu sau online. Pleci cu prompturi, asistenți AI și un plan clar de automatizare. Rezervă 30 de minute cu Alexandru Dan.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://academy.tvl.tech/">
-  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Training AI pentru echipe — TVL Academy">
-  <meta property="og:locale" content="ro_RO">
-  <meta property="og:site_name" content="TVL Academy">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Învață-ți echipa să lucreze cu AI — TVL Academy">
-  <meta name="twitter:description" content="3 sesiuni practice, la sediu sau online. Pleci cu prompturi, asistenți AI și un plan clar de automatizare. Rezervă 30 de minute cu Alexandru Dan.">
-  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai.jpg">
-
-  <!-- Canonical -->
+  <title>TVL Academy</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://academy.tvl.tech/">
-
-  <!-- Robots -->
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Alexandru Dan, TVL Academy">
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Training AI pentru echipe",
-    "description": "Învață-ți echipa să lucreze cu AI. 3 sesiuni practice livrate în compania ta, de la zero la o echipă care folosește AI zilnic, corect și consistent.",
-    "provider": {
-      "@type": "Organization",
-      "name": "TVL Academy",
-      "url": "https://academy.tvl.tech/",
-      "logo": "https://academy.tvl.tech/favicon.svg"
-    },
-    "instructor": {
-      "@type": "Person",
-      "name": "Alexandru Dan",
-      "jobTitle": "CEO TVL Tech, Lead Trainer TVL Academy",
-      "url": "https://republica.ro/autor/alexandrudan_2"
-    },
-    "courseMode": ["onsite", "online"],
-    "inLanguage": "ro",
-    "numberOfCredits": 3,
-    "educationalLevel": "professional",
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-01-01"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewBody": "După training, avem un limbaj comun. Rata de revizuiri a scăzut din prima săptămână.",
-      "author": {
-        "@type": "Person",
-        "name": "Alexandru Petrescu",
-        "jobTitle": "Head of Supply Chain, Romstal"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      }
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #ff4a3d;
+      --bg: #f7f6f4;
+      --text: #111111;
+      --text-sec: #4a4a4a;
+      --border: #e6e1db;
+      --font: "Open Sans", "Segoe UI", sans-serif;
+      --display: "Open Sans", "Segoe UI", sans-serif;
     }
-  }
-  </script>
-  <link rel="stylesheet" href="index.css">
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: var(--font);
+    }
+    .card {
+      width: min(560px, 100%);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.06);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-family: var(--display);
+      font-size: clamp(28px, 5vw, 42px);
+    }
+    p {
+      margin: 0 0 18px;
+      color: var(--text-sec);
+      line-height: 1.7;
+    }
+    .links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .links a {
+      min-width: 88px;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: var(--display);
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--red);
+    }
+    .links a.secondary {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+  </style>
 </head>
 <body>
-
-<!-- ── NAV ── -->
-<nav>
-  <a class="nav-logo" href="#">
-    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
-      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
-      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
-      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
-      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
-      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
-      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
-      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
-    </svg>
-    <span class="nav-logo-text">ACADEMY</span>
-  </a>
-  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="nav-links" id="nav-links">
-    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
-    <a href="#problema">De ce?</a>
-    <a href="#cum-functioneaza">Sesiuni</a>
-    <a href="#customizat">Customizare</a>
-    <a href="#avantaje">Ce primești</a>
-    <a href="#contact" class="btn-nav">Rezervă 30 de minute</a>
-  </div>
-</nav>
-
-<!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-label">Training AI pentru echipa ta · TVL Academy</div>
-      <h1>Învață-ți echipa <span>să lucreze cu AI</span></h1>
-      <p>În 30 de minute cu Alexandru Dan afli dacă<br>programul se potrivește echipei tale.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Rezervă 30 de minute</a>
-        <a href="#cum-functioneaza" class="btn-ghost">Vezi sesiunile</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="num">3</div>
-          <div class="lbl">Sesiuni livrate în compania ta</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num">9h</div>
-          <div class="lbl">De practică aplicată, fără teorie inutilă</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num">Ziua 3</div>
-          <div class="lbl">Primele schimbări vizibile în echipa ta</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num">30 zile</div>
-          <div class="lbl">Suport inclus după training</div>
-        </div>
-      </div>
+  <main class="card">
+    <h1>Redirecting…</h1>
+    <p>We are sending you to the right language version based on your browser locale or the last language you selected.</p>
+    <div class="links">
+      <a href="/ro/">RO</a>
+      <a href="/en/" class="secondary">EN</a>
     </div>
-    <div class="hero-image-card">
-      <img src="images/curs-ai.jpeg" alt="Echipă în training">
-    </div>
-  </div>
-</section>
+  </main>
+  <script>
+    (function redirectToLocale() {
+      var storageKey = 'tvl_locale_pref';
 
-<!-- ── PROBLEMA ── -->
-<section class="problema" id="problema">
-  <div class="container">
-    <div class="two-col">
-      <div class="fade-in">
-        <span class="red-label">Provocarea</span>
-        <h2 class="section-h2">Echipa ta folosește AI, dar rezultatele sunt imprevizibile</h2>
-        <blockquote>
-          „Fiecare angajat lucrează cu AI în felul lui<br>→ rezultatele diferă de la om la om<br>→ nimeni nu mai are încredere în ce iese<br>→ AI-ul e abandonat."
-        </blockquote>
-        <ul class="pain-list">
-          <li>De câte ori refaci manual ce a generat AI-ul înainte să trimiți?</li>
-          <li>Câte ore pierde echipa ta în fiecare săptămână pe corecturi inutile?</li>
-          <li>Știe fiecare angajat cum să obțină un rezultat bun din AI, de fiecare dată?</li>
-          <li>Legislația europeană (EU AI Act) obligă companiile să documenteze că angajații știu să folosească AI, termenul limită se apropie.</li>
-        </ul>
-      </div>
-      <div class="fade-in">
-        <img src="images/curs-ai-team.jpeg" alt="Echipă la birou" style="width:100%;height:360px;object-fit:cover;border-radius:8px;">
-      </div>
-    </div>
-  </div>
-</section>
+      function normalizeLocale(value) {
+        if (!value || typeof value !== 'string') return 'en';
+        return value.toLowerCase().indexOf('ro') === 0 ? 'ro' : 'en';
+      }
 
-<!-- ── DE CE ACUM ── -->
-<section class="de-ce-acum">
-  <div class="container">
-    <div class="section-title-center fade-in">
-      <span class="red-label">De ce acum</span>
-      <h2 class="section-h2">De ce merită să începi acum</h2>
-      <p>Cu fiecare lună în care echipa ta folosește AI fără standarde clare, plătești în timp pierdut, revizuiri inutile și rezultate imprevizibile.</p>
-    </div>
-    <div class="urgenta-grid">
-      <div class="urgenta-card fade-in">
-        <h3>Costul se vede deja</h3>
-        <p>Când fiecare om folosește AI în felul lui, rezultatele diferă, încrederea scade, iar echipa pierde timp pe corecturi și refaceri.</p>
-      </div>
-      <div class="urgenta-card fade-in">
-        <h3>Presiunea vine și din conformitate</h3>
-        <p>Companiile trebuie să demonstreze competențe AI, iar noi livrăm documentația necesară pentru audit.</p>
-      </div>
-      <div class="urgenta-card fade-in">
-        <h3>Rezultatele nu vin peste 6 luni</h3>
-        <p>Programul este construit ca să producă primele schimbări vizibile până în ziua 3, iar apoi beneficiezi de încă 30 de zile de suport pentru adoptare reală.</p>
-      </div>
-    </div>
-    <div class="urgenta-band fade-in">
-      Cu cât începi mai târziu, cu atât echipa își formează mai multe obiceiuri greșite de lucru cu AI.
-    </div>
-    <div class="urgenta-cta fade-in">
-      <a class="btn-primary" href="#contact">Rezervă 30 de minute cu Alexandru Dan</a>
-    </div>
-  </div>
-</section>
+      function readSavedLocale() {
+        try {
+          return normalizeLocale(window.localStorage.getItem(storageKey));
+        } catch (error) {
+          return null;
+        }
+      }
 
-<!-- ── CUM FUNCȚIONEAZĂ ── -->
-<section class="cum" id="cum-functioneaza">
-  <div class="container">
-    <div class="section-title-center fade-in">
-      <span class="red-label">Programul</span>
-      <h2 class="section-h2">3 Sesiuni · 3 Rezultate concrete</h2>
-      <p>Fiecare sesiune se termină cu un livrabil pe care îl poți folosi a doua zi.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card fade-in">
-        <div class="step-num">01</div>
-        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop&q=80" alt="Sesiune de training" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
-        <h3>Prompt Engineering (CROTATFC)</h3>
-        <p>Fiecare participant construiește o bibliotecă de prompturi pentru rolul său. Context, Rol, Obiectiv, Sarcini, Audiență, Ton, Format, Constrângeri. 8 tehnici de bază + 10 pattern-uri avansate folosite de ingineri AI.</p>
-        <div class="step-result">✓ Echipa pleacă cu o bibliotecă de instrucțiuni gata de folosit a doua zi</div>
-      </div>
-      <div class="step-card fade-in">
-        <div class="step-num">02</div>
-        <img src="images/Custom-AI2.png" alt="Asistent AI personalizat pentru rol" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
-        <h3>Asistent AI personalizat pentru fiecare rol</h3>
-        <p>Fiecare participant construiește și testează un asistent AI personalizat pentru rolul lui. Specificații de asistent, instrucțiuni de sistem, surse de cunoaștere (documente, procese și proceduri interne). Proiecte și Workspace-uri în ChatGPT, Claude, Gemini.</p>
-        <div class="step-result">✓ Fiecare participant pleacă cu propriul asistent AI configurat pentru rolul lui</div>
-      </div>
-      <div class="step-card fade-in">
-        <div class="step-num">03</div>
-        <img src="images/ai-design-table.jpg" alt="AI Design Sprint workshop la masă cu carduri și canvas de lucru" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
-        <h3>AI Design Sprint</h3>
-        <p>Cadru practic pentru identificarea, evaluarea și prioritizarea oportunităților de utilizare a AI în procese reale, în 3 etape: descoperire, specificație, pilot. Analiza pornește de la fricțiuni precum căutare, verificare, copiere, scriere, direcționare și așteptare, iar prioritizarea se face prin formula: Scor = (Volum × Minute × Impact × Fezabilitate) ÷ Risc.</p>
-        <div class="step-result">✓ Echipele identifică și mapează 3–5 fluxuri automatizabile</div>
-      </div>
-    </div>
-  </div>
-</section>
+      function detectBrowserLocale() {
+        var browserLocales = Array.isArray(navigator.languages) && navigator.languages.length
+          ? navigator.languages
+          : [navigator.language || navigator.userLanguage || 'en'];
+        for (var index = 0; index < browserLocales.length; index += 1) {
+          if (normalizeLocale(browserLocales[index]) === 'ro') return 'ro';
+        }
+        return 'en';
+      }
 
-<!-- ── AI DESIGN SPRINT ── -->
-<section class="sprint-focus" id="ai-design-sprint">
-  <div class="container">
-    <div class="section-title-center fade-in">
-      <h2 class="section-h2">AI Design Sprint</h2>
-      <p>Un cadru clar pentru a decide unde merită să automatizezi cu AI. Folosim un singur artefact de lucru, AI Opportunity Card, care trece prin tot sprintul: de la workflow și pasul dureros, până la pilot și criterii de succes.</p>
-    </div>
-
-    <div class="sprint-gallery">
-      <figure class="sprint-gallery-card fade-in">
-        <img src="images/ai-design-table.jpg" alt="Echipă care lucrează la masa de AI Design Sprint cu carduri colorate" loading="lazy">
-      </figure>
-      <figure class="sprint-gallery-card fade-in">
-        <img src="images/ai-design-cards.jpg" alt="Set de AI Design Cards folosit în workshop" loading="lazy">
-      </figure>
-      <figure class="sprint-gallery-card fade-in">
-        <img src="images/ai-design-sprint-board.jpg" alt="Board vizual de AI Design Sprint cu carduri și fluxuri conectate" loading="lazy">
-      </figure>
-    </div>
-
-    <div class="sprint-top-grid">
-      <div class="sprint-overview-card fade-in">
-        <span class="sprint-mini-label">Regula de lucru</span>
-        <div class="sprint-principle">Un workflow. Un pas dureros. Un câștig măsurabil. Un card.</div>
-        <p>AI Design Sprint este cadrul practic prin care identificăm, evaluăm și prioritizăm oportunitățile reale de utilizare a AI în companie. Nu pornim de la tool-uri, ci de la procese, blocaje și pierderi de timp observabile în muncă de zi cu zi.</p>
-        <div class="sprint-overview-notes">
-          <div class="sprint-overview-note">
-            <strong>Definește workflow-ul</strong>
-            <p>Pui un nume clar, care este departament owner, trigger și starea „done”.</p>
-          </div>
-          <div class="sprint-overview-note">
-            <strong>Scrie fluxul</strong>
-            <p>5–8 pași scurți, în ordinea reală de execuție.</p>
-          </div>
-          <div class="sprint-overview-note">
-            <strong>Alege pasul dureros</strong>
-            <p>Un singur punct de fricțiune, susținut de exemple reale.</p>
-          </div>
-          <div class="sprint-overview-note">
-            <strong>Definește input și output</strong>
-            <p>Sistem sursă, rezultat testabil, aprobare umană dacă e necesară.</p>
-          </div>
-          <div class="sprint-overview-note">
-            <strong>Scor și pilot</strong>
-            <p>Prioritizezi obiectiv și intri în pilot cu metrici și guardrails.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="sprint-formula-card fade-in">
-        <span class="sprint-mini-label">Formula de prioritizare</span>
-        <div class="sprint-formula">Scor = (Volum × Minute × Impact × Fezabilitate) ÷ Risc</div>
-        <p>Folosim aceeași formulă pentru toate cardurile, ca prioritizarea să fie consecventă între echipe, procese și departamente.</p>
-        <div class="sprint-factor-grid">
-          <div class="sprint-factor">
-            <strong>Volum</strong>
-            <span>De câte ori apare workflow-ul într-o săptămână.</span>
-          </div>
-          <div class="sprint-factor">
-            <strong>Minute</strong>
-            <span>Cât timp se pierde la fiecare execuție.</span>
-          </div>
-          <div class="sprint-factor">
-            <strong>Impact & Fezabilitate</strong>
-            <span>Cât de mult contează și cât de simplu poate fi pilotat.</span>
-          </div>
-          <div class="sprint-factor">
-            <strong>Risc</strong>
-            <span>Cât de costisitoare ar fi o eroare dacă output-ul este greșit.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── CUSTOMIZAT ── -->
-<section class="customizat" id="customizat">
-  <div class="container">
-    <div class="section-title-center fade-in">
-      <span class="red-label">De ce e diferit</span>
-      <h2 class="section-h2">Customizat pentru compania ta</h2>
-      <p>Nu este un training generic. Totul este construit pe procesele, tool-urile și nevoile echipei tale.</p>
-    </div>
-    <div class="custom-grid">
-      <div class="custom-card fade-in">
-        <div class="custom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h3>Prompt-uri pe procesele tale</h3>
-        <p>Fiecare prompt este construit pe fluxurile reale din compania ta, nu pe exemple generice. Echipa pleacă cu instrucțiuni gata de folosit pentru sarcinile de zi cu zi.</p>
-      </div>
-      <div class="custom-card fade-in">
-        <div class="custom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>Agenți AI pentru echipa ta</h3>
-        <p>Fiecare participant își construiește un asistent AI configurat specific pe rolul și responsabilitățile lui din companie, cu documente și proceduri interne.</p>
-      </div>
-      <div class="custom-card fade-in">
-        <div class="custom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
-        </div>
-        <h3>Automatizări specifice</h3>
-        <p>Identificăm procesele repetitive din compania ta și construim planuri concrete de automatizare cu AI, prioritizate după impact și efort.</p>
-      </div>
-      <div class="custom-card fade-in">
-        <div class="custom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
-        <h3>Tool-urile pe care le folosești deja</h3>
-        <p>Lucrăm cu ChatGPT, Gemini, Copilot sau orice alt tool AI pe care compania ta îl utilizează deja. Fără tranziții inutile către tool-uri similare.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── AVANTAJE ── -->
-<section class="avantaje" id="avantaje">
-  <div class="container">
-    <div class="section-title-center fade-in">
-      <span class="red-label" style="color:var(--red)">Ce primești</span>
-      <h2 class="section-h2" style="color:var(--text)">Tot ce ai nevoie, gata de folosit</h2>
-      <p style="color:var(--text-sec)">Materiale practice pe care echipa le folosește din prima zi.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h5M8 16h6"/></svg>
-        </div>
-        <h3>Ghid practic pentru echipă</h3>
-        <p>Un PDF simplu, gata de printat și pus pe birou, cu pașii exacți pe care fiecare angajat îi urmează ca să obțină rezultate bune din AI, de fiecare dată.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
-        </div>
-        <h3>AI care se îmbunătățește singur</h3>
-        <p>O metodă prin care AI-ul generează singur instrucțiuni mai bune pentru el însuși, inclusă în ghidul practic.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <h3>Asistent AI personalizat per rol</h3>
-        <p>Fiecare angajat pleacă cu propriul asistent AI configurat pentru jobul lui, în ChatGPT, Claude sau Gemini, gata de folosit a doua zi.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <h3>Plan concret de automatizare</h3>
-        <p>Pleci din training cu o listă de 3–5 procese din compania ta care pot fi automatizate cu AI, prioritizate și cu pași clari de implementare.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Documentație de conformitate pentru audit</h3>
-        <p>Legislația europeană obligă companiile să dovedească că angajații știu să folosească AI. Primești documentația gata de prezentat la un audit.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgb(255,73,49)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>
-        </div>
-        <h3>Certificat individual per angajat</h3>
-        <p>Fiecare participant primește un certificat nominal emis de TVL Academy, dovadă că a parcurs un training acreditat de utilizare AI.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── DE CE NE ALEG ── -->
-<section class="de-ce">
-  <div class="container">
-    <div class="section-title-center fade-in">
-      <span class="red-label">Înainte vs. După</span>
-      <h2 class="section-h2" style="color:var(--text)">Ce se schimbă după training</h2>
-      <p>Rezultate concrete pentru fiecare rol din echipă</p>
-    </div>
-    <div class="ba-grid">
-
-      <div class="ba-card fade-in">
-        <div class="ba-role">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Team Lead / Manager
-        </div>
-        <div class="ba-body">
-          <div class="ba-col">
-            <div class="ba-tag before">Înainte</div>
-            <div class="ba-text">Fiecare om din echipă lucrează cu AI diferit. Output-urile variază, revizuirile sunt constante, nu știi cine și cum folosește AI-ul.</div>
-          </div>
-          <div class="ba-col after-col">
-            <div class="ba-tag after">După training</div>
-            <div class="ba-text after-text">Echipa are un limbaj comun și standarde clare. Ratele de revizuire scad din prima săptămână.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ba-card fade-in">
-        <div class="ba-role">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Marketing / Vânzări
-        </div>
-        <div class="ba-body">
-          <div class="ba-col">
-            <div class="ba-tag before">Înainte</div>
-            <div class="ba-text">Textele generate de AI sună generic, off-brand. Jumătate din timp se pierde pe editare ca să sune „ca noi".</div>
-          </div>
-          <div class="ba-col after-col">
-            <div class="ba-tag after">După training</div>
-            <div class="ba-text after-text">AI-ul produce conținut on-brand din prima încercare, cu ton și format corect pentru fiecare canal.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ba-card fade-in">
-        <div class="ba-role">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          Operațiuni / Suport
-        </div>
-        <div class="ba-body">
-          <div class="ba-col">
-            <div class="ba-tag before">Înainte</div>
-            <div class="ba-text">Emailuri, rapoarte și proceduri scrise manual de fiecare dată. AI-ul ajută uneori, dar nimeni nu știe exact cum să-l folosească bine.</div>
-          </div>
-          <div class="ba-col after-col">
-            <div class="ba-tag after">După training</div>
-            <div class="ba-text after-text">Documente recurente generate în minute. Fiecare angajat are un asistent AI configurat specific pentru rolul lui.</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── TESTIMONIAL ── -->
-<section class="testimonial-strip">
-  <div class="testimonial-inner fade-in">
-    <div class="testimonial-header">
-      <span class="testimonial-kicker">Testimoniale</span>
-      <h2>Ce spun clienții</h2>
-      <img class="testimonial-logo" src="images/romstal-logo.png" alt="Romstal">
-    </div>
-    <blockquote>
-      „După training, avem un limbaj comun. Rata de revizuiri a scăzut din prima săptămână."
-    </blockquote>
-    <cite>— Alexandru Petrescu, Head of Supply Chain, Romstal</cite>
-  </div>
-</section>
-
-
-<!-- ── TRAINER ── -->
-<section class="trainer">
-  <div class="container">
-    <div class="trainer-inner">
-
-      <div class="trainer-photo fade-in">
-        <div class="photo-wrap">
-          <img src="images/alex-dan.png" alt="Alexandru Dan">
-        </div>
-        <div class="trainer-media-logos">
-          <a class="media-pill" href="https://republica.ro/autor/alexandrudan_2" target="_blank" rel="noopener">
-            <div class="media-pill-dot"></div>
-            <div class="media-pill-info">
-              <div class="media-pill-pub">Republica.ro</div>
-              <div class="media-pill-title">Contributor, articole AI & tech</div>
-            </div>
-            <div class="media-pill-arrow">↗</div>
-          </a>
-          <a class="media-pill" href="https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619" target="_blank" rel="noopener">
-            <div class="media-pill-dot"></div>
-            <div class="media-pill-info">
-              <div class="media-pill-pub">Ziarul Financiar</div>
-              <div class="media-pill-title">ZF Live, interviu despre viitorul AI</div>
-            </div>
-            <div class="media-pill-arrow">↗</div>
-          </a>
-          <a class="media-pill" href="https://alephnews.ro/tehnologie/inteligenta-artificiala-devine-indispensabila-in-viitor-cum-va-fi-a-i-ul-pentru-romania/" target="_blank" rel="noopener">
-            <div class="media-pill-dot"></div>
-            <div class="media-pill-info">
-              <div class="media-pill-pub">Aleph News</div>
-              <div class="media-pill-title">AI în România, analiză și previziuni</div>
-            </div>
-            <div class="media-pill-arrow">↗</div>
-          </a>
-          <a class="media-pill" href="https://icmarktech.com/icmarktech-2026-announces-alexandru-dan-as-keynote-speaker/" target="_blank" rel="noopener">
-            <div class="media-pill-dot"></div>
-            <div class="media-pill-info">
-              <div class="media-pill-pub">ICMarkTech 2026</div>
-              <div class="media-pill-title">Keynote Speaker</div>
-            </div>
-            <div class="media-pill-arrow">↗</div>
-          </a>
-        </div>
-      </div>
-
-      <div class="trainer-bio fade-in">
-        <span class="red-label">Trainer</span>
-        <h2>Alexandru Dan</h2>
-        <div class="trainer-role">CEO TVL Tech · Lead Trainer TVL Academy · Cercetător AI</div>
-        <p>Alexandru Dan are peste 15 ani de experiență în inteligență artificială. Absolvent al Facultății de Matematică și Informatică, a pregătit elevi pentru Olimpiada de Informatică ca profesor la Colegiul Național Tudor Vianu, unul dintre cele mai competitive licee de informatică din România.</p>
-        <p>A fondat academia tehnică de la eMAG, a activat ca cercetător AI în Luxemburg și lucrează cu companii din România și Europa pentru a le pregăti pentru tranziția spre AI, printre care Romstal, RMT Labs, Arcanna și Ocean Enterprise.</p>
-        <p>Lector de Generative AI la ASE București și Cyber Smart Academy. Creator al frameworkului de prompting CROTATFC. A livrat training-uri de AI literacy pentru manageri, profesori și specialiști.</p>
-        <p>A fondat companii AI în domenii precum cybersecurity, recrutare, medical și real estate. În prezent, conturează strategia AI pentru organizații și instituții publice din Europa.</p>
-        <div class="trainer-tags">
-          <span class="trainer-tag">15+ ani AI</span>
-          <span class="trainer-tag">Cercetător în Luxemburg</span>
-          <span class="trainer-tag">Fondator academie eMAG</span>
-          <span class="trainer-tag">Prof. Tudor Vianu</span>
-          <span class="trainer-tag">Lector ASE București</span>
-          <span class="trainer-tag">Speaker & Contributor media</span>
-          <span class="trainer-tag">European Commission AI Group</span>
-          <span class="trainer-tag">WITSA AI Committee</span>
-          <span class="trainer-tag">NATO DIANA Mentor</span>
-          <span class="trainer-tag">ROMLUX Board Member</span>
-          <span class="trainer-tag">The AI Revolution (500+ membri)</span>
-        </div>
-        <div class="trainer-quote">
-          „Fiecare persoană și fiecare companie va avea cel puțin un asistent AI în următorii cinci ani. Întrebarea nu e dacă, ci cine va fi pregătit."
-          <br><br><strong>— Alexandru Dan, ZF Live</strong>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── BONUS WEBSITE ── -->
-<section class="bonus-website" id="bonus-website">
-  <div class="container">
-    <div class="bonus-website-inner">
-      <div class="bonus-website-copy fade-in">
-        <span class="red-label">Bonus</span>
-        <h2 class="section-h2">Să îți faci singur site gratuit cu AI</h2>
-        <p>În cadrul programului primești și un mod de lucru simplu, pas cu pas, pentru lansarea unui site fără costuri de hosting. Pornești de la un șablon, folosești Codex sau Claude ca să adaptezi conținutul și structura, publici gratuit online și, la final, conectezi domeniul propriu.</p>
-        <div class="bonus-website-steps">
-          <div class="bonus-website-step">
-            <strong>1. Pornești de la un șablon</strong>
-            <span>Ai o bază clară pe care o poți modifica direct, fără un stack complicat.</span>
-          </div>
-          <div class="bonus-website-step">
-            <strong>2. Personalizezi site-ul cu Codex sau Claude</strong>
-            <span>Cu un prompt bine formulat sau cu un skill dedicat, poți adapta textele, structura, culorile, imaginile și secțiunile.</span>
-          </div>
-          <div class="bonus-website-step">
-            <strong>3. Verifici totul local</strong>
-            <span>Previzualizezi rapid site-ul, ajustezi layout-ul și corectezi detaliile înainte de publicare.</span>
-          </div>
-          <div class="bonus-website-step">
-            <strong>4. Publici gratuit online</strong>
-            <span>Cu câteva comenzi, site-ul devine disponibil online fără costuri de hosting.</span>
-          </div>
-          <div class="bonus-website-step">
-            <strong>5. Conectezi domeniul propriu</strong>
-            <span>La final poți adăuga domeniul companiei și HTTPS, astfel încât site-ul să aibă o prezentare profesionistă, chiar dacă infrastructura rămâne gratuită.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bonus-website-preview fade-in">
-        <img src="images/free-website-starter.svg" alt="Preview pentru un starter gratuit de site personalizat cu Codex sau Claude">
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ── FAQ ── -->
-<section class="faq">
-  <div class="container">
-    <div class="section-title-center fade-in">
-      <span class="red-label">Întrebări frecvente</span>
-      <h2 class="section-h2">Ai întrebări? Avem răspunsuri.</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item fade-in">
-        <button class="faq-question" type="button">
-          Câte persoane pot participa la training?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">Grupurile ideale sunt între 10 și 20 de participanți. Această dimensiune permite exerciții practice individuale și asigură că fiecare pleacă cu rezultate concrete.</div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question" type="button">
-          Se poate face online sau doar fizic?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">Ambele variante sunt disponibile. Trainingul fizic se desfășoară la sediul companiei tale, oriunde în România. Varianta remote funcționează la fel de bine, toate exercițiile sunt adaptate pentru online.</div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question" type="button">
-          Cât durează și cum sunt structurate sesiunile?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">Sunt 3 sesiuni a câte 3 ore fiecare, total 9 ore. Le putem livra în 3 zile separate (recomandat, pentru timp de practică între sesiuni) sau într-o singură zi intensivă cu pauze.</div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question" type="button">
-          Echipa noastră nu are experiență cu AI. E o problemă?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">Deloc. Trainingul e construit special pentru oameni fără background tehnic. Plecăm de la zero și fiecare participant pleacă acasă cu un asistent AI funcțional, configurat pentru rolul lui.</div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question" type="button">
-          Ce se întâmplă după training?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">30 de zile de suport prin email, inclus fără costuri suplimentare. Trimiți întrebări, exerciții sau configurații și primești feedback în 24 de ore. Opțional, poți continua cu sesiuni lunare de office hours.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CTA + FORMULAR ── -->
-<section class="cta-section" id="contact">
-  <div class="container">
-    <div class="cta-inner">
-      <h2>Vezi dacă e potrivit pentru echipa ta</h2>
-      <p>Completezi formularul, iar Alexandru îți răspunde în maximum 24 de ore ca să stabiliți o discuție de 30 de minute și să vedeți împreună dacă programul e potrivit pentru echipa ta.</p>
-      <div class="contact-form-wrap">
-        <p class="contact-form-note">Formularul este servit prin Pipedrive și se încarcă automat odată cu pagina. Browserul tău poate încărca resurse și cookie-uri operate de Pipedrive și Cloudflare. Dacă protecția anti-spam este activată în formular, poate fi încărcat și Google reCAPTCHA. Detalii în <a href="privacy-policy.html">Privacy Policy</a> și <a href="cookie-policy.html">Cookie Policy</a>.</p>
-        <div class="contact-form-embed" id="contactFormEmbed" data-pd-webforms="https://webforms.pipedrive.com/f/6b1fXYajsDP2oiAXKxmof6PlTypa1S0aQ7geD0V1Bxa7UIvfPcmZ8yYHLxLXtPWSYj" aria-live="polite"></div>
-        <p class="contact-form-error" id="contactFormError" hidden>Formularul nu s-a încărcat. Reîncearcă sau scrie-ne la <a href="mailto:sales@tvl.tech">sales@tvl.tech</a>.</p>
-        <noscript>
-          <p class="contact-form-note">Pentru a afișa formularul ai nevoie de JavaScript. Ne poți scrie direct la <a href="mailto:sales@tvl.tech">sales@tvl.tech</a>.</p>
-        </noscript>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <a href="#" class="nav-logo" style="text-decoration:none;">
-        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
-          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
-          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
-          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
-          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
-          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
-          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
-          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
-        </svg>
-        <span class="nav-logo-text">ACADEMY</span>
-      </a>
-      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
-        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
-          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
-          <a href="#problema">De ce?</a>
-          <a href="#cum-functioneaza">Sesiuni</a>
-          <a href="#avantaje">Ce primești</a>
-          <a href="#contact">Contact</a>
-          <a href="https://republica.ro/autor/alexandrudan_2" target="_blank" rel="noopener">Republica.ro</a>
-          <a href="https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619" target="_blank" rel="noopener">Ziarul Financiar</a>
-          <a href="https://alephnews.ro/tehnologie/inteligenta-artificiala-devine-indispensabila-in-viitor-cum-va-fi-a-i-ul-pentru-romania/" target="_blank" rel="noopener">Aleph News</a>
-        </div>
-
-        <div class="footer-legal-links">
-          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Termeni</a>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="cookie-policy.html">Cookie Policy</a>
-          <button type="button" class="footer-link-button" id="openCookieSettings">Setări cookie</button>
-        </div>
-        <p>© <span id="year"></span> TVL Tech · <span id="emailLink" style="color:#888;cursor:pointer;"></span></p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<div class="cookie-banner" id="cookieBanner" hidden>
-  <div class="cookie-banner-inner">
-    <div class="cookie-banner-copy">
-      <div class="cookie-banner-kicker">Preferințe cookie</div>
-      <p>Folosim Google Analytics 4 doar după acordul tău, ca să măsurăm traficul și să îmbunătățim pagina. Formularul Pipedrive este integrat direct în pagină și poate încărca resurse externe independent de alegerea pentru analytics. Vezi <a href="privacy-policy.html">Privacy Policy</a> și <a href="cookie-policy.html">Cookie Policy</a>.</p>
-    </div>
-    <div class="cookie-banner-actions">
-      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Refuză</button>
-      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Acceptă analytics</button>
-    </div>
-  </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="index.js"></script>
+      var savedLocale = readSavedLocale();
+      var locale = savedLocale || detectBrowserLocale();
+      window.location.replace('/' + locale + '/');
+    }());
+  </script>
 </body>
 </html>
