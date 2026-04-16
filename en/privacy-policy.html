@@ -39,14 +39,14 @@
       padding: 32px 20px 72px;
     }
     .topbar {
-      display: flex;
-      gap: 16px;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      display: grid;
+      gap: 18px;
       margin-bottom: 28px;
     }
     .brand {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
       font-family: var(--font-display);
       letter-spacing: 1.8px;
       text-transform: uppercase;
@@ -57,16 +57,53 @@
     }
     .topnav {
       display: flex;
-      gap: 16px;
+      align-items: center;
+      gap: 12px;
       flex-wrap: wrap;
     }
-    .topnav a {
+    .topnav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .topnav-link {
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
       color: var(--text-sec);
       font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
     }
-    .topnav a:hover { color: var(--red); }
+    .topnav-link:hover {
+      color: var(--text);
+      border-color: #d9d1ca;
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.04);
+    }
+    .topnav-link[aria-current="page"] {
+      color: var(--text);
+      background: rgba(255, 74, 61, 0.08);
+      border-color: rgba(255, 74, 61, 0.18);
+    }
+    .topnav-back {
+      padding-left: 14px;
+    }
+    .topnav-back::before {
+      content: "←";
+      margin-right: 8px;
+      color: var(--red);
+      font-weight: 700;
+    }
     .lang-switch {
+      margin-left: auto;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -146,6 +183,19 @@
     }
     @media (max-width: 640px) {
       .hero, .card { padding: 22px; }
+      .topnav {
+        gap: 10px;
+      }
+      .topnav-links {
+        width: 100%;
+      }
+      .topnav-link {
+        min-height: 40px;
+        padding: 0 14px;
+      }
+      .lang-switch {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
@@ -154,8 +204,11 @@
     <div class="topbar">
       <a class="brand" href="index.html">TVL Academy</a>
       <nav class="topnav" aria-label="Legal navigation">
-        <a href="index.html">Back to site</a>
-        <a href="cookie-policy.html">Cookie Policy</a>
+        <a class="topnav-link topnav-back" href="index.html">Back to site</a>
+        <div class="topnav-links">
+          <a class="topnav-link" href="cookie-policy.html">Cookie Policy</a>
+          <a class="topnav-link" href="privacy-policy.html" aria-current="page">Privacy Policy</a>
+        </div>
         <div class="lang-switch" aria-label="Language selector">
           <a href="../ro/privacy-policy.html" class="lang-option" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
           <a href="../en/privacy-policy.html" class="lang-option is-active" data-locale-switch="en" lang="en" hreflang="en">EN</a>
