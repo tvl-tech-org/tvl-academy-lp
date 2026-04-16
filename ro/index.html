@@ -30,11 +30,12 @@
   <link rel="canonical" href="https://academy.tvl.tech/ro/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/">
-  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/">
 
   <!-- Robots -->
   <meta name="robots" content="index, follow">
   <meta name="author" content="Alexandru Dan, TVL Academy">
+  <link rel="preload" as="image" href="../images/curs-ai.jpeg">
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -97,13 +98,77 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TVL Academy",
+    "url": "https://academy.tvl.tech/ro/",
+    "logo": "https://academy.tvl.tech/favicon.svg",
+    "email": "sales@tvl.tech",
+    "sameAs": [
+      "https://tvl.tech",
+      "https://republica.ro/autor/alexandrudan_2",
+      "https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619",
+      "https://alephnews.ro/tehnologie/inteligenta-artificiala-devine-indispensabila-in-viitor-cum-va-fi-a-i-ul-pentru-romania/"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Câte persoane pot participa la training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grupurile ideale sunt între 10 și 20 de participanți. Această dimensiune permite exerciții practice individuale și asigură că fiecare pleacă cu rezultate concrete."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Se poate face online sau doar fizic?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ambele variante sunt disponibile. Trainingul fizic se desfășoară la sediul companiei tale, oriunde în România. Varianta remote funcționează la fel de bine, toate exercițiile sunt adaptate pentru online."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cât durează și cum sunt structurate sesiunile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sunt 3 sesiuni a câte 3 ore fiecare, total 9 ore. Le putem livra în 3 zile separate (recomandat, pentru timp de practică între sesiuni) sau într-o singură zi intensivă cu pauze."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Echipa noastră nu are experiență cu AI. E o problemă?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Deloc. Trainingul e construit special pentru oameni fără background tehnic. Plecăm de la zero și fiecare participant pleacă acasă cu un asistent AI funcțional, configurat pentru rolul lui."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ce se întâmplă după training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "30 de zile de suport prin email, inclus fără costuri suplimentare. Trimiți întrebări, exerciții sau configurații și primești feedback în 24 de ore. Opțional, poți continua cu sesiuni lunare de office hours."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="../index.css">
 </head>
 <body>
 
 <!-- ── NAV ── -->
 <nav>
-  <a class="nav-logo" href="#">
+  <a class="nav-logo" href="../ro/">
     <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
       <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
@@ -164,7 +229,7 @@
       </div>
     </div>
     <div class="hero-image-card">
-      <img src="../images/curs-ai.jpeg" alt="Echipă în training">
+      <img src="../images/curs-ai.jpeg" alt="Echipă în training" width="2048" height="1536" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -187,7 +252,7 @@
         </ul>
       </div>
       <div class="fade-in">
-        <img src="../images/curs-ai-team.jpeg" alt="Echipă la birou" style="width:100%;height:360px;object-fit:cover;border-radius:8px;">
+        <img src="../images/curs-ai-team.jpeg" alt="Echipă la birou" width="2048" height="1536" loading="lazy" decoding="async" style="width:100%;height:360px;object-fit:cover;border-radius:8px;">
       </div>
     </div>
   </div>
@@ -235,21 +300,21 @@
     <div class="steps-grid">
       <div class="step-card fade-in">
         <div class="step-num">01</div>
-        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop&q=80" alt="Sesiune de training" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
+        <img src="../images/program-prompt.svg" alt="Structură de prompt cu câmpuri și instrucțiuni AI" width="800" height="480" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;" loading="lazy" decoding="async">
         <h3>Prompt Engineering (CROTATFC)</h3>
         <p>Fiecare participant construiește o bibliotecă de prompturi pentru rolul său. Context, Rol, Obiectiv, Sarcini, Audiență, Ton, Format, Constrângeri. 8 tehnici de bază + 10 pattern-uri avansate folosite de ingineri AI.</p>
         <div class="step-result">✓ Echipa pleacă cu o bibliotecă de instrucțiuni gata de folosit a doua zi</div>
       </div>
       <div class="step-card fade-in">
         <div class="step-num">02</div>
-        <img src="../images/Custom-AI2.png" alt="Asistent AI personalizat pentru rol" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
+        <img src="../images/program-assistant.svg" alt="Asistent AI conectat la mai multe roluri din companie" width="800" height="480" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;" loading="lazy" decoding="async">
         <h3>Asistent AI personalizat pentru fiecare rol</h3>
         <p>Fiecare participant construiește și testează un asistent AI personalizat pentru rolul lui. Specificații de asistent, instrucțiuni de sistem, surse de cunoaștere (documente, procese și proceduri interne). Proiecte și Workspace-uri în ChatGPT, Claude, Gemini.</p>
         <div class="step-result">✓ Fiecare participant pleacă cu propriul asistent AI configurat pentru rolul lui</div>
       </div>
       <div class="step-card fade-in">
         <div class="step-num">03</div>
-        <img src="../images/ai-design-table.jpg" alt="AI Design Sprint workshop la masă cu carduri și canvas de lucru" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
+        <img src="../images/program-sprint.svg" alt="Etape de lucru și prioritizare într-un AI Design Sprint" width="800" height="480" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;" loading="lazy" decoding="async">
         <h3>AI Design Sprint</h3>
         <p>Cadru practic pentru identificarea, evaluarea și prioritizarea oportunităților de utilizare a AI în procese reale, în 3 etape: descoperire, specificație, pilot. Analiza pornește de la fricțiuni precum căutare, verificare, copiere, scriere, direcționare și așteptare, iar prioritizarea se face prin formula: Scor = (Volum × Minute × Impact × Fezabilitate) ÷ Risc.</p>
         <div class="step-result">✓ Echipele identifică și mapează 3–5 fluxuri automatizabile</div>
@@ -268,13 +333,25 @@
 
     <div class="sprint-gallery">
       <figure class="sprint-gallery-card fade-in">
-        <img src="../images/ai-design-table.jpg" alt="Echipă care lucrează la masa de AI Design Sprint cu carduri colorate" loading="lazy">
+        <img src="../images/sprint-table-illustration.svg" alt="Carduri colorate aranjate pe masă în jurul unui workflow" width="1200" height="700" loading="lazy" decoding="async">
+        <figcaption>
+          <strong>Workshop la masă</strong>
+          <span>Mapăm workflow-ul real și alegem pasul unde se pierde cel mai mult timp.</span>
+        </figcaption>
       </figure>
       <figure class="sprint-gallery-card fade-in">
-        <img src="../images/ai-design-cards.jpg" alt="Set de AI Design Cards folosit în workshop" loading="lazy">
+        <img src="../images/sprint-cards-illustration.svg" alt="Set de carduri pentru prioritizarea oportunităților AI" width="1200" height="700" loading="lazy" decoding="async">
+        <figcaption>
+          <strong>AI Opportunity Cards</strong>
+          <span>Fiecare oportunitate devine un card clar, comparabil și ușor de prioritizat.</span>
+        </figcaption>
       </figure>
       <figure class="sprint-gallery-card fade-in">
-        <img src="../images/ai-design-sprint-board.jpg" alt="Board vizual de AI Design Sprint cu carduri și fluxuri conectate" loading="lazy">
+        <img src="../images/sprint-flow-illustration.svg" alt="Diagramă de flux pentru un pilot AI" width="1200" height="700" loading="lazy" decoding="async">
+        <figcaption>
+          <strong>Flux către pilot</strong>
+          <span>Transformăm discuția într-un traseu concret: input, pas dureros, pilot și rezultat.</span>
+        </figcaption>
       </figure>
     </div>
 
@@ -309,7 +386,7 @@
 
       <div class="sprint-formula-card fade-in">
         <span class="sprint-mini-label">Formula de prioritizare</span>
-        <div class="sprint-formula">Scor = (Volum × Minute × Impact × Fezabilitate) ÷ Risc</div>
+        <div class="sprint-formula" aria-label="Scor egal cu Volum ori Minute ori Impact ori Fezabilitate împărțit la Risc">Scor = (Volum × Minute × Impact × Fezabilitate) ÷ Risc</div>
         <p>Folosim aceeași formulă pentru toate cardurile, ca prioritizarea să fie consecventă între echipe, procese și departamente.</p>
         <div class="sprint-factor-grid">
           <div class="sprint-factor">
@@ -502,7 +579,7 @@
     <div class="testimonial-header">
       <span class="testimonial-kicker">Testimoniale</span>
       <h2>Ce spun clienții</h2>
-      <img class="testimonial-logo" src="../images/romstal-logo.png" alt="Romstal">
+      <img class="testimonial-logo" src="../images/romstal-logo.png" alt="Romstal" width="556" height="169" loading="lazy" decoding="async">
     </div>
     <blockquote>
       „După training, avem un limbaj comun. Rata de revizuiri a scăzut din prima săptămână."
@@ -519,7 +596,7 @@
 
       <div class="trainer-photo fade-in">
         <div class="photo-wrap">
-          <img src="../images/alex-dan.png" alt="Alexandru Dan">
+          <img src="../images/alex-dan.png" alt="Alexandru Dan" width="800" height="800" loading="lazy" decoding="async">
         </div>
         <div class="trainer-media-logos">
           <a class="media-pill" href="https://republica.ro/autor/alexandrudan_2" target="_blank" rel="noopener">
@@ -621,7 +698,7 @@
       </div>
 
       <div class="bonus-website-preview fade-in">
-        <img src="../images/free-website-starter.svg" alt="Preview pentru un starter gratuit de site personalizat cu Codex sau Claude">
+        <img src="../images/free-website-starter.svg" alt="Preview pentru un starter gratuit de site personalizat cu Codex sau Claude" width="1200" height="800" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -697,7 +774,7 @@
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <a href="#" class="nav-logo" style="text-decoration:none;">
+      <a href="../ro/" class="nav-logo" style="text-decoration:none;">
         <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
           <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>

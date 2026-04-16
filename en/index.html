@@ -30,11 +30,12 @@
   <link rel="canonical" href="https://academy.tvl.tech/en/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/">
-  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/">
 
   <!-- Robots -->
   <meta name="robots" content="index, follow">
   <meta name="author" content="Alexandru Dan, TVL Academy">
+  <link rel="preload" as="image" href="../images/curs-ai.jpeg">
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -97,13 +98,77 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TVL Academy",
+    "url": "https://academy.tvl.tech/en/",
+    "logo": "https://academy.tvl.tech/favicon.svg",
+    "email": "sales@tvl.tech",
+    "sameAs": [
+      "https://tvl.tech",
+      "https://republica.ro/autor/alexandrudan_2",
+      "https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619",
+      "https://alephnews.ro/tehnologie/inteligenta-artificiala-devine-indispensabila-in-viitor-cum-va-fi-a-i-ul-pentru-romania/"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many people can join the training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ideal groups are between 10 and 20 participants. This size allows for individual hands-on exercises and ensures everyone leaves with concrete outcomes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can it be delivered online or only onsite?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both options are available. The onsite version takes place at your company location, anywhere in Romania. The remote version works just as well, and all exercises are adapted for online delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take and how are the sessions structured?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There are three sessions of three hours each, nine hours total. We can deliver them across three separate days, recommended to allow practice between sessions, or as one intensive day with breaks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Our team has no AI experience. Is that a problem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. The training is specifically built for people without a technical background. We start from zero and every participant leaves with a functional AI assistant configured for their role."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens after the training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Thirty days of email support are included at no extra cost. You can send questions, exercises or configurations and receive feedback within 24 hours. Optionally, you can continue with monthly office hours sessions."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="../index.css">
 </head>
 <body>
 
 <!-- ── NAV ── -->
 <nav>
-  <a class="nav-logo" href="#">
+  <a class="nav-logo" href="../en/">
     <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
       <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
@@ -164,7 +229,7 @@
       </div>
     </div>
     <div class="hero-image-card">
-      <img src="../images/curs-ai.jpeg" alt="Team in training">
+      <img src="../images/curs-ai.jpeg" alt="Team in training" width="2048" height="1536" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -187,7 +252,7 @@
         </ul>
       </div>
       <div class="fade-in">
-        <img src="../images/curs-ai-team.jpeg" alt="Team at the office" style="width:100%;height:360px;object-fit:cover;border-radius:8px;">
+        <img src="../images/curs-ai-team.jpeg" alt="Team at the office" width="2048" height="1536" loading="lazy" decoding="async" style="width:100%;height:360px;object-fit:cover;border-radius:8px;">
       </div>
     </div>
   </div>
@@ -235,21 +300,21 @@
     <div class="steps-grid">
       <div class="step-card fade-in">
         <div class="step-num">01</div>
-        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop&q=80" alt="Training session" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
+        <img src="../images/program-prompt.svg" alt="Prompt structure with fields and AI instructions" width="800" height="480" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;" loading="lazy" decoding="async">
         <h3>Prompt Engineering (CROTATFC)</h3>
         <p>Each participant builds a prompt library tailored to their role. Context, Role, Objective, Tasks, Audience, Tone, Format, Constraints. Eight core techniques plus ten advanced patterns used by AI engineers.</p>
         <div class="step-result">✓ The team leaves with a library of instructions ready to use the next day</div>
       </div>
       <div class="step-card fade-in">
         <div class="step-num">02</div>
-        <img src="../images/Custom-AI2.png" alt="Custom AI assistant for each role" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
+        <img src="../images/program-assistant.svg" alt="AI assistant connected to multiple company roles" width="800" height="480" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;" loading="lazy" decoding="async">
         <h3>Custom AI Assistant for Every Role</h3>
         <p>Each participant builds and tests a custom AI assistant for their own role. Assistant specs, system instructions, knowledge sources such as documents, processes and internal procedures. Projects and workspaces in ChatGPT, Claude and Gemini.</p>
         <div class="step-result">✓ Every participant leaves with their own AI assistant configured for their role</div>
       </div>
       <div class="step-card fade-in">
         <div class="step-num">03</div>
-        <img src="../images/ai-design-table.jpg" alt="AI Design Sprint workshop with cards and working canvas" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
+        <img src="../images/program-sprint.svg" alt="Work stages and prioritization in an AI Design Sprint" width="800" height="480" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;" loading="lazy" decoding="async">
         <h3>AI Design Sprint</h3>
         <p>A practical framework for identifying, assessing and prioritizing AI opportunities in real processes across three stages: discovery, specification and pilot. The analysis starts from frictions such as searching, checking, copying, writing, routing and waiting, and prioritization uses the formula: Score = (Volume × Minutes × Impact × Feasibility) ÷ Risk.</p>
         <div class="step-result">✓ Teams identify and map 3-5 flows that can be automated</div>
@@ -268,13 +333,25 @@
 
     <div class="sprint-gallery">
       <figure class="sprint-gallery-card fade-in">
-        <img src="../images/ai-design-table.jpg" alt="Team working at the AI Design Sprint table with colored cards" loading="lazy">
+        <img src="../images/sprint-table-illustration.svg" alt="Colored cards arranged on a table around a workflow" width="1200" height="700" loading="lazy" decoding="async">
+        <figcaption>
+          <strong>Workshop at the table</strong>
+          <span>We map the real workflow and identify the step where the most time is lost.</span>
+        </figcaption>
       </figure>
       <figure class="sprint-gallery-card fade-in">
-        <img src="../images/ai-design-cards.jpg" alt="Set of AI Design Cards used during the workshop" loading="lazy">
+        <img src="../images/sprint-cards-illustration.svg" alt="Card set used to prioritize AI opportunities" width="1200" height="700" loading="lazy" decoding="async">
+        <figcaption>
+          <strong>AI Opportunity Cards</strong>
+          <span>Each opportunity becomes a clear card that teams can compare and prioritize.</span>
+        </figcaption>
       </figure>
       <figure class="sprint-gallery-card fade-in">
-        <img src="../images/ai-design-sprint-board.jpg" alt="Visual AI Design Sprint board with cards and connected flows" loading="lazy">
+        <img src="../images/sprint-flow-illustration.svg" alt="Workflow diagram for an AI pilot" width="1200" height="700" loading="lazy" decoding="async">
+        <figcaption>
+          <strong>Flow to pilot</strong>
+          <span>We turn the discussion into a concrete path: input, painful step, pilot and outcome.</span>
+        </figcaption>
       </figure>
     </div>
 
@@ -309,7 +386,7 @@
 
       <div class="sprint-formula-card fade-in">
         <span class="sprint-mini-label">Prioritization Formula</span>
-        <div class="sprint-formula">Score = (Volume × Minutes × Impact × Feasibility) ÷ Risk</div>
+        <div class="sprint-formula" aria-label="Score equals Volume times Minutes times Impact times Feasibility divided by Risk">Score = (Volume × Minutes × Impact × Feasibility) ÷ Risk</div>
         <p>We use the same formula for every card so prioritization stays consistent across teams, processes and departments.</p>
         <div class="sprint-factor-grid">
           <div class="sprint-factor">
@@ -502,7 +579,7 @@
     <div class="testimonial-header">
       <span class="testimonial-kicker">Testimonials</span>
       <h2>What clients say</h2>
-      <img class="testimonial-logo" src="../images/romstal-logo.png" alt="Romstal">
+      <img class="testimonial-logo" src="../images/romstal-logo.png" alt="Romstal" width="556" height="169" loading="lazy" decoding="async">
     </div>
     <blockquote>
       "After the training, we share a common language. Revision rates dropped from the first week."
@@ -519,7 +596,7 @@
 
       <div class="trainer-photo fade-in">
         <div class="photo-wrap">
-          <img src="../images/alex-dan.png" alt="Alexandru Dan">
+          <img src="../images/alex-dan.png" alt="Alexandru Dan" width="800" height="800" loading="lazy" decoding="async">
         </div>
         <div class="trainer-media-logos">
           <a class="media-pill" href="https://republica.ro/autor/alexandrudan_2" target="_blank" rel="noopener">
@@ -621,7 +698,7 @@
       </div>
 
       <div class="bonus-website-preview fade-in">
-        <img src="../images/free-website-starter.svg" alt="Preview of a free website starter customized with Codex or Claude">
+        <img src="../images/free-website-starter.svg" alt="Preview of a free website starter customized with Codex or Claude" width="1200" height="800" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -697,7 +774,7 @@
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <a href="#" class="nav-logo" style="text-decoration:none;">
+      <a href="../en/" class="nav-logo" style="text-decoration:none;">
         <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
           <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>

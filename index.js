@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const acceptAnalytics = document.getElementById('acceptAnalytics');
   const declineAnalytics = document.getElementById('declineAnalytics');
   const openCookieSettings = document.getElementById('openCookieSettings');
+  const contactSection = document.getElementById('contact');
   const contactFormEmbed = document.getElementById('contactFormEmbed');
   const contactFormError = document.getElementById('contactFormError');
   const localeSwitchLinks = Array.from(document.querySelectorAll('[data-locale-switch]'));
@@ -249,8 +250,28 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(script);
   }
 
+  function initializePipedriveEmbed() {
+    if (!contactFormEmbed) return;
+
+    if (!('IntersectionObserver' in window) || !contactSection) {
+      loadPipedriveFormEmbed();
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      if (!entry || !entry.isIntersecting) return;
+      observer.disconnect();
+      loadPipedriveFormEmbed();
+    }, {
+      rootMargin: '480px 0px'
+    });
+
+    observer.observe(contactSection);
+  }
+
   initializeCookieConsent();
-  loadPipedriveFormEmbed();
+  initializePipedriveEmbed();
   writeLocalePreference(document.documentElement.lang);
 
   // Copyright dinamic
