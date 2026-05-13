@@ -988,9 +988,8 @@
       padding: 56px 0;
     }
     .testimonial-inner {
-      max-width: 700px;
+      max-width: 1160px;
       margin: 0 auto;
-      text-align: center;
       padding: 0 24px;
     }
     .testimonial-header {
@@ -998,7 +997,8 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
+      text-align: center;
     }
     .testimonial-kicker {
       font-size: 11px;
@@ -1012,27 +1012,73 @@
       color: #fff;
       margin: 0;
     }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 28px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      backdrop-filter: blur(6px);
+    }
     .testimonial-logo {
-      height: 40px;
+      height: 44px;
       width: auto;
+      max-width: 220px;
       background: #fff;
-      border-radius: 999px;
+      border-radius: 16px;
       padding: 8px 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+      object-fit: contain;
     }
-    .testimonial-inner blockquote {
+    .testimonial-card blockquote {
       font-size: 20px;
       font-weight: 300;
       color: rgba(255,255,255,0.95);
       font-style: italic;
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin: 0 0 20px;
+      flex: 1;
     }
-    .testimonial-inner cite {
+    .testimonial-card cite {
       color: var(--red-light);
       font-size: 14px;
       font-weight: 600;
       font-style: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .testimonial-name {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .testimonial-role {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    @media (max-width: 768px) {
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .testimonial-card {
+        padding: 24px;
+      }
+      .testimonial-card blockquote {
+        font-size: 18px;
+      }
     }
 
     /* ── CTA + FORMULAR ── */
