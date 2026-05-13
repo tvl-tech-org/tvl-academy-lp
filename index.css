@@ -984,7 +984,7 @@
 
     /* ── TESTIMONIAL ── */
     .testimonial-strip {
-      background: var(--red);
+      background: #f4efe9;
       padding: 56px 0;
     }
     .testimonial-inner {
@@ -1005,11 +1005,11 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
+      color: #8f5d45;
     }
     .testimonial-header h2 {
       font-size: clamp(22px, 3.6vw, 32px);
-      color: #fff;
+      color: #1d1d1b;
       margin: 0;
     }
     .testimonial-grid {
@@ -1019,16 +1019,15 @@
       align-items: stretch;
     }
     .testimonial-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: #fffdfb;
+      border: 1px solid rgba(29, 29, 27, 0.08);
       border-radius: 28px;
       padding: 28px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 14px 30px rgba(29, 29, 27, 0.06);
     }
     .testimonial-logo {
       height: 44px;
@@ -1037,21 +1036,21 @@
       background: #fff;
       border-radius: 16px;
       padding: 8px 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(29, 29, 27, 0.08);
       margin-bottom: 20px;
       object-fit: contain;
     }
     .testimonial-card blockquote {
       font-size: 20px;
       font-weight: 300;
-      color: rgba(255,255,255,0.95);
+      color: var(--text);
       font-style: italic;
       line-height: 1.6;
       margin: 0 0 20px;
       flex: 1;
     }
     .testimonial-card cite {
-      color: var(--red-light);
+      color: #8f5d45;
       font-size: 14px;
       font-weight: 600;
       font-style: normal;
@@ -1060,12 +1059,12 @@
       gap: 4px;
     }
     .testimonial-name {
-      color: #fff;
+      color: var(--text);
       font-size: 16px;
       font-weight: 700;
     }
     .testimonial-role {
-      color: rgba(255,255,255,0.8);
+      color: rgba(17,17,17,0.72);
       font-size: 14px;
       font-weight: 500;
     }
