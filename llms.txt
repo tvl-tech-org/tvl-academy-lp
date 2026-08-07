@@ -32,6 +32,15 @@ București, creator al frameworkului de prompting CROTATFC.
 - Format: la sediu în România sau online.
 - Limbi: română și engleză.
 
+## Articole / Blog
+- Blog (RO): https://academy.tvl.tech/ro/blog/
+- „EU AI Act: ce trebuie să demonstreze companiile despre angajați" —
+  https://academy.tvl.tech/ro/blog/eu-ai-act-angajati/ — explică obligația de
+  „AI literacy" din articolul 4 al EU AI Act (în vigoare din 2 februarie 2025):
+  ce înseamnă un nivel „suficient", ce nu prevede legea (nu impune un certificat
+  anume și nu are o amendă separată cu cifră fixă) și cum poate o companie să
+  demonstreze conformitatea.
+
 ## Pagini / Pages
 - Română: https://academy.tvl.tech/ro/
 - English: https://academy.tvl.tech/en/
