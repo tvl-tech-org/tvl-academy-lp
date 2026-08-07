@@ -1,0 +1,42 @@
+# TVL Academy
+
+> Program practic de training AI pentru echipe corporate, livrat de TVL Tech.
+> Practical AI training program for corporate teams, delivered by TVL Tech.
+
+TVL Academy livrează un program de 3 sesiuni (9 ore) prin care o echipă trece
+de la utilizarea haotică a AI la un mod de lucru standardizat, corect și
+consistent. Trainingul este customizat pe procesele, tool-urile și rolurile
+reale ale companiei client. Se poate livra la sediu (oriunde în România) sau
+online. Trainer: Alexandru Dan, CEO TVL Tech și lector de Generative AI la ASE
+București, creator al frameworkului de prompting CROTATFC.
+
+## Ce cuprinde programul / Program contents
+- Sesiunea 1 — Prompt Engineering cu frameworkul CROTATFC (Context, Rol,
+  Obiectiv, Sarcini, Audiență, Ton, Format, Constrângeri).
+- Sesiunea 2 — Fiecare participant construiește un asistent AI personalizat
+  pentru rolul lui (ChatGPT, Claude, Gemini).
+- Sesiunea 3 — AI Design Sprint: identificarea și prioritizarea proceselor
+  automatizabile cu formula Scor = (Volum × Minute × Impact × Fezabilitate) ÷ Risc.
+
+## Livrabile / Deliverables
+- Bibliotecă de prompturi pe procesele reale ale echipei.
+- Asistent AI configurat per rol pentru fiecare participant.
+- Plan de automatizare cu 3–5 fluxuri prioritizate.
+- Documentație de conformitate pentru EU AI Act, gata de audit.
+- Certificat individual per angajat.
+- 30 de zile de suport prin email după training.
+
+## Detalii / Facts
+- Durată: 3 sesiuni × 3 ore = 9 ore total.
+- Grup ideal: 10–20 participanți.
+- Format: la sediu în România sau online.
+- Limbi: română și engleză.
+
+## Pagini / Pages
+- Română: https://academy.tvl.tech/ro/
+- English: https://academy.tvl.tech/en/
+- Companie / Company: https://tvl.tech
+
+## Contact
+- Rezervă o discuție de 30 de minute cu Alexandru Dan prin formularul de pe site.
+- Book a 30-minute call with Alexandru Dan via the form on the site.
