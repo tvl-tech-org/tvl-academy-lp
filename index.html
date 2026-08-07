@@ -35,46 +35,150 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Training AI pentru echipe",
-    "description": "Învață-ți echipa să lucreze cu AI. 3 sesiuni practice livrate în compania ta, de la zero la o echipă care folosește AI zilnic, corect și consistent.",
-    "provider": {
-      "@type": "Organization",
-      "name": "TVL Academy",
-      "url": "https://academy.tvl.tech/",
-      "logo": "https://academy.tvl.tech/favicon.svg"
-    },
-    "instructor": {
-      "@type": "Person",
-      "name": "Alexandru Dan",
-      "jobTitle": "CEO TVL Tech, Lead Trainer TVL Academy",
-      "url": "https://republica.ro/autor/alexandrudan_2"
-    },
-    "courseMode": ["onsite", "online"],
-    "inLanguage": "ro",
-    "numberOfCredits": 3,
-    "educationalLevel": "professional",
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-01-01"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewBody": "După training, avem un limbaj comun. Rata de revizuiri a scăzut din prima săptămână.",
-      "author": {
-        "@type": "Person",
-        "name": "Alexandru Petrescu",
-        "jobTitle": "Head of Supply Chain, Romstal"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://academy.tvl.tech/#organization",
+        "name": "TVL Academy",
+        "url": "https://academy.tvl.tech/",
+        "logo": "https://academy.tvl.tech/favicon.svg",
+        "description": "Program de training AI pentru echipe corporate: 3 sesiuni practice livrate la sediu în România sau online.",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "TVL Tech",
+          "url": "https://tvl.tech"
+        },
+        "sameAs": ["https://tvl.tech"]
       },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
+      {
+        "@type": "Person",
+        "@id": "https://academy.tvl.tech/#alexandru-dan",
+        "name": "Alexandru Dan",
+        "jobTitle": "CEO TVL Tech · Lead Trainer TVL Academy · Cercetător AI",
+        "worksFor": { "@id": "https://academy.tvl.tech/#organization" },
+        "description": "Peste 15 ani de experiență în inteligență artificială. Creator al frameworkului de prompting CROTATFC, lector de Generative AI la ASE București, fost cercetător AI în Luxemburg și fondator al academiei tehnice eMAG.",
+        "knowsAbout": [
+          "Inteligență artificială",
+          "Prompt Engineering",
+          "Generative AI",
+          "AI literacy",
+          "Strategie AI",
+          "Automatizare cu AI"
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Facultatea de Matematică și Informatică"
+        },
+        "memberOf": [
+          { "@type": "Organization", "name": "European Commission AI Group" },
+          { "@type": "Organization", "name": "WITSA AI Committee" },
+          { "@type": "Organization", "name": "NATO DIANA (Mentor)" }
+        ],
+        "sameAs": [
+          "https://republica.ro/autor/alexandrudan_2",
+          "https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619",
+          "https://alephnews.ro/tehnologie/inteligenta-artificiala-devine-indispensabila-in-viitor-cum-va-fi-a-i-ul-pentru-romania/",
+          "https://icmarktech.com/icmarktech-2026-announces-alexandru-dan-as-keynote-speaker/"
+        ]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://academy.tvl.tech/#course",
+        "name": "Training AI pentru echipe",
+        "description": "Învață-ți echipa să lucreze cu AI. 3 sesiuni practice livrate în compania ta, de la zero la o echipă care folosește AI zilnic, corect și consistent.",
+        "provider": { "@id": "https://academy.tvl.tech/#organization" },
+        "instructor": { "@id": "https://academy.tvl.tech/#alexandru-dan" },
+        "inLanguage": "ro",
+        "educationalLevel": "professional",
+        "teaches": [
+          "Prompt Engineering (framework CROTATFC)",
+          "Construirea unui asistent AI personalizat per rol",
+          "AI Design Sprint pentru automatizarea proceselor"
+        ],
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": ["onsite", "online"],
+          "courseWorkload": "PT9H",
+          "location": {
+            "@type": "Place",
+            "name": "La sediul companiei, în România, sau online"
+          },
+          "instructor": { "@id": "https://academy.tvl.tech/#alexandru-dan" }
+        },
+        "review": {
+          "@type": "Review",
+          "reviewBody": "După training, avem un limbaj comun. Rata de revizuiri a scăzut din prima săptămână.",
+          "author": {
+            "@type": "Person",
+            "name": "Alexandru Petrescu",
+            "jobTitle": "Head of Supply Chain, Romstal"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://academy.tvl.tech/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Câte persoane pot participa la training?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Grupurile ideale sunt între 10 și 20 de participanți. Această dimensiune permite exerciții practice individuale și asigură că fiecare pleacă cu rezultate concrete."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Se poate face online sau doar fizic?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ambele variante sunt disponibile. Trainingul fizic se desfășoară la sediul companiei tale, oriunde în România. Varianta remote funcționează la fel de bine, toate exercițiile sunt adaptate pentru online."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Cât durează și cum sunt structurate sesiunile?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sunt 3 sesiuni a câte 3 ore fiecare, total 9 ore. Le putem livra în 3 zile separate (recomandat, pentru timp de practică între sesiuni) sau într-o singură zi intensivă cu pauze."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Echipa noastră nu are experiență cu AI. E o problemă?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Deloc. Trainingul e construit special pentru oameni fără background tehnic. Plecăm de la zero și fiecare participant pleacă acasă cu un asistent AI funcțional, configurat pentru rolul lui."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ce se întâmplă după training?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "30 de zile de suport prin email, inclus fără costuri suplimentare. Trimiți întrebări, exerciții sau configurații și primești feedback în 24 de ore. Opțional, poți continua cu sesiuni lunare de office hours."
+            }
+          }
+        ]
       }
-    }
+    ]
   }
   </script>
+  <meta name="theme-color" content="#FF4931">
+
+  <!-- Fonts: preconnect + non-blocking load (replaces render-blocking @import in CSS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap">
+
+  <!-- Preload LCP hero image -->
+  <link rel="preload" as="image" href="images/curs-ai.jpeg" fetchpriority="high">
+
   <link rel="stylesheet" href="index.css">
 </head>
 <body>

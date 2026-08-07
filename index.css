@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+/* Fonts are loaded via <link rel="preconnect"> + <link rel="stylesheet"> in the
+   index.html <head> (non-blocking) instead of a render-blocking @import here. */
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
