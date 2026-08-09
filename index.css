@@ -1,6 +1,17 @@
 /* Open Sans is loaded via <link rel="preconnect"> + non-blocking <link rel="stylesheet">
    in each page's <head> (ro/index.html, en/index.html) instead of a render-blocking @import. */
 
+    /* Metric-matched fallback so the pre-swap font occupies ~the same space as
+       Open Sans — prevents font-swap reflow (measured CLS culprit: .hero-stats). */
+    @font-face {
+      font-family: 'Open Sans Fallback';
+      src: local('Arial');
+      ascent-override: 101.68%;
+      descent-override: 27.86%;
+      line-gap-override: 0.00%;
+      size-adjust: 106.29%;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -12,8 +23,8 @@
       --light-bg: #f7f6f4;
       --text: #111111;
       --text-sec: #4a4a4a;
-      --font-display: 'Open Sans', 'Segoe UI', sans-serif;
-      --font-body: 'Open Sans', 'Segoe UI', sans-serif;
+      --font-display: 'Open Sans', 'Open Sans Fallback', 'Segoe UI', sans-serif;
+      --font-body: 'Open Sans', 'Open Sans Fallback', 'Segoe UI', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
