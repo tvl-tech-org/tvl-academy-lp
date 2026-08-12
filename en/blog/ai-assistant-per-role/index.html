@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to build an AI assistant per role | TVL Academy</title>
+  <meta name="description" content="A practical guide to configuring an AI assistant for each role in your company — system instructions, knowledge sources and testing on real tasks. Step by step.">
+  <meta property="og:title" content="How to build an AI assistant for each role in your company">
+  <meta property="og:description" content="How to configure a per-role AI assistant — instructions, real sources and testing on day-to-day work. Step by step, with the mistakes to avoid.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/en/blog/ai-assistant-per-role/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-08-12">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to build an AI assistant for each role in your company">
+  <meta name="twitter:description" content="How to configure a per-role AI assistant — instructions, real sources and testing on day-to-day work.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/en/blog/ai-assistant-per-role/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/ai-assistant-per-role/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/asistent-ai-pe-rol/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/ai-assistant-per-role/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to build an AI assistant for each role in your company",
+    "description": "A practical guide to configuring an AI assistant for each role in your company — system instructions, knowledge sources and testing on real tasks, plus the mistakes to avoid.",
+    "inLanguage": "en",
+    "datePublished": "2026-08-12",
+    "dateModified": "2026-08-12",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Lead Trainer TVL Academy",
+      "url": "https://academy.tvl.tech/en/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/en/blog/ai-assistant-per-role/" },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://academy.tvl.tech/images/og-training-ai-en.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "about": "per-role AI assistant, prompt engineering, AI adoption in companies"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/en/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "AI assistant per role" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body a { color: var(--red); }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/en/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/en/#problema">Why?</a>
+    <a href="/en/#cum-functioneaza">Sessions</a>
+    <a href="/en/blog/">Blog</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="/ro/blog/asistent-ai-pe-rol/" class="lang-option" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/ai-assistant-per-role/" class="lang-option is-active" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/en/#contact" class="btn-nav">Book 30 minutes</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/en/">TVL Academy</a> › <a href="/en/blog/">Blog</a> › AI assistant per role
+  </div>
+
+  <article>
+    <span class="article-kicker">AI assistants</span>
+    <h1>How to build an AI assistant for each role in your company</h1>
+    <div class="article-meta">
+      <span>by <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-08-12">12 August 2026</time>
+      <span>·</span>
+      <span>4 min read</span>
+    </div>
+
+    <div class="article-body">
+      <p>In most companies, "we use AI" means everyone opens a blank ChatGPT and explains from scratch, every time, who they are, what they do, and what they want. The results are uneven: some people get good output, others waste time rephrasing, and the same task produces different results depending on who ran it.</p>
+
+      <p>An assistant configured for a role changes that — it already knows the context and doesn't need re-briefing every morning.</p>
+
+      <h2>What a per-role assistant actually is</h2>
+      <p>It's the same ChatGPT, Claude or Gemini you already use, with three things fixed behind it: system instructions that describe the role and the way of working, a few knowledge sources it can look at (procedures, examples, internal documents), and a small set of tasks it's been tested on.</p>
+      <p>The difference shows immediately. An assistant for a salesperson already knows what the company sells, what tone it uses, and what it's not allowed to promise. You stop explaining that in every conversation; you just ask for the offer.</p>
+
+      <h2>How to build one, step by step</h2>
+      <p>Start from a real task that repeats, something as concrete as possible: "I answer requests for quotes three times a day and each one takes me 20 minutes." The narrower you define the task, the more useful the assistant turns out — "a marketing assistant" in the abstract goes nowhere.</p>
+      <p>Write down, once, the context you'd otherwise repeat out loud: who the assistant is, who it works for, what it knows about the company, what rules it follows. This is also where the limits go — what data it doesn't touch, when it has to ask for human sign-off.</p>
+      <p>Attach the materials a new colleague would look at in their first days: the price list, two or three good past quotes, the internal procedure. Without them the assistant invents; with them it answers like someone who's worked there for a year.</p>
+      <p>Then test it on last week's work. Take three real requests you've already answered and see whether it reaches the same result. Where it's wrong, adjust the instruction, not the one-off prompt. After a few rounds you have something you use daily.</p>
+
+      <h2>Where teams get stuck</h2>
+      <p>The most common mistake is an assistant that's too general — a lightly renamed ChatGPT that still knows nothing about the company. Another trap shows up when it has no real sources: it sounds convincing and gets the details wrong. The most expensive is one giant assistant for everyone, trying to cover sales, support and HR at once, ending up weak at all of them.</p>
+      <p>A good assistant is narrow. It does a handful of tasks for one role, and does them the same way every time.</p>
+
+      <h2>What changes in the team</h2>
+      <p>When each role has its own assistant, the tiring part disappears: re-explaining the context. Output becomes consistent, because everyone starts from the same instructions. And a new hire gets, along with the job description, the assistant for the role — they learn how things are done much faster.</p>
+      <p>In the TVL Academy program, each participant leaves with their own assistant configured for their role, tested on real tasks from their company rather than course examples. But the mechanism is the same anywhere: start from a repetitive task, write the context once, give it real sources, and tune it on your own work.</p>
+      <p>An assistant you set up in one afternoon saves the team hundreds of re-explanations over the months that follow.</p>
+    </div>
+
+    <div class="article-cta">
+      <h3>Want your team to leave with their assistants configured?</h3>
+      <p>In the TVL Academy program each participant builds the assistant for their own role, on the company's real processes. Book 30 minutes with Alexandru Dan to see if it fits.</p>
+      <a href="/en/#contact" class="btn-primary">Book 30 minutes</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/en/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/en/#cum-functioneaza">Sessions</a>
+          <a href="/en/blog/">Blog</a>
+          <a href="/en/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Terms</a>
+          <a href="/en/privacy-policy.html">Privacy Policy</a>
+          <a href="/en/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Cookie settings</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Cookie preferences</div>
+      <p>We use Google Analytics 4 only after your consent, to measure traffic and improve the page. See <a href="/en/privacy-policy.html">Privacy Policy</a> and <a href="/en/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Accept analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="en" defer></script>
+</body>
+</html>
