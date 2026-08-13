@@ -396,15 +396,19 @@
     <div class="section-title-center fade-in">
       <span class="red-label">Install</span>
       <h2 class="section-h2">Add the skills in one step</h2>
-      <p>The recommended way is the <code>skills</code> CLI, which installs into the right folder for whichever tool you use.</p>
+      <p>The recommended path is the Agent Skills CLI. The command points to the GitHub repository, then optional flags choose the skill and target agent.</p>
     </div>
     <div class="install-grid">
 
       <div class="install-card install-primary fade-in">
         <h3>Recommended: skills CLI</h3>
-        <p class="install-sub">Run this from your terminal. It fetches the TVL skills and installs them where your agent tools can find them.</p>
+        <p class="install-sub">Run this from your terminal. It fetches the TVL skills package from GitHub and installs the skills where your agent tools can find them.</p>
         <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
-        <p class="code-note">Requires Node.js. The command reads the public repository at <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" style="color:#9fd0ff;">github.com/danlex/tvl-skills</a> — review the source there first if you prefer.</p>
+        <p class="code-note"><code>danlex/tvl-skills</code> is the repository name. The individual skills are <code>tvl-write-linkedin-post</code> and <code>tvl-design-diagram</code>.</p>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-design-diagram</div>
+        <p class="code-note">Use <code>--skill</code> when you want only one skill. Use <code>--agent claude-code</code> or <code>--agent codex</code> to target a specific tool.</p>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --agent claude-code --global --skill '*' -y</div>
+        <p class="code-note">Use <code>--global</code> for a user-wide install and <code>-y</code> for a non-interactive install. Requires Node.js. Review the source at <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" style="color:#9fd0ff;">github.com/danlex/tvl-skills</a>.</p>
       </div>
 
       <div class="install-card fade-in">
@@ -437,7 +441,7 @@
       <div class="use-step fade-in">
         <div class="use-num">STEP 1</div>
         <h3>Install</h3>
-        <p>Run <code>npx skills add danlex/tvl-skills</code>, or copy a skill folder into your tool's skills directory listed above.</p>
+        <p>Run <code>npx skills add danlex/tvl-skills</code>, or install one skill with <code>--skill tvl-design-diagram</code>.</p>
       </div>
       <div class="use-step fade-in">
         <div class="use-num">STEP 2</div>
