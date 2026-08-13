@@ -73,7 +73,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://academy.tvl.tech/skills/</loc>
+    <loc>https://academy.tvl.tech/ro/skills/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/en/skills/</loc>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

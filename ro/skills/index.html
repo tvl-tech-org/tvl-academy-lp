@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TVL AI Skills — skill-uri reutilizabile pentru ChatGPT, Codex și Claude Code</title>
+  <meta name="description" content="Skill-uri Agent reutilizabile de la TVL. Adaugă tvl-write-linkedin-post și tvl-design-diagram în ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills cu o singură comandă.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="TVL AI Skills — skill-uri reutilizabile pentru ChatGPT, Codex și Claude Code">
+  <meta property="og:description" content="Skill-uri Agent reutilizabile de la TVL pentru ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://academy.tvl.tech/ro/skills/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TVL AI Skills — skill-uri Agent reutilizabile de la TVL">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TVL AI Skills — skill-uri reutilizabile pentru ChatGPT, Codex și Claude Code">
+  <meta name="twitter:description" content="Skill-uri Agent reutilizabile de la TVL pentru ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/ro/skills/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "TVL AI Skills",
+    "description": "Skill-uri Agent reutilizabile de la TVL pentru ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills.",
+    "url": "https://academy.tvl.tech/ro/skills/",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "tvl-write-linkedin-post",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Any",
+          "description": "Un skill de scriere pentru LinkedIn construit pe frameworkul CROFTAFC și LinkedIn Writing Protocol v3.",
+          "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post",
+          "author": { "@type": "Organization", "name": "TVL Tech" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "tvl-design-diagram",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Any",
+          "description": "Un skill de design pentru diagrame Mermaid, cu template-uri pregătite și verificări Ethical AI incluse.",
+          "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram",
+          "author": { "@type": "Organization", "name": "TVL Tech" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+  <link rel="stylesheet" href="../../index.css">
+
+  <style>
+    /* ── Skills page specific ── */
+    .skills-hero .hero-content { grid-template-columns: 1fr; max-width: 900px; text-align: center; }
+    .skills-hero .hero-label { justify-content: center; }
+    .skills-hero .hero-btns { justify-content: center; }
+    .skills-hero p { margin-left: auto; margin-right: auto; }
+
+    .compat-strip {
+      background: #fff;
+      border-top: 1px solid var(--border, #e6e1db);
+      border-bottom: 1px solid var(--border, #e6e1db);
+      padding: 28px 0;
+    }
+    .compat-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 14px;
+    }
+    .compat-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #888;
+      margin-right: 4px;
+    }
+    .compat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid var(--border, #e6e1db);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1c1c1c;
+      background: #faf9f7;
+    }
+    .compat-pill::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #ff4931;
+    }
+
+    /* Skill cards */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 8px;
+    }
+    .skill-card {
+      background: #fff;
+      border: 1px solid var(--border, #e6e1db);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .skill-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .skill-icon {
+      width: 44px; height: 44px;
+      flex: 0 0 44px;
+      border-radius: 10px;
+      background: rgba(255,73,49,0.1);
+      display: grid;
+      place-items: center;
+    }
+    .skill-icon svg { width: 24px; height: 24px; }
+    .skill-name {
+      font-family: "SFMono-Regular", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1c1c1c;
+      word-break: break-word;
+    }
+    .skill-card h3 {
+      font-size: 21px;
+      font-weight: 700;
+      color: #1c1c1c;
+      margin: 14px 0 10px;
+      line-height: 1.3;
+    }
+    .skill-card p { color: #555; line-height: 1.65; margin: 0 0 18px; }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .skill-tag {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #444;
+      background: #f2f0ed;
+      border-radius: 6px;
+      padding: 5px 10px;
+    }
+    .skill-card-foot { margin-top: auto; }
+    .skill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--red, #ff4931);
+      text-decoration: none;
+    }
+    .skill-link:hover { text-decoration: underline; }
+
+    /* Code / install blocks */
+    .install-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .install-primary { grid-column: 1 / -1; }
+    .install-card {
+      background: #fff;
+      border: 1px solid var(--border, #e6e1db);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .install-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1c1c1c;
+      margin: 0 0 6px;
+    }
+    .install-card .install-sub { color: #666; font-size: 14px; margin: 0 0 16px; line-height: 1.6; }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      padding: 16px 18px;
+      overflow-x: auto;
+      font-family: "SFMono-Regular", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #f4f4f4;
+      margin: 0 0 12px;
+    }
+    .code-block:last-child { margin-bottom: 0; }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .code-block .path { color: #9fd0ff; }
+    .code-note { font-size: 13px; color: #888; margin: 12px 0 0; line-height: 1.6; }
+
+    /* How to use steps */
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .use-step {
+      background: #fff;
+      border: 1px solid var(--border, #e6e1db);
+      border-radius: 14px;
+      padding: 26px;
+    }
+    .use-step .use-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red, #ff4931);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .use-step h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; color: #1c1c1c; }
+    .use-step p { color: #555; line-height: 1.6; margin: 0; font-size: 15px; }
+    .use-step code {
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      background: #f2f0ed;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 13.5px;
+      color: #b0392a;
+    }
+
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+
+    @media (max-width: 768px) {
+      .skill-grid,
+      .install-grid,
+      .use-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../ro/">Program</a>
+    <a href="#skills">Skills</a>
+    <a href="#install">Instalare</a>
+    <a href="#how-to-use">Cum le folosești</a>
+    <div class="lang-switch" aria-label="Selector limbă">
+      <a href="../../ro/skills/" class="lang-option is-active" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../en/skills/" class="lang-option" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" class="btn-nav">Vezi pe GitHub</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero skills-hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-label">Skill-uri Agent reutilizabile · TVL AI Skills</div>
+      <h1><span>Skill-uri</span> Agent de la TVL</h1>
+      <p>Skill-uri mici și clare care dau asistentului AI un mod de lucru repetabil. Le instalezi o singură dată, apoi refolosești aceleași standarde în ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills.</p>
+      <div class="hero-btns">
+        <a href="#install" class="btn-primary">Instalează skill-urile</a>
+        <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" class="btn-ghost">Vezi pe GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPATIBILITY STRIP ── -->
+<div class="compat-strip">
+  <div class="compat-inner">
+    <span class="compat-label">Funcționează cu</span>
+    <span class="compat-pill">ChatGPT</span>
+    <span class="compat-pill">Codex</span>
+    <span class="compat-pill">Claude Code</span>
+    <span class="compat-pill">Instrumente compatibile Agent Skills</span>
+  </div>
+</div>
+
+<!-- ── SKILLS ── -->
+<section class="section-pad" id="skills">
+  <div class="container">
+    <div class="section-title-center fade-in">
+      <span class="red-label">Skill-urile</span>
+      <h2 class="section-h2">Două skill-uri pe care le poți adăuga azi</h2>
+      <p>Fiecare skill este un folder autonom cu instrucțiuni, template-uri și verificări. Deschide sursa pe GitHub ca să vezi exact ce face înainte să îl instalezi.</p>
+    </div>
+    <div class="skill-grid">
+
+      <div class="skill-card fade-in">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff4931" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg>
+          </div>
+          <div class="skill-name">tvl-write-linkedin-post</div>
+        </div>
+        <h3>Scrie un post LinkedIn structurat</h3>
+        <p>Transformă o idee brută într-un post LinkedIn folosind frameworkul CROFTAFC și LinkedIn Writing Protocol v3, astfel încât tonul, structura și hook-ul rămân consecvente de fiecare dată.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">CROFTAFC</span>
+          <span class="skill-tag">LinkedIn Writing Protocol v3</span>
+          <span class="skill-tag">Structură repetabilă</span>
+        </div>
+        <div class="skill-card-foot">
+          <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post" target="_blank" rel="noopener">
+            Vezi skill-ul pe GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="skill-card fade-in">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff4931" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg>
+          </div>
+          <div class="skill-name">tvl-design-diagram</div>
+        </div>
+        <h3>Proiectează o diagramă Mermaid clară</h3>
+        <p>Te ajută să produci diagrame Mermaid pornind de la template-uri simple, cu verificări Ethical AI incluse pentru ca fluxul rezultat să fie clar, corect și să nu denatureze procesul descris.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Mermaid</span>
+          <span class="skill-tag">Template-uri diagramă</span>
+          <span class="skill-tag">Verificări Ethical AI</span>
+        </div>
+        <div class="skill-card-foot">
+          <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram" target="_blank" rel="noopener">
+            Vezi skill-ul pe GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTALL ── -->
+<section class="section-pad alt" id="install">
+  <div class="container">
+    <div class="section-title-center fade-in">
+      <span class="red-label">Instalare</span>
+      <h2 class="section-h2">Adaugă skill-urile într-un pas</h2>
+      <p>Calea recomandată este Agent Skills CLI. Comanda indică repository-ul GitHub, iar opțiunile aleg skill-ul și agentul țintă.</p>
+    </div>
+    <div class="install-grid">
+
+      <div class="install-card install-primary fade-in">
+        <h3>Recomandat: skills CLI</h3>
+        <p class="install-sub">Rulează comanda din terminal. Ea descarcă pachetul TVL Skills de pe GitHub și instalează skill-urile acolo unde instrumentele tale AI le pot găsi.</p>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+        <p class="code-note"><code>danlex/tvl-skills</code> este numele repository-ului. Skill-urile individuale sunt <code>tvl-write-linkedin-post</code> și <code>tvl-design-diagram</code>.</p>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-design-diagram</div>
+        <p class="code-note">Folosește <code>--skill</code> când vrei un singur skill. Folosește <code>--agent claude-code</code> sau <code>--agent codex</code> ca să țintești un instrument specific.</p>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --agent claude-code --global --skill '*' -y</div>
+        <p class="code-note">Folosește <code>--global</code> pentru instalare la nivel de utilizator și <code>-y</code> pentru instalare non-interactivă. Necesită Node.js. Verifică sursa la <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" style="color:#9fd0ff;">github.com/danlex/tvl-skills</a>.</p>
+      </div>
+
+      <div class="install-card fade-in">
+        <h3>Codex</h3>
+        <p class="install-sub">Skill-urile sunt citite din aceste foldere. Primul le face disponibile în toate proiectele, al doilea le limitează la repository-ul curent.</p>
+        <div class="code-block"><span class="path">~/.agents/skills</span>     <span style="color:#777;"># disponibil peste tot</span></div>
+        <div class="code-block"><span class="path">.agents/skills</span>       <span style="color:#777;"># doar acest proiect</span></div>
+      </div>
+
+      <div class="install-card fade-in">
+        <h3>Claude Code</h3>
+        <p class="install-sub">Aceeași logică, în folderele de skills ale Claude Code. Global pentru toate sesiunile sau local, per proiect.</p>
+        <div class="code-block"><span class="path">~/.claude/skills</span>     <span style="color:#777;"># disponibil peste tot</span></div>
+        <div class="code-block"><span class="path">.claude/skills</span>       <span style="color:#777;"># doar acest proiect</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="section-pad" id="how-to-use">
+  <div class="container">
+    <div class="section-title-center fade-in">
+      <span class="red-label">Cum le folosești</span>
+      <h2 class="section-h2">De la instalare la primul rezultat</h2>
+      <p>După instalare, agentul tău preia skill-ul automat. Tu descrii sarcina în limbaj natural, iar skill-ul furnizează metoda.</p>
+    </div>
+    <div class="use-grid">
+      <div class="use-step fade-in">
+        <div class="use-num">PASUL 1</div>
+        <h3>Instalează</h3>
+        <p>Rulează <code>npx skills add danlex/tvl-skills</code> sau instalează un singur skill cu <code>--skill tvl-design-diagram</code>.</p>
+      </div>
+      <div class="use-step fade-in">
+        <div class="use-num">PASUL 2</div>
+        <h3>Cere în limbaj natural</h3>
+        <p>Spune-i asistentului ce ai nevoie, de exemplu <code>scrie un post LinkedIn despre noua lansare</code> sau <code>proiectează o diagramă pentru acest flux de onboarding</code>.</p>
+      </div>
+      <div class="use-step fade-in">
+        <div class="use-num">PASUL 3</div>
+        <h3>Revizuiește și reutilizează</h3>
+        <p>Skill-ul aplică frameworkul și verificările, apoi returnează o variantă inițială. O ajustezi și refolosești același standard în echipă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>Vrei ca echipa ta să construiască skill-uri ca acestea?</h2>
+      <p>TVL Academy livrează workshopuri AI practice în care echipele învață să construiască prompturi, asistenți și skill-uri reutilizabile pentru propriile procese. Vezi cum funcționează programul.</p>
+      <div class="hero-btns" style="justify-content:center;">
+        <a href="../../ro/#contact" class="btn-primary">Rezervă 30 de minute</a>
+        <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" class="btn-ghost">Vezi repository-ul</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../ro/">Program</a>
+          <a href="#skills">Skills</a>
+          <a href="#install">Instalare</a>
+          <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Termeni</a>
+          <a href="../../ro/privacy-policy.html">Privacy Policy</a>
+          <a href="../../ro/cookie-policy.html">Cookie Policy</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../../index.js"></script>
+</body>
+</html>
