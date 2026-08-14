@@ -203,6 +203,30 @@
       border-radius: 6px;
       padding: 5px 10px;
     }
+    .skill-example {
+      border: 1px solid var(--border, #e6e1db);
+      border-radius: 8px;
+      background: #faf9f7;
+      padding: 12px 14px;
+      margin: 0 0 22px;
+    }
+    .skill-example-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #888;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .skill-example code {
+      font-family: "SFMono-Regular", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      color: #1c1c1c;
+      font-size: 12.5px;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+      white-space: normal;
+    }
     .skill-card-foot { margin-top: auto; }
     .skill-link {
       display: inline-flex;
@@ -378,6 +402,10 @@
           <span class="skill-tag">LinkedIn Writing Protocol v3</span>
           <span class="skill-tag">Repeatable structure</span>
         </div>
+        <div class="skill-example">
+          <span class="skill-example-label">Example prompt</span>
+          <code>Use $tvl-write-linkedin-post to turn these notes into a 2,700 character LinkedIn post.</code>
+        </div>
         <div class="skill-card-foot">
           <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post" target="_blank" rel="noopener">
             View skill on GitHub
@@ -400,6 +428,10 @@
           <span class="skill-tag">Diagram templates</span>
           <span class="skill-tag">Ethical AI checks</span>
         </div>
+        <div class="skill-example">
+          <span class="skill-example-label">Example prompt</span>
+          <code>Use $tvl-design-diagram to turn this onboarding process into a Mermaid workflow.</code>
+        </div>
         <div class="skill-card-foot">
           <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram" target="_blank" rel="noopener">
             View skill on GitHub
@@ -421,6 +453,10 @@
           <span class="skill-tag">EthicalAI</span>
           <span class="skill-tag">Evidence-first audit</span>
           <span class="skill-tag">PASS / REVISE / BLOCK</span>
+        </div>
+        <div class="skill-example">
+          <span class="skill-example-label">Example prompt</span>
+          <code>Use $tvl-ethical-ai-judge to audit this draft and identify unsupported claims.</code>
         </div>
         <div class="skill-card-foot">
           <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-judge" target="_blank" rel="noopener">
