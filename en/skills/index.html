@@ -6,11 +6,11 @@
   <link rel="apple-touch-icon" href="../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TVL AI Skills — reusable Agent Skills for ChatGPT, Codex &amp; Claude Code</title>
-  <meta name="description" content="Reusable Agent Skills by TVL. Add tvl-write-linkedin-post, tvl-design-diagram, and tvl-ethical-ai-audit to ChatGPT, Codex, Claude Code and compatible Agent Skills tools with a single command.">
+  <meta name="description" content="Reusable Agent Skills by TVL. Add tvl-write-linkedin-post, tvl-design-diagram, tvl-ethical-ai-audit, and tvl-confirmation-bias-audit to ChatGPT, Codex, Claude Code and compatible Agent Skills tools with one command.">
   <meta name="author" content="Alexandru Dan, TVL Academy">
 
   <meta property="og:title" content="TVL AI Skills — reusable Agent Skills for ChatGPT, Codex & Claude Code">
-  <meta property="og:description" content="Reusable Agent Skills by TVL. Add tvl-write-linkedin-post, tvl-design-diagram, and tvl-ethical-ai-audit to ChatGPT, Codex, Claude Code and compatible Agent Skills tools with a single command.">
+  <meta property="og:description" content="Reusable Agent Skills by TVL. Add tvl-write-linkedin-post, tvl-design-diagram, tvl-ethical-ai-audit, and tvl-confirmation-bias-audit to ChatGPT, Codex, Claude Code and compatible Agent Skills tools with one command.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://academy.tvl.tech/en/skills/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
@@ -83,6 +83,20 @@
           "author": { "@type": "Organization", "name": "TVL Tech" },
           "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
         }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "tvl-confirmation-bias-audit",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Any",
+          "description": "A confirmation bias audit skill for chatbot answers, decisions, root-cause analysis, recommendations, code review, and summaries.",
+          "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit",
+          "author": { "@type": "Organization", "name": "TVL Tech" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        }
       }
     ]
   }
@@ -147,7 +161,7 @@
     /* Skill cards */
     .skill-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 28px;
       margin-top: 8px;
     }
@@ -445,7 +459,7 @@
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">The Skills</span>
-      <h2 class="section-h2">Three skills you can add today</h2>
+      <h2 class="section-h2">Four skills you can add today</h2>
       <p>Each skill is a self-contained folder with instructions, templates and checks. Open the source on GitHub to see exactly what it does before you install it.</p>
     </div>
     <div class="skill-grid">
@@ -522,6 +536,32 @@
         </div>
         <div class="skill-card-foot">
           <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener">
+            View skill on GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="skill-card fade-in">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff4931" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+          </div>
+          <div class="skill-name">tvl-confirmation-bias-audit</div>
+        </div>
+        <h3>Audit conclusions for one-sided reasoning</h3>
+        <p>Checks chatbot answers, recommendations, summaries, root-cause analysis and code reviews for confirmation bias, missing alternatives, untested counter-evidence and failure to falsify.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Confirmation bias</span>
+          <span class="skill-tag">Falsification-first</span>
+          <span class="skill-tag">Chatbot audit cases</span>
+        </div>
+        <div class="skill-example">
+          <span class="skill-example-label">Example prompt</span>
+          <code>Use $tvl-confirmation-bias-audit to audit this chatbot answer for one-sided evidence and missing alternatives.</code>
+        </div>
+        <div class="skill-card-foot">
+          <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit" target="_blank" rel="noopener">
             View skill on GitHub
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           </a>
@@ -633,8 +673,9 @@ REQUIRED FIXES
         <h3>Recommended: skills CLI</h3>
         <p class="install-sub">Run this from your terminal. It fetches the TVL skills package from GitHub and installs the skills where your agent tools can find them.</p>
         <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
-        <p class="code-note"><code>danlex/tvl-skills</code> is the repository name. The individual skills are <code>tvl-write-linkedin-post</code>, <code>tvl-design-diagram</code> and <code>tvl-ethical-ai-audit</code>.</p>
+        <p class="code-note"><code>danlex/tvl-skills</code> is the repository name. The individual skills are <code>tvl-write-linkedin-post</code>, <code>tvl-design-diagram</code>, <code>tvl-ethical-ai-audit</code> and <code>tvl-confirmation-bias-audit</code>.</p>
         <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-ethical-ai-audit</div>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-confirmation-bias-audit</div>
         <p class="code-note">Use <code>--skill</code> when you want only one skill. Use <code>--agent claude-code</code> or <code>--agent codex</code> to target a specific tool.</p>
         <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --agent claude-code --global --skill '*' -y</div>
         <p class="code-note">Use <code>--global</code> for a user-wide install and <code>-y</code> for a non-interactive install. Requires Node.js. Review the source at <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" style="color:#9fd0ff;">github.com/danlex/tvl-skills</a>.</p>
@@ -670,7 +711,7 @@ REQUIRED FIXES
       <div class="use-step fade-in">
         <div class="use-num">STEP 1</div>
         <h3>Install</h3>
-        <p>Run <code>npx skills add danlex/tvl-skills</code>, or install one skill with <code>--skill tvl-ethical-ai-audit</code>.</p>
+        <p>Run <code>npx skills add danlex/tvl-skills</code>, or install one skill with <code>--skill tvl-confirmation-bias-audit</code>.</p>
       </div>
       <div class="use-step fade-in">
         <div class="use-num">STEP 2</div>
