@@ -276,6 +276,67 @@
     .code-block .path { color: #9fd0ff; }
     .code-note { font-size: 13px; color: #888; margin: 12px 0 0; line-height: 1.6; }
 
+    /* Ethical AI audit example */
+    .audit-example-wrap {
+      display: grid;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .audit-example-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .audit-panel {
+      background: #fff;
+      border: 1px solid var(--border, #e6e1db);
+      border-radius: 14px;
+      padding: 26px;
+    }
+    .audit-panel h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1c1c1c;
+      margin: 0 0 12px;
+    }
+    .audit-panel p,
+    .audit-panel li {
+      color: #555;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .audit-panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .audit-panel pre {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      margin: 0;
+      overflow-x: auto;
+      overflow-wrap: anywhere;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .audit-verdict {
+      border-left: 4px solid var(--red, #ff4931);
+      display: grid;
+      gap: 14px;
+    }
+    .audit-verdict strong {
+      color: #1c1c1c;
+      font-size: 16px;
+    }
+    .audit-verdict .verdict-code {
+      color: var(--red, #ff4931);
+      font-family: "SFMono-Regular", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-weight: 700;
+    }
+
     /* How to use steps */
     .use-grid {
       display: grid;
@@ -312,6 +373,7 @@
 
     @media (max-width: 768px) {
       .skill-grid,
+      .audit-example-grid,
       .install-grid,
       .use-grid { grid-template-columns: 1fr; }
       .section-pad { padding: 56px 0; }
@@ -470,8 +532,51 @@
   </div>
 </section>
 
+<!-- ── ETHICAL AI AUDIT EXAMPLE ── -->
+<section class="section-pad alt" id="audit-example">
+  <div class="container">
+    <div class="section-title-center fade-in">
+      <span class="red-label">Complex audit example</span>
+      <h2 class="section-h2">How tvl-ethical-ai-audit handles a risky draft</h2>
+      <p>Use the skill when an AI answer mixes unsupported technical claims, invented sources, causal certainty and action recommendations that go beyond the available evidence.</p>
+    </div>
+
+    <div class="audit-example-wrap">
+      <div class="audit-example-grid">
+        <div class="audit-panel fade-in">
+          <h3>Draft to audit</h3>
+          <pre>The checkout outage is fully resolved. All tests pass.
+Root cause was fixed in src/payments/retry.ts:142 by the new retryWithBackoff() function.
+Stripe confirms in their incident report that our webhook delays caused duplicate captures.
+We should immediately deploy and remove the old idempotency guard because it is redundant.</pre>
+        </div>
+
+        <div class="audit-panel fade-in">
+          <h3>Available evidence</h3>
+          <pre>No tests were run.
+No src/payments/retry.ts file is provided.
+No Stripe incident report URL is provided.
+Existing notes say: "Duplicate captures might be related to missing idempotency keys; webhook delay is one possible factor, not confirmed."
+The user asked only for an audit, not a deploy plan.</pre>
+        </div>
+      </div>
+
+      <div class="audit-panel audit-verdict fade-in">
+        <strong>Expected result: <span class="verdict-code">VERDICT: BLOCK</span></strong>
+        <ul>
+          <li>Flags hallucination, source fabrication, confabulation, overconfidence, selective evidence and scope creep.</li>
+          <li>Marks "all tests pass", the file reference, the function name and the Stripe incident report as unsupported or not found.</li>
+          <li>Rejects the causal claim and the instruction to remove the idempotency guard because the evidence only supports uncertainty.</li>
+          <li>Requires a corrected answer that verifies tests, cites real files or sources, preserves uncertainty and stays inside the requested audit scope.</li>
+        </ul>
+        <div class="code-block"><span class="prompt">$ </span>Use $tvl-ethical-ai-audit to audit this draft against the available evidence and return PASS, REVISE, or BLOCK.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── INSTALL ── -->
-<section class="section-pad alt" id="install">
+<section class="section-pad" id="install">
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">Install</span>
@@ -510,7 +615,7 @@
 </section>
 
 <!-- ── HOW TO USE ── -->
-<section class="section-pad" id="how-to-use">
+<section class="section-pad alt" id="how-to-use">
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">How to use</span>
