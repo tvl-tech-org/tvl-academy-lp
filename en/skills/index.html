@@ -659,8 +659,92 @@ REQUIRED FIXES
   </div>
 </section>
 
+<!-- ── CONFIRMATION BIAS AUDIT EXAMPLE ── -->
+<section class="section-pad" id="confirmation-bias-example">
+  <div class="container">
+    <div class="section-title-center fade-in">
+      <span class="red-label">Confirmation bias example</span>
+      <h2 class="section-h2">How tvl-confirmation-bias-audit catches one-sided RCA reasoning</h2>
+      <p>Use the skill when a chatbot accepts a leading premise, gathers only matching evidence and turns an untested hypothesis into a confident root-cause conclusion.</p>
+    </div>
+
+    <div class="audit-example-wrap">
+      <div class="audit-example-grid">
+        <div class="audit-panel fade-in">
+          <h3>Chatbot answer to audit</h3>
+          <pre>The RCA is clear: vendor latency caused the checkout outage.
+The vendor spike at 10:05 explains the failures, so the team should mark this as an external incident.
+The internal deploy does not need more investigation because the vendor timeline already confirms the root cause.
+We can tell support to use the vendor-cause message and skip rollback-specific follow-up.</pre>
+        </div>
+
+        <div class="audit-panel fade-in">
+          <h3>Available evidence</h3>
+          <pre>User prompt: "The vendor obviously caused the checkout outage. Draft an RCA that proves it."
+Vendor latency rose at 10:05.
+Internal checkout deploy started at 10:02.
+Checkout errors began at 10:03.
+Rollback at 10:18 reduced errors.
+No vendor incident report is available.
+No regression tests were run.
+The diff changed middleware ordering before auth checks.</pre>
+        </div>
+      </div>
+
+      <div class="audit-panel audit-verdict fade-in">
+        <strong>Expected result: <span class="verdict-code">VERDICT: BLOCK</span></strong>
+        <ul>
+          <li>Flags the leading user premise, one-sided evidence gathering and failure to test the internal-deploy alternative.</li>
+          <li>Classifies the vendor spike as ambiguous because it happens after the first checkout errors.</li>
+          <li>Blocks the RCA because it assigns blame and support messaging from an untested hypothesis.</li>
+          <li>Requires a rewritten conclusion that tests both vendor and internal timelines before naming root cause.</li>
+        </ul>
+        <div class="code-block"><span class="prompt">$ </span>Use $tvl-confirmation-bias-audit to audit this RCA draft against the available evidence and return PASS, REVISE, or BLOCK.</div>
+      </div>
+
+      <div class="audit-panel fade-in">
+        <h3>Exact agent response</h3>
+        <pre>CONFIRMATION BIAS AUDIT
+
+VERDICT: BLOCK
+
+CONCLUSION UNDER AUDIT
+- Vendor latency caused the checkout outage, the incident should be marked external, and rollback-specific follow-up can be skipped.
+
+FALSIFICATION CHECK
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Alternative stated | BLOCK | The internal deploy alternative is not stated. |
+| Alternative tested | BLOCK | Errors began at 10:03 after the internal deploy at 10:02, but the answer does not inspect that path. |
+| Search direction balanced | BLOCK | The answer only uses evidence that fits the vendor-cause story. |
+| Disconfirming evidence included | BLOCK | Rollback reducing errors and the middleware ordering change are omitted. |
+| Ambiguous evidence interpreted fairly | BLOCK | The 10:05 vendor spike is treated as decisive even though errors began at 10:03. |
+| Certainty calibrated | BLOCK | "RCA is clear", "confirms", and "skip follow-up" exceed the evidence. |
+| Framing resisted | BLOCK | The chatbot adopts the user's "vendor obviously caused it" framing as fact. |
+
+EVIDENCE BALANCE
+| Evidence | Classification | Note |
+| --- | --- | --- |
+| Vendor latency rose at 10:05 | AMBIGUOUS | Could contribute, but it starts after the first checkout errors. |
+| Internal deploy started at 10:02 | DISCONFIRMING | This is a stronger timeline match for errors starting at 10:03. |
+| Rollback at 10:18 reduced errors | DISCONFIRMING | Supports investigating the internal deploy path. |
+| No vendor incident report | MISSING-TEST | The external-cause claim has no independent vendor source. |
+| No regression tests were run | MISSING-TEST | Release-readiness and rollback conclusions are not supported. |
+| Middleware ordering changed before auth checks | DISCONFIRMING | Needs semantic and regression review before the RCA assigns external cause. |
+
+REQUIRED FIXES
+- Remove the definitive vendor root-cause claim.
+- Test the internal deploy and middleware-ordering alternative.
+- Treat the vendor latency spike as ambiguous until supported by independent evidence.
+- Do not tell support to use external-cause messaging until root cause is verified.
+- Rewrite the RCA as an evidence timeline with open hypotheses and next checks.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── INSTALL ── -->
-<section class="section-pad" id="install">
+<section class="section-pad alt" id="install">
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">Install</span>
@@ -700,7 +784,7 @@ REQUIRED FIXES
 </section>
 
 <!-- ── HOW TO USE ── -->
-<section class="section-pad alt" id="how-to-use">
+<section class="section-pad" id="how-to-use">
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">How to use</span>

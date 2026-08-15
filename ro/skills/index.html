@@ -659,8 +659,92 @@ REQUIRED FIXES
   </div>
 </section>
 
+<!-- ── CONFIRMATION BIAS AUDIT EXAMPLE ── -->
+<section class="section-pad" id="confirmation-bias-example">
+  <div class="container">
+    <div class="section-title-center fade-in">
+      <span class="red-label">Exemplu confirmation bias</span>
+      <h2 class="section-h2">Cum tvl-confirmation-bias-audit prinde un RCA unilateral</h2>
+      <p>Folosește skill-ul când un chatbot acceptă o premisă direcționată, adună doar dovezi care se potrivesc și transformă o ipoteză netestată într-o concluzie sigură despre root cause.</p>
+    </div>
+
+    <div class="audit-example-wrap">
+      <div class="audit-example-grid">
+        <div class="audit-panel fade-in">
+          <h3>Răspuns chatbot de auditat</h3>
+          <pre>RCA-ul este clar: latența vendorului a cauzat outage-ul de checkout.
+Spike-ul vendorului de la 10:05 explică erorile, deci echipa ar trebui să marcheze incidentul ca extern.
+Deploy-ul intern nu mai trebuie investigat, deoarece timeline-ul vendorului confirmă deja root cause.
+Putem spune echipei de support să folosească mesajul cu vendor-cause și să sară peste follow-up-ul legat de rollback.</pre>
+        </div>
+
+        <div class="audit-panel fade-in">
+          <h3>Dovezi disponibile</h3>
+          <pre>Prompt utilizator: "Vendorul a cauzat evident outage-ul de checkout. Scrie un RCA care demonstrează asta."
+Latența vendorului a crescut la 10:05.
+Deploy-ul intern pentru checkout a început la 10:02.
+Erorile de checkout au început la 10:03.
+Rollback-ul de la 10:18 a redus erorile.
+Nu există raport de incident de la vendor.
+Nu au fost rulate teste de regresie.
+Diff-ul a schimbat ordinea middleware-ului înainte de auth checks.</pre>
+        </div>
+      </div>
+
+      <div class="audit-panel audit-verdict fade-in">
+        <strong>Rezultat așteptat: <span class="verdict-code">VERDICT: BLOCK</span></strong>
+        <ul>
+          <li>Semnalează premisa direcționată a utilizatorului, adunarea unilaterală de dovezi și lipsa testării alternativei cu deploy-ul intern.</li>
+          <li>Clasifică spike-ul vendorului ca ambiguu, deoarece apare după primele erori de checkout.</li>
+          <li>Blochează RCA-ul fiindcă atribuie vină și mesaj de support dintr-o ipoteză netestată.</li>
+          <li>Cere o concluzie rescrisă care testează atât timeline-ul vendorului, cât și timeline-ul intern înainte de a numi root cause.</li>
+        </ul>
+        <div class="code-block"><span class="prompt">$ </span>Folosește $tvl-confirmation-bias-audit ca să auditezi acest draft RCA față de dovezile disponibile și să returnezi PASS, REVISE sau BLOCK.</div>
+      </div>
+
+      <div class="audit-panel fade-in">
+        <h3>Răspunsul exact al agentului</h3>
+        <pre>CONFIRMATION BIAS AUDIT
+
+VERDICT: BLOCK
+
+CONCLUSION UNDER AUDIT
+- Latența vendorului a cauzat outage-ul de checkout, incidentul trebuie marcat ca extern, iar follow-up-ul legat de rollback poate fi sărit.
+
+FALSIFICATION CHECK
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Alternative stated | BLOCK | Alternativa cu deploy-ul intern nu este formulată. |
+| Alternative tested | BLOCK | Erorile au început la 10:03 după deploy-ul intern de la 10:02, dar răspunsul nu investighează această cale. |
+| Search direction balanced | BLOCK | Răspunsul folosește doar dovezi care se potrivesc poveștii vendor-cause. |
+| Disconfirming evidence included | BLOCK | Reducerea erorilor după rollback și schimbarea ordinii middleware-ului sunt omise. |
+| Ambiguous evidence interpreted fairly | BLOCK | Spike-ul vendorului de la 10:05 este tratat ca decisiv, deși erorile au început la 10:03. |
+| Certainty calibrated | BLOCK | "RCA-ul este clar", "confirmă" și "sară peste follow-up" depășesc dovezile. |
+| Framing resisted | BLOCK | Chatbotul adoptă premisa utilizatorului că vendorul a cauzat evident incidentul. |
+
+EVIDENCE BALANCE
+| Evidence | Classification | Note |
+| --- | --- | --- |
+| Latența vendorului a crescut la 10:05 | AMBIGUOUS | Poate contribui, dar începe după primele erori de checkout. |
+| Deploy-ul intern a început la 10:02 | DISCONFIRMING | Este o potrivire temporală mai puternică pentru erorile de la 10:03. |
+| Rollback-ul de la 10:18 a redus erorile | DISCONFIRMING | Susține investigarea căii deploy-ului intern. |
+| Nu există raport de incident de la vendor | MISSING-TEST | Afirmația de cauză externă nu are sursă independentă de la vendor. |
+| Nu au fost rulate teste de regresie | MISSING-TEST | Concluziile despre release readiness și rollback nu sunt susținute. |
+| Ordinea middleware-ului s-a schimbat înainte de auth checks | DISCONFIRMING | Necesită review semantic și teste înainte ca RCA-ul să atribuie cauza externă. |
+
+REQUIRED FIXES
+- Elimină afirmația definitivă că vendorul este root cause.
+- Testează alternativa cu deploy-ul intern și schimbarea ordinii middleware-ului.
+- Tratează spike-ul de latență vendor ca ambiguu până există dovezi independente.
+- Nu spune echipei de support să folosească mesaj extern până când root cause este verificat.
+- Rescrie RCA-ul ca timeline de dovezi cu ipoteze deschise și următoarele verificări.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── INSTALL ── -->
-<section class="section-pad" id="install">
+<section class="section-pad alt" id="install">
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">Instalare</span>
@@ -700,7 +784,7 @@ REQUIRED FIXES
 </section>
 
 <!-- ── HOW TO USE ── -->
-<section class="section-pad alt" id="how-to-use">
+<section class="section-pad" id="how-to-use">
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">Cum le folosești</span>
