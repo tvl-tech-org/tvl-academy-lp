@@ -6,7 +6,7 @@
   <link rel="apple-touch-icon" href="../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TVL AI Skills — skill-uri reutilizabile pentru ChatGPT, Codex și Claude Code</title>
-  <meta name="description" content="Skill-uri Agent reutilizabile de la TVL. Adaugă tvl-write-linkedin-post, tvl-design-diagram și tvl-ethical-ai-judge în ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills cu o singură comandă.">
+  <meta name="description" content="Skill-uri Agent reutilizabile de la TVL. Adaugă tvl-write-linkedin-post, tvl-design-diagram și tvl-ethical-ai-audit în ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills cu o singură comandă.">
   <meta name="author" content="Alexandru Dan, TVL Academy">
 
   <meta property="og:title" content="TVL AI Skills — skill-uri reutilizabile pentru ChatGPT, Codex și Claude Code">
@@ -75,11 +75,11 @@
         "position": 3,
         "item": {
           "@type": "SoftwareApplication",
-          "name": "tvl-ethical-ai-judge",
+          "name": "tvl-ethical-ai-audit",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "Any",
           "description": "Un skill EthicalAI pentru auditarea drafturilor, afirmațiilor, citărilor, planurilor și comportamentului agentului pentru riscuri de integritate AI.",
-          "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-judge",
+          "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit",
           "author": { "@type": "Organization", "name": "TVL Tech" },
           "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
         }
@@ -445,7 +445,7 @@
           <div class="skill-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#ff4931" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-5"/></svg>
           </div>
-          <div class="skill-name">tvl-ethical-ai-judge</div>
+          <div class="skill-name">tvl-ethical-ai-audit</div>
         </div>
         <h3>Auditează un draft AI înainte să ai încredere în el</h3>
         <p>Verifică drafturi, afirmații, citări, rezumate, planuri și comportamentul agentului folosind modurile de eșec EthicalAI, inclusiv hallucination, source fabrication, sycophancy, confirmation bias și prompt injection.</p>
@@ -456,10 +456,10 @@
         </div>
         <div class="skill-example">
           <span class="skill-example-label">Exemplu prompt</span>
-          <code>Folosește $tvl-ethical-ai-judge ca să auditezi acest draft și să identifici afirmațiile nesusținute.</code>
+          <code>Folosește $tvl-ethical-ai-audit ca să auditezi acest draft și să identifici afirmațiile nesusținute.</code>
         </div>
         <div class="skill-card-foot">
-          <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-judge" target="_blank" rel="noopener">
+          <a class="skill-link" href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener">
             Vezi skill-ul pe GitHub
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           </a>
@@ -484,8 +484,8 @@
         <h3>Recomandat: skills CLI</h3>
         <p class="install-sub">Rulează comanda din terminal. Ea descarcă pachetul TVL Skills de pe GitHub și instalează skill-urile acolo unde instrumentele tale AI le pot găsi.</p>
         <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
-        <p class="code-note"><code>danlex/tvl-skills</code> este numele repository-ului. Skill-urile individuale sunt <code>tvl-write-linkedin-post</code>, <code>tvl-design-diagram</code> și <code>tvl-ethical-ai-judge</code>.</p>
-        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-ethical-ai-judge</div>
+        <p class="code-note"><code>danlex/tvl-skills</code> este numele repository-ului. Skill-urile individuale sunt <code>tvl-write-linkedin-post</code>, <code>tvl-design-diagram</code> și <code>tvl-ethical-ai-audit</code>.</p>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-ethical-ai-audit</div>
         <p class="code-note">Folosește <code>--skill</code> când vrei un singur skill. Folosește <code>--agent claude-code</code> sau <code>--agent codex</code> ca să țintești un instrument specific.</p>
         <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --agent claude-code --global --skill '*' -y</div>
         <p class="code-note">Folosește <code>--global</code> pentru instalare la nivel de utilizator și <code>-y</code> pentru instalare non-interactivă. Necesită Node.js. Verifică sursa la <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener" style="color:#9fd0ff;">github.com/danlex/tvl-skills</a>.</p>
@@ -521,7 +521,7 @@
       <div class="use-step fade-in">
         <div class="use-num">PASUL 1</div>
         <h3>Instalează</h3>
-        <p>Rulează <code>npx skills add danlex/tvl-skills</code> sau instalează un singur skill cu <code>--skill tvl-ethical-ai-judge</code>.</p>
+        <p>Rulează <code>npx skills add danlex/tvl-skills</code> sau instalează un singur skill cu <code>--skill tvl-ethical-ai-audit</code>.</p>
       </div>
       <div class="use-step fade-in">
         <div class="use-num">PASUL 2</div>
