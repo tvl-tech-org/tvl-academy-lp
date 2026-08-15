@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO/GEO Audit Skill for AI Visibility</title>
+  <meta name="description" content="Use tvl-seo-geo-audit to review technical SEO, accessibility, on-page rules, structured data, and AI answer visibility.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="SEO/GEO Audit Skill for AI Visibility">
+  <meta property="og:description" content="Audit pages for SEO, GEO, accessibility, structured data, and AI answer visibility.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SEO GEO audit skill by TVL Academy">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SEO/GEO Audit Skill for AI Visibility">
+  <meta name="twitter:description" content="Audit pages for SEO, GEO, accessibility, structured data, and AI answer visibility.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-seo-geo-audit/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/">
+  <meta name="robots" content="index, follow">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "SEO/GEO Audit Skill for AI Visibility",
+        "url": "https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/",
+        "description": "Use tvl-seo-geo-audit to review technical SEO, accessibility, on-page rules, structured data, and AI answer visibility.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/en/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-seo-geo-audit", "item": "https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-seo-geo-audit",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "An Agent Skill that audits pages for technical SEO, accessibility, structured data, multilingual SEO, and AI answer visibility.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-seo-geo-audit",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 940px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; }
+    .wide { grid-column: 1 / -1; }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    @media (max-width: 860px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <span class="nav-logo-text">TVL Academy</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../en/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="../../../ro/skills/tvl-seo-geo-audit/" class="lang-option" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-seo-geo-audit/" class="lang-option is-active" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-seo-geo-audit" target="_blank" rel="noopener" class="btn-nav">Source</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1><span>SEO/GEO</span> Audit Skill</h1>
+        <p><code>tvl-seo-geo-audit</code> helps an AI agent review a page for search visibility, accessibility, structured data, multilingual hygiene, and AI answer readiness. The skill returns evidence, prioritized findings, and clear next steps.</p>
+        <div class="hero-btns">
+          <a href="#install" class="btn-primary">Install the skill</a>
+          <a href="../" class="btn-ghost">Back to skills</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="concepts">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Concepts</span>
+        <h2 class="section-h2">SEO, GEO and accessibility</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <h3>What is SEO?</h3>
+          <p>SEO is the practice of making a page crawlable, understandable and useful for search engines and people. It includes technical indexability, clear metadata, useful content, internal links, structured data and trustworthy evidence.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>What is GEO?</h3>
+          <p>GEO, or generative engine optimization, focuses on whether AI answer systems can understand, summarize and cite a page. It does not guarantee AI citations. It improves what is controllable: clarity, crawlability, structure, facts, sources and measurement.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>What is accessibility?</h3>
+          <p>Accessibility means the page can be used by people with different abilities, devices and assistive technologies. Good accessibility also improves machine understanding: semantic headings, readable links, alt text, contrast, keyboard navigation and clear language.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="rules">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">On-page rules</span>
+        <h2 class="section-h2">What the skill checks</h2>
+      </div>
+      <div class="panel fade-in">
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>SEO/GEO rule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Indexability</td><td>The page should return the expected HTTP status, avoid accidental noindex, and be crawlable when public visibility is desired.</td></tr>
+            <tr><td>Canonical and hreflang</td><td>Canonical URLs should match the intended language page. Multilingual pages need reciprocal hreflang and correct HTML lang values.</td></tr>
+            <tr><td>Metadata</td><td>Title and description should be accurate, specific, readable and not inflated with unsupported claims.</td></tr>
+            <tr><td>Content structure</td><td>Use one clear H1, logical H2/H3 sections, concise definitions, answer blocks, examples and source-backed claims.</td></tr>
+            <tr><td>Structured data</td><td>JSON-LD should be valid, relevant and consistent with visible page content.</td></tr>
+            <tr><td>Accessibility</td><td>Use semantic HTML, descriptive links, adequate contrast, keyboard-friendly controls and alt text for meaningful images.</td></tr>
+            <tr><td>AI answer visibility</td><td>Make factual claims easy to extract and cite. Avoid vague marketing copy, hidden content and unmeasured AI visibility promises.</td></tr>
+            <tr><td>Measurement</td><td>Define how SEO/GEO impact will be reviewed: Search Console, analytics referrals, index coverage, and dated AI answer checks.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Install and run</span>
+        <h2 class="section-h2">Add the SEO/GEO skill</h2>
+        <p>Use the public TVL Skills repository with the Agent Skills CLI.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Install only this skill</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-seo-geo-audit</div>
+          <h3>Install all TVL skills</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Example prompt</h3>
+          <div class="code-block">Use $tvl-seo-geo-audit to audit https://academy.tvl.tech/en/skills/ for technical SEO, accessibility, structured data, multilingual hygiene, and AI answer visibility.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../en/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-seo-geo-audit" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
+</body>
+</html>
