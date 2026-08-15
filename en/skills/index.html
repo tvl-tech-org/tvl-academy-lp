@@ -664,42 +664,41 @@ REQUIRED FIXES
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">Confirmation bias example</span>
-      <h2 class="section-h2">How tvl-confirmation-bias-audit catches one-sided RCA reasoning</h2>
-      <p>Use the skill when a chatbot accepts a leading premise, gathers only matching evidence and turns an untested hypothesis into a confident root-cause conclusion.</p>
+      <h2 class="section-h2">How tvl-confirmation-bias-audit catches false independent confirmation</h2>
+      <p>Use the skill when several AI reviewers agree, but their agreement comes from the same prompt, same framing and same missing test rather than independent evidence.</p>
     </div>
 
     <div class="audit-example-wrap">
       <div class="audit-example-grid">
         <div class="audit-panel fade-in">
           <h3>Chatbot answer to audit</h3>
-          <pre>The RCA is clear: vendor latency caused the checkout outage.
-The vendor spike at 10:05 explains the failures, so the team should mark this as an external incident.
-The internal deploy does not need more investigation because the vendor timeline already confirms the root cause.
-We can tell support to use the vendor-cause message and skip rollback-specific follow-up.</pre>
+          <pre>The review council is unanimous: the draft is ready to ship.
+All five reviewers found the same strengths and none reported a blocking issue.
+This level of agreement confirms that the solution is correct.
+We can mark the work validated and skip the extra runtime test.</pre>
         </div>
 
         <div class="audit-panel fade-in">
           <h3>Available evidence</h3>
-          <pre>User prompt: "The vendor obviously caused the checkout outage. Draft an RCA that proves it."
-Vendor latency rose at 10:05.
-Internal checkout deploy started at 10:02.
-Checkout errors began at 10:03.
-Rollback at 10:18 reduced errors.
-No vendor incident report is available.
-No regression tests were run.
-The diff changed middleware ordering before auth checks.</pre>
+          <pre>User prompt: "Use five reviewers to confirm this draft is ready."
+All five reviewers received the same brief.
+The brief highlighted the same expected strengths and likely defects.
+No reviewer was asked to argue the strongest opposing case.
+No runtime test or end-to-end check was executed.
+One known edge case remained untested.
+The reviewers were not independent evidence sources; they were parallel reads of the same framing.</pre>
         </div>
       </div>
 
       <div class="audit-panel audit-verdict fade-in">
         <strong>Expected result: <span class="verdict-code">VERDICT: BLOCK</span></strong>
         <ul>
-          <li>Flags the leading user premise, one-sided evidence gathering and failure to test the internal-deploy alternative.</li>
-          <li>Classifies the vendor spike as ambiguous because it happens after the first checkout errors.</li>
-          <li>Blocks the RCA because it assigns blame and support messaging from an untested hypothesis.</li>
-          <li>Requires a rewritten conclusion that tests both vendor and internal timelines before naming root cause.</li>
+          <li>Flags the mistake of treating co-primed reviewer agreement as independent confirmation.</li>
+          <li>Separates consensus from evidence, because all reviewers inherited the same framing.</li>
+          <li>Blocks the shipping conclusion because the runtime test and known edge case were skipped.</li>
+          <li>Requires an adversarial review, explicit limitation or actual test before calling the work validated.</li>
         </ul>
-        <div class="code-block"><span class="prompt">$ </span>Use $tvl-confirmation-bias-audit to audit this RCA draft against the available evidence and return PASS, REVISE, or BLOCK.</div>
+        <div class="code-block"><span class="prompt">$ </span>Use $tvl-confirmation-bias-audit to audit this review summary against the available evidence and return PASS, REVISE, or BLOCK.</div>
       </div>
 
       <div class="audit-panel fade-in">
@@ -709,43 +708,42 @@ The diff changed middleware ordering before auth checks.</pre>
 VERDICT: BLOCK
 
 CONCLUSION UNDER AUDIT
-- Vendor latency caused the checkout outage, the incident should be marked external, and rollback-specific follow-up can be skipped.
+- Five matching reviewer outputs confirm the draft is ready to ship, so the runtime test can be skipped.
 
 FALSIFICATION CHECK
 | Check | Result | Evidence |
 | --- | --- | --- |
-| Alternative stated | BLOCK | The internal deploy alternative is not stated. |
-| Alternative tested | BLOCK | Errors began at 10:03 after the internal deploy at 10:02, but the answer does not inspect that path. |
-| Search direction balanced | BLOCK | The answer only uses evidence that fits the vendor-cause story. |
-| Disconfirming evidence included | BLOCK | Rollback reducing errors and the middleware ordering change are omitted. |
-| Ambiguous evidence interpreted fairly | BLOCK | The 10:05 vendor spike is treated as decisive even though errors began at 10:03. |
-| Certainty calibrated | BLOCK | "RCA is clear", "confirms", and "skip follow-up" exceed the evidence. |
-| Framing resisted | BLOCK | The chatbot adopts the user's "vendor obviously caused it" framing as fact. |
+| Alternative stated | BLOCK | The strongest alternative is not stated: all reviewers may agree because they shared the same prompt and blind spot. |
+| Alternative tested | BLOCK | No adversarial reviewer, runtime test or edge-case check was run before the shipping conclusion. |
+| Search direction balanced | BLOCK | The process only asks reviewers to confirm readiness instead of trying to falsify it. |
+| Disconfirming evidence included | BLOCK | The untested edge case is omitted from the readiness conclusion. |
+| Ambiguous evidence interpreted fairly | BLOCK | Matching reviewer language is treated as validation, but it may only show shared priming. |
+| Certainty calibrated | BLOCK | "Unanimous", "confirms" and "validated" exceed the evidence. |
+| Framing resisted | BLOCK | The chatbot adopts the user's confirmation framing instead of treating the council result as one signal. |
 
 EVIDENCE BALANCE
 | Evidence | Classification | Note |
 | --- | --- | --- |
-| Vendor latency rose at 10:05 | AMBIGUOUS | Could contribute, but it starts after the first checkout errors. |
-| Internal deploy started at 10:02 | DISCONFIRMING | This is a stronger timeline match for errors starting at 10:03. |
-| Rollback at 10:18 reduced errors | DISCONFIRMING | Supports investigating the internal deploy path. |
-| No vendor incident report | MISSING-TEST | The external-cause claim has no independent vendor source. |
-| No regression tests were run | MISSING-TEST | Release-readiness and rollback conclusions are not supported. |
-| Middleware ordering changed before auth checks | DISCONFIRMING | Needs semantic and regression review before the RCA assigns external cause. |
+| Five reviewers agreed | AMBIGUOUS | Agreement is useful, but not independent when all reviewers saw the same framing. |
+| Same brief sent to all reviewers | DISCONFIRMING | Shared prompt can produce shared blind spots. |
+| No adversarial reviewer | MISSING-TEST | The strongest opposing case was never tested. |
+| No runtime test | MISSING-TEST | The claim that the work is ready has no execution evidence. |
+| Known edge case untested | DISCONFIRMING | Readiness cannot be treated as confirmed while a known failure path remains open. |
 
 REQUIRED FIXES
-- Remove the definitive vendor root-cause claim.
-- Test the internal deploy and middleware-ordering alternative.
-- Treat the vendor latency spike as ambiguous until supported by independent evidence.
-- Do not tell support to use external-cause messaging until root cause is verified.
-- Rewrite the RCA as an evidence timeline with open hypotheses and next checks.</pre>
+- Replace "confirmed" with "reviewers agreed under a shared brief."
+- Run the runtime or end-to-end test before shipping.
+- Add one adversarial reviewer or ask each reviewer to state what would falsify readiness.
+- Report the untested edge case as an open risk.
+- Treat council agreement as supporting evidence, not final validation.</pre>
       </div>
 
       <div class="audit-panel fade-in">
         <h3>Anonymized real-world patterns</h3>
         <ul>
           <li><strong>Generic evidence treated as specific proof:</strong> a chatbot concludes that a specific archive exists because a website has a generic archive navigation section.</li>
+          <li><strong>Premature best-fix conclusion:</strong> an agent calls one fix the highest-leverage option before measuring it against alternatives.</li>
           <li><strong>Stacked business assumptions:</strong> a plan declares sub-year payback by combining provisional savings with an unsourced cost estimate.</li>
-          <li><strong>False independent confirmation:</strong> five reviewers agree a draft is ready, but all received the same brief and none ran an adversarial or runtime test.</li>
           <li><strong>Overgeneralized metric:</strong> an audit reports one percentage from a small file sample while ignoring visible variance across files.</li>
         </ul>
       </div>

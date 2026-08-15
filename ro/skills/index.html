@@ -664,42 +664,41 @@ REQUIRED FIXES
   <div class="container">
     <div class="section-title-center fade-in">
       <span class="red-label">Exemplu confirmation bias</span>
-      <h2 class="section-h2">Cum tvl-confirmation-bias-audit prinde un RCA unilateral</h2>
-      <p>Folosește skill-ul când un chatbot acceptă o premisă direcționată, adună doar dovezi care se potrivesc și transformă o ipoteză netestată într-o concluzie sigură despre root cause.</p>
+      <h2 class="section-h2">Cum tvl-confirmation-bias-audit prinde confirmarea independentă falsă</h2>
+      <p>Folosește skill-ul când mai mulți revieweri AI sunt de acord, dar acordul lor vine din același prompt, aceeași încadrare și același test lipsă, nu din dovezi independente.</p>
     </div>
 
     <div class="audit-example-wrap">
       <div class="audit-example-grid">
         <div class="audit-panel fade-in">
           <h3>Răspuns chatbot de auditat</h3>
-          <pre>RCA-ul este clar: latența vendorului a cauzat outage-ul de checkout.
-Spike-ul vendorului de la 10:05 explică erorile, deci echipa ar trebui să marcheze incidentul ca extern.
-Deploy-ul intern nu mai trebuie investigat, deoarece timeline-ul vendorului confirmă deja root cause.
-Putem spune echipei de support să folosească mesajul cu vendor-cause și să sară peste follow-up-ul legat de rollback.</pre>
+          <pre>Consiliul de review este unanim: draftul este gata de livrare.
+Toți cei cinci revieweri au găsit aceleași puncte forte și niciunul nu a raportat un blocker.
+Acest nivel de acord confirmă că soluția este corectă.
+Putem marca munca drept validată și putem sări peste testul runtime suplimentar.</pre>
         </div>
 
         <div class="audit-panel fade-in">
           <h3>Dovezi disponibile</h3>
-          <pre>Prompt utilizator: "Vendorul a cauzat evident outage-ul de checkout. Scrie un RCA care demonstrează asta."
-Latența vendorului a crescut la 10:05.
-Deploy-ul intern pentru checkout a început la 10:02.
-Erorile de checkout au început la 10:03.
-Rollback-ul de la 10:18 a redus erorile.
-Nu există raport de incident de la vendor.
-Nu au fost rulate teste de regresie.
-Diff-ul a schimbat ordinea middleware-ului înainte de auth checks.</pre>
+          <pre>Prompt utilizator: "Folosește cinci revieweri ca să confirmi că draftul este gata."
+Toți cei cinci revieweri au primit același brief.
+Brief-ul a evidențiat aceleași puncte forte așteptate și aceleași defecte probabile.
+Niciun reviewer nu a fost rugat să argumenteze cea mai puternică variantă opusă.
+Nu a fost rulat niciun test runtime sau end-to-end.
+Un edge case cunoscut a rămas netestat.
+Reviewerii nu au fost surse independente de dovezi; au fost citiri paralele ale aceleiași încadrări.</pre>
         </div>
       </div>
 
       <div class="audit-panel audit-verdict fade-in">
         <strong>Rezultat așteptat: <span class="verdict-code">VERDICT: BLOCK</span></strong>
         <ul>
-          <li>Semnalează premisa direcționată a utilizatorului, adunarea unilaterală de dovezi și lipsa testării alternativei cu deploy-ul intern.</li>
-          <li>Clasifică spike-ul vendorului ca ambiguu, deoarece apare după primele erori de checkout.</li>
-          <li>Blochează RCA-ul fiindcă atribuie vină și mesaj de support dintr-o ipoteză netestată.</li>
-          <li>Cere o concluzie rescrisă care testează atât timeline-ul vendorului, cât și timeline-ul intern înainte de a numi root cause.</li>
+          <li>Semnalează greșeala de a trata acordul reviewerilor co-primați ca validare independentă.</li>
+          <li>Separă consensul de dovadă, fiindcă toți reviewerii au moștenit aceeași încadrare.</li>
+          <li>Blochează concluzia de livrare fiindcă testul runtime și edge case-ul cunoscut au fost sărite.</li>
+          <li>Cere review adversarial, limitare explicită sau test real înainte ca munca să fie numită validată.</li>
         </ul>
-        <div class="code-block"><span class="prompt">$ </span>Folosește $tvl-confirmation-bias-audit ca să auditezi acest draft RCA față de dovezile disponibile și să returnezi PASS, REVISE sau BLOCK.</div>
+        <div class="code-block"><span class="prompt">$ </span>Folosește $tvl-confirmation-bias-audit ca să auditezi acest rezumat de review față de dovezile disponibile și să returnezi PASS, REVISE sau BLOCK.</div>
       </div>
 
       <div class="audit-panel fade-in">
@@ -709,43 +708,42 @@ Diff-ul a schimbat ordinea middleware-ului înainte de auth checks.</pre>
 VERDICT: BLOCK
 
 CONCLUSION UNDER AUDIT
-- Latența vendorului a cauzat outage-ul de checkout, incidentul trebuie marcat ca extern, iar follow-up-ul legat de rollback poate fi sărit.
+- Cinci outputuri de reviewer care se potrivesc între ele confirmă că draftul este gata de livrare, deci testul runtime poate fi sărit.
 
 FALSIFICATION CHECK
 | Check | Result | Evidence |
 | --- | --- | --- |
-| Alternative stated | BLOCK | Alternativa cu deploy-ul intern nu este formulată. |
-| Alternative tested | BLOCK | Erorile au început la 10:03 după deploy-ul intern de la 10:02, dar răspunsul nu investighează această cale. |
-| Search direction balanced | BLOCK | Răspunsul folosește doar dovezi care se potrivesc poveștii vendor-cause. |
-| Disconfirming evidence included | BLOCK | Reducerea erorilor după rollback și schimbarea ordinii middleware-ului sunt omise. |
-| Ambiguous evidence interpreted fairly | BLOCK | Spike-ul vendorului de la 10:05 este tratat ca decisiv, deși erorile au început la 10:03. |
-| Certainty calibrated | BLOCK | "RCA-ul este clar", "confirmă" și "sară peste follow-up" depășesc dovezile. |
-| Framing resisted | BLOCK | Chatbotul adoptă premisa utilizatorului că vendorul a cauzat evident incidentul. |
+| Alternative stated | BLOCK | Cea mai puternică alternativă nu este formulată: toți reviewerii pot fi de acord fiindcă au primit același prompt și același blind spot. |
+| Alternative tested | BLOCK | Nu a fost rulat niciun reviewer adversarial, test runtime sau check de edge case înainte de concluzia de livrare. |
+| Search direction balanced | BLOCK | Procesul cere reviewerilor să confirme readiness, nu să încerce să o falsifice. |
+| Disconfirming evidence included | BLOCK | Edge case-ul netestat este omis din concluzia de readiness. |
+| Ambiguous evidence interpreted fairly | BLOCK | Limbajul similar al reviewerilor este tratat ca validare, dar poate arăta doar priming comun. |
+| Certainty calibrated | BLOCK | "Unanim", "confirmă" și "validată" depășesc dovezile. |
+| Framing resisted | BLOCK | Chatbotul adoptă framingul de confirmare al utilizatorului, în loc să trateze rezultatul consiliului ca un singur semnal. |
 
 EVIDENCE BALANCE
 | Evidence | Classification | Note |
 | --- | --- | --- |
-| Latența vendorului a crescut la 10:05 | AMBIGUOUS | Poate contribui, dar începe după primele erori de checkout. |
-| Deploy-ul intern a început la 10:02 | DISCONFIRMING | Este o potrivire temporală mai puternică pentru erorile de la 10:03. |
-| Rollback-ul de la 10:18 a redus erorile | DISCONFIRMING | Susține investigarea căii deploy-ului intern. |
-| Nu există raport de incident de la vendor | MISSING-TEST | Afirmația de cauză externă nu are sursă independentă de la vendor. |
-| Nu au fost rulate teste de regresie | MISSING-TEST | Concluziile despre release readiness și rollback nu sunt susținute. |
-| Ordinea middleware-ului s-a schimbat înainte de auth checks | DISCONFIRMING | Necesită review semantic și teste înainte ca RCA-ul să atribuie cauza externă. |
+| Cinci revieweri au fost de acord | AMBIGUOUS | Acordul este util, dar nu este independent când toți reviewerii au văzut aceeași încadrare. |
+| Același brief trimis tuturor reviewerilor | DISCONFIRMING | Promptul comun poate produce blind spoturi comune. |
+| Niciun reviewer adversarial | MISSING-TEST | Cea mai puternică variantă opusă nu a fost testată. |
+| Niciun test runtime | MISSING-TEST | Afirmația că munca este gata nu are dovadă de execuție. |
+| Edge case cunoscut netestat | DISCONFIRMING | Readiness nu poate fi tratat ca confirmat cât timp un path de eșec cunoscut rămâne deschis. |
 
 REQUIRED FIXES
-- Elimină afirmația definitivă că vendorul este root cause.
-- Testează alternativa cu deploy-ul intern și schimbarea ordinii middleware-ului.
-- Tratează spike-ul de latență vendor ca ambiguu până există dovezi independente.
-- Nu spune echipei de support să folosească mesaj extern până când root cause este verificat.
-- Rescrie RCA-ul ca timeline de dovezi cu ipoteze deschise și următoarele verificări.</pre>
+- Înlocuiește "confirmat" cu "reviewerii au fost de acord sub același brief."
+- Rulează testul runtime sau end-to-end înainte de livrare.
+- Adaugă un reviewer adversarial sau cere fiecărui reviewer să spună ce ar falsifica readiness.
+- Raportează edge case-ul netestat ca risc deschis.
+- Tratează acordul consiliului ca dovadă de sprijin, nu ca validare finală.</pre>
       </div>
 
       <div class="audit-panel fade-in">
         <h3>Pattern-uri anonimizate din situații reale</h3>
         <ul>
           <li><strong>Dovadă generică tratată ca probă specifică:</strong> un chatbot concluzionează că o arhivă specifică există fiindcă site-ul are o secțiune generică de arhive.</li>
+          <li><strong>Concluzie prematură despre cel mai bun fix:</strong> un agent numește o soluție drept opțiunea cu cel mai mare impact înainte să o măsoare față de alternative.</li>
           <li><strong>Ipoteze business suprapuse:</strong> un plan declară recuperare sub un an combinând economii provizorii cu un cost estimat fără sursă.</li>
-          <li><strong>Confirmare independentă falsă:</strong> cinci revieweri spun că un draft este gata, dar toți au primit același brief și nimeni nu a rulat un test adversarial sau runtime.</li>
           <li><strong>Metrică generalizată excesiv:</strong> un audit raportează un procent dintr-un eșantion mic de fișiere, ignorând variația vizibilă dintre fișiere.</li>
         </ul>
       </div>
