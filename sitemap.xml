@@ -145,6 +145,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://academy.tvl.tech/ro/skills/tvl-build-free-website/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/en/skills/tvl-build-free-website/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://academy.tvl.tech/ro/privacy-policy.html</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>yearly</changefreq>
