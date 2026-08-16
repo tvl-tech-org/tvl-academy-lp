@@ -270,8 +270,47 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(contactSection);
   }
 
+  function initializeTvlChatWidget() {
+    if (document.querySelector('script[data-tvl-chat]')) return;
+
+    let chatLoaded = false;
+    let fallbackTimer = null;
+    const userIntentEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+
+    function removeIntentListeners() {
+      userIntentEvents.forEach(eventName => {
+        window.removeEventListener(eventName, loadChatWidget, { passive: true });
+      });
+    }
+
+    function loadChatWidget() {
+      if (chatLoaded) return;
+      chatLoaded = true;
+      removeIntentListeners();
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+
+      const script = document.createElement('script');
+      script.src = 'https://chat.tvl.tech/tvl-chat.js';
+      script.defer = true;
+      script.setAttribute('data-tvl-chat', '');
+      script.setAttribute('data-endpoint', 'https://chat.tvl.tech');
+      script.setAttribute('data-tenant', 'academy');
+      script.setAttribute('data-accent', '#FF4931');
+      script.setAttribute('data-title', 'TVL Academy');
+      script.setAttribute('data-lang', normalizeLocale(document.documentElement.lang));
+      document.body.appendChild(script);
+    }
+
+    userIntentEvents.forEach(eventName => {
+      window.addEventListener(eventName, loadChatWidget, { once: true, passive: true });
+    });
+
+    fallbackTimer = window.setTimeout(loadChatWidget, 8000);
+  }
+
   initializeCookieConsent();
   initializePipedriveEmbed();
+  initializeTvlChatWidget();
   writeLocalePreference(document.documentElement.lang);
 
   // Copyright dinamic
