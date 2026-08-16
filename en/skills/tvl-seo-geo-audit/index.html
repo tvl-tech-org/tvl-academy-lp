@@ -6,11 +6,11 @@
   <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SEO/GEO Audit Skill for AI Visibility</title>
-  <meta name="description" content="Use tvl-seo-geo-audit to review technical SEO, accessibility, Lighthouse performance, structured data, and AI answer visibility.">
+  <meta name="description" content="Use tvl-seo-geo-audit to review SEO/GEO with Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse, and AI visibility checks.">
   <meta name="author" content="Alexandru Dan, TVL Academy">
 
   <meta property="og:title" content="SEO/GEO Audit Skill for AI Visibility">
-  <meta property="og:description" content="Audit pages for SEO, GEO, accessibility, Lighthouse checks, structured data, and AI answer visibility.">
+  <meta property="og:description" content="Audit pages for SEO, GEO, Core Web Vitals, Bing, WCAG, spam policy, rich results, Lighthouse, and AI answer visibility.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
@@ -24,7 +24,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SEO/GEO Audit Skill for AI Visibility">
-  <meta name="twitter:description" content="Audit pages for SEO, GEO, accessibility, Lighthouse checks, structured data, and AI answer visibility.">
+  <meta name="twitter:description" content="Audit pages for SEO, GEO, Core Web Vitals, Bing, WCAG, spam policy, rich results, Lighthouse, and AI answer visibility.">
   <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
 
   <link rel="canonical" href="https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/">
@@ -41,7 +41,7 @@
         "@type": "WebPage",
         "name": "SEO/GEO Audit Skill for AI Visibility",
         "url": "https://academy.tvl.tech/en/skills/tvl-seo-geo-audit/",
-        "description": "Use tvl-seo-geo-audit to review technical SEO, accessibility, Lighthouse performance, structured data, and AI answer visibility.",
+        "description": "Use tvl-seo-geo-audit to review SEO/GEO with Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse, and AI visibility checks.",
         "inLanguage": "en"
       },
       {
@@ -56,7 +56,7 @@
         "name": "tvl-seo-geo-audit",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
-        "description": "An Agent Skill that audits pages for technical SEO, Lighthouse performance, accessibility, structured data, multilingual SEO, and AI answer visibility.",
+        "description": "An Agent Skill that audits pages for technical SEO, Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse, structured data, multilingual SEO, and AI answer visibility.",
         "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-seo-geo-audit",
         "author": { "@type": "Organization", "name": "TVL Tech" },
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -155,7 +155,7 @@
       <div class="hero-text">
         <div class="hero-label">TVL AI Skills</div>
         <h1><span>SEO/GEO</span> Audit Skill</h1>
-        <p><code>tvl-seo-geo-audit</code> helps an AI agent review a page for search visibility, rendered content, Lighthouse performance, accessibility, structured data, multilingual hygiene, and AI answer readiness. The skill returns evidence, prioritized findings, and clear next steps.</p>
+        <p><code>tvl-seo-geo-audit</code> helps an AI agent review a page for search visibility, rendered content, Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse performance, structured data, multilingual hygiene, and AI answer readiness. The skill returns evidence, prioritized findings, and clear next steps.</p>
         <div class="hero-btns">
           <a href="#install" class="btn-primary">Install the skill</a>
           <a href="../" class="btn-ghost">Back to skills</a>
@@ -209,6 +209,13 @@
             <tr><td>Structured data</td><td>JSON-LD should be valid, relevant and consistent with visible page content.</td></tr>
             <tr><td>Accessibility</td><td>Use semantic HTML, descriptive links, adequate contrast, keyboard-friendly controls and alt text for meaningful images.</td></tr>
             <tr><td>Lighthouse</td><td>When browser tooling is available, run Lighthouse for Performance, Accessibility and SEO. Treat it as lab evidence, not a ranking guarantee or field Core Web Vitals.</td></tr>
+            <tr><td>Core Web Vitals</td><td>Separate Lighthouse lab data from field data. Verify LCP, INP and CLS with CrUX, PageSpeed Insights or Search Console when available.</td></tr>
+            <tr><td>Bing and IndexNow</td><td>Check Bingbot policy, Bing Webmaster Tools evidence and IndexNow setup separately from Google evidence. Do not promise Copilot visibility.</td></tr>
+            <tr><td>WCAG 2.2</td><td>Map accessibility evidence to Perceivable, Operable, Understandable and Robust. Automation does not prove full WCAG conformance.</td></tr>
+            <tr><td>Spam policy</td><td>Flag scaled content abuse, doorway behavior, cloaking, expired-domain abuse and unsupported reputation borrowing when evidence exists.</td></tr>
+            <tr><td>Rich results</td><td>Validate structured data by page type: Article, Product, LocalBusiness, Course, Video, FAQ, Organization and visible-content consistency.</td></tr>
+            <tr><td>Source integrity</td><td>Check whether cited sources are reachable, relevant, fresh and actually support the claim attached to them.</td></tr>
+            <tr><td>Crawler logs</td><td>When logs are available, verify crawler visits by user agent, status, URL and timestamp. Without logs, label this NOT_TESTED.</td></tr>
             <tr><td>AI answer visibility</td><td>Make factual claims easy to extract and cite. Avoid vague marketing copy, hidden content and unmeasured AI visibility promises.</td></tr>
             <tr><td>Measurement</td><td>Define how SEO/GEO impact will be reviewed: Search Console, analytics referrals, index coverage, and dated AI answer checks.</td></tr>
           </tbody>
@@ -236,6 +243,8 @@
           <div class="code-block">Install the skill tvl-seo-geo-audit from danlex/tvl-skills into Claude Code, then list the installed skills to confirm it is available.</div>
           <h3>Browser and Lighthouse prompt</h3>
           <div class="code-block">Use $tvl-seo-geo-audit to audit this page. If browser access is available, compare raw HTML with the rendered DOM and run Lighthouse for Performance, Accessibility, and SEO. Clearly label unavailable checks as NOT_TESTED.</div>
+          <h3>P0/P1 expanded audit prompt</h3>
+          <div class="code-block">Use $tvl-seo-geo-audit to run the expanded SEO/GEO audit. Include Core Web Vitals field data, Bing/IndexNow, WCAG 2.2, Google spam-policy risk, rich-result eligibility by page type, image/video SEO, citation integrity, optional SERP comparison, and crawler-log verification. Label unavailable evidence as NOT_TESTED.</div>
           <h3>Example prompt</h3>
           <div class="code-block">Use $tvl-seo-geo-audit to audit https://academy.tvl.tech/en/skills/ for technical SEO, accessibility, structured data, multilingual hygiene, and AI answer visibility.</div>
         </article>

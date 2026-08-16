@@ -6,11 +6,11 @@
   <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skill SEO/GEO Audit pentru vizibilitate AI</title>
-  <meta name="description" content="Folosește tvl-seo-geo-audit ca să verifici SEO tehnic, accesibilitate, Lighthouse performance, structured data și vizibilitate în răspunsuri AI.">
+  <meta name="description" content="Folosește tvl-seo-geo-audit pentru SEO/GEO cu Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse și vizibilitate AI.">
   <meta name="author" content="Alexandru Dan, TVL Academy">
 
   <meta property="og:title" content="Skill SEO/GEO Audit pentru vizibilitate AI">
-  <meta property="og:description" content="Auditează pagini pentru SEO, GEO, accesibilitate, Lighthouse checks, structured data și vizibilitate în răspunsuri AI.">
+  <meta property="og:description" content="Auditează pagini pentru SEO, GEO, Core Web Vitals, Bing, WCAG, spam policy, rich results, Lighthouse și vizibilitate AI.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/ro/skills/tvl-seo-geo-audit/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
@@ -24,7 +24,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Skill SEO/GEO Audit pentru vizibilitate AI">
-  <meta name="twitter:description" content="Auditează pagini pentru SEO, GEO, accesibilitate, Lighthouse checks, structured data și vizibilitate în răspunsuri AI.">
+  <meta name="twitter:description" content="Auditează pagini pentru SEO, GEO, Core Web Vitals, Bing, WCAG, spam policy, rich results, Lighthouse și vizibilitate AI.">
   <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
 
   <link rel="canonical" href="https://academy.tvl.tech/ro/skills/tvl-seo-geo-audit/">
@@ -41,7 +41,7 @@
         "@type": "WebPage",
         "name": "Skill SEO/GEO Audit pentru vizibilitate AI",
         "url": "https://academy.tvl.tech/ro/skills/tvl-seo-geo-audit/",
-        "description": "Folosește tvl-seo-geo-audit ca să verifici SEO tehnic, accesibilitate, Lighthouse performance, structured data și vizibilitate în răspunsuri AI.",
+        "description": "Folosește tvl-seo-geo-audit pentru SEO/GEO cu Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse și vizibilitate AI.",
         "inLanguage": "ro"
       },
       {
@@ -56,7 +56,7 @@
         "name": "tvl-seo-geo-audit",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
-        "description": "Un Agent Skill care auditează pagini pentru SEO tehnic, Lighthouse performance, accesibilitate, structured data, SEO multilingv și vizibilitate în răspunsuri AI.",
+        "description": "Un Agent Skill care auditează pagini pentru SEO tehnic, Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse, structured data, SEO multilingv și vizibilitate AI.",
         "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-seo-geo-audit",
         "author": { "@type": "Organization", "name": "TVL Tech" },
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -155,7 +155,7 @@
       <div class="hero-text">
         <div class="hero-label">TVL AI Skills</div>
         <h1>Skill <span>SEO/GEO</span> Audit</h1>
-        <p><code>tvl-seo-geo-audit</code> ajută un agent AI să verifice o pagină pentru vizibilitate în search, conținut randat, Lighthouse performance, accesibilitate, structured data, SEO multilingv și pregătire pentru răspunsuri AI. Skill-ul returnează dovezi, priorități și pași clari.</p>
+        <p><code>tvl-seo-geo-audit</code> ajută un agent AI să verifice o pagină pentru vizibilitate în search, conținut randat, Core Web Vitals, Bing/IndexNow, WCAG 2.2, spam policy, rich results, Lighthouse performance, structured data, SEO multilingv și pregătire pentru răspunsuri AI. Skill-ul returnează dovezi, priorități și pași clari.</p>
         <div class="hero-btns">
           <a href="#install" class="btn-primary">Instalează skill-ul</a>
           <a href="../" class="btn-ghost">Înapoi la skills</a>
@@ -209,6 +209,13 @@
             <tr><td>Structured data</td><td>JSON-LD trebuie să fie valid, relevant și aliniat cu textul vizibil din pagină.</td></tr>
             <tr><td>Accesibilitate</td><td>Folosește HTML semantic, linkuri descriptive, contrast adecvat, controale accesibile din tastatură și alt text pentru imaginile cu sens.</td></tr>
             <tr><td>Lighthouse</td><td>Când există browser tooling, rulează Lighthouse pentru Performance, Accessibility și SEO. Tratează rezultatul ca evidență de laborator, nu ca garanție de ranking sau Core Web Vitals de teren.</td></tr>
+            <tr><td>Core Web Vitals</td><td>Separă Lighthouse lab data de field data. Verifică LCP, INP și CLS cu CrUX, PageSpeed Insights sau Search Console când există acces.</td></tr>
+            <tr><td>Bing și IndexNow</td><td>Verifică Bingbot policy, Bing Webmaster Tools și IndexNow separat de dovezile Google. Nu promite vizibilitate în Copilot.</td></tr>
+            <tr><td>WCAG 2.2</td><td>Mapează accesibilitatea pe Perceivable, Operable, Understandable și Robust. Automatizarea nu dovedește conformitate WCAG completă.</td></tr>
+            <tr><td>Spam policy</td><td>Marchează scaled content abuse, doorway behavior, cloaking, expired-domain abuse și reputation borrowing când există dovezi.</td></tr>
+            <tr><td>Rich results</td><td>Validează structured data după tipul paginii: Article, Product, LocalBusiness, Course, Video, FAQ, Organization și consistența cu textul vizibil.</td></tr>
+            <tr><td>Integritatea surselor</td><td>Verifică dacă sursele citate sunt accesibile, relevante, actuale și susțin afirmația de lângă ele.</td></tr>
+            <tr><td>Crawler logs</td><td>Când există loguri, verifică vizitele crawlerelor după user agent, status, URL și timestamp. Fără loguri, marchează NOT_TESTED.</td></tr>
             <tr><td>Vizibilitate în răspunsuri AI</td><td>Afirmațiile factuale trebuie să fie ușor de extras și citat. Evită copy vag, conținut ascuns și promisiuni GEO nemăsurate.</td></tr>
             <tr><td>Măsurare</td><td>Definește cum verifici impactul SEO/GEO: Search Console, referral analytics, index coverage și verificări AI answer datate.</td></tr>
           </tbody>
@@ -236,6 +243,8 @@
           <div class="code-block">Install the skill tvl-seo-geo-audit from danlex/tvl-skills into Claude Code, then list the installed skills to confirm it is available.</div>
           <h3>Prompt pentru browser și Lighthouse</h3>
           <div class="code-block">Use $tvl-seo-geo-audit to audit this page. If browser access is available, compare raw HTML with the rendered DOM and run Lighthouse for Performance, Accessibility, and SEO. Clearly label unavailable checks as NOT_TESTED.</div>
+          <h3>Prompt pentru audit P0/P1 extins</h3>
+          <div class="code-block">Use $tvl-seo-geo-audit to run the expanded SEO/GEO audit. Include Core Web Vitals field data, Bing/IndexNow, WCAG 2.2, Google spam-policy risk, rich-result eligibility by page type, image/video SEO, citation integrity, optional SERP comparison, and crawler-log verification. Label unavailable evidence as NOT_TESTED.</div>
           <h3>Exemplu prompt</h3>
           <div class="code-block">Folosește $tvl-seo-geo-audit ca să auditezi https://academy.tvl.tech/ro/skills/ pentru SEO tehnic, accesibilitate, structured data, SEO multilingv și vizibilitate în răspunsuri AI.</div>
         </article>
