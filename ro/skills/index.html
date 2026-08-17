@@ -60,6 +60,17 @@
     .skills-hero .hero-label,
     .skills-hero .hero-btns { justify-content: center; }
     .skills-hero p { margin-left: auto; margin-right: auto; }
+    /* Centered hero: the homepage red diagonal would sit under the text, so
+       swap it for the tinted background the site already uses on mobile. */
+    .skills-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skills-hero::before,
+    .skills-hero::after { display: none; }
     .section-pad { padding: 84px 0; }
     .section-pad.alt { background: #f7f6f4; }
     .skill-list { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 8px; }
@@ -101,6 +112,27 @@
       color: #1c1c1c;
       border: 1px solid #e6e1db;
     }
+    .install-panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .install-panel h3 { font-size: 17px; color: #1c1c1c; margin: 18px 0 10px; }
+    .install-panel h3:first-child { margin-top: 0; }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
     .note-box {
       background: #fff;
       border: 1px solid #e6e1db;
@@ -158,7 +190,7 @@
       <div class="section-title-center fade-in">
         <span class="red-label">Index skill-uri</span>
         <h2 class="section-h2">Skill-uri disponibile</h2>
-        <p>Indexul rămâne intenționat scurt. Paginile detaliate vor sta sub fiecare skill.</p>
+        <p>Șase skill-uri, fiecare cu pagină dedicată pentru concepte, exemple de prompturi și comenzi de instalare.</p>
       </div>
 
       <div class="skill-list">
@@ -214,10 +246,60 @@
     </div>
   </section>
 
+  <section class="section-pad alt" id="cum-functioneaza">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Cum funcționează</span>
+        <h2 class="section-h2">De la instalare la rezultat structurat</h2>
+        <p>Un skill este un set reutilizabil de instrucțiuni pe care asistentul AI îl încarcă la cerere. Îl instalezi o dată, apoi îl invoci ori de câte ori sarcina se potrivește.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card fade-in">
+          <div class="step-num">1</div>
+          <h3>Instalezi skill-urile</h3>
+          <p>O singură comandă copiază skill-urile din repository-ul public GitHub în instrumentul tău Agent Skills.</p>
+          <div class="step-result">Funcționează în Claude Code, ChatGPT/Codex și instrumente compatibile</div>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-num">2</div>
+          <h3>Invoci un skill</h3>
+          <p>Menționezi skill-ul după nume — de exemplu $tvl-seo-geo-audit — sau descrii sarcina și lași asistentul să aleagă skill-ul potrivit.</p>
+          <div class="step-result">Aceleași instrucțiuni, același comportament, la fiecare rulare</div>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-num">3</div>
+          <h3>Verifici rezultatul</h3>
+          <p>Fiecare skill returnează un format definit: o postare LinkedIn validată, o diagramă Mermaid sau un raport de audit cu verdicte clare.</p>
+          <div class="step-result">Rezultate structurate, pe care le verifici, nu le ghicești</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="instalare">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Instalare rapidă</span>
+        <h2 class="section-h2">Adaugă skill-urile în instrumentele tale</h2>
+        <p>Toate skill-urile stau în repository-ul public TVL Skills și se instalează cu Agent Skills CLI.</p>
+      </div>
+      <div class="install-panel fade-in">
+        <h3>Instalează toate skill-urile TVL</h3>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+        <h3>Instalează un singur skill</h3>
+        <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-seo-geo-audit</div>
+        <h3>Cere lui Claude Code să instaleze unul</h3>
+        <div class="code-block">Instalează skill-ul tvl-write-linkedin-post din danlex/tvl-skills în Claude Code, apoi listează skill-urile instalate pentru a confirma că este disponibil.</div>
+        <h3>Exemplu de prompt</h3>
+        <div class="code-block">Folosește $tvl-seo-geo-audit pentru a audita https://academy.tvl.tech/ro/skills/ pentru SEO tehnic, accesibilitate, structured data, multilingual hygiene și vizibilitate în răspunsuri AI.</div>
+      </div>
+    </div>
+  </section>
+
   <section class="section-pad alt">
     <div class="container">
       <div class="note-box">
-        Fiecare skill are acum o pagină dedicată. Indexul rămâne listă curată, iar exemplele și comenzile de instalare stau pe paginile individuale.
+        Vrei mai multe detalii? Fiecare pagină de skill acoperă conceptele din spatele skill-ului, prompturi gata de folosit și comenzi de instalare per skill.
       </div>
     </div>
   </section>

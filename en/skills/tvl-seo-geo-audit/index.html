@@ -74,6 +74,17 @@
     .skill-hero .hero-label,
     .skill-hero .hero-btns { justify-content: center; }
     .skill-hero p { margin-left: auto; margin-right: auto; }
+    /* Centered hero: the homepage red diagonal would sit under the text, so
+       swap it for the tinted background the site already uses on mobile. */
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
     .section-pad { padding: 84px 0; }
     .section-pad.alt { background: #f7f6f4; }
     .content-grid {
