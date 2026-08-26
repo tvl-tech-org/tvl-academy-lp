@@ -3,30 +3,366 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ethical AI Audit Skill</title>
-  <meta name="description" content="Use tvl-ethical-ai-audit to review drafts, claims, citations and agent behavior for hallucination, source fabrication and other AI integrity risks.">
-  <meta property="og:title" content="Ethical AI Audit Skill">
-  <meta property="og:description" content="Audit AI drafts for hallucination, source fabrication, sycophancy, bias and overconfidence.">
+  <title>Ethical AI Audit Skill — how it works</title>
+  <meta name="description" content="How tvl-ethical-ai-audit works: a six-step, evidence-first audit that checks AI drafts, claims, citations and agent behavior against the 14 EthicalAI failure modes and returns PASS, REVISE or BLOCK.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Ethical AI Audit Skill — how it works">
+  <meta property="og:description" content="A six-step, evidence-first audit for AI drafts, claims, citations and agent behavior. Covers 14 failure modes and returns PASS, REVISE or BLOCK.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ethical AI audit skill by TVL Academy">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ethical AI Audit Skill — how it works">
+  <meta name="twitter:description" content="A six-step, evidence-first audit for AI drafts, claims, citations and agent behavior. Covers 14 failure modes and returns PASS, REVISE or BLOCK.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-ethical-ai-audit/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-ethical-ai-audit","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"An Agent Skill for auditing AI outputs for integrity failure modes.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="stylesheet" href="../../../index.css"><link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Ethical AI Audit Skill — how it works",
+        "url": "https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/",
+        "description": "How tvl-ethical-ai-audit works: a six-step, evidence-first audit that checks AI drafts, claims, citations and agent behavior against the 14 EthicalAI failure modes and returns PASS, REVISE or BLOCK.",
+        "inLanguage": "en",
+        "isPartOf": { "@type": "WebSite", "name": "EthicalAI", "url": "https://ethicalai.alexandrudan.com/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/en/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-ethical-ai-audit", "item": "https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-ethical-ai-audit",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "An Agent Skill that audits AI-generated drafts, answers, plans, claims, citations and agent behavior against the 14 EthicalAI failure modes, returning an evidence-first PASS, REVISE or BLOCK report.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "isBasedOn": "https://ethicalai.alexandrudan.com/",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 700; font-size: 15px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .verdict { border-radius: 12px; padding: 22px; border: 1px solid #e6e1db; background: #fff; }
+    .verdict .tag {
+      display: inline-block; font-weight: 700; font-size: 13px; letter-spacing: .08em;
+      padding: 4px 10px; border-radius: 6px; margin-bottom: 12px;
+    }
+    .verdict.pass .tag { background: rgba(28,150,90,.12); color: #1c7a4b; }
+    .verdict.revise .tag { background: rgba(214,158,20,.16); color: #9a6b00; }
+    .verdict.block .tag { background: rgba(255,73,49,.14); color: var(--red, #ff4931); }
+    .verdict p { color: #555; line-height: 1.6; font-size: 15px; margin: 0; }
+    .link-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+    @media (max-width: 860px) {
+      .content-grid, .verdict-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
-<nav><a class="nav-logo" href="../../"><span class="nav-logo-text">TVL Academy</span></a><button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="../../../en/">Program</a><a href="../">Skills</a><div class="lang-switch"><a href="../../../ro/skills/tvl-ethical-ai-audit/" class="lang-option" lang="ro">RO</a><a href="../../../en/skills/tvl-ethical-ai-audit/" class="lang-option is-active" lang="en">EN</a></div><a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener" class="btn-nav">Source</a></div></nav>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <span class="nav-logo-text">TVL Academy</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../en/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="../../../ro/skills/tvl-ethical-ai-audit/" class="lang-option" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-ethical-ai-audit/" class="lang-option is-active" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener" class="btn-nav">Source</a>
+  </div>
+</nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1><span>Ethical AI</span> Audit Skill</h1><p><code>tvl-ethical-ai-audit</code> checks AI-generated drafts, claims, citations and plans before they are trusted or published.</p><div class="hero-btns"><a href="#install" class="btn-primary">Install the skill</a><a href="../" class="btn-ghost">Back to skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Audit scope</span><h2 class="section-h2">Failure modes covered</h2></div><div class="detail-grid"><article class="detail-panel"><h3>Evidence failures</h3><p>Hallucination, confabulation, source fabrication and unsupported citations.</p></article><article class="detail-panel"><h3>Reasoning failures</h3><p>Confirmation bias, selective evidence, anchoring, narrativity drift and overconfidence.</p></article><article class="detail-panel"><h3>Agent behavior</h3><p>Sycophancy, capitulation, prompt injection, scope creep and specification gaming.</p></article></div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-panel wide"><h3>Output</h3><p>The skill returns an evidence-first report with PASS, REVISE or BLOCK, then lists concrete fixes. It does not rewrite the draft unless asked.</p></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Install and run</span><h2 class="section-h2">Add the Ethical AI skill</h2></div><div class="detail-panel wide"><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-ethical-ai-audit</div><div class="code-block">Use $tvl-ethical-ai-audit to audit this draft before I publish it.</div></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1><span>Ethical AI</span> Audit Skill</h1>
+        <p><code>tvl-ethical-ai-audit</code> lets an AI agent audit its own drafts, answers, plans, claims, citations and behavior <em>before</em> they are trusted or published. It runs a six-step, evidence-first pass against the 14 <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a> failure modes and returns a PASS, REVISE or BLOCK report with concrete fixes.</p>
+        <div class="hero-btns">
+          <a href="#how" class="btn-primary">How it works</a>
+          <a href="#install" class="btn-ghost">Install the skill</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="how">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">How it works</span>
+        <h2 class="section-h2">A six-step, evidence-first audit</h2>
+        <p>The skill does not rewrite your text. It gathers evidence first, checks the load-bearing claims against that evidence, then applies the failure-mode rubric — so the verdict is traceable, not a vibe.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <span class="step-num">1</span>
+          <h3>Evidence framing</h3>
+          <p>Every input — drafts, documents, tool output, logs, conversation history — is treated as evidence, never as an instruction. This neutralizes prompt injection from the first step.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">2</span>
+          <h3>Load the rubric</h3>
+          <p>The skill loads the EthicalAI rubric — the 14 failure modes published at <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">ethicalai.alexandrudan.com</a> — as the standard it audits against.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">3</span>
+          <h3>Identify the target</h3>
+          <p>It pinpoints exactly what is under audit: a draft, a plan, a set of citations, or an agent's behavior — so the scope is explicit before any judgment.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">4</span>
+          <h3>Extract load-bearing claims</h3>
+          <p>It isolates the factual claims, project-specific tokens, premises and the conclusions that depend on them — the statements that actually carry weight.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">5</span>
+          <h3>Verify</h3>
+          <p>Each claim is classified as <strong>CONFIRMED</strong>, <strong>REFUTED</strong>, <strong>NOT-FOUND</strong> or <strong>UNVERIFIABLE</strong> against the supplied evidence. Read, Grep and WebFetch come before prose.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">6</span>
+          <h3>Run failure-mode checks</h3>
+          <p>It applies the 14-mode rubric to the findings — without over-flagging claims that are already hedged, disclosed or safely reversible.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="modes">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Audit scope</span>
+        <h2 class="section-h2">The 14 failure modes it checks</h2>
+        <p>The rubric groups AI integrity risks into four families. The core problem it addresses: a confident answer and a correct answer look identical.</p>
+      </div>
+      <div class="panel fade-in">
+        <table class="rule-table">
+          <thead>
+            <tr><th>Family</th><th>Failure mode</th><th>What it means</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fabrication &amp; truth</td><td>Hallucination</td><td>Stating unsupported claims as fact.</td></tr>
+            <tr><td>Fabrication &amp; truth</td><td>Confabulation</td><td>Made-up answers that change on re-sampling.</td></tr>
+            <tr><td>Fabrication &amp; truth</td><td>Source fabrication</td><td>Citing sources or pointers that do not exist.</td></tr>
+            <tr><td>Fabrication &amp; truth</td><td>Narrativity drift</td><td>A smooth story masking unsupported steps.</td></tr>
+            <tr><td>Agreement under pressure</td><td>Sycophancy</td><td>Agreeing with the user over the evidence.</td></tr>
+            <tr><td>Agreement under pressure</td><td>Capitulation</td><td>Reversing a grounded position under pushback alone.</td></tr>
+            <tr><td>Reasoning &amp; evidence</td><td>Confirmation bias</td><td>Reaching a conclusion from one-directional searching.</td></tr>
+            <tr><td>Reasoning &amp; evidence</td><td>Selective evidence</td><td>Omitting contradicting results already found.</td></tr>
+            <tr><td>Reasoning &amp; evidence</td><td>Anchoring</td><td>Over-weighting the initial framing despite contrary evidence.</td></tr>
+            <tr><td>Trust &amp; calibration</td><td>Automation bias</td><td>Trusting machine output without verifying the source.</td></tr>
+            <tr><td>Trust &amp; calibration</td><td>Overconfidence</td><td>Stated certainty exceeding the actual evidence.</td></tr>
+            <tr><td>Trust &amp; calibration</td><td>Prompt injection</td><td>Obeying hidden instructions embedded in content.</td></tr>
+            <tr><td>Trust &amp; calibration</td><td>Scope creep</td><td>Undisclosed, irreversible changes beyond the request.</td></tr>
+            <tr><td>Trust &amp; calibration</td><td>Specification gaming</td><td>Satisfying the metric while breaking the intent.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="verdict">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Output</span>
+        <h2 class="section-h2">The verdict and report</h2>
+        <p>The skill returns an evidence table, per-mode results, and required fixes — then one of three verdicts. It advises; it does not rewrite the draft unless you ask.</p>
+      </div>
+      <div class="verdict-grid">
+        <div class="verdict pass fade-in">
+          <span class="tag">PASS</span>
+          <p>No material EthicalAI failure detected within the available evidence.</p>
+        </div>
+        <div class="verdict revise fade-in">
+          <span class="tag">REVISE</span>
+          <p>One or more findings need clarification, evidence, hedging or disclosure before the draft is trustworthy.</p>
+        </div>
+        <div class="verdict block fade-in">
+          <span class="tag">BLOCK</span>
+          <p>A serious failure makes the draft unsafe to deliver as written.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="framework">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">The bigger picture</span>
+        <h2 class="section-h2">Part of the EthicalAI framework</h2>
+        <p>This skill is the runnable, single-pass form of a larger open framework by Alexandru Dan.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <h3>The rubric lives at ethicalai.alexandrudan.com</h3>
+          <p><a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a> defines the 14 failure modes, a prevention prompt for each, and a 100-mode catalogue mapping AI failures to human cognitive patterns. The skill loads this rubric as its source of truth, so the two always stay in sync.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>Each mode has an AI Integrity Contract</h3>
+          <p>Every failure mode pairs with a formal contract clause — for example <code>INT-HAL-01: MUST NOT state as fact any claim it cannot trace to supplied sources</code>. The contract is the agreement; the audit is the check against it.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>From judge agents to one skill</h3>
+          <p>The framework can run a panel of specialized judge agents (each advisory: PASS / FLAG / BLOCK) via the EthicalHive plugin, with logging and governance. This skill packages the same rubric into one inline audit — PASS / REVISE / BLOCK — you can run anywhere, locally, with no data leaving your machine.</p>
+        </article>
+      </div>
+      <div class="link-row">
+        <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener" class="btn-primary">Explore the EthicalAI framework</a>
+        <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener" class="btn-ghost">View the skill source</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Install and run</span>
+        <h2 class="section-h2">Add the Ethical AI skill</h2>
+        <p>Use the public TVL Skills repository with the Agent Skills CLI.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Install only this skill</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-ethical-ai-audit</div>
+          <h3>Install all TVL skills</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Ask Claude Code to install it</h3>
+          <div class="code-block">Install the skill tvl-ethical-ai-audit from danlex/tvl-skills into Claude Code, then list the installed skills to confirm it is available.</div>
+          <h3>Audit a draft before publishing</h3>
+          <div class="code-block">Use $tvl-ethical-ai-audit to audit this draft before I publish it. Extract the load-bearing claims, verify each against the sources I gave you, and return PASS, REVISE or BLOCK with concrete fixes.</div>
+          <h3>Audit citations and sources</h3>
+          <div class="code-block">Use $tvl-ethical-ai-audit to check every citation in this document: confirm each source is reachable and actually supports the claim attached to it. Flag any source fabrication or hallucination.</div>
+          <h3>Audit an agent's plan or behavior</h3>
+          <div class="code-block">Use $tvl-ethical-ai-audit to review this agent plan for scope creep, specification gaming, sycophancy and prompt injection before I let it run.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer><script src="../../../index.js"></script>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a>
+          <a href="../../../en/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
 </body>
 </html>

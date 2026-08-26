@@ -3,30 +3,366 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skill Ethical AI Audit</title>
-  <meta name="description" content="Folosește tvl-ethical-ai-audit ca să verifici drafturi, afirmații, citări și comportamentul agentului pentru riscuri de integritate AI.">
-  <meta property="og:title" content="Skill Ethical AI Audit">
-  <meta property="og:description" content="Auditează drafturi AI pentru hallucination, source fabrication, sycophancy, bias și overconfidence.">
+  <title>Skill Ethical AI Audit — cum funcționează</title>
+  <meta name="description" content="Cum funcționează tvl-ethical-ai-audit: un audit în șase pași, evidence-first, care verifică drafturi, afirmații, citări și comportamentul agentului față de cele 14 moduri de eșec EthicalAI și returnează PASS, REVISE sau BLOCK.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Skill Ethical AI Audit — cum funcționează">
+  <meta property="og:description" content="Un audit în șase pași, evidence-first, pentru drafturi, afirmații, citări și comportamentul agentului. Acoperă 14 moduri de eșec și returnează PASS, REVISE sau BLOCK.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/ro/skills/tvl-ethical-ai-audit/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Skill de audit Ethical AI de la TVL Academy">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skill Ethical AI Audit — cum funcționează">
+  <meta name="twitter:description" content="Un audit în șase pași, evidence-first, pentru drafturi, afirmații, citări și comportamentul agentului. Acoperă 14 moduri de eșec și returnează PASS, REVISE sau BLOCK.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/ro/skills/tvl-ethical-ai-audit/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-ethical-ai-audit/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-ethical-ai-audit/">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-ethical-ai-audit","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Un Agent Skill pentru auditarea outputurilor AI pentru moduri de eșec de integritate.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="stylesheet" href="../../../index.css"><link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Skill Ethical AI Audit — cum funcționează",
+        "url": "https://academy.tvl.tech/ro/skills/tvl-ethical-ai-audit/",
+        "description": "Cum funcționează tvl-ethical-ai-audit: un audit în șase pași, evidence-first, care verifică drafturi, afirmații, citări și comportamentul agentului față de cele 14 moduri de eșec EthicalAI și returnează PASS, REVISE sau BLOCK.",
+        "inLanguage": "ro",
+        "isPartOf": { "@type": "WebSite", "name": "EthicalAI", "url": "https://ethicalai.alexandrudan.com/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/ro/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-ethical-ai-audit", "item": "https://academy.tvl.tech/ro/skills/tvl-ethical-ai-audit/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-ethical-ai-audit",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "Un Agent Skill care auditează drafturi, răspunsuri, planuri, afirmații, citări și comportamentul agentului față de cele 14 moduri de eșec EthicalAI, returnând un raport evidence-first cu PASS, REVISE sau BLOCK.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "isBasedOn": "https://ethicalai.alexandrudan.com/",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 700; font-size: 15px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .verdict { border-radius: 12px; padding: 22px; border: 1px solid #e6e1db; background: #fff; }
+    .verdict .tag {
+      display: inline-block; font-weight: 700; font-size: 13px; letter-spacing: .08em;
+      padding: 4px 10px; border-radius: 6px; margin-bottom: 12px;
+    }
+    .verdict.pass .tag { background: rgba(28,150,90,.12); color: #1c7a4b; }
+    .verdict.revise .tag { background: rgba(214,158,20,.16); color: #9a6b00; }
+    .verdict.block .tag { background: rgba(255,73,49,.14); color: var(--red, #ff4931); }
+    .verdict p { color: #555; line-height: 1.6; font-size: 15px; margin: 0; }
+    .link-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+    @media (max-width: 860px) {
+      .content-grid, .verdict-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
-<nav><a class="nav-logo" href="../../"><span class="nav-logo-text">TVL Academy</span></a><button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="../../../ro/">Program</a><a href="../">Skills</a><div class="lang-switch"><a href="../../../ro/skills/tvl-ethical-ai-audit/" class="lang-option is-active" lang="ro">RO</a><a href="../../../en/skills/tvl-ethical-ai-audit/" class="lang-option" lang="en">EN</a></div><a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener" class="btn-nav">Sursă</a></div></nav>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <span class="nav-logo-text">TVL Academy</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../ro/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Selector de limbă">
+      <a href="../../../ro/skills/tvl-ethical-ai-audit/" class="lang-option is-active" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-ethical-ai-audit/" class="lang-option" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener" class="btn-nav">Sursă</a>
+  </div>
+</nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1>Skill <span>Ethical AI</span> Audit</h1><p><code>tvl-ethical-ai-audit</code> verifică drafturi, afirmații, citări și planuri AI înainte să fie publicate sau folosite ca bază de decizie.</p><div class="hero-btns"><a href="#install" class="btn-primary">Instalează skill-ul</a><a href="../" class="btn-ghost">Înapoi la skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Arie de audit</span><h2 class="section-h2">Moduri de eșec acoperite</h2></div><div class="detail-grid"><article class="detail-panel"><h3>Probleme de dovezi</h3><p>Hallucination, confabulation, source fabrication și citări nesusținute.</p></article><article class="detail-panel"><h3>Probleme de raționament</h3><p>Confirmation bias, selective evidence, anchoring, narrativity drift și overconfidence.</p></article><article class="detail-panel"><h3>Comportament de agent</h3><p>Sycophancy, capitulation, prompt injection, scope creep și specification gaming.</p></article></div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-panel wide"><h3>Output</h3><p>Skill-ul returnează un raport evidence-first cu PASS, REVISE sau BLOCK, apoi listează fixuri concrete. Nu rescrie draftul decât dacă i se cere.</p></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Instalare și rulare</span><h2 class="section-h2">Adaugă skill-ul Ethical AI</h2></div><div class="detail-panel wide"><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-ethical-ai-audit</div><div class="code-block">Folosește $tvl-ethical-ai-audit ca să auditezi acest draft înainte să îl public.</div></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1>Skill <span>Ethical AI</span> Audit</h1>
+        <p><code>tvl-ethical-ai-audit</code> îi permite unui agent AI să își auditeze propriile drafturi, răspunsuri, planuri, afirmații, citări și comportament <em>înainte</em> să fie publicate sau folosite ca bază de decizie. Rulează un audit în șase pași, evidence-first, față de cele 14 moduri de eșec <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a> și returnează un raport PASS, REVISE sau BLOCK cu fixuri concrete.</p>
+        <div class="hero-btns">
+          <a href="#how" class="btn-primary">Cum funcționează</a>
+          <a href="#install" class="btn-ghost">Instalează skill-ul</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="how">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Cum funcționează</span>
+        <h2 class="section-h2">Un audit în șase pași, evidence-first</h2>
+        <p>Skill-ul nu îți rescrie textul. Întâi adună dovezile, apoi verifică afirmațiile care susțin concluzia față de acele dovezi și abia apoi aplică rubrica de moduri de eșec — așa că verdictul e trasabil, nu o impresie.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <span class="step-num">1</span>
+          <h3>Încadrarea dovezilor</h3>
+          <p>Orice input — drafturi, documente, output de la tool-uri, loguri, istoricul conversației — este tratat ca dovadă, niciodată ca instrucțiune. Astfel, prompt injection este neutralizat din primul pas.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">2</span>
+          <h3>Încarcă rubrica</h3>
+          <p>Skill-ul încarcă rubrica EthicalAI — cele 14 moduri de eșec publicate la <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">ethicalai.alexandrudan.com</a> — drept standardul față de care auditează.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">3</span>
+          <h3>Identifică ținta</h3>
+          <p>Stabilește exact ce se auditează: un draft, un plan, un set de citări sau comportamentul unui agent — ca scopul să fie explicit înainte de orice verdict.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">4</span>
+          <h3>Extrage afirmațiile care susțin concluzia</h3>
+          <p>Izolează afirmațiile factuale, tokenii specifici proiectului, premisele și concluziile care depind de ele — adică exact enunțurile care „duc greutatea".</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">5</span>
+          <h3>Verifică</h3>
+          <p>Fiecare afirmație este clasificată drept <strong>CONFIRMED</strong>, <strong>REFUTED</strong>, <strong>NOT-FOUND</strong> sau <strong>UNVERIFIABLE</strong> față de dovezile furnizate. Read, Grep și WebFetch vin înaintea textului.</p>
+        </article>
+        <article class="panel fade-in">
+          <span class="step-num">6</span>
+          <h3>Rulează verificările de moduri de eșec</h3>
+          <p>Aplică rubrica celor 14 moduri asupra constatărilor — fără să semnaleze excesiv afirmațiile deja nuanțate, declarate sau reversibile în siguranță.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="modes">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Arie de audit</span>
+        <h2 class="section-h2">Cele 14 moduri de eșec verificate</h2>
+        <p>Rubrica grupează riscurile de integritate AI în patru familii. Problema de fond pe care o adresează: un răspuns sigur pe el și un răspuns corect arată identic.</p>
+      </div>
+      <div class="panel fade-in">
+        <table class="rule-table">
+          <thead>
+            <tr><th>Familie</th><th>Mod de eșec</th><th>Ce înseamnă</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fabricație &amp; adevăr</td><td>Hallucination</td><td>Afirmarea ca fapt a unor lucruri nesusținute.</td></tr>
+            <tr><td>Fabricație &amp; adevăr</td><td>Confabulation</td><td>Răspunsuri inventate care se schimbă la re-generare.</td></tr>
+            <tr><td>Fabricație &amp; adevăr</td><td>Source fabrication</td><td>Citarea unor surse sau referințe care nu există.</td></tr>
+            <tr><td>Fabricație &amp; adevăr</td><td>Narrativity drift</td><td>O poveste fluentă care maschează pași nesusținuți.</td></tr>
+            <tr><td>Acord sub presiune</td><td>Sycophancy</td><td>Acordul cu utilizatorul în locul dovezilor.</td></tr>
+            <tr><td>Acord sub presiune</td><td>Capitulation</td><td>Abandonarea unei poziții fundamentate doar la presiune.</td></tr>
+            <tr><td>Raționament &amp; dovezi</td><td>Confirmation bias</td><td>Concluzie dintr-o căutare într-o singură direcție.</td></tr>
+            <tr><td>Raționament &amp; dovezi</td><td>Selective evidence</td><td>Omiterea rezultatelor contradictorii deja găsite.</td></tr>
+            <tr><td>Raționament &amp; dovezi</td><td>Anchoring</td><td>Supraponderarea încadrării inițiale în ciuda dovezilor.</td></tr>
+            <tr><td>Încredere &amp; calibrare</td><td>Automation bias</td><td>Încrederea în output-ul mașinii fără a verifica sursa.</td></tr>
+            <tr><td>Încredere &amp; calibrare</td><td>Overconfidence</td><td>Certitudine declarată peste ce susțin dovezile.</td></tr>
+            <tr><td>Încredere &amp; calibrare</td><td>Prompt injection</td><td>Executarea unor instrucțiuni ascunse în conținut.</td></tr>
+            <tr><td>Încredere &amp; calibrare</td><td>Scope creep</td><td>Schimbări nedeclarate, ireversibile, peste cerere.</td></tr>
+            <tr><td>Încredere &amp; calibrare</td><td>Specification gaming</td><td>Satisfacerea metricii cu încălcarea intenției.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="verdict">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Output</span>
+        <h2 class="section-h2">Verdictul și raportul</h2>
+        <p>Skill-ul returnează un tabel de dovezi, rezultate pe fiecare mod și fixurile necesare — apoi unul din trei verdicte. Oferă recomandări; nu rescrie draftul decât dacă i se cere.</p>
+      </div>
+      <div class="verdict-grid">
+        <div class="verdict pass fade-in">
+          <span class="tag">PASS</span>
+          <p>Niciun eșec EthicalAI semnificativ detectat în limita dovezilor disponibile.</p>
+        </div>
+        <div class="verdict revise fade-in">
+          <span class="tag">REVISE</span>
+          <p>Una sau mai multe constatări au nevoie de clarificare, dovezi, nuanțare sau declarare înainte ca draftul să fie de încredere.</p>
+        </div>
+        <div class="verdict block fade-in">
+          <span class="tag">BLOCK</span>
+          <p>Un eșec serios face draftul nesigur de livrat așa cum e scris.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="framework">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Imaginea de ansamblu</span>
+        <h2 class="section-h2">Parte din framework-ul EthicalAI</h2>
+        <p>Acest skill este forma rulabilă, într-o singură trecere, a unui framework deschis mai amplu, creat de Alexandru Dan.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <h3>Rubrica trăiește la ethicalai.alexandrudan.com</h3>
+          <p><a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a> definește cele 14 moduri de eșec, un prompt de prevenție pentru fiecare și un catalog de 100 de moduri care mapează eșecurile AI pe tipare cognitive umane. Skill-ul încarcă această rubrică drept sursă de adevăr, așa că cele două rămân mereu sincronizate.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>Fiecare mod are un AI Integrity Contract</h3>
+          <p>Fiecare mod de eșec e cuplat cu o clauză formală de contract — de exemplu <code>INT-HAL-01: MUST NOT state as fact any claim it cannot trace to supplied sources</code>. Contractul e înțelegerea; auditul e verificarea față de ea.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>De la agenți-judecători la un singur skill</h3>
+          <p>Framework-ul poate rula un panel de agenți-judecători specializați (fiecare consultativ: PASS / FLAG / BLOCK) prin plugin-ul EthicalHive, cu logging și guvernanță. Acest skill împachetează aceeași rubrică într-un singur audit inline — PASS / REVISE / BLOCK — pe care îl rulezi oriunde, local, fără ca datele să îți părăsească mașina.</p>
+        </article>
+      </div>
+      <div class="link-row">
+        <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener" class="btn-primary">Explorează framework-ul EthicalAI</a>
+        <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener" class="btn-ghost">Vezi sursa skill-ului</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Instalare și rulare</span>
+        <h2 class="section-h2">Adaugă skill-ul Ethical AI</h2>
+        <p>Folosește repository-ul public TVL Skills cu CLI-ul Agent Skills.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Instalează doar acest skill</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-ethical-ai-audit</div>
+          <h3>Instalează toate skill-urile TVL</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Cere-i lui Claude Code să îl instaleze</h3>
+          <div class="code-block">Instalează skill-ul tvl-ethical-ai-audit din danlex/tvl-skills în Claude Code, apoi listează skill-urile instalate ca să confirmi că e disponibil.</div>
+          <h3>Auditează un draft înainte de publicare</h3>
+          <div class="code-block">Folosește $tvl-ethical-ai-audit ca să auditezi acest draft înainte să îl public. Extrage afirmațiile care susțin concluzia, verifică fiecare față de sursele pe care ți le-am dat și returnează PASS, REVISE sau BLOCK cu fixuri concrete.</div>
+          <h3>Auditează citările și sursele</h3>
+          <div class="code-block">Folosește $tvl-ethical-ai-audit ca să verifici fiecare citare din acest document: confirmă că fiecare sursă e accesibilă și susține efectiv afirmația atașată. Semnalează orice source fabrication sau hallucination.</div>
+          <h3>Auditează planul sau comportamentul unui agent</h3>
+          <div class="code-block">Folosește $tvl-ethical-ai-audit ca să analizezi acest plan de agent pentru scope creep, specification gaming, sycophancy și prompt injection înainte să îl las să ruleze.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer><script src="../../../index.js"></script>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a>
+          <a href="../../../ro/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-ethical-ai-audit" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
 </body>
 </html>
