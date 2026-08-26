@@ -3,24 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skill Confirmation Bias Audit</title>
-  <meta name="description" content="Folosește tvl-confirmation-bias-audit ca să verifici concluzii pentru dovezi unilaterale, alternative lipsă și lipsă de falsificare.">
-  <meta property="og:title" content="Skill Confirmation Bias Audit">
-  <meta property="og:description" content="Auditează concluzii pentru dovezi unilaterale, alternative lipsă și lipsă de falsificare.">
+  <title>Skill de audit pentru confirmation bias — metodă și reguli</title>
+  <meta name="description" content="Cum funcționează tvl-confirmation-bias-audit: o metodă falsification-first care numește cea mai puternică alternativă, construiește un tabel de echilibru al dovezilor, rulează șapte verificări și returnează PASS, REVISE sau BLOCK.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Skill de audit pentru confirmation bias — metodă și reguli">
+  <meta property="og:description" content="Un audit falsification-first: numește alternativa, clasifică dovezile, rulează șapte verificări, returnează PASS, REVISE sau BLOCK.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/ro/skills/tvl-confirmation-bias-audit/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Skill de audit pentru confirmation bias de la TVL Academy">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skill de audit pentru confirmation bias — metodă și reguli">
+  <meta name="twitter:description" content="Un audit falsification-first: numește alternativa, clasifică dovezile, rulează șapte verificări, returnează PASS, REVISE sau BLOCK.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/ro/skills/tvl-confirmation-bias-audit/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-confirmation-bias-audit/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-confirmation-bias-audit","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Un Agent Skill pentru auditarea concluziilor pentru confirmation bias.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="stylesheet" href="../../../index.css"><link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Skill de audit pentru confirmation bias — metodă și reguli",
+        "url": "https://academy.tvl.tech/ro/skills/tvl-confirmation-bias-audit/",
+        "description": "Cum funcționează tvl-confirmation-bias-audit: o metodă falsification-first care numește cea mai puternică alternativă, construiește un tabel de echilibru al dovezilor, rulează șapte verificări și returnează PASS, REVISE sau BLOCK.",
+        "inLanguage": "ro"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/ro/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-confirmation-bias-audit", "item": "https://academy.tvl.tech/ro/skills/tvl-confirmation-bias-audit/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-confirmation-bias-audit",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "Un Agent Skill care auditează dacă o concluzie a fost atinsă căutând mai ales dovezi care o confirmă, folosind o metodă falsification-first și returnând PASS, REVISE sau BLOCK.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 10px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 16px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre;
+    }
+    .code-block.cmd { white-space: pre-wrap; }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .evi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+    .evi { border: 1px solid #e6e1db; border-radius: 12px; padding: 20px; background: #fff; }
+    .evi .tag { display: inline-block; font-family: "SFMono-Regular", ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 9px; border-radius: 6px; margin-bottom: 10px; }
+    .evi.s .tag { background: rgba(28,150,90,.12); color: #1c7a4b; }
+    .evi.d .tag { background: rgba(255,73,49,.14); color: var(--red, #ff4931); }
+    .evi.m .tag { background: rgba(214,158,20,.16); color: #9a6b00; }
+    .evi.a .tag { background: #eeeae5; color: #555; }
+    .evi p { color: #555; font-size: 14.5px; line-height: 1.55; margin: 0; }
+    .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .verdict { border-radius: 12px; padding: 22px; border: 1px solid #e6e1db; background: #fff; }
+    .verdict .tag { display: inline-block; font-weight: 700; font-size: 13px; letter-spacing: .08em; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; }
+    .verdict.pass .tag { background: rgba(28,150,90,.12); color: #1c7a4b; }
+    .verdict.revise .tag { background: rgba(214,158,20,.16); color: #9a6b00; }
+    .verdict.block .tag { background: rgba(255,73,49,.14); color: var(--red, #ff4931); }
+    .verdict p { color: #555; line-height: 1.6; font-size: 15px; margin: 0; }
+    .callout { border-left: 4px solid var(--red, #ff4931); background: #fff; border-radius: 0 12px 12px 0; padding: 22px 24px; margin-top: 22px; }
+    .callout h3 { margin: 0 0 8px; font-size: 18px; color: #1c1c1c; }
+    .callout p { margin: 0; color: #555; line-height: 1.65; font-size: 15px; }
+    @media (max-width: 860px) {
+      .content-grid, .verdict-grid, .evi-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
-<nav><a class="nav-logo" href="../../"><svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
       <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
       <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -30,14 +173,196 @@
       <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
       <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
     </svg>
-    <span class="nav-logo-text">ACADEMY</span></a><button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="../../../ro/">Program</a><a href="../">Skills</a><div class="lang-switch"><a href="../../../ro/skills/tvl-confirmation-bias-audit/" class="lang-option is-active" lang="ro">RO</a><a href="../../../en/skills/tvl-confirmation-bias-audit/" class="lang-option" lang="en">EN</a></div><a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit" target="_blank" rel="noopener" class="btn-nav">Sursă</a></div></nav>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../ro/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Selector de limbă">
+      <a href="../../../ro/skills/tvl-confirmation-bias-audit/" class="lang-option is-active" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-confirmation-bias-audit/" class="lang-option" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit" target="_blank" rel="noopener" class="btn-nav">Sursă</a>
+  </div>
+</nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1>Skill <span>Confirmation Bias</span> Audit</h1><p><code>tvl-confirmation-bias-audit</code> verifică dacă o concluzie a fost atinsă prin căutarea dovezilor care confirmă ipoteza inițială.</p><div class="hero-btns"><a href="#install" class="btn-primary">Instalează skill-ul</a><a href="../" class="btn-ghost">Înapoi la skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Metodă</span><h2 class="section-h2">Falsificare înainte de concluzie</h2></div><div class="detail-grid"><article class="detail-panel"><h3>Alternativa este formulată</h3><p>Numește cea mai puternică alternativă plauzibilă înainte să accepte concluzia.</p></article><article class="detail-panel"><h3>Alternativa este testată</h3><p>Verifică dacă au fost căutate dovezi contrare sau teste de falsificare.</p></article><article class="detail-panel"><h3>Certitudinea este calibrată</h3><p>Semnalează afirmațiile puternice când dovezile susțin doar o ipoteză.</p></article></div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-panel wide"><h3>Cazuri comune</h3><ul><li>RCA și incident triage.</li><li>Răspunsuri chatbot care validează framingul utilizatorului.</li><li>Code review cu afirmații precum "safe", "unused" sau "no vulnerability".</li><li>Recomandări business bazate pe dovezi înguste sau unilaterale.</li></ul></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Instalare și rulare</span><h2 class="section-h2">Adaugă skill-ul confirmation bias</h2></div><div class="detail-panel wide"><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-confirmation-bias-audit</div><div class="code-block">Folosește $tvl-confirmation-bias-audit ca să auditezi acest RCA pentru dovezi unilaterale și alternative lipsă.</div></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1>Skill de audit pentru <span>confirmation bias</span></h1>
+        <p><code>tvl-confirmation-bias-audit</code> verifică un singur lucru, bine: a fost concluzia atinsă căutând mai ales dovezi care confirmă o ipoteză inițială? Numește cea mai puternică alternativă, clasifică dovezile pro și contra și returnează <strong>PASS</strong>, <strong>REVISE</strong> sau <strong>BLOCK</strong>.</p>
+        <div class="hero-btns">
+          <a href="#patterns" class="btn-primary">Ce prinde</a>
+          <a href="#install" class="btn-ghost">Instalează skill-ul</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="patterns">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ce prinde</span>
+        <h2 class="section-h2">Șapte feluri în care o concluzie devine unilaterală</h2>
+        <p>Confirmation bias nu înseamnă să greșești — înseamnă doar să fi căutat într-o singură direcție. Acestea sunt tiparele pe care le vânează auditul.</p>
+      </div>
+      <div class="panel fade-in">
+        <table class="rule-table">
+          <thead><tr><th>Tipar</th><th>Ce înseamnă</th></tr></thead>
+          <tbody>
+            <tr><td>Căutare unilaterală</td><td>Dovezile adunate arată doar într-o direcție; căutarea nu a privit niciodată în sens opus.</td></tr>
+            <tr><td>Dovezi contrare necăutate</td><td>Dovezile contrare erau cunoscibile, dar nu au fost testate.</td></tr>
+            <tr><td>Certitudine nealiniată</td><td>Încrederea în afirmație depășește ce susțin de fapt dovezile.</td></tr>
+            <tr><td>Cherry-picking</td><td>Dovezile contrare erau disponibile, dar au fost omise din concluzie.</td></tr>
+            <tr><td>Alternative netestate</td><td>Ipoteze rivale numite, dar niciodată verificate efectiv.</td></tr>
+            <tr><td>Interpretare părtinitoare</td><td>Dovezile ambigue au fost citite favorabil pentru concluzia preferată.</td></tr>
+            <tr><td>Încadrare acceptată necritic</td><td>O premisă a utilizatorului, un titlu de PR sau un ancoraj din metadate nu au fost puse la îndoială.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout fade-in">
+        <h3>Confirmation bias vs selective evidence</h3>
+        <p>Skill-ul le ține separate: <strong>confirmation bias</strong> înseamnă că doar căutarea a mers într-o direcție; <strong>selective evidence</strong> înseamnă că dovezile contrare <em>au fost</em> găsite și apoi lăsate deoparte deliberat. Eșec diferit, remediu diferit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="method">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Metoda</span>
+        <h2 class="section-h2">Falsification first</h2>
+        <p>În loc să întrebe „există sprijin pentru asta?", auditul întreabă „ce ar dovedi că e greșit și a fost verificat?". Șase pași.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Identifică concluzia</h3><p>Fixează afirmația exactă auditată — „cache-ul e bottleneck-ul", „acest cod e sigur".</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Extrage ipoteza și ancora</h3><p>Ce și-a propus draftul să demonstreze și ce premisă a utilizatorului sau titlu de PR l-a ancorat?</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Numește cea mai puternică alternativă</h3><p>Enunță cea mai bună explicație rivală înainte să accepți concluzia.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Construiește tabelul de falsificare</h3><p>Clasifică fiecare dovadă după cum susține, slăbește, lipsește sau e ambiguă.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Rulează verificările</h3><p>Șapte verificări da/nu pe alternative, echilibrul căutării, dovezile contrare, interpretare, certitudine și încadrare.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>Returnează raportul</h3><p>Un verdict concis cu echilibrul dovezilor și fixurile necesare.</p></article>
+      </div>
+
+      <div class="section-title-center fade-in" style="margin-top:48px;">
+        <h2 class="section-h2" style="font-size:24px;">Tabelul de falsificare</h2>
+        <p>Fiecare dovadă cade într-una din patru categorii.</p>
+      </div>
+      <div class="evi-grid fade-in">
+        <div class="evi s"><span class="tag">SUPPORTING</span><p>Confirmă concluzia.</p></div>
+        <div class="evi d"><span class="tag">DISCONFIRMING</span><p>O slăbește sau o contrazice.</p></div>
+        <div class="evi m"><span class="tag">MISSING-TEST</span><p>Dovezi contrare care nu au fost verificate.</p></div>
+        <div class="evi a"><span class="tag">AMBIGUOUS</span><p>Susțin mai multe explicații.</p></div>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>Cele șapte verificări</h3>
+          <ul>
+            <li>Este enunțată ipoteza alternativă?</li>
+            <li>Este ipoteza alternativă chiar testată?</li>
+            <li>Este direcția căutării echilibrată, nu unilaterală?</li>
+            <li>Sunt incluse dovezile contrare?</li>
+            <li>Sunt dovezile ambigue interpretate corect?</li>
+            <li>Este certitudinea declarată aliniată cu dovezile?</li>
+            <li>A fost pusă la îndoială încadrarea utilizatorului sau din metadate?</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="output">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Output</span>
+        <h2 class="section-h2">Raportul și verdictul</h2>
+        <p>Auditul returnează o structură fixă, ușor de scanat — verdictul întâi, apoi dovezile, apoi fixurile.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <div class="code-block">CONFIRMATION BIAS AUDIT
+VERDICT: [PASS | REVISE | BLOCK]
+CONCLUSION UNDER AUDIT: [afirmația testată]
+FALSIFICATION CHECK:  [tabel de verificări cu rezultate]
+EVIDENCE BALANCE:     [tabel de clasificare a dovezilor]
+REQUIRED FIXES:       [schimbări acționabile dacă verdictul nu e PASS]</div>
+        </article>
+      </div>
+      <div class="verdict-grid">
+        <div class="verdict pass fade-in"><span class="tag">PASS</span><p>Enunță și testează alternative plauzibile, raportează dovezile contrare și aliniază certitudinea cu dovezile.</p></div>
+        <div class="verdict revise fade-in"><span class="tag">REVISE</span><p>Concluzia poate fi plauzibilă, dar are nevoie de nuanțare, alternative, o căutare mai largă sau declararea testelor lipsă.</p></div>
+        <div class="verdict block fade-in"><span class="tag">BLOCK</span><p>O concluzie cu impact mare sau ireversibilă, prezentată ignorând dovezile contrare sau sărind verificări evidente de falsificare.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="usecases">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Unde își merită locul</span>
+        <h2 class="section-h2">Cazuri de folosire</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>Root-cause analysis</h3><p>Analizează RCA-uri și rapoarte de incident pentru alternative netestate înainte de a comite un fix.</p></article>
+        <article class="panel fade-in"><h3>Sfaturi de chatbot</h3><p>Prinde răspunsurile AI care doar validează încadrarea utilizatorului în loc să o testeze.</p></article>
+        <article class="panel fade-in"><h3>Code review</h3><p>Testează concluzii precum „safe", „unused" sau „no vulnerability" înclinate spre „schimbarea e ok".</p></article>
+        <article class="panel fade-in"><h3>Recomandări de business</h3><p>Verifică deciziile construite pe dovezi înguste sau unilaterale înainte să plece mai departe.</p></article>
+        <article class="panel fade-in"><h3>Rezumate de cercetare</h3><p>Testează dacă un rezumat a cântărit contra-dovezile sau doar sursele care erau de acord.</p></article>
+        <article class="panel fade-in"><h3>Decizii pre-deployment</h3><p>Validează deciziile cu impact mare, unde o concluzie nefalsificată e scumpă de întors.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ce e sub capotă</span>
+        <h2 class="section-h2">Ce vine cu skill-ul</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/confirmation-bias-rubric.md</h3><p>Criteriile de evaluare din spatele celor șapte verificări.</p></article>
+        <article class="panel fade-in"><h3>references/chatbot-evaluation-cases.md</h3><p>Exemple și cazuri de test specifice chatbot-urilor pentru raționament unilateral.</p></article>
+        <article class="panel fade-in"><h3>Înrudit</h3><p>Parte din aceeași familie de integritate ca <a href="../tvl-ethical-ai-audit/"><code>tvl-ethical-ai-audit</code></a>, concentrat pe un singur mod de eșec.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Instalare și rulare</span>
+        <h2 class="section-h2">Adaugă skill-ul de confirmation bias</h2>
+        <p>Folosește repository-ul public TVL Skills cu CLI-ul Agent Skills.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Instalează doar acest skill</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-confirmation-bias-audit</div>
+          <h3>Instalează toate skill-urile TVL</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Auditează o analiză de cauză</h3>
+          <div class="code-block cmd">Folosește $tvl-confirmation-bias-audit ca să auditezi acest RCA pentru dovezi unilaterale și alternative lipsă. Numește cea mai puternică explicație rivală și spune-mi dacă a fost testată.</div>
+          <h3>Auditează o concluzie de code review</h3>
+          <div class="code-block cmd">Folosește $tvl-confirmation-bias-audit ca să verifici concluzia „no vulnerability" din acest review. Construiește tabelul de echilibru al dovezilor și returnează PASS, REVISE sau BLOCK.</div>
+          <h3>Auditează sfaturi de chatbot</h3>
+          <div class="code-block cmd">Folosește $tvl-confirmation-bias-audit ca să testezi dacă acest asistent a acceptat necritic încadrarea utilizatorului sau a căutat efectiv în ambele direcții.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
           <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
           <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -47,6 +372,21 @@
           <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
           <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
         </svg>
-        <span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer><script src="../../../index.js"></script>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../ro/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
 </body>
 </html>
