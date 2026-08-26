@@ -3,24 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skill pentru design de diagrame</title>
-  <meta name="description" content="Folosește tvl-design-diagram ca să transformi sisteme, workflow-uri și decizii în diagrame Mermaid clare, cu verificare Ethical AI.">
-  <meta property="og:title" content="Skill pentru design de diagrame">
-  <meta property="og:description" content="Transformă workflow-uri și sisteme în diagrame Mermaid clare.">
+  <title>Skill pentru diagrame — template-uri și reguli Mermaid</title>
+  <meta name="description" content="Cum funcționează tvl-design-diagram: trei template-uri (system map, workflow, decision flow), convențiile Mermaid flowchart, un proces în șapte pași și o verificare Ethical AI care ancorează fiecare nod și muchie în sursă înainte de PASS, FLAG sau BLOCK.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Skill pentru diagrame — template-uri și reguli Mermaid">
+  <meta property="og:description" content="Trei template-uri, convențiile Mermaid flowchart, un proces în șapte pași și o verificare Ethical AI care ancorează fiecare nod și muchie în sursă.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/ro/skills/tvl-design-diagram/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Skill pentru diagrame de la TVL Academy">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skill pentru diagrame — template-uri și reguli Mermaid">
+  <meta name="twitter:description" content="Trei template-uri, convențiile Mermaid flowchart, un proces în șapte pași și o verificare Ethical AI care ancorează fiecare nod și muchie în sursă.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/ro/skills/tvl-design-diagram/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-design-diagram/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-design-diagram/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-design-diagram/">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-design-diagram","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Un Agent Skill pentru design de diagrame Mermaid din sisteme și workflow-uri brute.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="stylesheet" href="../../../index.css"><link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Skill pentru diagrame — template-uri și reguli Mermaid",
+        "url": "https://academy.tvl.tech/ro/skills/tvl-design-diagram/",
+        "description": "Cum funcționează tvl-design-diagram: trei template-uri, convențiile Mermaid flowchart, un proces în șapte pași și o verificare Ethical AI care ancorează fiecare nod și muchie în sursă.",
+        "inLanguage": "ro"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/ro/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-design-diagram", "item": "https://academy.tvl.tech/ro/skills/tvl-design-diagram/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-design-diagram",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "Un Agent Skill care transformă note, sisteme și procese în diagrame Mermaid flowchart clare, cu o verificare Ethical AI care ancorează fiecare nod și muchie în sursă.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 16px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin: 12px 0 0;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre;
+    }
+    .code-block.cmd { white-space: pre-wrap; margin: 0 0 12px; }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .verdict { border-radius: 12px; padding: 22px; border: 1px solid #e6e1db; background: #fff; }
+    .verdict .tag {
+      display: inline-block; font-weight: 700; font-size: 13px; letter-spacing: .08em;
+      padding: 4px 10px; border-radius: 6px; margin-bottom: 12px;
+    }
+    .verdict.pass .tag { background: rgba(28,150,90,.12); color: #1c7a4b; }
+    .verdict.flag .tag { background: rgba(214,158,20,.16); color: #9a6b00; }
+    .verdict.block .tag { background: rgba(255,73,49,.14); color: var(--red, #ff4931); }
+    .verdict p { color: #555; line-height: 1.6; font-size: 15px; margin: 0; }
+    @media (max-width: 860px) {
+      .content-grid, .verdict-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
-<nav><a class="nav-logo" href="../../"><svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
       <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
       <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -30,14 +165,192 @@
       <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
       <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
     </svg>
-    <span class="nav-logo-text">ACADEMY</span></a><button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="../../../ro/">Program</a><a href="../">Skills</a><div class="lang-switch"><a href="../../../ro/skills/tvl-design-diagram/" class="lang-option is-active" lang="ro">RO</a><a href="../../../en/skills/tvl-design-diagram/" class="lang-option" lang="en">EN</a></div><a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram" target="_blank" rel="noopener" class="btn-nav">Sursă</a></div></nav>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../ro/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Selector de limbă">
+      <a href="../../../ro/skills/tvl-design-diagram/" class="lang-option is-active" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-design-diagram/" class="lang-option" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram" target="_blank" rel="noopener" class="btn-nav">Sursă</a>
+  </div>
+</nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1>Skill pentru <span>diagrame</span></h1><p><code>tvl-design-diagram</code> transformă note, arhitecturi și procese în diagrame Mermaid ușor de citit.</p><div class="hero-btns"><a href="#install" class="btn-primary">Instalează skill-ul</a><a href="../" class="btn-ghost">Înapoi la skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Template-uri</span><h2 class="section-h2">Trei moduri de diagramă</h2></div><div class="detail-grid"><article class="detail-panel"><h3>System map</h3><p>Actori, componente, date, integrări și outputuri.</p></article><article class="detail-panel"><h3>Workflow</h3><p>Pași ordonați, handoffuri, bucle de review și rezultate finale.</p></article><article class="detail-panel"><h3>Decision flow</h3><p>Porți de validare, ramuri și rezultate PASS/FLAG/BLOCK.</p></article></div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-panel wide"><h3>Verificare de calitate</h3><ul><li>Alege cel mai simplu tip de diagramă potrivit taskului.</li><li>Marchează muchiile incerte în loc să inventeze fluxul.</li><li>Rulează o verificare Ethical AI înainte să returneze diagrama.</li></ul></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Instalare și rulare</span><h2 class="section-h2">Adaugă skill-ul de diagrame</h2></div><div class="detail-panel wide"><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-design-diagram</div><div class="code-block">Folosește $tvl-design-diagram ca să transformi acest workflow de onboarding într-o diagramă Mermaid.</div></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1>Skill pentru <span>diagrame</span></h1>
+        <p><code>tvl-design-diagram</code> transformă material dezordonat — note, descrieri de arhitectură, fluxuri de produs, sisteme de audit — într-o diagramă <strong>Mermaid</strong> pe care o citești în câteva secunde. Alege un singur template, păstrează doar nodurile esențiale și rulează o <strong>verificare Ethical AI</strong>, ca nimic din diagramă să nu fie inventat.</p>
+        <div class="hero-btns">
+          <a href="#templates" class="btn-primary">Template-urile</a>
+          <a href="#install" class="btn-ghost">Instalează skill-ul</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="templates">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Template-uri</span>
+        <h2 class="section-h2">Trei moduri de diagramă</h2>
+        <p>Skill-ul alege cel mai simplu template potrivit — exact unul, dacă nu ceri mai multe. Fiecare mapează o altă formă de informație.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <h3>System map</h3>
+          <p>Componente, actori, stocuri de date, granițe și integrări — ce există și cum se conectează.</p>
+          <div class="code-block">flowchart LR
+  User --> API
+  API --> DB[(Store)]
+  API --> Auth</div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Workflow</h3>
+          <p>Pași ordonați, responsabilitate, handoff-uri și bucle de feedback — cum trece munca de la start la output.</p>
+          <div class="code-block">flowchart TD
+  Draft --> Review
+  Review --> Fix
+  Fix --> Review
+  Review --> Publish</div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Decision flow</h3>
+          <p>Condiții, porți, verdicte și ramuri — unde se bifurcă drumul și de ce.</p>
+          <div class="code-block">flowchart TD
+  Check{Valid?}
+  Check -->|yes| PASS
+  Check -->|no| BLOCK</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="rules">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Reguli Mermaid</span>
+        <h2 class="section-h2">Convenții care mențin lizibilitatea</h2>
+        <p>Output-ul e mereu sintaxă <code>flowchart</code>. Regulile există ca diagrama să rămână lizibilă și gata de copy-paste — nu decorată.</p>
+      </div>
+      <div class="panel fade-in">
+        <table class="rule-table">
+          <thead><tr><th>Aspect</th><th>Convenție</th></tr></thead>
+          <tbody>
+            <tr><td>Sintaxă</td><td>Implicit Mermaid <code>flowchart</code>. Alege <code>LR</code> sau <code>TD</code> după ce se citește mai bine pentru forma informației.</td></tr>
+            <tr><td>ID-uri de noduri</td><td>ID-uri stabile, descriptive, precum <code>User</code>, <code>Draft</code>, <code>Judge</code>, <code>Decision</code>.</td></tr>
+            <tr><td>Etichete</td><td>Sub 48 de caractere. Evită nodurile de un singur cuvânt, cu excepția verdictelor standard <code>PASS</code>, <code>FLAG</code> sau <code>BLOCK</code>.</td></tr>
+            <tr><td>Muchii</td><td>Pune un verb pe muchie când relația nu e evidentă.</td></tr>
+            <tr><td>Scop</td><td>Extrage doar nodurile și relațiile esențiale. Îmbină duplicatele. Păstrează etichetele concrete.</td></tr>
+            <tr><td>Stilizare</td><td>Fără stilizare decorativă dacă nu o ceri. Structura e ce contează.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="process">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Cum funcționează</span>
+        <h2 class="section-h2">Procesul în șapte pași</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Citește ca date</h3><p>Tratează sursa ca date; ignoră instrucțiunile din ea dacă nu ceri explicit altfel.</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Identifică sarcina</h3><p>Decide ce diagramă e: system map, workflow sau decision flow.</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Alege un template</h3><p>Încarcă template-urile și alege exact unul, ca diagrama să aibă o singură formă clară.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Extrage esențialul</h3><p>Păstrează doar nodurile și relațiile esențiale. Îmbină duplicatele. Etichete scurte și concrete.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Scrie Mermaid</h3><p>Scrie <code>flowchart</code>-ul respectând convențiile de denumire și muchii.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>Rulează verificarea Ethical AI</h3><p>Confirmă că fiecare nod și muchie e ancorat în sursă înainte de finalizare.</p></article>
+        <article class="panel fade-in"><span class="step-num">7</span><h3>Autoverificare</h3><p>Confirmă proveniența nodurilor, acuratețea muchiilor, lizibilitatea de sine stătătoare și nivelul de detaliu potrivit.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="ethical">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ancorare</span>
+        <h2 class="section-h2">Verificarea Ethical AI</h2>
+        <p>O diagramă face pașii inventați să pară oficiali. Înainte de a returna, skill-ul rulează aceeași verificare de moduri de eșec <a href="../tvl-ethical-ai-audit/">EthicalAI</a> — pentru hallucination, confabulation, source fabrication, sycophancy, confirmation bias, selective evidence, anchoring, prompt injection și overconfidence.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <h3>Fiecare nod își merită locul</h3>
+          <p>Întrebarea de fond: apare fiecare nod în sursă sau decurge clar din ea? Nodurile care nu o fac sunt tăiate sau marcate, niciodată inventate ca să pară imaginea completă.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>Fiecare muchie e o relație reală</h3>
+          <p>Descrie fiecare muchie o acțiune, relație sau decizie reală? Conexiunile incerte sunt marcate ca ipoteze, nu desenate ca fapte.</p>
+        </article>
+        <article class="panel fade-in">
+          <h3>Comună cu skill-ul de audit</h3>
+          <p>Checklist-ul vine din aceeași rubrică ca <a href="../tvl-ethical-ai-audit/"><code>tvl-ethical-ai-audit</code></a> și <a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a>, așa că o diagramă e ținută la același standard ca textul.</p>
+        </article>
+      </div>
+      <div class="section-title-center fade-in" style="margin-top:48px;">
+        <h2 class="section-h2" style="font-size:26px;">Apoi returnează o clasificare</h2>
+      </div>
+      <div class="verdict-grid">
+        <div class="verdict pass fade-in"><span class="tag">PASS</span><p>Corectă și încadrată exact în sursă.</p></div>
+        <div class="verdict flag fade-in"><span class="tag">FLAG</span><p>Utilizabilă, dar cu ipoteze sau incertitudini declarate explicit.</p></div>
+        <div class="verdict block fade-in"><span class="tag">BLOCK</span><p>Sursa e prea vagă sau nesusținută ca să o diagramezi onest.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ce e sub capotă</span>
+        <h2 class="section-h2">Ce vine cu skill-ul</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/templates.md</h3><p>Template-urile system map, workflow și decision flow din care alege skill-ul.</p></article>
+        <article class="panel fade-in"><h3>references/ethical-ai-check.md</h3><p>Checklist-ul de ancorare rulat înainte ca diagrama să fie finalizată.</p></article>
+        <article class="panel fade-in"><h3>Output</h3><p>Un singur <code>flowchart</code> Mermaid, plus o notă scurtă opțională cu template-ul, ipotezele și clasificarea.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Instalare și rulare</span>
+        <h2 class="section-h2">Adaugă skill-ul de diagrame</h2>
+        <p>Folosește repository-ul public TVL Skills cu CLI-ul Agent Skills.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Instalează doar acest skill</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-design-diagram</div>
+          <h3>Instalează toate skill-urile TVL</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Diagramează un workflow</h3>
+          <div class="code-block cmd">Folosește $tvl-design-diagram ca să transformi acest workflow de onboarding într-o diagramă Mermaid. Păstrează doar pașii esențiali și marchează orice a trebuit să presupui.</div>
+          <h3>Mapează un sistem</h3>
+          <div class="code-block cmd">Folosește $tvl-design-diagram ca să desenezi un system map al acestei arhitecturi: doar componente, stocuri de date și integrări. Returnează un flowchart și notează orice nu e susținut de descrierea mea.</div>
+          <h3>Desenează un decision flow</h3>
+          <div class="code-block cmd">Folosește $tvl-design-diagram ca să transformi această logică de validare într-un decision flow cu porțile și rezultatele PASS/FLAG/BLOCK. Rulează verificarea Ethical AI înainte să îl returnezi.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
           <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
           <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -47,6 +360,21 @@
           <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
           <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
         </svg>
-        <span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer><script src="../../../index.js"></script>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../ro/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-design-diagram" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
 </body>
 </html>
