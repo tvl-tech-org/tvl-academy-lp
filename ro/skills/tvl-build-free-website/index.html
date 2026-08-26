@@ -3,24 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skill pentru Website Gratuit pe GitHub Pages</title>
-  <meta name="description" content="Folosește tvl-build-free-website ca să construiești un website static simplu și să îl publici gratuit cu GitHub Pages.">
-  <meta property="og:title" content="Skill pentru Website Gratuit pe GitHub Pages">
-  <meta property="og:description" content="Creează website-uri statice și publică-le prin GitHub Pages cu verificare live.">
+  <title>Skill pentru site gratuit — flux și reguli GitHub Pages</title>
+  <meta name="description" content="Cum funcționează tvl-build-free-website: un flux în zece pași de la brief la site live, moduri de deploy GitHub Pages, verificări înainte de publicare și pe URL-ul live, plus limitele static-only.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Skill pentru site gratuit — flux și reguli GitHub Pages">
+  <meta property="og:description" content="Un flux în zece pași de la brief la site live, moduri de deploy GitHub Pages, verificări înainte de publicare și pe URL-ul live, plus limitele static-only.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/ro/skills/tvl-build-free-website/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Skill pentru site gratuit de la TVL Academy">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skill pentru site gratuit — flux și reguli GitHub Pages">
+  <meta name="twitter:description" content="Un flux în zece pași de la brief la site live, moduri de deploy GitHub Pages, verificări înainte de publicare și pe URL-ul live, plus limitele static-only.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/ro/skills/tvl-build-free-website/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-build-free-website/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-build-free-website/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-build-free-website/">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-build-free-website","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Un Agent Skill pentru construirea website-urilor statice și publicarea lor gratuită cu GitHub Pages.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-build-free-website","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="stylesheet" href="../../../index.css"><link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Skill pentru site gratuit — flux și reguli GitHub Pages",
+        "url": "https://academy.tvl.tech/ro/skills/tvl-build-free-website/",
+        "description": "Cum funcționează tvl-build-free-website: un flux în zece pași de la brief la site live, moduri de deploy GitHub Pages, verificări înainte de publicare și pe URL-ul live, plus limitele static-only.",
+        "inLanguage": "ro"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/ro/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-build-free-website", "item": "https://academy.tvl.tech/ro/skills/tvl-build-free-website/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-build-free-website",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "Un Agent Skill care construiește un site static și îl publică gratuit pe GitHub Pages, apoi verifică URL-ul live — cu un flux în zece pași și verificări înainte și după publicare.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-build-free-website",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 9px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 34px; height: 34px; padding: 0 8px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 15px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre;
+    }
+    .code-block.cmd { white-space: pre-wrap; }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .callout { border-left: 4px solid var(--red, #ff4931); background: #fff; border-radius: 0 12px 12px 0; padding: 22px 24px; margin-top: 22px; }
+    .callout h3 { margin: 0 0 8px; font-size: 18px; color: #1c1c1c; }
+    .callout p { margin: 0; color: #555; line-height: 1.65; font-size: 15px; }
+    @media (max-width: 860px) {
+      .content-grid, .two-col { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
-<nav><a class="nav-logo" href="../../"><svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
       <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
       <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -30,14 +159,218 @@
       <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
       <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
     </svg>
-    <span class="nav-logo-text">ACADEMY</span></a><button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="../../../ro/">Program</a><a href="../">Skills</a><div class="lang-switch"><a href="../../../ro/skills/tvl-build-free-website/" class="lang-option is-active" lang="ro">RO</a><a href="../../../en/skills/tvl-build-free-website/" class="lang-option" lang="en">EN</a></div><a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-build-free-website" target="_blank" rel="noopener" class="btn-nav">Sursă</a></div></nav>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../ro/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Selector de limbă">
+      <a href="../../../ro/skills/tvl-build-free-website/" class="lang-option is-active" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-build-free-website/" class="lang-option" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-build-free-website" target="_blank" rel="noopener" class="btn-nav">Sursă</a>
+  </div>
+</nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1>Skill pentru <span>Website Gratuit</span></h1><p><code>tvl-build-free-website</code> ajută un agent AI să construiască un website static, să îl publice pe GitHub Pages și să verifice URL-ul live.</p><div class="hero-btns"><a href="#install" class="btn-primary">Instalează skill-ul</a><a href="../" class="btn-ghost">Înapoi la skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Ce construiește</span><h2 class="section-h2">Site-uri statice compatibile cu GitHub Pages</h2></div><div class="detail-grid"><article class="detail-panel"><h3>Site de serviciu</h3><p>O pagină compactă pentru companie, serviciu, eveniment sau campanie, cu ofertă clară, dovadă și contact.</p></article><article class="detail-panel"><h3>Portofoliu</h3><p>Profil profesional cu proiecte, studii de caz, semnale de credibilitate și linkuri de contact.</p></article><article class="detail-panel"><h3>Hub de documentație</h3><p>Site public pentru un proiect sau o resursă, cu quick start, ghiduri, exemple și referințe.</p></article></div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-grid"><article class="detail-panel"><h3>Moduri de publicare</h3><ul><li>Deploy din branch, din <code>main</code> root sau <code>/docs</code>.</li><li>Deploy cu GitHub Actions pentru output static generat.</li><li><code>.nojekyll</code> când asseturile statice trebuie să evite procesarea Jekyll.</li></ul></article><article class="detail-panel"><h3>Verificări obligatorii</h3><ul><li><code>index.html</code> există în rădăcina publicată.</li><li>Căile către asseturi funcționează sub URL-uri de project page.</li><li>Nu sunt comise secrete sau date private.</li></ul></article><article class="detail-panel"><h3>Verificare live</h3><ul><li>Deploymentul Pages trece cu succes.</li><li>URL-ul live răspunde cu HTTP 200.</li><li>Titlul, H1, CSS, imaginile și navigația sunt verificate.</li></ul></article></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Instalare și rulare</span><h2 class="section-h2">Adaugă skill-ul pentru website-uri</h2></div><div class="detail-panel wide"><h3>Instalează cu Agent Skills CLI</h3><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-build-free-website</div><h3>Cere-i direct lui ChatGPT sau Codex să îl instaleze</h3><div class="code-block">Install the Agent Skill tvl-build-free-website from https://github.com/danlex/tvl-skills and verify that it is available for this workspace.</div><h3>Cere-i direct lui Claude Code să îl instaleze</h3><div class="code-block">Install the skill tvl-build-free-website from danlex/tvl-skills into Claude Code, then list the installed skills to confirm it is available.</div><h3>Rulează skill-ul după instalare</h3><div class="code-block">Use $tvl-build-free-website to build a one-page service website for this offer and publish it for free with GitHub Pages.</div><p>Skill-ul este pentru website-uri statice. GitHub Pages nu este hosting de backend și nu trebuie folosit pentru baze de date, secrete runtime, date private sau autentificare server-side.</p></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1>Skill pentru <span>site gratuit</span></h1>
+        <p><code>tvl-build-free-website</code> duce un site de la brief la un URL live, gratuit. Construiește un site static, îl publică pe <strong>GitHub Pages</strong> și verifică efectiv că pagina live returnează HTTP 200, cu titlul, stilurile și navigația corecte — tot ciclul, nu doar build-ul.</p>
+        <div class="hero-btns">
+          <a href="#workflow" class="btn-primary">Fluxul</a>
+          <a href="#install" class="btn-ghost">Instalează skill-ul</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="builds">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ce construiește</span>
+        <h2 class="section-h2">Site-uri statice care rulează pe GitHub Pages</h2>
+        <p>Orice se poate servi ca fișiere simple. Dacă are nevoie de server, e în afara scopului, intenționat.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>Site de o pagină</h3><p>O pagină compactă de companie, serviciu, eveniment sau campanie, cu ofertă clară, dovezi și cale de contact.</p></article>
+        <article class="panel fade-in"><h3>Portofoliu &amp; landing</h3><p>Un profil profesional cu proiecte, studii de caz, semnale de credibilitate și linkuri de contact.</p></article>
+        <article class="panel fade-in"><h3>Site de documentație</h3><p>Un site public de proiect sau resurse cu quick start, ghiduri, exemple și referințe.</p></article>
+        <article class="panel fade-in"><h3>Pagini de proiect</h3><p>O casă pentru un proiect open-source sau produs — overview, status și linkuri.</p></article>
+        <article class="panel fade-in"><h3>Hub-uri de resurse</h3><p>Un index curat de linkuri, descărcări și referințe pe un singur subiect.</p></article>
+        <article class="panel fade-in"><h3>Aplicații ușoare</h3><p>Unelte și demo-uri doar client-side, care rulează integral în browser.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="workflow">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Cum funcționează</span>
+        <h2 class="section-h2">Fluxul în zece pași</h2>
+        <p>De la citirea conținutului până la un URL live verificat — fiecare pas e explicit și nu se oprește la „am dat push pe GitHub".</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Evaluarea conținutului</h3><p>Examinează fișierele, URL-urile și starea curentă a repository-ului.</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Identificarea constrângerilor</h3><p>Clasifică tipul de site, modelul de deploy (root, <code>/docs</code>, Actions) și proprietatea (user vs organizație).</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Încărcarea referințelor</h3><p>Consultă rubrica GitHub Pages și blueprint-urile de site.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Alegerea blueprint-ului</h3><p>Alege template-ul potrivit pentru un site nou sau redesignat.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Build</h3><p>HTML/CSS/JS simplu sau un generator static existent — fără dependențe de backend.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>Configurarea deploy-ului</h3><p>Alege branch deploy sau GitHub Actions; adaugă <code>.nojekyll</code> când e nevoie.</p></article>
+        <article class="panel fade-in"><span class="step-num">7</span><h3>Verificare locală</h3><p>Servește local și verifică statusul HTTP și randarea conținutului înainte de publicare.</p></article>
+        <article class="panel fade-in"><span class="step-num">8</span><h3>Publicare</h3><p>Creează sau refolosește repository-ul, dă push pe <code>main</code> și configurează GitHub Pages.</p></article>
+        <article class="panel fade-in"><span class="step-num">9</span><h3>Verificarea URL-ului live</h3><p>Confirmă HTTP 200, titlul/H1, încărcarea asset-urilor și navigația pe URL-ul publicat.</p></article>
+        <article class="panel fade-in"><span class="step-num">10</span><h3>Închidere</h3><p>Livrează URL-ul final, linkul de repo, metoda de deploy, rezultatele testelor și limitele.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="deploy">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Deploy</span>
+        <h2 class="section-h2">Moduri GitHub Pages</h2>
+        <p>Skill-ul alege modelul de deploy potrivit repository-ului, apoi îl configurează.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>Branch &middot; <code>main</code> root</h3><p>Servește site-ul direct din root-ul branch-ului <code>main</code>. Cel mai simplu pentru site-uri scrise de mână.</p></article>
+        <article class="panel fade-in"><h3>Branch &middot; <code>/docs</code></h3><p>Servește din subdirectorul <code>/docs</code> al <code>main</code>, ținând sursa și site-ul unul lângă altul.</p></article>
+        <article class="panel fade-in"><h3>GitHub Actions</h3><p>Un workflow construiește output-ul static și publică artefactul — pentru generatoare statice.</p></article>
+      </div>
+      <div class="callout fade-in">
+        <h3><code>.nojekyll</code></h3>
+        <p>Când asset-urile statice trebuie să ocolească procesarea Jekyll (de exemplu foldere care încep cu underscore), skill-ul adaugă un fișier <code>.nojekyll</code>, ca fișierele să fie servite ca atare.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="checks">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Verificările</span>
+        <h2 class="section-h2">Nimic nu pleacă neverificat</h2>
+        <p>Două porți: tot ce trebuie să fie adevărat înainte de publicare și tot ce e confirmat pe URL-ul live după.</p>
+      </div>
+      <div class="content-grid two-col">
+        <article class="panel fade-in">
+          <h3>Înainte de publicare</h3>
+          <ul>
+            <li>Conținut static doar — HTML, CSS, JS, imagini, asset-uri generate.</li>
+            <li><code>index.html</code> există la root-ul de publicare.</li>
+            <li>Căile către asset-uri merg de pe URL-ul publicat, inclusiv pe subcale de proiect.</li>
+            <li>Fără linkuri de navigație locală rupte.</li>
+            <li>Titlu, H1, meta description și tag-uri de social preview cu sens.</li>
+            <li>Accesibilitate: landmarks, labels, alt text, navigație cu tastatura, focus, contrast.</li>
+            <li>Responsive pe mobil și desktop; dimensiuni de asset optimizate.</li>
+            <li>Fără secrete, tokeni, chei sau căi locale comise.</li>
+          </ul>
+        </article>
+        <article class="panel fade-in">
+          <h3>Verificarea URL-ului live</h3>
+          <ul>
+            <li>URL-ul returnează HTTP <code>200</code>.</li>
+            <li>Titlul și H1 așteptate sunt vizibile.</li>
+            <li>Stilizarea CSS se încarcă corect.</li>
+            <li>Imaginile se randează corect.</li>
+            <li>Navigația internă funcționează.</li>
+            <li>URL-ul corespunde modului de deploy GitHub Pages ales.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="output">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Output</span>
+        <h2 class="section-h2">Ce livrează</h2>
+        <p>Pentru o cerere de build-and-publish, o închidere fixă — pentru cereri doar de planificare, un plan concis și numele blueprint-ului.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <div class="code-block">LIVE SITE:    &lt;url&gt;
+REPOSITORY:   &lt;url&gt;
+WHAT CHANGED: [listă cu buline]
+DEPLOYMENT:   modul GitHub Pages și sursa
+VERIFICATION: rezultate local, Actions/Pages, URL live
+LIMITS:       constrângerile aplicabile</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="limits">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Scop</span>
+        <h2 class="section-h2">Ce nu face</h2>
+        <p>GitHub Pages e un host static. Skill-ul refuză, intenționat, orice are nevoie de server.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>Fără backend</h3><p>Fără baze de date, cod server-side, joburi programate sau API-uri private.</p></article>
+        <article class="panel fade-in"><h3>Fără secrete</h3><p>Fără secrete de runtime, autentificare sau configurare dependentă de mediu.</p></article>
+        <article class="panel fade-in"><h3>Fără date dinamice</h3><p>Fără procesare de plăți, stocare de date private sau sisteme cu conținut trimis de utilizatori.</p></article>
+      </div>
+      <div class="callout fade-in">
+        <h3>Limite de serviciu</h3>
+        <p>GitHub Pages impune limite de dimensiune, bandă și timp de build. Skill-ul le declară la închidere, ca să nu apară surprize mai târziu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ce e sub capotă</span>
+        <h2 class="section-h2">Ce vine cu skill-ul</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/github-pages-rubric.md</h3><p>Ghidul și bunele practici GitHub Pages față de care auditează skill-ul.</p></article>
+        <article class="panel fade-in"><h3>references/site-blueprints.md</h3><p>Template-uri pentru arhitecturile de site comune de mai sus.</p></article>
+        <article class="panel fade-in"><h3>Filozofie</h3><p>Alege cel mai simplu stack static durabil, refolosind uneltele deja prezente în repository când se poate.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Instalare și rulare</span>
+        <h2 class="section-h2">Adaugă skill-ul de website</h2>
+        <p>Folosește repository-ul public TVL Skills cu CLI-ul Agent Skills.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Instalează doar acest skill</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-build-free-website</div>
+          <h3>Instalează toate skill-urile TVL</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Cere-i lui Claude Code să îl instaleze</h3>
+          <div class="code-block cmd">Instalează skill-ul tvl-build-free-website din danlex/tvl-skills în Claude Code, apoi listează skill-urile instalate ca să confirmi că e disponibil.</div>
+          <h3>Construiește și publică un site de o pagină</h3>
+          <div class="code-block cmd">Folosește $tvl-build-free-website ca să construiești un site de o pagină pentru această ofertă și publică-l gratuit pe GitHub Pages. Verifică faptul că URL-ul live returnează 200, cu titlul și stilurile corecte.</div>
+          <h3>Publică un site de docs din /docs</h3>
+          <div class="code-block cmd">Folosește $tvl-build-free-website ca să publici această documentație din folderul /docs pe main, adaugă .nojekyll dacă e nevoie și confirmă că navigația live funcționează.</div>
+          <h3>Doar planificare</h3>
+          <div class="code-block cmd">Folosește $tvl-build-free-website ca să îmi dai un plan de build și un blueprint pentru un site de portofoliu, fără să îl construiești încă.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
           <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
           <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -47,6 +380,21 @@
           <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
           <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
         </svg>
-        <span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer><script src="../../../index.js"></script>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../ro/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-build-free-website" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
 </body>
 </html>
