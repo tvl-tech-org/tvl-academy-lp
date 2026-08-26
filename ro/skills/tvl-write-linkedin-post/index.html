@@ -3,30 +3,350 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skill pentru postări LinkedIn</title>
-  <meta name="description" content="Folosește tvl-write-linkedin-post ca să scrii și să validezi postări LinkedIn structurate cu CROFTAFC și LinkedIn Writing Protocol v3.">
-  <meta property="og:title" content="Skill pentru postări LinkedIn">
-  <meta property="og:description" content="Scrie și validează postări LinkedIn structurate cu CROFTAFC și LinkedIn Writing Protocol v3.">
+  <title>Skill pentru postări LinkedIn — reguli și implementare</title>
+  <meta name="description" content="Cum funcționează tvl-write-linkedin-post: framework-ul CROFTAFC, regulile LinkedIn Writing Protocol v3, un flux în nouă pași și un validator determinist validate_post.py care impune lungimea, structura și interzice tiparele de AI.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Skill pentru postări LinkedIn — reguli și implementare">
+  <meta property="og:description" content="Framework-ul CROFTAFC, regulile LinkedIn Writing Protocol v3, un flux în nouă pași și un validator determinist pentru postări LinkedIn tehnice.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/ro/skills/tvl-write-linkedin-post/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Skill pentru postări LinkedIn de la TVL Academy">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skill pentru postări LinkedIn — reguli și implementare">
+  <meta name="twitter:description" content="Framework-ul CROFTAFC, regulile LinkedIn Writing Protocol v3, un flux în nouă pași și un validator determinist pentru postări LinkedIn tehnice.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/ro/skills/tvl-write-linkedin-post/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-write-linkedin-post/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-write-linkedin-post","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Un Agent Skill pentru scrierea și validarea postărilor LinkedIn structurate.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="stylesheet" href="../../../index.css"><link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Skill pentru postări LinkedIn — reguli și implementare",
+        "url": "https://academy.tvl.tech/ro/skills/tvl-write-linkedin-post/",
+        "description": "Cum funcționează tvl-write-linkedin-post: framework-ul CROFTAFC, regulile LinkedIn Writing Protocol v3, un flux în nouă pași și un validator determinist validate_post.py.",
+        "inLanguage": "ro"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/ro/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-write-linkedin-post", "item": "https://academy.tvl.tech/ro/skills/tvl-write-linkedin-post/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-write-linkedin-post",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "Un Agent Skill care transformă surse în postări LinkedIn tehnice folosind framework-ul CROFTAFC și LinkedIn Writing Protocol v3, cu un validator determinist.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num, .letter-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 16px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .chip {
+      display: inline-block; background: #f4f0ec; border: 1px solid #e6e1db;
+      color: #7a2a1e; border-radius: 6px; padding: 3px 9px; margin: 0 6px 8px 0;
+      font-size: 13.5px; font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+    }
+    .chip-wrap { margin-top: 6px; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .stat { background: #fff; border: 1px solid #e6e1db; border-radius: 12px; padding: 24px; text-align: center; }
+    .stat b { display: block; font-size: 30px; color: var(--red, #ff4931); line-height: 1.1; }
+    .stat span { display: block; margin-top: 8px; color: #555; font-size: 14.5px; line-height: 1.5; }
+    @media (max-width: 860px) {
+      .content-grid, .stat-row { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
-<nav><a class="nav-logo" href="../../"><span class="nav-logo-text">TVL Academy</span></a><button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="../../../ro/">Program</a><a href="../">Skills</a><div class="lang-switch"><a href="../../../ro/skills/tvl-write-linkedin-post/" class="lang-option is-active" lang="ro">RO</a><a href="../../../en/skills/tvl-write-linkedin-post/" class="lang-option" lang="en">EN</a></div><a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post" target="_blank" rel="noopener" class="btn-nav">Sursă</a></div></nav>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <span class="nav-logo-text">TVL Academy</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../ro/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Selector de limbă">
+      <a href="../../../ro/skills/tvl-write-linkedin-post/" class="lang-option is-active" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-write-linkedin-post/" class="lang-option" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post" target="_blank" rel="noopener" class="btn-nav">Sursă</a>
+  </div>
+</nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1>Skill pentru postări <span>LinkedIn</span></h1><p><code>tvl-write-linkedin-post</code> transformă surse, briefuri și idei în postări LinkedIn structurate, folosind CROFTAFC și LinkedIn Writing Protocol v3.</p><div class="hero-btns"><a href="#install" class="btn-primary">Instalează skill-ul</a><a href="../" class="btn-ghost">Înapoi la skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Scop</span><h2 class="section-h2">Ce face skill-ul</h2></div><div class="detail-grid"><article class="detail-panel"><h3>Input structurat</h3><p>Extrage context, rol, obiectiv, fapte, taskuri, audiență, format și constrângeri înainte să scrie.</p></article><article class="detail-panel"><h3>Output potrivit pentru LinkedIn</h3><p>Construiește o postare clară, bazată pe dovezi, pentru cititori profesioniști.</p></article><article class="detail-panel"><h3>Validare</h3><p>Rulează verificări deterministe și rescrie draftul când lungimea, structura sau protocolul eșuează.</p></article></div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-panel wide"><h3>Când îl folosești</h3><ul><li>Când ai nevoie de un post LinkedIn tehnic dintr-un articol, paper, lansare sau brief intern.</li><li>Când vrei un protocol repetabil, nu un prompt punctual.</li><li>Când AI-ul trebuie să păstreze faptele și să evite textul generic.</li></ul></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Instalare și rulare</span><h2 class="section-h2">Adaugă skill-ul LinkedIn</h2></div><div class="detail-panel wide"><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-write-linkedin-post</div><div class="code-block">Folosește $tvl-write-linkedin-post ca să transformi acest update de produs într-un post LinkedIn de 2.700-2.900 de caractere.</div></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1>Skill pentru postări <span>LinkedIn</span></h1>
+        <p><code>tvl-write-linkedin-post</code> transformă un paper, o notă de lansare, un articol sau un draft brut într-o postare LinkedIn tehnică. Analizează sursa cu framework-ul <strong>CROFTAFC</strong>, scrie după <strong>LinkedIn Writing Protocol v3</strong>, apoi rulează un <strong>validator determinist</strong> și rescrie până trece fiecare regulă.</p>
+        <div class="hero-btns">
+          <a href="#croftafc" class="btn-primary">Framework-ul</a>
+          <a href="#install" class="btn-ghost">Instalează skill-ul</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="croftafc">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Framework-ul</span>
+        <h2 class="section-h2">CROFTAFC: analiza dinainte de scriere</h2>
+        <p>Înainte de prima propoziție, skill-ul răspunde la opt întrebări. Fiecare literă fixează o decizie, așa că draftul pornește din dovezi și intenție — nu de la o pagină goală.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="letter-badge">C</span><h3>Context</h3><p>Identifică subiectul, sursele, momentul și unghiul utilizatorului.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">R</span><h3>Rol</h3><p>Scrie ca un inginer sau cercetător AI experimentat care i se adresează unui coleg curios tehnic.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">O</span><h3>Obiectiv</h3><p>Predă o singură idee utilă prin dovezi, mecanism și o concluzie susținută.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">F</span><h3>Fapte (Facts)</h3><p>Extrage rezultate măsurabile, date, afirmații tehnice, mecanisme, limitări și linkuri către surse.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">T</span><h3>Taskuri</h3><p>Alege cele mai puternice dovezi, construiește secvența logică de paragrafe, scrie, validează și rescrie eșecurile.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">A</span><h3>Audiență</h3><p>Se adresează profesioniștilor interesați de AI și tehnologie; rămâne accesibil non-specialiștilor informați fără să piardă substanța.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">F</span><h3>Format</h3><p>Doar paragrafe simple, în limba și lungimea cerute (implicit 2.700–2.900 de caractere).</p></article>
+        <article class="panel fade-in"><span class="letter-badge">C</span><h3>Constrângeri</h3><p>Aplică toate regulile Protocolului v3; instrucțiunile utilizatorului suprascriu doar lungimea, limba, subiectul sau structura.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="protocol">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Regulile</span>
+        <h2 class="section-h2">LinkedIn Writing Protocol v3</h2>
+        <p>Protocolul este standardul față de care se măsoară draftul. Fixează cifrele, structura și limbajul.</p>
+      </div>
+
+      <div class="stat-row fade-in">
+        <div class="stat"><b>2.700–2.900</b><span>Caractere țintă pentru întreaga postare, dacă nu ceri altă lungime</span></div>
+        <div class="stat"><b>150–250</b><span>Caractere per paragraf, pentru un ritm natural de lectură</span></div>
+        <div class="stat"><b>≥ 10</b><span>Cuvinte per propoziție ca regulă; evită liniile scurte, punchy, dacă nu e nevoie de claritate</span></div>
+      </div>
+
+      <div class="panel fade-in" style="margin-top:22px;">
+        <table class="rule-table">
+          <thead><tr><th>Aspect</th><th>Regulă</th></tr></thead>
+          <tbody>
+            <tr><td>Hook</td><td>Deschide cu un fapt măsurabil, un rezultat de cercetare, o observație tehnică concretă sau o afirmație puternică susținută imediat de dovezi. Niciodată cu introducere generică, context, întrebare retorică sau umplutură.</td></tr>
+            <tr><td>Structură</td><td>Ordonează paragrafele astfel încât fiecare adaugă dovezi, explică un mecanism sau derivă o consecință. Fără idei sau concluzii repetate.</td></tr>
+            <tr><td>Formatare</td><td>Doar paragrafe simple. Fără buline, liste numerotate, titluri, hashtaguri, emoji, tabele sau linkuri Markdown. Doar URL-uri simple, când e util.</td></tr>
+            <tr><td>Punctuație</td><td>Fără linii de dialog (em dash); evită cratimele acolo unde o reformulare naturală funcționează.</td></tr>
+            <tr><td>Voce</td><td>Explică precum unui coleg curios tehnic: limbaj simplu, ton profesional, precizie tehnică și ritm natural. Fără cadență de AI sau structură mecanică.</td></tr>
+            <tr><td>Dovezi</td><td>Fiecare propoziție poartă o dovadă, un mecanism sau o concluzie susținută. Predicțiile trebuie sprijinite de dovezi deja prezente în postare.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel fade-in">
+          <h3>Structuri retorice interzise</h3>
+          <div class="chip-wrap">
+            <span class="chip">not X but Y</span><span class="chip">less X more Y</span><span class="chip">instead of X</span><span class="chip">forget X</span><span class="chip">the real story is</span><span class="chip">X is dead</span><span class="chip">X no longer matters</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Tranziții editoriale interzise</h3>
+          <div class="chip-wrap">
+            <span class="chip">Another important trend</span><span class="chip">Looking ahead</span><span class="chip">This matters because</span><span class="chip">The challenge is</span><span class="chip">It is worth noting</span><span class="chip">In conclusion</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Limbaj de marketing interzis</h3>
+          <div class="chip-wrap">
+            <span class="chip">this changes everything</span><span class="chip">game changer</span><span class="chip">mind blowing</span><span class="chip">huge</span><span class="chip">revolutionary</span><span class="chip">transformative</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="implementation">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Implementare</span>
+        <h2 class="section-h2">Fluxul în nouă pași</h2>
+        <p>Scrisul e doar jumătate. Skill-ul verifică întâi faptele, apoi rulează un script care pică draftul la orice abatere de la protocol și rescrie până trece.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Citește sursele</h3><p>Extrage rezultate, mecanisme, cifre, limitări și consecințe de business din tot ce e furnizat.</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Verifică</h3><p>Confirmă cercetarea sau faptele curente față de surse primare: papers, repository-uri, anunțuri, benchmark-uri.</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Alege o idee</h3><p>Alege o singură idee tehnică centrală și ordonează paragrafele ca să o construiască pas cu pas.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Scrie draftul</h3><p>Scrie în limbaj simplu, profesional și direct, respectând protocolul.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Validează determinist</h3><p>Rulează <code>validate_post.py</code> pentru numărul de caractere, lungimea paragrafelor și propozițiilor și respectarea regulilor.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>Corectează și reia</h3><p>Repară fiecare eroare raportată și reia validatorul până trece curat.</p></article>
+        <article class="panel fade-in"><span class="step-num">7</span><h3>Verificări semantice</h3><p>Judecă ce software-ul nu poate: fără idei repetate, fiecare propoziție își merită locul, predicții susținute, ritm natural.</p></article>
+        <article class="panel fade-in"><span class="step-num">8</span><h3>Rescrie și revalidează</h3><p>Rescrie orice eșec semantic și reia toată verificarea.</p></article>
+        <article class="panel fade-in"><span class="step-num">9</span><h3>Returnează postarea</h3><p>Returnează doar postarea finală, dacă nu ai cerut surse, analiză, alternative sau detalii de validare.</p></article>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>Validatorul determinist</h3>
+          <p>Un script Python impune regulile mecanice, ca modelul să nu poată trece de ele prin argumente.</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/validate_post.py draft.txt</div>
+          <p>Interval de lungime personalizat:</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/validate_post.py draft.txt --min-chars 1800 --max-chars 2200</div>
+          <p>Verifică: numărul de caractere în interval, lungimea paragrafelor, absența propozițiilor prea scurte, frazele și tranzițiile interzise, lipsa liniilor de dialog, hashtagurilor, emoji-urilor, listelor, titlurilor sau tabelelor și faptul că deschiderea pornește din dovezi.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ce e sub capotă</span>
+        <h2 class="section-h2">Ce vine cu skill-ul</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/protocol-v3.md</h3><p>LinkedIn Writing Protocol v3 complet — referința-sursă pentru fiecare regulă de mai sus.</p></article>
+        <article class="panel fade-in"><h3>references/evaluation-cases.md</h3><p>Cazuri de testare și de modificare, folosite ca să verifice comportamentul skill-ului față de output-ul așteptat.</p></article>
+        <article class="panel fade-in"><h3>scripts/validate_post.py</h3><p>Validatorul determinist pentru numărul de caractere, lungimea paragrafelor și propozițiilor și respectarea protocolului.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Instalare și rulare</span>
+        <h2 class="section-h2">Adaugă skill-ul LinkedIn</h2>
+        <p>Folosește repository-ul public TVL Skills cu CLI-ul Agent Skills.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Instalează doar acest skill</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-write-linkedin-post</div>
+          <h3>Instalează toate skill-urile TVL</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Transformă un paper în postare</h3>
+          <div class="code-block">Folosește $tvl-write-linkedin-post ca să transformi acest paper într-o postare LinkedIn. Pornește de la cel mai puternic rezultat măsurabil, explică mecanismul și păstrează 2.700–2.900 de caractere.</div>
+          <h3>Scrie dintr-un update de produs</h3>
+          <div class="code-block">Folosește $tvl-write-linkedin-post ca să transformi acest update de produs într-o postare LinkedIn pentru o audiență tehnică. Păstrează cifrele și validează față de Protocol v3 înainte să returnezi.</div>
+          <h3>Scurtează și revalidează</h3>
+          <div class="code-block">Folosește $tvl-write-linkedin-post ca să scurtezi acest draft la 1.800–2.200 de caractere, păstrează fiecare fapt și reia validatorul până trece.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer><script src="../../../index.js"></script>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../ro/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
 </body>
 </html>

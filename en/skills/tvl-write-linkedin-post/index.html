@@ -5,47 +5,348 @@
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
   <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkedIn Post Writing Skill</title>
-  <meta name="description" content="Use tvl-write-linkedin-post to draft and validate structured LinkedIn posts with CROFTAFC and LinkedIn Writing Protocol v3.">
+  <title>LinkedIn Post Writing Skill — rules and implementation</title>
+  <meta name="description" content="How tvl-write-linkedin-post works: the CROFTAFC framework, the LinkedIn Writing Protocol v3 rules, a nine-step workflow and a deterministic validate_post.py check that enforces length, structure and banned AI-tells.">
   <meta name="author" content="Alexandru Dan, TVL Academy">
-  <meta property="og:title" content="LinkedIn Post Writing Skill">
-  <meta property="og:description" content="Draft and validate structured LinkedIn posts with CROFTAFC and LinkedIn Writing Protocol v3.">
+
+  <meta property="og:title" content="LinkedIn Post Writing Skill — rules and implementation">
+  <meta property="og:description" content="The CROFTAFC framework, LinkedIn Writing Protocol v3 rules, a nine-step workflow and a deterministic validator for technical LinkedIn posts.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="LinkedIn post writing skill by TVL Academy">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LinkedIn Post Writing Skill — rules and implementation">
+  <meta name="twitter:description" content="The CROFTAFC framework, LinkedIn Writing Protocol v3 rules, a nine-step workflow and a deterministic validator for technical LinkedIn posts.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-write-linkedin-post/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/">
   <meta name="robots" content="index, follow">
+
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-write-linkedin-post","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"An Agent Skill for drafting and validating structured LinkedIn posts.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "LinkedIn Post Writing Skill — rules and implementation",
+        "url": "https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/",
+        "description": "How tvl-write-linkedin-post works: the CROFTAFC framework, the LinkedIn Writing Protocol v3 rules, a nine-step workflow and a deterministic validate_post.py check.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/en/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-write-linkedin-post", "item": "https://academy.tvl.tech/en/skills/tvl-write-linkedin-post/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-write-linkedin-post",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "An Agent Skill that turns source material into a technical LinkedIn post using the CROFTAFC framework and LinkedIn Writing Protocol v3, with a deterministic validator.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
   </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../../../index.css">
-  <link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num, .letter-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 16px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .chip {
+      display: inline-block; background: #f4f0ec; border: 1px solid #e6e1db;
+      color: #7a2a1e; border-radius: 6px; padding: 3px 9px; margin: 0 6px 8px 0;
+      font-size: 13.5px; font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+    }
+    .chip-wrap { margin-top: 6px; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .stat { background: #fff; border: 1px solid #e6e1db; border-radius: 12px; padding: 24px; text-align: center; }
+    .stat b { display: block; font-size: 30px; color: var(--red, #ff4931); line-height: 1.1; }
+    .stat span { display: block; margin-top: 8px; color: #555; font-size: 14.5px; line-height: 1.5; }
+    @media (max-width: 860px) {
+      .content-grid, .stat-row { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
+
 <nav>
-  <a aria-label="TVL Academy" class="nav-logo" href="../../"><span class="nav-logo-text">TVL Academy</span></a>
-  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <span class="nav-logo-text">TVL Academy</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav-links" id="nav-links">
-    <a href="../../../en/">Program</a><a href="../">Skills</a>
-    <div class="lang-switch"><a href="../../../ro/skills/tvl-write-linkedin-post/" class="lang-option" lang="ro">RO</a><a href="../../../en/skills/tvl-write-linkedin-post/" class="lang-option is-active" lang="en">EN</a></div>
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../en/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="../../../ro/skills/tvl-write-linkedin-post/" class="lang-option" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-write-linkedin-post/" class="lang-option is-active" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
     <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post" target="_blank" rel="noopener" class="btn-nav">Source</a>
   </div>
 </nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1><span>LinkedIn</span> Post Writing Skill</h1><p><code>tvl-write-linkedin-post</code> turns source material into a structured LinkedIn post using CROFTAFC and LinkedIn Writing Protocol v3.</p><div class="hero-btns"><a href="#install" class="btn-primary">Install the skill</a><a href="../" class="btn-ghost">Back to skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Purpose</span><h2 class="section-h2">What the skill does</h2></div><div class="detail-grid">
-    <article class="detail-panel"><h3>Structured input</h3><p>Extracts context, role, objective, facts, tasks, audience, format and constraints before drafting.</p></article>
-    <article class="detail-panel"><h3>LinkedIn-native output</h3><p>Builds a post that is clear, evidence-based and designed for professional readers rather than generic promotion.</p></article>
-    <article class="detail-panel"><h3>Validation</h3><p>Runs deterministic checks and revises the draft when length, structure or protocol requirements fail.</p></article>
-  </div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-panel wide"><h3>Use when</h3><ul><li>You need a technical LinkedIn post from a paper, launch note, article or internal brief.</li><li>You want a repeatable writing protocol instead of a one-off prompt.</li><li>You need the AI to preserve facts and avoid vague thought-leadership filler.</li></ul></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Install and run</span><h2 class="section-h2">Add the LinkedIn skill</h2></div><div class="detail-panel wide"><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-write-linkedin-post</div><div class="code-block">Use $tvl-write-linkedin-post to turn this product update into a 2,700 to 2,900 character LinkedIn post.</div></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1><span>LinkedIn</span> Post Writing Skill</h1>
+        <p><code>tvl-write-linkedin-post</code> turns a paper, launch note, article or rough draft into a technical LinkedIn post. It analyzes the source with the <strong>CROFTAFC</strong> framework, drafts under <strong>LinkedIn Writing Protocol v3</strong>, then runs a <strong>deterministic validator</strong> and revises until every rule passes.</p>
+        <div class="hero-btns">
+          <a href="#croftafc" class="btn-primary">The framework</a>
+          <a href="#install" class="btn-ghost">Install the skill</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="croftafc">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">The framework</span>
+        <h2 class="section-h2">CROFTAFC: the pre-draft analysis</h2>
+        <p>Before a single sentence is written, the skill answers eight questions. Each letter fixes a decision, so the draft starts from evidence and intent — not a blank page.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="letter-badge">C</span><h3>Context</h3><p>Identify the topic, source material, timing and the user's angle.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">R</span><h3>Role</h3><p>Write as an experienced engineer or AI researcher addressing a technically curious peer.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">O</span><h3>Objective</h3><p>Teach one useful idea through evidence, mechanism and a supported conclusion.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">F</span><h3>Facts</h3><p>Extract measurable results, dates, technical claims, mechanisms, limitations and source links.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">T</span><h3>Tasks</h3><p>Select the strongest evidence, build a logical paragraph sequence, draft, validate and revise failures.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">A</span><h3>Audience</h3><p>Address professionals interested in AI and tech; stay accessible to informed non-specialists without losing substance.</p></article>
+        <article class="panel fade-in"><span class="letter-badge">F</span><h3>Format</h3><p>Plain paragraphs only, in the requested language and length (default 2,700–2,900 characters).</p></article>
+        <article class="panel fade-in"><span class="letter-badge">C</span><h3>Constraints</h3><p>Apply all Protocol v3 rules; user instructions override only length, language, topic or structure.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="protocol">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">The rules</span>
+        <h2 class="section-h2">LinkedIn Writing Protocol v3</h2>
+        <p>The protocol is the standard the draft is measured against. It fixes the numbers, the structure and the language.</p>
+      </div>
+
+      <div class="stat-row fade-in">
+        <div class="stat"><b>2,700–2,900</b><span>Target characters for the whole post, unless you ask for another length</span></div>
+        <div class="stat"><b>150–250</b><span>Preferred characters per paragraph, for a natural reading rhythm</span></div>
+        <div class="stat"><b>≥ 10</b><span>Words per sentence as a rule; avoid short punchy lines unless clarity needs one</span></div>
+      </div>
+
+      <div class="panel fade-in" style="margin-top:22px;">
+        <table class="rule-table">
+          <thead><tr><th>Area</th><th>Rule</th></tr></thead>
+          <tbody>
+            <tr><td>Hook</td><td>Open with a measurable fact, research result, concrete technical observation, or a strong claim immediately backed by evidence. Never open with generic intro, background, a rhetorical question or empty context.</td></tr>
+            <tr><td>Structure</td><td>Order paragraphs so each one adds evidence, explains a mechanism, or derives a consequence. No repeated ideas or conclusions.</td></tr>
+            <tr><td>Formatting</td><td>Plain paragraphs only. No bullets, numbered lists, headings, hashtags, emojis, tables or Markdown links. Plain source URLs only when useful.</td></tr>
+            <tr><td>Punctuation</td><td>No em dashes; avoid hyphens where a natural rewrite works.</td></tr>
+            <tr><td>Voice</td><td>Explain as if to a technically curious colleague: simple language, professional tone, technical precision and a natural rhythm. No AI cadence or mechanical paragraph structure.</td></tr>
+            <tr><td>Evidence</td><td>Every sentence carries evidence, a mechanism, or a supported conclusion. Predictions must be backed by prior evidence in the post.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel fade-in">
+          <h3>Banned rhetorical structures</h3>
+          <div class="chip-wrap">
+            <span class="chip">not X but Y</span><span class="chip">less X more Y</span><span class="chip">instead of X</span><span class="chip">forget X</span><span class="chip">the real story is</span><span class="chip">X is dead</span><span class="chip">X no longer matters</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Banned editorial transitions</h3>
+          <div class="chip-wrap">
+            <span class="chip">Another important trend</span><span class="chip">Looking ahead</span><span class="chip">This matters because</span><span class="chip">The challenge is</span><span class="chip">It is worth noting</span><span class="chip">In conclusion</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Banned marketing language</h3>
+          <div class="chip-wrap">
+            <span class="chip">this changes everything</span><span class="chip">game changer</span><span class="chip">mind blowing</span><span class="chip">huge</span><span class="chip">revolutionary</span><span class="chip">transformative</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="implementation">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Implementation</span>
+        <h2 class="section-h2">The nine-step workflow</h2>
+        <p>Drafting is only half of it. The skill verifies facts first, then runs a script that fails the draft on any protocol breach and revises until it passes.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Read the sources</h3><p>Extract results, mechanisms, numbers, limitations and business consequences from everything supplied.</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Verify</h3><p>Confirm research or current facts against primary sources: papers, repositories, announcements, benchmarks.</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Choose one idea</h3><p>Pick a single central technical idea and order the paragraphs to build it step by step.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Draft</h3><p>Write in simple, professional, direct language following the protocol.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Validate deterministically</h3><p>Run <code>validate_post.py</code> to check character count, paragraph and sentence length, and rule compliance.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>Fix and rerun</h3><p>Correct every reported error and rerun the validator until it passes clean.</p></article>
+        <article class="panel fade-in"><span class="step-num">7</span><h3>Semantic checks</h3><p>Judge what software cannot: no repeated ideas, every sentence earns its place, predictions supported, natural rhythm.</p></article>
+        <article class="panel fade-in"><span class="step-num">8</span><h3>Rewrite and revalidate</h3><p>Rewrite any semantic failure and run the whole check again.</p></article>
+        <article class="panel fade-in"><span class="step-num">9</span><h3>Return the post</h3><p>Return only the finished post, unless you asked for sources, analysis, alternatives or validation details.</p></article>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>The deterministic validator</h3>
+          <p>A Python script enforces the mechanical rules so the model cannot talk its way past them.</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/validate_post.py draft.txt</div>
+          <p>Custom length range:</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/validate_post.py draft.txt --min-chars 1800 --max-chars 2200</div>
+          <p>It checks: character count in range, paragraph length, no needless short sentences, banned phrases and transitions, no em dashes or hashtags or emojis or lists or headings or tables, and that the opening starts from evidence.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Under the hood</span>
+        <h2 class="section-h2">What ships with the skill</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/protocol-v3.md</h3><p>The complete LinkedIn Writing Protocol v3 — the full source reference for every rule above.</p></article>
+        <article class="panel fade-in"><h3>references/evaluation-cases.md</h3><p>Testing and modification cases used to check the skill's behavior against expected output.</p></article>
+        <article class="panel fade-in"><h3>scripts/validate_post.py</h3><p>The deterministic validator for character count, paragraph and sentence length, and protocol compliance.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Install and run</span>
+        <h2 class="section-h2">Add the LinkedIn skill</h2>
+        <p>Use the public TVL Skills repository with the Agent Skills CLI.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Install only this skill</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-write-linkedin-post</div>
+          <h3>Install all TVL skills</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Turn a paper into a post</h3>
+          <div class="code-block">Use $tvl-write-linkedin-post to turn this paper into a LinkedIn post. Lead with the strongest measurable result, explain the mechanism, and keep it in the 2,700 to 2,900 character range.</div>
+          <h3>Write from a product update</h3>
+          <div class="code-block">Use $tvl-write-linkedin-post to turn this product update into a LinkedIn post for a technical audience. Preserve the numbers and validate it against Protocol v3 before returning.</div>
+          <h3>Shorten and revalidate</h3>
+          <div class="code-block">Use $tvl-write-linkedin-post to shorten this draft to 1,800 to 2,200 characters, keep every fact, and rerun the validator until it passes.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../en/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-write-linkedin-post" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script src="../../../index.js"></script>
 </body>
 </html>
