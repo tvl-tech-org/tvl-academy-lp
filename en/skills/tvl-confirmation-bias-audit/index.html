@@ -3,24 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirmation Bias Audit Skill</title>
-  <meta name="description" content="Use tvl-confirmation-bias-audit to check conclusions for one-sided evidence, missing alternatives and failure to falsify.">
-  <meta property="og:title" content="Confirmation Bias Audit Skill">
-  <meta property="og:description" content="Audit conclusions for one-sided evidence, missing alternatives and failure to falsify.">
+  <title>Confirmation Bias Audit Skill — method and rules</title>
+  <meta name="description" content="How tvl-confirmation-bias-audit works: a falsification-first method that names the strongest alternative, builds an evidence balance table, runs seven audit checks and returns PASS, REVISE or BLOCK.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Confirmation Bias Audit Skill — method and rules">
+  <meta property="og:description" content="A falsification-first audit: name the alternative, classify the evidence, run seven checks, return PASS, REVISE or BLOCK.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/">
   <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Confirmation bias audit skill by TVL Academy">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Confirmation Bias Audit Skill — method and rules">
+  <meta name="twitter:description" content="A falsification-first audit: name the alternative, classify the evidence, run seven checks, return PASS, REVISE or BLOCK.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
   <link rel="canonical" href="https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/">
   <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-confirmation-bias-audit/">
   <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/">
   <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"tvl-confirmation-bias-audit","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"An Agent Skill for auditing conclusions for confirmation bias.","url":"https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit","author":{"@type":"Organization","name":"TVL Tech"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="stylesheet" href="../../../index.css"><link rel="stylesheet" href="../../../skills/skill-detail.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Confirmation Bias Audit Skill — method and rules",
+        "url": "https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/",
+        "description": "How tvl-confirmation-bias-audit works: a falsification-first method that names the strongest alternative, builds an evidence balance table, runs seven audit checks and returns PASS, REVISE or BLOCK.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/en/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-confirmation-bias-audit", "item": "https://academy.tvl.tech/en/skills/tvl-confirmation-bias-audit/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-confirmation-bias-audit",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "An Agent Skill that audits whether a conclusion was reached by searching mainly for confirming evidence, using a falsification-first method and returning PASS, REVISE or BLOCK.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 10px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 16px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre;
+    }
+    .code-block.cmd { white-space: pre-wrap; }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .evi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+    .evi { border: 1px solid #e6e1db; border-radius: 12px; padding: 20px; background: #fff; }
+    .evi .tag { display: inline-block; font-family: "SFMono-Regular", ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 9px; border-radius: 6px; margin-bottom: 10px; }
+    .evi.s .tag { background: rgba(28,150,90,.12); color: #1c7a4b; }
+    .evi.d .tag { background: rgba(255,73,49,.14); color: var(--red, #ff4931); }
+    .evi.m .tag { background: rgba(214,158,20,.16); color: #9a6b00; }
+    .evi.a .tag { background: #eeeae5; color: #555; }
+    .evi p { color: #555; font-size: 14.5px; line-height: 1.55; margin: 0; }
+    .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .verdict { border-radius: 12px; padding: 22px; border: 1px solid #e6e1db; background: #fff; }
+    .verdict .tag { display: inline-block; font-weight: 700; font-size: 13px; letter-spacing: .08em; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; }
+    .verdict.pass .tag { background: rgba(28,150,90,.12); color: #1c7a4b; }
+    .verdict.revise .tag { background: rgba(214,158,20,.16); color: #9a6b00; }
+    .verdict.block .tag { background: rgba(255,73,49,.14); color: var(--red, #ff4931); }
+    .verdict p { color: #555; line-height: 1.6; font-size: 15px; margin: 0; }
+    .callout { border-left: 4px solid var(--red, #ff4931); background: #fff; border-radius: 0 12px 12px 0; padding: 22px 24px; margin-top: 22px; }
+    .callout h3 { margin: 0 0 8px; font-size: 18px; color: #1c1c1c; }
+    .callout p { margin: 0; color: #555; line-height: 1.65; font-size: 15px; }
+    @media (max-width: 860px) {
+      .content-grid, .verdict-grid, .evi-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
 </head>
 <body>
-<nav><a class="nav-logo" href="../../"><svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
       <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
       <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -30,14 +173,196 @@
       <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
       <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
     </svg>
-    <span class="nav-logo-text">ACADEMY</span></a><button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="../../../en/">Program</a><a href="../">Skills</a><div class="lang-switch"><a href="../../../ro/skills/tvl-confirmation-bias-audit/" class="lang-option" lang="ro">RO</a><a href="../../../en/skills/tvl-confirmation-bias-audit/" class="lang-option is-active" lang="en">EN</a></div><a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit" target="_blank" rel="noopener" class="btn-nav">Source</a></div></nav>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../en/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="../../../ro/skills/tvl-confirmation-bias-audit/" class="lang-option" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-confirmation-bias-audit/" class="lang-option is-active" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit" target="_blank" rel="noopener" class="btn-nav">Source</a>
+  </div>
+</nav>
+
 <main>
-  <section class="hero skill-hero"><div class="hero-content"><div class="hero-text"><div class="hero-label">TVL AI Skills</div><h1><span>Confirmation Bias</span> Audit Skill</h1><p><code>tvl-confirmation-bias-audit</code> checks whether a conclusion was reached by looking mainly for evidence that supports an initial hypothesis.</p><div class="hero-btns"><a href="#install" class="btn-primary">Install the skill</a><a href="../" class="btn-ghost">Back to skills</a></div></div></div></section>
-  <section class="section-pad"><div class="container"><div class="section-title-center"><span class="red-label">Audit method</span><h2 class="section-h2">Falsification first</h2></div><div class="detail-grid"><article class="detail-panel"><h3>Alternative stated</h3><p>Names the strongest plausible alternative before accepting the conclusion.</p></article><article class="detail-panel"><h3>Alternative tested</h3><p>Checks whether disconfirming evidence or counter-tests were actually sought.</p></article><article class="detail-panel"><h3>Certainty calibrated</h3><p>Flags strong claims when the evidence supports only a hypothesis.</p></article></div></div></section>
-  <section class="section-pad alt"><div class="container"><div class="detail-panel wide"><h3>Common use cases</h3><ul><li>Root-cause analysis and incident triage.</li><li>Chatbot advice that validates a user's framing.</li><li>Code review conclusions such as "safe", "unused" or "no vulnerability".</li><li>Business recommendations based on narrow or one-sided evidence.</li></ul></div></div></section>
-  <section class="section-pad" id="install"><div class="container"><div class="section-title-center"><span class="red-label">Install and run</span><h2 class="section-h2">Add the confirmation bias skill</h2></div><div class="detail-panel wide"><div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-confirmation-bias-audit</div><div class="code-block">Use $tvl-confirmation-bias-audit to audit this RCA for one-sided evidence and missing alternatives.</div></div></div></section>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1><span>Confirmation Bias</span> Audit Skill</h1>
+        <p><code>tvl-confirmation-bias-audit</code> checks one thing well: was the conclusion reached by looking mainly for evidence that confirms an initial hypothesis? It names the strongest alternative, classifies the evidence for and against, and returns <strong>PASS</strong>, <strong>REVISE</strong> or <strong>BLOCK</strong>.</p>
+        <div class="hero-btns">
+          <a href="#patterns" class="btn-primary">What it catches</a>
+          <a href="#install" class="btn-ghost">Install the skill</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="patterns">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">What it catches</span>
+        <h2 class="section-h2">Seven ways a conclusion goes one-sided</h2>
+        <p>Confirmation bias is not being wrong — it is only having looked in one direction. These are the patterns the audit hunts for.</p>
+      </div>
+      <div class="panel fade-in">
+        <table class="rule-table">
+          <thead><tr><th>Pattern</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td>One-sided search</td><td>The evidence gathered only points one way; the search never looked for the opposite.</td></tr>
+            <tr><td>Disconfirming evidence not sought</td><td>Contrary evidence was knowable but was never tested.</td></tr>
+            <tr><td>Certainty misaligned</td><td>Confidence in the claim exceeds what the evidence actually warrants.</td></tr>
+            <tr><td>Cherry-picking</td><td>Contrary evidence was available but omitted from the conclusion.</td></tr>
+            <tr><td>Untested alternatives</td><td>Rival hypotheses were named but never actually checked.</td></tr>
+            <tr><td>Biased interpretation</td><td>Ambiguous evidence was read favorably toward the preferred conclusion.</td></tr>
+            <tr><td>Framing accepted uncritically</td><td>A user premise, PR title or metadata anchor was not resisted.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout fade-in">
+        <h3>Confirmation bias vs selective evidence</h3>
+        <p>The skill keeps these apart: <strong>confirmation bias</strong> means the search only went one way; <strong>selective evidence</strong> means contrary evidence <em>was</em> found and then deliberately left out. Different failure, different fix.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="method">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">The method</span>
+        <h2 class="section-h2">Falsification first</h2>
+        <p>Instead of asking "is there support for this?", the audit asks "what would prove this wrong, and was that checked?" Six steps.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Identify the conclusion</h3><p>Pin down the exact claim under audit — "the cache is the bottleneck", "this code is safe".</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Extract hypothesis and anchor</h3><p>What did the draft set out to prove, and what user premise or PR title anchored it?</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Name the strongest alternative</h3><p>State the best rival explanation before accepting the conclusion.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Build a falsification table</h3><p>Classify every piece of evidence by whether it supports, weakens, is missing or is ambiguous.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Run the audit checks</h3><p>Seven yes/no checks on alternatives, search balance, disconfirming evidence, interpretation, certainty and framing.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>Return the report</h3><p>A concise verdict with the evidence balance and the required fixes.</p></article>
+      </div>
+
+      <div class="section-title-center fade-in" style="margin-top:48px;">
+        <h2 class="section-h2" style="font-size:24px;">The falsification table</h2>
+        <p>Every piece of evidence lands in one of four buckets.</p>
+      </div>
+      <div class="evi-grid fade-in">
+        <div class="evi s"><span class="tag">SUPPORTING</span><p>Confirms the conclusion.</p></div>
+        <div class="evi d"><span class="tag">DISCONFIRMING</span><p>Weakens or contradicts it.</p></div>
+        <div class="evi m"><span class="tag">MISSING-TEST</span><p>Counter-evidence that was never checked.</p></div>
+        <div class="evi a"><span class="tag">AMBIGUOUS</span><p>Supports more than one explanation.</p></div>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>The seven audit checks</h3>
+          <ul>
+            <li>Is the alternative hypothesis stated?</li>
+            <li>Is the alternative hypothesis actually tested?</li>
+            <li>Is the search direction balanced, not one-sided?</li>
+            <li>Is disconfirming evidence included?</li>
+            <li>Is ambiguous evidence interpreted fairly?</li>
+            <li>Is stated certainty matched to the evidence?</li>
+            <li>Was the user or metadata framing resisted?</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="output">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Output</span>
+        <h2 class="section-h2">The report and verdict</h2>
+        <p>The audit returns a fixed, scannable structure — verdict first, then the evidence, then the fixes.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <div class="code-block">CONFIRMATION BIAS AUDIT
+VERDICT: [PASS | REVISE | BLOCK]
+CONCLUSION UNDER AUDIT: [the claim being tested]
+FALSIFICATION CHECK:  [table of checks with results]
+EVIDENCE BALANCE:     [table classifying evidence]
+REQUIRED FIXES:       [actionable changes if verdict is not PASS]</div>
+        </article>
+      </div>
+      <div class="verdict-grid">
+        <div class="verdict pass fade-in"><span class="tag">PASS</span><p>States and tests plausible alternatives, reports contrary evidence, and matches certainty to the evidence.</p></div>
+        <div class="verdict revise fade-in"><span class="tag">REVISE</span><p>The conclusion may be plausible, but needs hedging, alternatives, a broader search, or disclosure of missing tests.</p></div>
+        <div class="verdict block fade-in"><span class="tag">BLOCK</span><p>A high-impact or irreversible conclusion presented while ignoring contrary evidence or skipping obvious falsification checks.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="usecases">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Where it earns its keep</span>
+        <h2 class="section-h2">Common use cases</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>Root-cause analysis</h3><p>Review RCAs and incident reports for untested alternatives before a fix is committed.</p></article>
+        <article class="panel fade-in"><h3>Chatbot advice</h3><p>Catch AI answers that simply validate the user's framing instead of testing it.</p></article>
+        <article class="panel fade-in"><h3>Code review</h3><p>Pressure-test conclusions like "safe", "unused" or "no vulnerability" toward the "this change is fine" bias.</p></article>
+        <article class="panel fade-in"><h3>Business recommendations</h3><p>Check decisions built on narrow or one-sided evidence before they ship.</p></article>
+        <article class="panel fade-in"><h3>Research summaries</h3><p>Test whether a summary weighed counter-evidence or just the sources that agreed.</p></article>
+        <article class="panel fade-in"><h3>Pre-deployment decisions</h3><p>Validate high-impact calls where an unfalsified conclusion is expensive to reverse.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Under the hood</span>
+        <h2 class="section-h2">What ships with the skill</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/confirmation-bias-rubric.md</h3><p>The core evaluation criteria behind the seven audit checks.</p></article>
+        <article class="panel fade-in"><h3>references/chatbot-evaluation-cases.md</h3><p>Chatbot-specific examples and test cases for one-sided reasoning.</p></article>
+        <article class="panel fade-in"><h3>Related</h3><p>Part of the same integrity family as <a href="../tvl-ethical-ai-audit/"><code>tvl-ethical-ai-audit</code></a>, focused narrowly on one failure mode.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Install and run</span>
+        <h2 class="section-h2">Add the confirmation bias skill</h2>
+        <p>Use the public TVL Skills repository with the Agent Skills CLI.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Install only this skill</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-confirmation-bias-audit</div>
+          <h3>Install all TVL skills</h3>
+          <div class="code-block cmd"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Audit a root-cause analysis</h3>
+          <div class="code-block cmd">Use $tvl-confirmation-bias-audit to audit this RCA for one-sided evidence and missing alternatives. Name the strongest rival explanation and tell me whether it was tested.</div>
+          <h3>Audit a code-review conclusion</h3>
+          <div class="code-block cmd">Use $tvl-confirmation-bias-audit to check this review's "no vulnerability" conclusion. Build the evidence balance table and return PASS, REVISE or BLOCK.</div>
+          <h3>Audit chatbot advice</h3>
+          <div class="code-block cmd">Use $tvl-confirmation-bias-audit to test whether this assistant accepted the user's framing uncritically or actually searched both directions.</div>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><div class="footer-inner"><a href="../../" class="nav-logo"><svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
           <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
           <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
@@ -47,6 +372,21 @@
           <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
           <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
         </svg>
-        <span class="nav-logo-text">ACADEMY</span></a><div><a href="../">Skills</a> · <a href="https://github.com/danlex/tvl-skills" target="_blank" rel="noopener">GitHub</a></div></div></div></footer><script src="../../../index.js"></script>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../en/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-confirmation-bias-audit" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
 </body>
 </html>
