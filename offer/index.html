@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Commercial proposal for Claude.ai organisational configuration advisory and a customised executive AI programme for 10 to 20 managers.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://academy.tvl.tech/offer/">
+  <title>TVL Academy | Claude.ai Configuration Guidance and AI Training Offer for Management Teams</title>
+  <style>
+    :root {
+      --coral: #FF4931;
+      --action: #C83224;
+      --action-dark: #A82D22;
+      --light-coral: #FF9A8F;
+      --ink: #111111;
+      --body: #4A4A4A;
+      --muted: #66615C;
+      --paper: #FFFFFF;
+      --warm: #F7F6F4;
+      --line: #E6E1DB;
+      --dark: #161616;
+      --radius: 12px;
+      --shadow: 0 18px 50px rgba(17, 17, 17, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ECE9E5;
+      font-family: "Open Sans", Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--action); text-underline-offset: 3px; }
+    a:hover { color: var(--action-dark); }
+
+    .document {
+      width: min(1120px, calc(100% - 32px));
+      margin: 32px auto;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .page {
+      position: relative;
+      padding: 72px clamp(28px, 7vw, 84px);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .page:last-child { border-bottom: 0; }
+
+    .cover {
+      min-height: 760px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--warm);
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -210px;
+      top: -160px;
+      border: 2px solid var(--coral);
+      transform: rotate(45deg);
+      opacity: 0.7;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: 72px;
+      top: 148px;
+      border: 1px solid var(--light-coral);
+      transform: rotate(45deg);
+      opacity: 0.55;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 1;
+      width: 194px;
+      height: auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--action);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 820px;
+      margin-bottom: 24px;
+      font-size: clamp(42px, 6.2vw, 72px);
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .lead {
+      max-width: 770px;
+      color: var(--body);
+      font-size: clamp(19px, 2vw, 24px);
+      line-height: 1.5;
+    }
+
+    .accent-rule {
+      width: 88px;
+      height: 5px;
+      margin: 28px 0;
+      background: var(--coral);
+      border-radius: 8px;
+    }
+
+    .cover-main {
+      position: relative;
+      z-index: 1;
+      padding: 72px 0 56px;
+    }
+
+    .cover-meta {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .meta-label,
+    .table-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .meta-value { font-weight: 700; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--body);
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 32px 0 48px;
+    }
+
+    .fact {
+      min-height: 130px;
+      padding: 22px;
+      background: var(--warm);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--action);
+      font-size: 31px;
+      line-height: 1.15;
+    }
+
+    .fact span {
+      color: var(--body);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .price-table th,
+    .price-table td {
+      padding: 18px 20px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .price-table th {
+      color: var(--muted);
+      background: var(--warm);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .price-table tr:last-child td { border-bottom: 0; }
+    .price-table .amount { white-space: nowrap; font-weight: 700; }
+    .price-table .item-title { display: block; font-weight: 700; color: var(--ink); }
+    .price-table .item-note { display: block; color: var(--body); font-size: 14px; line-height: 1.45; }
+
+    .total-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      margin-top: 20px;
+      padding: 26px 28px;
+      color: white;
+      background: var(--dark);
+      border-radius: var(--radius);
+    }
+
+    .total-box p { margin: 0; color: #D8D6D3; font-size: 14px; }
+    .total-box .total-label { margin-bottom: 3px; color: white; font-weight: 700; font-size: 18px; }
+    .total-price { color: white; font-size: clamp(32px, 5vw, 46px); font-weight: 700; line-height: 1; }
+
+    .note {
+      margin-top: 18px;
+      padding-left: 16px;
+      color: var(--body);
+      border-left: 4px solid var(--coral);
+      font-size: 14px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .card.soft { background: var(--warm); }
+
+    .card p:last-child,
+    .card ul:last-child { margin-bottom: 0; }
+
+    .checklist {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      position: relative;
+      margin: 0 0 12px;
+      padding-left: 27px;
+      color: var(--body);
+    }
+
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.56em;
+      width: 10px;
+      height: 10px;
+      background: var(--coral);
+      border-radius: 2px;
+    }
+
+    .recommendation {
+      margin: 32px 0;
+      padding: 28px;
+      background: var(--warm);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .recommendation strong {
+      color: var(--action);
+    }
+
+    .licence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .licence {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .licence.featured { border-top: 5px solid var(--coral); }
+    .licence .price { margin: 10px 0 4px; font-size: 27px; font-weight: 700; line-height: 1.2; }
+    .licence .small { color: var(--body); font-size: 13px; line-height: 1.5; }
+
+    .module-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .module {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr) 150px;
+      gap: 24px;
+      align-items: start;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .module-number {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--action);
+      border-radius: 10px;
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    .module h3 { margin-top: 1px; }
+
+    .module ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px 28px;
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--body);
+      font-size: 15px;
+    }
+
+    .module-topics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px 14px;
+      margin-top: 18px;
+    }
+
+    .module-topic {
+      padding: 14px 16px;
+      background: var(--warm);
+      border-left: 4px solid var(--coral);
+      border-radius: 8px;
+    }
+
+    .module-topic h4 {
+      margin: 0 0 5px;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .module-topic p {
+      margin: 0;
+      color: var(--body);
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+
+    .module-topic:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+    .module-price {
+      padding-top: 4px;
+      text-align: right;
+    }
+
+    .module-price strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .module-price span { color: var(--muted); font-size: 13px; }
+
+    .outcome {
+      margin-top: 18px;
+      padding: 13px 16px;
+      background: var(--warm);
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .included {
+      margin-top: 34px;
+      padding: 30px;
+      background: var(--warm);
+      border-radius: var(--radius);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      margin: 36px 0 44px;
+    }
+
+    .step {
+      position: relative;
+      padding: 54px 20px 0 0;
+      border-top: 2px solid var(--line);
+    }
+
+    .step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -19px;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--action);
+      border: 4px solid white;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .step h3 { font-size: 17px; }
+    .step p { color: var(--body); font-size: 14px; line-height: 1.5; }
+
+    .terms {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 22px;
+    }
+
+    .terms td {
+      padding: 15px 0;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .terms td:first-child {
+      width: 31%;
+      padding-right: 24px;
+      font-weight: 700;
+    }
+
+    .terms tr:last-child td { border-bottom: 0; }
+
+    .acceptance {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px;
+      margin-top: 44px;
+      padding-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .signature-line {
+      margin-top: 58px;
+      padding-top: 8px;
+      border-top: 1px solid var(--ink);
+      color: var(--body);
+      font-size: 13px;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer p { margin-bottom: 0; }
+    .footer .contact { text-align: right; }
+
+    .print-button {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 20;
+      padding: 13px 18px;
+      color: white;
+      background: var(--action);
+      border: 0;
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(17, 17, 17, 0.2);
+      font: 700 14px/1 "Open Sans", Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .print-button:hover { background: var(--action-dark); }
+    .print-button:focus-visible { outline: 3px solid var(--light-coral); outline-offset: 3px; }
+
+    @media (max-width: 820px) {
+      .document { width: 100%; margin: 0; box-shadow: none; }
+      .page { padding: 54px 24px; }
+      .cover { min-height: 720px; }
+      .cover::after { display: none; }
+      .cover-meta, .section-head, .two-col, .acceptance { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .licence-grid { grid-template-columns: 1fr; }
+      .module { grid-template-columns: 64px minmax(0, 1fr); }
+      .module-price { grid-column: 2; text-align: left; }
+      .timeline { grid-template-columns: 1fr 1fr; gap: 36px 0; }
+      .footer { grid-template-columns: 1fr; }
+      .footer .contact { text-align: left; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .brand { width: 160px; }
+      .facts { grid-template-columns: 1fr; }
+      .price-table thead { display: none; }
+      .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
+      .price-table tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+      .price-table tr:last-child { border-bottom: 0; }
+      .price-table td { padding: 7px 18px; border-bottom: 0; }
+      .price-table td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+      .total-box { grid-template-columns: 1fr; }
+      .module { grid-template-columns: 1fr; }
+      .module-price { grid-column: 1; }
+      .module ul { grid-template-columns: 1fr; }
+      .module-topics { grid-template-columns: 1fr; }
+      .module-topic:last-child:nth-child(odd) { grid-column: auto; }
+      .timeline { grid-template-columns: 1fr; gap: 38px; }
+      .step { padding-right: 0; }
+      .terms, .terms tbody, .terms tr, .terms td { display: block; width: 100%; }
+      .terms tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+      .terms td { padding: 3px 0; border: 0; }
+      .print-button { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 13mm; }
+      body { background: white; font-size: 11pt; }
+      .document { width: auto; margin: 0; box-shadow: none; }
+      .page { padding: 14mm 12mm; border-bottom: 0; overflow: visible; }
+      .cover { min-height: 257mm; page-break-after: always; }
+      .page + .page { page-break-before: always; }
+      .card, .module, .module-topic, .recommendation, .included, .total-box, .licence, .fact { break-inside: avoid; }
+      .print-button { display: none; }
+      a { color: inherit; text-decoration: none; }
+      h1 { font-size: 40pt; }
+      h2 { font-size: 26pt; }
+      .facts { gap: 8px; }
+      .fact { min-height: 104px; padding: 16px; }
+      .page:last-child { padding-bottom: 4mm; }
+    }
+  </style>
+</head>
+<body>
+  <button class="print-button" type="button" onclick="window.print()" aria-label="Print or save this proposal as PDF">Print or save PDF</button>
+
+  <main class="document">
+    <section class="page cover" aria-labelledby="proposal-title">
+      <svg class="brand" role="img" aria-label="TVL Academy" xmlns="http://www.w3.org/2000/svg" width="129.26" height="40" viewBox="0 0 129.26 40" fill="none">
+        <g transform="translate(0,2) scale(0.0458015267) translate(-107,-107)">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </g>
+        <path d="M1079 0 973 348H440L334 0H0L516 1468H895L1413 0ZM899 608Q752 1081 733.5 1143.0Q715 1205 707 1241Q674 1113 518 608Z" transform="translate(44.0000,25.4000) scale(0.00732422,-0.00732422)" fill="#C83224"/>
+        <path d="M805 1225Q630 1225 534.0 1093.5Q438 962 438 727Q438 238 805 238Q959 238 1178 315V55Q998 -20 776 -20Q457 -20 288.0 173.5Q119 367 119 729Q119 957 202.0 1128.5Q285 1300 440.5 1391.5Q596 1483 805 1483Q1018 1483 1233 1380L1133 1128Q1051 1167 968.0 1196.0Q885 1225 805 1225Z" transform="translate(56.3491,25.4000) scale(0.00732422,-0.00732422)" fill="#C83224"/>
+        <path d="M1079 0 973 348H440L334 0H0L516 1468H895L1413 0ZM899 608Q752 1081 733.5 1143.0Q715 1205 707 1241Q674 1113 518 608Z" transform="translate(67.9072,25.4000) scale(0.00732422,-0.00732422)" fill="#C83224"/>
+        <path d="M1397 745Q1397 384 1191.5 192.0Q986 0 598 0H184V1462H643Q1001 1462 1199.0 1273.0Q1397 1084 1397 745ZM1075 737Q1075 1208 659 1208H494V256H627Q1075 256 1075 737Z" transform="translate(80.2563,25.4000) scale(0.00732422,-0.00732422)" fill="#C83224"/>
+        <path d="M1026 0H184V1462H1026V1208H494V887H989V633H494V256H1026Z" transform="translate(93.3599,25.4000) scale(0.00732422,-0.00732422)" fill="#C83224"/>
+        <path d="M803 0 451 1147H442Q461 797 461 680V0H184V1462H606L952 344H958L1325 1462H1747V0H1458V692Q1458 741 1459.5 805.0Q1461 869 1473 1145H1464L1087 0Z" transform="translate(103.7607,25.4000) scale(0.00732422,-0.00732422)" fill="#C83224"/>
+        <path d="M639 860 944 1462H1278L793 569V0H485V559L0 1462H336Z" transform="translate(119.9038,25.4000) scale(0.00732422,-0.00732422)" fill="#C83224"/>
+      </svg>
+
+      <div class="cover-main">
+        <p class="eyebrow">Commercial proposal · Draft v1</p>
+        <h1 id="proposal-title">Claude.ai Configuration Guidance and AI Training Offer for Management Teams</h1>
+        <div class="accent-rule" aria-hidden="true"></div>
+        <p class="lead">A practical engagement that guides the client's team through Claude organisational choices, then equips 10 to 20 managers with a shared understanding of AI, responsible working practices and a prioritised AI strategy.</p>
+      </div>
+
+      <div class="cover-meta">
+        <div>
+          <span class="meta-label">Prepared for</span>
+          <span class="meta-value">[Client organisation]</span>
+        </div>
+        <div>
+          <span class="meta-label">Prepared by</span>
+          <span class="meta-value">TVL Academy</span>
+        </div>
+        <div>
+          <span class="meta-label">Date</span>
+          <span class="meta-value">26 August 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" aria-labelledby="summary-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Offer summary</p>
+          <h2 id="summary-title">One configuration plan, one management language, one practical roadmap</h2>
+        </div>
+        <p>The engagement combines guided configuration decisions and advisory review with a customised three-module management programme.</p>
+      </div>
+
+      <div class="facts" aria-label="Programme facts">
+        <div class="fact"><strong>10-20</strong><span>Managers in each live module</span></div>
+        <div class="fact"><strong>3 × 3h</strong><span>Configurable training modules</span></div>
+        <div class="fact"><strong>5-10h</strong><span>Claude.ai configuration guidance</span></div>
+        <div class="fact"><strong>€3,500-€4,000</strong><span>Estimated total for 5-10 consultancy hours and three modules</span></div>
+      </div>
+
+      <table class="price-table" aria-label="Commercial pricing">
+        <thead>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">Format</th>
+            <th scope="col">Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Service">
+              <span class="item-title">Claude.ai organisational configuration advisory</span>
+              <span class="item-note">Options review, client-led configuration checklist and validation session.</span>
+            </td>
+            <td data-label="Format">Estimated 5-10 consulting hours</td>
+            <td data-label="Fee" class="amount">€100 / hour</td>
+          </tr>
+          <tr>
+            <td data-label="Service">
+              <span class="item-title">Module 1 · AI Awareness</span>
+              <span class="item-note">TVL Academy's three-hour, four-part awareness programme, adapted to the management team.</span>
+            </td>
+            <td data-label="Format">3 hours · 10-20 people</td>
+            <td data-label="Fee" class="amount">€1,000</td>
+          </tr>
+          <tr>
+            <td data-label="Service">
+              <span class="item-title">Module 2 · Applied AI Literacy</span>
+              <span class="item-note">Hands-on work with Claude Projects, Skills, Agents and a first Claude Code workflow.</span>
+            </td>
+            <td data-label="Format">3 hours · 10-20 people</td>
+            <td data-label="Fee" class="amount">€1,000</td>
+          </tr>
+          <tr>
+            <td data-label="Service">
+              <span class="item-title">Module 3 · AI Strategy, Governance and Human-Agent Operating Model</span>
+              <span class="item-note">Company AI controls, reusable capabilities, human-agent delivery, regulatory readiness and a 90-day roadmap.</span>
+            </td>
+            <td data-label="Format">3 hours · 10-20 people</td>
+            <td data-label="Fee" class="amount">€1,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="total-box">
+        <div>
+          <p class="total-label">Estimated total professional services</p>
+          <p>Based on 5 to 10 Claude consultancy hours. Subscriptions, VAT, travel and third-party costs are not included.</p>
+        </div>
+        <div class="total-price">€3,500-€4,000</div>
+      </div>
+
+      <p class="note">Claude consultancy is billed at €100 per actual hour. Each training module can be selected and configured independently for €1,000. The complete three-module programme is €3,000.</p>
+    </section>
+
+    <section class="page" aria-labelledby="claude-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Workstream 1</p>
+          <h2 id="claude-title">Claude.ai organisational configuration advisory</h2>
+        </div>
+        <p>Consultancy is billed at €100 per actual hour. A typical guidance and review engagement is estimated at 5 to 10 hours, or €500-€1,000.</p>
+      </div>
+
+      <div class="two-col">
+        <article class="card">
+          <h3>Guidance and review scope</h3>
+          <ul class="checklist">
+            <li>Discuss organisational goals, security requirements and current working practices.</li>
+            <li>Compare Claude Team and Enterprise options and recommend a suitable starting point.</li>
+            <li>Explain seat, billing, owner, administrator and user access choices.</li>
+            <li>Review domain, single sign-on and user provisioning options with the client's IT team, where relevant.</li>
+            <li>Walk through the available data, feedback, retention, sharing, public project and connector checkboxes.</li>
+            <li>Recommend a structure for shared Projects, company rules, brand guidance and curated knowledge.</li>
+            <li>Discuss the organisation Skills policy and an initial approved Skill catalogue.</li>
+            <li>Review possible MCP connections, permission boundaries and rollout options.</li>
+            <li>Provide a decision log and step-by-step checklist for the client's administrator.</li>
+          </ul>
+        </article>
+
+        <article class="card soft">
+          <h3>Boundaries and prerequisites</h3>
+          <ul class="checklist">
+            <li>The client appoints an authorised administrator and the relevant IT, security or data protection contacts.</li>
+            <li>The client's administrator selects and applies every setting in the organisation's own account.</li>
+            <li>TVL Academy provides guidance and checklist validation, without requesting direct system access.</li>
+            <li>TVL Academy does not receive passwords, authentication tokens or administrator credentials.</li>
+            <li>Custom integrations, remote Model Context Protocol connector development and data migration are outside this advisory scope.</li>
+            <li>Legal assessment, data protection impact assessment and penetration testing are not included.</li>
+            <li>Additional configuration guidance and advisory are billed at €100 per hour with prior approval.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="recommendation">
+        <h3>Baseline recommendation for 10 to 20 managers</h3>
+        <p><strong>Start with Claude Team Standard seats</strong>, subject to the client's security review. Team includes central administration, single sign-on and organisation-level controls. Enterprise becomes relevant when the organisation requires controls such as SCIM provisioning, audit logs, custom data retention or network-level restrictions.</p>
+      </div>
+
+      <h3>Estimated Anthropic licence costs</h3>
+      <p>These subscriptions are contracted and paid directly by the client to Anthropic. Public pricing can change, so the final cost must be confirmed before purchase.</p>
+
+      <div class="licence-grid">
+        <article class="licence featured">
+          <span class="table-label">Team Standard · annual</span>
+          <div class="price">$200-$400 / month</div>
+          <div class="small">10 to 20 seats at $20 per seat per month, billed annually. Equivalent to $2,400-$4,800 per year, excluding tax.</div>
+        </article>
+        <article class="licence">
+          <span class="table-label">Team Standard · monthly</span>
+          <div class="price">$250-$500 / month</div>
+          <div class="small">10 to 20 seats at $25 per seat per month, billed monthly, excluding tax.</div>
+        </article>
+        <article class="licence">
+          <span class="table-label">Enterprise</span>
+          <div class="price">$20 / seat + usage</div>
+          <div class="small">Seat access plus usage charged at API rates. Appropriate when advanced security and compliance controls are required.</div>
+        </article>
+      </div>
+
+      <p class="note">Pricing reference checked on 26 August 2026. See <a href="https://claude.com/pricing">Claude pricing</a> and <a href="https://support.anthropic.com/en/articles/13132885-setting-up-single-sign-on-sso">Anthropic's SSO configuration guidance</a>.</p>
+    </section>
+
+    <section class="page" aria-labelledby="programme-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Workstream 2</p>
+          <h2 id="programme-title">Custom executive AI programme</h2>
+        </div>
+        <p>Three practical modules for 10 to 20 managers. Each module is adapted to the organisation's sector, priorities, tools and real management decisions.</p>
+      </div>
+
+      <div class="module-list">
+        <article class="module">
+          <div class="module-number" aria-hidden="true">01</div>
+          <div>
+            <h3>AI Awareness</h3>
+            <p>TVL Academy's three-hour awareness course, adapted to the organisation and its management team.</p>
+            <div class="module-topics">
+              <article class="module-topic">
+                <h4>Understand AI</h4>
+                <p>Learn what artificial intelligence, generative AI and language models are, supported by the key moments in AI history.</p>
+              </article>
+              <article class="module-topic">
+                <h4>See Generative AI in Action</h4>
+                <p>Explore practical demonstrations using text, images, documents and information from different sources.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Prompt Clearly</h4>
+                <p>Turn a real need into a clear request with the right context, expected output and useful constraints.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Apply AI to Real Work</h4>
+                <p>Identify useful applications for daily management tasks, departments and the organisation's own priorities.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Recognise Errors and Hallucinations</h4>
+                <p>Detect unsupported claims, invented sources and overconfident answers before relying on an AI output.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Use AI Safely</h4>
+                <p>Protect sensitive information, understand model limitations and decide when human verification is required.</p>
+              </article>
+            </div>
+            <div class="outcome">Outcome: a shared AI foundation, direct practical experience and clear rules for when human verification is required.</div>
+          </div>
+          <div class="module-price"><strong>€1,000</strong><span>3 hours · 10-20 people</span></div>
+        </article>
+
+        <article class="module">
+          <div class="module-number" aria-hidden="true">02</div>
+          <div>
+            <h3>Applied AI Literacy · Projects, Skills, Agents and Claude Code</h3>
+            <p>Participants move from individual chats to reusable AI working systems. Each manager configures practical Claude components and completes a guided first task in Claude Code.</p>
+            <div class="module-topics">
+              <article class="module-topic">
+                <h4>Claude Projects</h4>
+                <p>Create a focused workspace with reusable knowledge, instructions, access rules and a clear business purpose.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Reusable Skills</h4>
+                <p>Turn a repeatable management process into a Skill that Claude can apply consistently when it is needed.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Focused Agents</h4>
+                <p>Define an Agent with a specific role, task, tools, permissions, expected output and operating boundaries.</p>
+              </article>
+              <article class="module-topic">
+                <h4>First Claude Code Session</h4>
+                <p>Open a prepared business project, inspect its structure and ask Claude Code to plan the requested change.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Build a Small Internal Tool</h4>
+                <p>Edit, preview and test a useful internal application through a guided manager-friendly workflow.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Verify and Approve</h4>
+                <p>Review permissions, sensitive data, factual quality and the human approval required before an output is used.</p>
+              </article>
+            </div>
+            <div class="outcome">Outcome: one configured Project, one reusable Skill, one Agent specification and a first working output created with Claude Code.</div>
+          </div>
+          <div class="module-price"><strong>€1,000</strong><span>3 hours · 10-20 people</span></div>
+        </article>
+
+        <article class="module">
+          <div class="module-number" aria-hidden="true">03</div>
+          <div>
+            <h3>AI Strategy, Governance and Human-Agent Operating Model</h3>
+            <p>Participants design the company's AI operating system, covering Claude configuration decisions, reusable company capabilities, governed human-agent delivery, regulatory readiness and investment priorities.</p>
+            <div class="module-topics">
+              <article class="module-topic">
+                <h4>Company AI Foundation</h4>
+                <p>Create organisation-wide Skills, company rules, brand standards, shared Claude Projects and a curated knowledge base.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Identity and Data Controls</h4>
+                <p>Define account access levels, sharing and retention choices, approved data spaces and escalation paths.</p>
+              </article>
+              <article class="module-topic">
+                <h4>MCP and Agent Architecture</h4>
+                <p>Select approved connectors, permission boundaries and agent roles for secure access to company tools and knowledge.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Multi-Agent Project Board</h4>
+                <p>Coordinate specialist agents and human roles across intake, build, review, approval, release and monitoring.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Human Oversight and Ethical AI</h4>
+                <p>Assign accountable owners, human-in-the-loop gates, evidence requirements, verification, incident response and stop rules.</p>
+              </article>
+              <article class="module-topic">
+                <h4>Regulatory Readiness and AI Registry</h4>
+                <p>Classify use cases against the AI Act, GDPR and relevant legislation, then record purpose, data, risk, controls and status.</p>
+              </article>
+              <article class="module-topic">
+                <h4>AI Portfolio and 90-Day Roadmap</h4>
+                <p>Prioritise use cases by impact, feasibility and risk, then assign pilot criteria, owners, KPIs and next decisions.</p>
+              </article>
+            </div>
+            <div class="outcome">Outcome: a draft Company AI Operating Blueprint, including target Claude configuration decisions, one mapped human-agent workflow, a starter AI Registry and an agreed 90-day action plan.</div>
+          </div>
+          <div class="module-price"><strong>€1,000</strong><span>3 hours · 10-20 people</span></div>
+        </article>
+      </div>
+
+      <div class="included">
+        <h3>Custom preparation and materials are included</h3>
+        <div class="two-col">
+          <ul class="checklist">
+            <li>Discovery session with the programme sponsor.</li>
+            <li>Adaptation of examples and exercises to the client's context.</li>
+            <li>One review cycle before delivery.</li>
+          </ul>
+          <ul class="checklist">
+            <li>Customised slides, guides, templates and workshop outputs.</li>
+            <li>Named TVL Academy certificates of completion.</li>
+            <li>Materials retained by the client for unlimited internal reference.</li>
+          </ul>
+        </div>
+        <p class="note">The client receives a lasting internal-use copy of the customised course materials. External distribution, resale or rebranding is not included unless agreed in writing.</p>
+      </div>
+    </section>
+
+    <section class="page" aria-labelledby="delivery-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Delivery and terms</p>
+          <h2 id="delivery-title">A focused engagement over two to four weeks</h2>
+        </div>
+        <p>The sequence can be compressed or extended around the management team's calendar.</p>
+      </div>
+
+      <div class="timeline" aria-label="Indicative delivery sequence">
+        <article class="step" data-step="1">
+          <h3>Discover</h3>
+          <p>Confirm participants, priorities, security requirements and relevant business examples.</p>
+        </article>
+        <article class="step" data-step="2">
+          <h3>Guide</h3>
+          <p>Review the available Claude.ai options with the client's administrator and document the selected controls.</p>
+        </article>
+        <article class="step" data-step="3">
+          <h3>Train</h3>
+          <p>Deliver three customised modules with live exercises for the management team.</p>
+        </article>
+        <article class="step" data-step="4">
+          <h3>Consolidate</h3>
+          <p>Provide the configuration checklist, course materials, workshop outputs and prioritised action roadmap.</p>
+        </article>
+      </div>
+
+      <h3>Commercial terms</h3>
+      <table class="terms" aria-label="Commercial terms">
+        <tbody>
+          <tr>
+            <td>Professional fees</td>
+            <td>Estimated at €3,500-€4,000 excluding VAT, based on 5 to 10 Claude consultancy hours at €100 per hour, plus €3,000 for the three training modules. The final total is adjusted to the actual consultancy hours used.</td>
+          </tr>
+          <tr>
+            <td>Payment</td>
+            <td>Training: 50% on acceptance and scheduling, 50% after the final module. Claude consultancy is invoiced according to the actual hours used.</td>
+          </tr>
+          <tr>
+            <td>Delivery format</td>
+            <td>Remote or on-site. Reasonable travel and accommodation costs, when required, are agreed and invoiced separately.</td>
+          </tr>
+          <tr>
+            <td>Rescheduling</td>
+            <td>Sessions may be rescheduled without charge with at least five business days' notice.</td>
+          </tr>
+          <tr>
+            <td>Offer validity</td>
+            <td>30 calendar days from the proposal date.</td>
+          </tr>
+          <tr>
+            <td>Third-party services</td>
+            <td>Anthropic subscriptions, identity provider services and any other third-party fees are contracted and paid directly by the client.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="acceptance">
+        <div>
+          <h3>For TVL Academy</h3>
+          <p>Alexandru Dan<br>CEO TVL Tech · Lead Trainer TVL Academy</p>
+          <div class="signature-line">Signature and date</div>
+        </div>
+        <div>
+          <h3>For [Client organisation]</h3>
+          <p>Name and role<br>&nbsp;</p>
+          <div class="signature-line">Signature and date</div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div>
+          <p><strong>TVL Academy</strong><br>Applied AI training for professionals and teams.</p>
+        </div>
+        <div class="contact">
+          <p><a href="https://academy.tvl.tech">academy.tvl.tech</a><br><a href="mailto:alex@tvl.tech">alex@tvl.tech</a></p>
+        </div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
