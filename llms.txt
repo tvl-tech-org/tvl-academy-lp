@@ -13,6 +13,8 @@ TVL Academy runs a 3-session, 9-hour program that takes a team from chaotic AI u
 ## Articles
 - [EU AI Act: ce trebuie să demonstreze companiile despre angajați (RO)](https://academy.tvl.tech/ro/blog/eu-ai-act-angajati/): explains the "AI literacy" obligation in Article 4 of the EU AI Act (in force since 2 February 2025) — what "sufficient" means, what the law does not require (no specific certificate, no separate fixed fine), and how a company can demonstrate compliance.
 - [EU AI Act: what companies must prove about their employees (EN)](https://academy.tvl.tech/en/blog/eu-ai-act-employees/): English version of the EU AI Act / AI literacy article.
+- [How to Rank in ChatGPT: a GEO & AEO playbook (EN)](https://academy.tvl.tech/en/blog/how-to-rank-in-chatgpt/): an eight-step playbook to get pages cited by ChatGPT, Perplexity and Google AI Overviews — allow the AI crawlers (GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended), answer in the first two sentences, structure sections as question and answer, add Article/FAQPage/HowTo schema, cite sources and statistics, clarify author and publisher, keep the page fresh, and publish an llms.txt. GEO research (Aggarwal et al., KDD 2024) found citations, quotations and statistics raised AI-answer visibility by up to 40%.
+- [Cum să apari în ChatGPT: ghid GEO și AEO (RO)](https://academy.tvl.tech/ro/blog/cum-sa-apari-in-chatgpt/): Romanian version of the how-to-rank-in-ChatGPT / GEO playbook.
 - [Blog (RO)](https://academy.tvl.tech/ro/blog/): index of Romanian articles.
 - [Blog (EN)](https://academy.tvl.tech/en/blog/): index of English articles.
 
