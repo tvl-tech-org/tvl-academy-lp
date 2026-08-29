@@ -1,5 +1,48 @@
+# TVL Academy — crawler policy
+# All content is open to search engines and AI answer engines.
+# AI-readable site summary: https://academy.tvl.tech/llms.txt
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI answer engines — indexers (train/index) and live retrievers (fetch at answer time)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# AI training / grounding opt-in tokens
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Everyone else
 User-agent: *
 Allow: /
- 
+
 Sitemap: https://academy.tvl.tech/sitemap.xml
- 

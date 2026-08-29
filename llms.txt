@@ -16,6 +16,15 @@ TVL Academy runs a 3-session, 9-hour program that takes a team from chaotic AI u
 - [Blog (RO)](https://academy.tvl.tech/ro/blog/): index of Romanian articles.
 - [Blog (EN)](https://academy.tvl.tech/en/blog/): index of English articles.
 
+## FAQ
+- **What is TVL Academy?** A practical AI training program for corporate teams, delivered by TVL Tech. It runs 3 sessions over 9 hours and moves a team from ad-hoc AI use to a standardized, correct, consistent way of working, customized to the company's real processes, tools, and roles.
+- **Who is it for?** Corporate teams of 10 to 20 people that already use AI tools like ChatGPT, Claude, and Gemini but without a shared standard. It is delivered in Romanian or English, on-site anywhere in Romania or online.
+- **What does the program cover?** Three sessions: prompt engineering with the CROTATFC framework; building a personalized AI assistant per role; and an AI Design Sprint that prioritizes automation opportunities.
+- **What do teams leave with?** A prompt library, per-role AI assistants, a 3 to 5 item automation plan, audit-ready EU AI Act compliance documentation, individual certificates, and 30 days of email support.
+- **Does it cover EU AI Act compliance?** Yes. The program produces documentation that helps demonstrate the AI literacy obligation in Article 4 of the EU AI Act, in force since 2 February 2025.
+- **Who is the trainer?** Alexandru Dan, CEO of TVL Tech, Generative AI lecturer at ASE Bucharest, and creator of the CROTATFC prompting framework.
+- **Does TVL work on AI search visibility and GEO?** Yes. TVL publishes an open-source SEO and GEO audit skill, `tvl-seo-geo-audit`, that checks pages for technical SEO, structured data, crawler policy, and generative-engine answer visibility.
+
 ## About
 - [TVL Tech](https://tvl.tech): the company that delivers the program — AI automation and training.
 
