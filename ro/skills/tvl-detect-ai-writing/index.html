@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill de detectare AI — tipare și scor</title>
+  <meta name="description" content="Cum funcționează tvl-detect-ai-writing: un scor de tipare de la 0 la 10, o taxonomie completă a tiparelor formulaice de AI, un mod reply pentru X/Twitter și un pre-scan determinist scan_ai_patterns.py pentru tiparele detectabile prin regex.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="Skill de detectare AI — tipare și scor">
+  <meta property="og:description" content="Un scor de la 0 la 10, o taxonomie a tiparelor formulaice de AI, un mod reply pentru X/Twitter și un pre-scan determinist pentru conținut profesional.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/ro/skills/tvl-detect-ai-writing/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Skill de detectare a scrisului AI de la TVL Academy">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skill de detectare AI — tipare și scor">
+  <meta name="twitter:description" content="Un scor de la 0 la 10, o taxonomie a tiparelor formulaice de AI, un mod reply pentru X/Twitter și un pre-scan determinist.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/ro/skills/tvl-detect-ai-writing/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-detect-ai-writing/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/">
+  <meta name="robots" content="index, follow">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Skill de detectare AI — tipare și scor",
+        "url": "https://academy.tvl.tech/ro/skills/tvl-detect-ai-writing/",
+        "description": "Cum funcționează tvl-detect-ai-writing: un scor de tipare de la 0 la 10, o taxonomie a tiparelor formulaice de AI, un mod reply și un pre-scan determinist scan_ai_patterns.py.",
+        "inLanguage": "ro"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/ro/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-detect-ai-writing", "item": "https://academy.tvl.tech/ro/skills/tvl-detect-ai-writing/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-detect-ai-writing",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "Un Agent Skill care detectează tipare formulaice de AI în postări LinkedIn, articole, web copy și răspunsuri pe X/Twitter, și returnează un scor de la 0 la 10 cu un raport și un pre-scan determinist.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-detect-ai-writing",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num, .letter-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 16px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .chip {
+      display: inline-block; background: #f4f0ec; border: 1px solid #e6e1db;
+      color: #7a2a1e; border-radius: 6px; padding: 3px 9px; margin: 0 6px 8px 0;
+      font-size: 13.5px; font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+    }
+    .chip-wrap { margin-top: 6px; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .stat { background: #fff; border: 1px solid #e6e1db; border-radius: 12px; padding: 24px; text-align: center; }
+    .stat b { display: block; font-size: 30px; color: var(--red, #ff4931); line-height: 1.1; }
+    .stat span { display: block; margin-top: 8px; color: #555; font-size: 14.5px; line-height: 1.5; }
+    @media (max-width: 860px) {
+      .content-grid, .stat-row { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../ro/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Selector de limbă">
+      <a href="../../../ro/skills/tvl-detect-ai-writing/" class="lang-option is-active" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-detect-ai-writing/" class="lang-option" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-detect-ai-writing" target="_blank" rel="noopener" class="btn-nav">Sursă</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1>Skill de <span>detectare AI</span></h1>
+        <p><code>tvl-detect-ai-writing</code> citește o postare LinkedIn, un articol, un draft sau un reply pe X și găsește tiparele formulaice care fac textul să sune generat de mașină. Marchează frazele exacte, explică de ce se declanșează fiecare, returnează un <strong>scor de la 0 la 10</strong> și rulează un <strong>pre-scan determinist</strong> pentru tiparele pe care le prinde un regex. Nu îți rescrie textul.</p>
+        <div class="hero-btns">
+          <a href="#score" class="btn-primary">Scorul</a>
+          <a href="#install" class="btn-ghost">Instalează skill-ul</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="score">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Scorul</span>
+        <h2 class="section-h2">Un număr, șase praguri</h2>
+        <p>Raportul începe cu un scor de tipare. Arată cât din structură, formulare și ritm sună a șablon. Cât de bună e ideea în sine rămâne o întrebare separată, pe care skill-ul ți-o lasă ție.</p>
+      </div>
+
+      <div class="stat-row fade-in">
+        <div class="stat"><b>0-2</b><span>Scris natural, specific, uman</span></div>
+        <div class="stat"><b>5-6</b><span>Tipare vizibile; cititorii pot simți șablonul</span></div>
+        <div class="stat"><b>9-10</b><span>Puternic tiparizat pe structură, formulare și ritm</span></div>
+      </div>
+
+      <div class="panel fade-in" style="margin-top:22px;">
+        <table class="rule-table">
+          <thead><tr><th>Scor</th><th>Interpretare</th></tr></thead>
+          <tbody>
+            <tr><td>0-2</td><td>Scris natural, specific, uman. O singură linie de dialog sau o listă de trei este stil, nu un semnal.</td></tr>
+            <tr><td>3-4</td><td>Majoritar natural, cu elemente formulaice izolate. Un singur slogan de final rămâne aici.</td></tr>
+            <tr><td>5-6</td><td>Tipare vizibile. Cititorii pot simți un șablon fără să îl numească.</td></tr>
+            <tr><td>7-8</td><td>Puternic tiparizat. Mai multe semnale se adună în tot textul.</td></tr>
+            <tr><td>9-10</td><td>Puternic tiparizat de AI. Structura, formularea și ritmul sună toate a generat.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="patterns">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Ce detectează</span>
+        <h2 class="section-h2">Taxonomia de tipare</h2>
+        <p>Skill-ul dă scor pe un set fix de semnale din cercetarea de detecție 2023-2026. Acestea sunt categoriile pe care le marchează frază cu frază.</p>
+      </div>
+
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <h3>Corecție negativă</h3>
+          <p>Cel mai puternic semnal structural. Marcat în ambele variante și escaladat când deschide două sau mai multe paragrafe.</p>
+          <div class="chip-wrap">
+            <span class="chip">nu X ci Y</span><span class="chip">nu doar X, ci Y</span><span class="chip">nu e X, e Y</span><span class="chip">X nu mai e Y</span><span class="chip">X era Y, acum Z</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Tensiune artificială și slogane</h3>
+          <p>Momeală de engagement deghizată în insight și linii finale construite să pară memorabile.</p>
+          <div class="chip-wrap">
+            <span class="chip">adevăratul shift e</span><span class="chip">asta schimbă totul</span><span class="chip">citește din nou</span><span class="chip">lasă asta să pătrundă</span><span class="chip">ăsta e unlock-ul</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Punți generice și anunțuri</h3>
+          <p>Tranziții care adaugă structură fără informație și propoziții care doar promit ce urmează.</p>
+          <div class="chip-wrap">
+            <span class="chip">ideea e</span><span class="chip">ce înseamnă asta în practică</span><span class="chip">trei lucruri contează aici</span><span class="chip">să explic</span><span class="chip">iată implicațiile</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Deschideri de șablon</h3>
+          <p>Hook-uri de thought-leader și dispozitive de ritm în prima propoziție a unei postări sau a unui paragraf.</p>
+          <div class="chip-wrap">
+            <span class="chip">Majoritatea echipelor încă X</span><span class="chip">Până în 2024, X făcea Y</span><span class="chip">Ia X.</span><span class="chip">Gândește-te la Y.</span><span class="chip">Despre scope-creep:</span><span class="chip">Pe scurt:</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Lexicon focal</h3>
+          <p>Cuvinte suprafolosite empiric de modelele antrenate cu aliniere. Aproape deterministe când apar lângă alt semnal.</p>
+          <div class="chip-wrap">
+            <span class="chip">delve</span><span class="chip">underscore</span><span class="chip">intricate</span><span class="chip">realm</span><span class="chip">tapestry</span><span class="chip">meticulous</span><span class="chip">groundbreaking</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Semnale de densitate</h3>
+          <p>Judecate după frecvență în tot textul, așa că o singură apariție rămâne sub prag și nemarcată.</p>
+          <div class="chip-wrap">
+            <span class="chip">linii de dialog &gt;1 / 75 cuvinte</span><span class="chip">hashtag-uri</span><span class="chip">conectori de discurs &gt;1 / 5 propoziții</span><span class="chip">liste de trei &gt;1 / 100 cuvinte</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>Mod reply pentru X și Twitter</h3>
+          <p>La răspunsurile scurte, regulile de registru se inversează. Minuscule, fragmente, forme contrase și lipsa punctului final sunt textură umană normală și nu se marchează niciodată, în timp ce șlefuirea excesivă dă de gol un reply generat. Un reply bun poartă o încărcătură concretă, un număr, un paper numit sau un mod specific de eșec, și ia o poziție, iar un reply care nu poartă niciuna dintre ele sună a slop.</p>
+          <div class="chip-wrap">
+            <span class="chip">Absolut, ce punct bun</span><span class="chip">reformularea tweet-ului părinte</span><span class="chip">Voi ce părere aveți?</span><span class="chip">neutralitate fără poziție</span><span class="chip">vocabular-semnal în 1-3 propoziții</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="how">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Cum rulează</span>
+        <h2 class="section-h2">Cinci pași, întâi dovezile</h2>
+        <p>Skill-ul adună dovezile mecanice, apoi citește pentru tiparele pe care un script nu le poate judeca, și abia apoi raportează un scor.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Preia textul</h3><p>Textul inline se folosește direct. Pentru un URL, extrage doar corpul articolului. Marchează reply-urile de pe X ca mod reply.</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Pre-scan determinist</h3><p>Rulează <code>scan_ai_patterns.py</code> pentru semnalele detectabile prin regex: corecție negativă, densitate de linii de dialog, hashtag-uri, conectori de discurs, cuvinte focale, liste de trei.</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Citește taxonomia</h3><p>Marchează fraza exactă din spatele fiecărui tipar. Fără parafrazare, fără probleme inventate.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Scor pe combinație</h3><p>Penalizează densitatea și acumularea, nu semnalele izolate. Cere cel puțin două categorii distincte înainte de orice verdict diferit de pass.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Returnează raportul</h3><p>Text evidențiat, tipare detectate, un diagnostic, o listă de validare și o listă de corecții ordonată. Fără rescriere.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>Tu decizi</h3><p>Raportul e consultativ. Editezi pe baza constatărilor; skill-ul nu îți atinge cuvintele sau faptele.</p></article>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>Pre-scan-ul determinist</h3>
+          <p>Un script Python adună dovezile pe care le prinde un regex, ca lectura să pornească din fapte, nu din impresii.</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/scan_ai_patterns.py draft.txt</div>
+          <p>Modul reply inversează regulile de registru:</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/scan_ai_patterns.py reply.txt --mode reply</div>
+          <p>Iese cu cod non-zero când se declanșează cel puțin un semnal și rămâne conservator sub 50 de cuvinte, unde detectoarele nu sunt de încredere. Scorul vine din lectura completă, nu doar din scan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Sub capotă</span>
+        <h2 class="section-h2">Ce vine cu skill-ul</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/ai-writing-patterns.md</h3><p>Taxonomia completă de tipare: fiecare structură interzisă, lista de detecție și semnalele de mod reply cu ancore regex.</p></article>
+        <article class="panel fade-in"><h3>references/calibration-notes.md</h3><p>Pragurile și baza de cercetare: scorul pe combinație, gate-ul de lungime, regulile de densitate și precauția pentru engleza non-nativă.</p></article>
+        <article class="panel fade-in"><h3>scripts/scan_ai_patterns.py</h3><p>Pre-scan-ul determinist pentru semnalele detectabile prin regex, cu un mod reply și un gate pe numărul de cuvinte.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Instalează și rulează</span>
+        <h2 class="section-h2">Adaugă skill-ul de detectare</h2>
+        <p>Folosește repository-ul public TVL Skills cu Agent Skills CLI.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Instalează doar acest skill</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-detect-ai-writing</div>
+          <h3>Instalează toate skill-urile TVL</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Verifică un draft de LinkedIn</h3>
+          <div class="code-block">Folosește $tvl-detect-ai-writing ca să verifici acest draft de LinkedIn pentru tipare de AI. Marchează frazele exacte, dă-i scor și spune-mi principalele corecții înainte să public.</div>
+          <h3>Auditează un articol dintr-un URL</h3>
+          <div class="code-block">Folosește $tvl-detect-ai-writing pe acest URL de articol. Analizează doar corpul și returnează scorul de tipare cu lista de validare.</div>
+          <h3>Verifică un reply pe X înainte să îl trimiți</h3>
+          <div class="code-block">Folosește $tvl-detect-ai-writing în mod reply pe acest draft de răspuns. Spune-mi dacă poartă o încărcătură reală și o poziție, sau sună a slop.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../ro/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-detect-ai-writing" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
+</body>
+</html>

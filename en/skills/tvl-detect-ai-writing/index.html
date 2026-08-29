@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../../favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Writing Detector Skill — patterns and scoring</title>
+  <meta name="description" content="How tvl-detect-ai-writing works: a 0-10 Pattern Score, a full taxonomy of formulaic AI tells, a reply mode for X/Twitter, and a deterministic scan_ai_patterns.py pre-scan for the regex-detectable patterns.">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <meta property="og:title" content="AI Writing Detector Skill — patterns and scoring">
+  <meta property="og:description" content="A 0-10 Pattern Score, a taxonomy of formulaic AI tells, an X/Twitter reply mode, and a deterministic pre-scan for professional writing.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI writing detector skill by TVL Academy">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Writing Detector Skill — patterns and scoring">
+  <meta name="twitter:description" content="A 0-10 Pattern Score, a taxonomy of formulaic AI tells, an X/Twitter reply mode, and a deterministic pre-scan.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/skills/tvl-detect-ai-writing/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/">
+  <meta name="robots" content="index, follow">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "AI Writing Detector Skill — patterns and scoring",
+        "url": "https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/",
+        "description": "How tvl-detect-ai-writing works: a 0-10 Pattern Score, a taxonomy of formulaic AI tells, a reply mode, and a deterministic scan_ai_patterns.py pre-scan.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Skills", "item": "https://academy.tvl.tech/en/skills/" },
+          { "@type": "ListItem", "position": 2, "name": "tvl-detect-ai-writing", "item": "https://academy.tvl.tech/en/skills/tvl-detect-ai-writing/" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "tvl-detect-ai-writing",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "An Agent Skill that detects formulaic AI writing patterns in LinkedIn posts, blog articles, web copy, and X/Twitter replies, and returns a 0-10 Pattern Score with a report and a deterministic pre-scan.",
+        "url": "https://github.com/danlex/tvl-skills/tree/main/skills/tvl-detect-ai-writing",
+        "author": { "@type": "Organization", "name": "TVL Tech" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../../../index.css">
+
+  <style>
+    .skill-hero .hero-content { grid-template-columns: 1fr; max-width: 960px; text-align: center; }
+    .skill-hero .hero-label,
+    .skill-hero .hero-btns { justify-content: center; }
+    .skill-hero p { margin-left: auto; margin-right: auto; }
+    .skill-hero {
+      background:
+        radial-gradient(220px 220px at 18% 12%, rgba(255,73,49,0.16), transparent 60%),
+        radial-gradient(260px 260px at 90% 26%, rgba(255,73,49,0.14), transparent 62%),
+        radial-gradient(260px 260px at 30% 88%, rgba(17,17,17,0.06), transparent 65%),
+        #f7f6f4;
+    }
+    .skill-hero::before,
+    .skill-hero::after { display: none; }
+    .section-pad { padding: 84px 0; }
+    .section-pad.alt { background: #f7f6f4; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e6e1db;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 { font-size: 19px; margin: 0 0 10px; color: #1c1c1c; }
+    .panel p,
+    .panel li { color: #555; line-height: 1.65; font-size: 15px; }
+    .panel ul { padding-left: 20px; display: grid; gap: 8px; margin: 0; }
+    .wide { grid-column: 1 / -1; }
+    .step-num, .letter-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,73,49,0.12); color: var(--red, #ff4931);
+      font-weight: 800; font-size: 16px; margin-bottom: 12px;
+    }
+    .code-block {
+      background: #161616;
+      border-radius: 10px;
+      color: #f4f4f4;
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+      overflow-x: auto;
+      padding: 16px 18px;
+      white-space: pre-wrap;
+    }
+    .code-block .prompt { color: #ff8a7a; user-select: none; }
+    .rule-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .rule-table th,
+    .rule-table td {
+      border-bottom: 1px solid #e6e1db;
+      padding: 13px 10px;
+      text-align: left;
+      vertical-align: top;
+      color: #555;
+      line-height: 1.55;
+    }
+    .rule-table th { color: #1c1c1c; font-weight: 700; }
+    .rule-table td:first-child { color: #1c1c1c; font-weight: 600; white-space: nowrap; }
+    .chip {
+      display: inline-block; background: #f4f0ec; border: 1px solid #e6e1db;
+      color: #7a2a1e; border-radius: 6px; padding: 3px 9px; margin: 0 6px 8px 0;
+      font-size: 13.5px; font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+    }
+    .chip-wrap { margin-top: 6px; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+    .stat { background: #fff; border: 1px solid #e6e1db; border-radius: 12px; padding: 24px; text-align: center; }
+    .stat b { display: block; font-size: 30px; color: var(--red, #ff4931); line-height: 1.1; }
+    .stat span { display: block; margin-top: 8px; color: #555; font-size: 14.5px; line-height: 1.5; }
+    @media (max-width: 860px) {
+      .content-grid, .stat-row { grid-template-columns: 1fr; }
+      .section-pad { padding: 56px 0; }
+      .rule-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="../../">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="../../../en/">Program</a>
+    <a href="../">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="../../../ro/skills/tvl-detect-ai-writing/" class="lang-option" data-locale-switch="ro" lang="ro" hreflang="ro">RO</a>
+      <a href="../../../en/skills/tvl-detect-ai-writing/" class="lang-option is-active" data-locale-switch="en" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-detect-ai-writing" target="_blank" rel="noopener" class="btn-nav">Source</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero skill-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">TVL AI Skills</div>
+        <h1><span>AI Writing</span> Detector Skill</h1>
+        <p><code>tvl-detect-ai-writing</code> reads a LinkedIn post, article, draft, or X reply and finds the formulaic patterns that make writing sound machine-made. It marks the exact phrases, explains why each one fires, returns a <strong>Pattern Score from 0 to 10</strong>, and runs a <strong>deterministic pre-scan</strong> for the tells a regex can catch. It never rewrites your text.</p>
+        <div class="hero-btns">
+          <a href="#score" class="btn-primary">The score</a>
+          <a href="#install" class="btn-ghost">Install the skill</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="score">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">The score</span>
+        <h2 class="section-h2">One number, six bands</h2>
+        <p>The report opens with a Pattern Score. It reflects how templated the structure, phrasing, and rhythm read. Whether the idea itself is any good stays a separate question, and the skill leaves that one to you.</p>
+      </div>
+
+      <div class="stat-row fade-in">
+        <div class="stat"><b>0-2</b><span>Natural, specific, human writing</span></div>
+        <div class="stat"><b>5-6</b><span>Noticeable patterns; readers may sense templating</span></div>
+        <div class="stat"><b>9-10</b><span>Strongly AI-patterned across structure, phrasing, and rhythm</span></div>
+      </div>
+
+      <div class="panel fade-in" style="margin-top:22px;">
+        <table class="rule-table">
+          <thead><tr><th>Score</th><th>Reading</th></tr></thead>
+          <tbody>
+            <tr><td>0-2</td><td>Natural, specific, human writing. A single em dash or one list of three is style, not a tell.</td></tr>
+            <tr><td>3-4</td><td>Mostly natural with isolated formulaic elements. One slogan closer on its own stays here.</td></tr>
+            <tr><td>5-6</td><td>Noticeable patterns. Readers may sense a template even without naming it.</td></tr>
+            <tr><td>7-8</td><td>Heavily templated. Multiple tells stack across the piece.</td></tr>
+            <tr><td>9-10</td><td>Strongly AI-patterned. The structure, phrasing, and rhythm all read as generated.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="patterns">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">What it detects</span>
+        <h2 class="section-h2">The pattern taxonomy</h2>
+        <p>The skill scores against a fixed set of tells drawn from 2023 to 2026 detection research. These are the categories it marks phrase by phrase.</p>
+      </div>
+
+      <div class="content-grid">
+        <article class="panel fade-in">
+          <h3>Negative correction</h3>
+          <p>The strongest structural tell. Flagged in both variants, and escalated when it opens two or more paragraphs.</p>
+          <div class="chip-wrap">
+            <span class="chip">not X but Y</span><span class="chip">not just X, but Y</span><span class="chip">it is not X, it is Y</span><span class="chip">X is no longer Y</span><span class="chip">X used to be Y, now Z</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Artificial tension and slogans</h3>
+          <p>Engagement bait dressed as insight, and final lines engineered to sound memorable.</p>
+          <div class="chip-wrap">
+            <span class="chip">the real shift is</span><span class="chip">this changes everything</span><span class="chip">read that again</span><span class="chip">let that sink in</span><span class="chip">that is the unlock</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Generic bridges and announcements</h3>
+          <p>Transitions that add structure without information, and sentences that only promise what comes next.</p>
+          <div class="chip-wrap">
+            <span class="chip">the point is</span><span class="chip">what this means in practice</span><span class="chip">three things matter here</span><span class="chip">let me explain</span><span class="chip">here are the implications</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Template openers</h3>
+          <p>Thought-leader hooks and engineered rhythm devices in the first sentence of a post or a paragraph.</p>
+          <div class="chip-wrap">
+            <span class="chip">Most teams still X</span><span class="chip">Until 2024, X did Y</span><span class="chip">Take X.</span><span class="chip">Consider Y.</span><span class="chip">On scope-creep:</span><span class="chip">Bottom line:</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Focal-word lexicon</h3>
+          <p>Words empirically overused by alignment-trained models. Near-deterministic when paired with another tell.</p>
+          <div class="chip-wrap">
+            <span class="chip">delve</span><span class="chip">underscore</span><span class="chip">intricate</span><span class="chip">realm</span><span class="chip">tapestry</span><span class="chip">meticulous</span><span class="chip">groundbreaking</span>
+          </div>
+        </article>
+        <article class="panel fade-in">
+          <h3>Density signals</h3>
+          <p>Judged by frequency across the whole text, so a single appearance stays under the threshold and unflagged.</p>
+          <div class="chip-wrap">
+            <span class="chip">em dashes &gt;1 / 75 words</span><span class="chip">hashtags</span><span class="chip">discourse openers &gt;1 / 5 sentences</span><span class="chip">tricolons &gt;1 / 100 words</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>Reply mode for X and Twitter</h3>
+          <p>For short replies the register rules invert. Lowercase, fragments, contractions, and a missing final period are normal human texture and are never flagged, while over-polish is what gives a generated reply away. A strong reply carries a concrete payload, a number, a named paper, or a specific failure mode, and takes a stance, and a reply that carries neither reads as slop.</p>
+          <div class="chip-wrap">
+            <span class="chip">Absolutely, great point</span><span class="chip">restating the parent tweet</span><span class="chip">What are your thoughts?</span><span class="chip">no-stance neutrality</span><span class="chip">tell-vocabulary in 1-3 sentences</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="how">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">How it runs</span>
+        <h2 class="section-h2">Five steps, evidence first</h2>
+        <p>The skill gathers the mechanical evidence, then reads for the patterns a script cannot judge, and only then reports a score.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><span class="step-num">1</span><h3>Capture the text</h3><p>Use inline text directly. For a URL, fetch and keep only the article body. Mark X replies as reply mode.</p></article>
+        <article class="panel fade-in"><span class="step-num">2</span><h3>Deterministic pre-scan</h3><p>Run <code>scan_ai_patterns.py</code> to flag the regex-detectable tells: negative correction, em-dash density, hashtags, discourse openers, focal words, tricolons.</p></article>
+        <article class="panel fade-in"><span class="step-num">3</span><h3>Read the taxonomy</h3><p>Mark the exact phrase behind every pattern. No paraphrasing, no invented issues.</p></article>
+        <article class="panel fade-in"><span class="step-num">4</span><h3>Combination scoring</h3><p>Penalize density and stacking, not isolated tells. Require at least two distinct categories before any non-pass reading.</p></article>
+        <article class="panel fade-in"><span class="step-num">5</span><h3>Return the report</h3><p>Highlighted text, detected patterns, a diagnosis, a validation checklist, and a ranked list of fixes. No rewrite.</p></article>
+        <article class="panel fade-in"><span class="step-num">6</span><h3>You decide</h3><p>The report is advisory. You edit from the findings; the skill never touches your words or your facts.</p></article>
+      </div>
+
+      <div class="content-grid" style="margin-top:22px;">
+        <article class="panel wide fade-in">
+          <h3>The deterministic pre-scan</h3>
+          <p>A Python script gathers the evidence a regex can catch, so the reading starts from facts rather than impressions.</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/scan_ai_patterns.py draft.txt</div>
+          <p>Reply mode inverts the register rules:</p>
+          <div class="code-block"><span class="prompt">$ </span>python3 scripts/scan_ai_patterns.py reply.txt --mode reply</div>
+          <p>It exits non-zero when at least one tell fires, and it stays conservative below 50 words, where detectors are unreliable. The score itself comes from the full reading, not from the scan alone.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad alt" id="references">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Under the hood</span>
+        <h2 class="section-h2">What ships with the skill</h2>
+      </div>
+      <div class="content-grid">
+        <article class="panel fade-in"><h3>references/ai-writing-patterns.md</h3><p>The full pattern taxonomy: every banned structure, the detection list, and the reply-mode signals with regex anchors.</p></article>
+        <article class="panel fade-in"><h3>references/calibration-notes.md</h3><p>The thresholds and research basis: combination scoring, the length gate, density rules, and the non-native-English caution.</p></article>
+        <article class="panel fade-in"><h3>scripts/scan_ai_patterns.py</h3><p>The deterministic pre-scan for the regex-detectable tells, with a reply mode and a word-count gate.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="install">
+    <div class="container">
+      <div class="section-title-center fade-in">
+        <span class="red-label">Install and run</span>
+        <h2 class="section-h2">Add the detector skill</h2>
+        <p>Use the public TVL Skills repository with the Agent Skills CLI.</p>
+      </div>
+      <div class="content-grid">
+        <article class="panel wide fade-in">
+          <h3>Install only this skill</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-detect-ai-writing</div>
+          <h3>Install all TVL skills</h3>
+          <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills</div>
+          <h3>Check a LinkedIn draft</h3>
+          <div class="code-block">Use $tvl-detect-ai-writing to check this LinkedIn draft for AI patterns. Mark the exact phrases, score it, and tell me the top fixes before I publish.</div>
+          <h3>Audit an article from a URL</h3>
+          <div class="code-block">Use $tvl-detect-ai-writing on this article URL. Analyze the body only and return the Pattern Score with the validation checklist.</div>
+          <h3>Check an X reply before sending</h3>
+          <div class="code-block">Use $tvl-detect-ai-writing in reply mode on this draft reply. Tell me whether it carries a real payload and a stance, or reads as slop.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="../../" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="../../../en/">Program</a>
+          <a href="../">Skills</a>
+          <a href="https://github.com/danlex/tvl-skills/tree/main/skills/tvl-detect-ai-writing" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../index.js"></script>
+</body>
+</html>
