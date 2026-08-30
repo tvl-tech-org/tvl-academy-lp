@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training AI pentru echipe de vânzări: ce acoperi și cum îl faci | TVL Academy</title>
+  <meta name="description" content="Training AI pentru echipe de vânzări care rămâne: cazurile de folosire care aduc valoare primele, ce ar trebui să acopere și cum îl faci pe pipeline-ul tău real, nu pe exemple de curs.">
+  <meta property="og:title" content="Training AI pentru echipe de vânzări: ce acoperi și cum îl faci">
+  <meta property="og:description" content="Cazurile de folosire AI care aduc valoare primele în vânzări, ce să acoperi și cum faci trainingul pe pipeline-ul tău real.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/ro/blog/training-ai-pentru-echipe-de-vanzari/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-08-30">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Training AI pentru echipe de vânzări: ce acoperi și cum îl faci">
+  <meta name="twitter:description" content="Cazurile de folosire AI care aduc valoare primele în vânzări și cum îți antrenezi echipa pe pipeline-ul real.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/ro/blog/training-ai-pentru-echipe-de-vanzari/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/training-ai-pentru-echipe-de-vanzari/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/ai-training-for-sales-teams/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/ai-training-for-sales-teams/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Training AI pentru echipe de vânzări: ce acoperi și cum îl faci",
+    "description": "Training AI pentru echipe de vânzări care rămâne: cazurile de folosire care aduc valoare primele, ce ar trebui să acopere și cum îl faci pe pipeline-ul tău real.",
+    "inLanguage": "ro",
+    "datePublished": "2026-08-30",
+    "dateModified": "2026-08-30",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Trainer principal TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "knowsAbout": ["Training AI pentru companii", "AI în vânzări", "Prompt engineering", "EU AI Act", "Generative AI"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/ro/blog/training-ai-pentru-echipe-de-vanzari/" },
+    "image": { "@type": "ImageObject", "url": "https://academy.tvl.tech/images/og-training-ai-ro.jpg", "width": 1200, "height": 630 },
+    "about": "Training AI pentru echipe de vânzări, cazuri de folosire AI în vânzări, training AI pentru companii"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Cum faci un training AI pentru o echipă de vânzări",
+    "description": "Un mod în șase pași de a antrena o echipă de vânzări pe AI folosind pipeline-ul lor real.",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Pornește de la o sarcină reală, repetitivă", "text": "Alege o sarcină pe care echipa o face zilnic, cum ar fi emailul de follow-up sau pregătirea unui apel de discovery, și fă din asta primul lucru la care ajută AI." },
+      { "@type": "HowToStep", "position": 2, "name": "Construiește un asistent de vânzări pe rol", "text": "Configurează un asistent care știe deja ce vinzi, tonul tău și ce nu au voie reprezentanții să promită, ca nimeni să nu re-explice contextul de fiecare dată." },
+      { "@type": "HowToStep", "position": 3, "name": "Antrenează pe dealurile reale de săptămâna trecută", "text": "Folosește conturi, emailuri și apeluri reale pe care echipa deja le-a gestionat, ca trainingul să se transfere direct în pipeline." },
+      { "@type": "HowToStep", "position": 4, "name": "Dă un mod de lucru pe o pagină", "text": "Cum scrii un prompt pentru mesaje care sună uman, ce verifici înainte să ajungă la client și ce date de client nu intră niciodată într-un tool public." },
+      { "@type": "HowToStep", "position": 5, "name": "Ține oamenii pe afirmații și prețuri", "text": "AI scrie și cercetează; o persoană verifică orice afirmație, cifră sau angajament înainte să ajungă la un prospect, fiindcă o promisiune greșită costă un deal." },
+      { "@type": "HowToStep", "position": 6, "name": "Măsoară prin comportamentul din pipeline", "text": "Urmărește follow-up-uri mai rapide, note de CRM mai curate și mai mult timp petrecut vânzând, nu doar dacă le-a plăcut sesiunea." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Ce ar trebui să acopere un training AI pentru o echipă de vânzări?", "acceptedAnswer": { "@type": "Answer", "text": "Uneltele pe care echipa le va folosi efectiv, cum scrii prompturi pentru mesaje care sună uman, ce date de client nu intră niciodată într-un tool public, cum verifici afirmațiile înainte să ajungă la client și unde ajută AI față de unde trebuie să rămână o persoană în buclă." } },
+      { "@type": "Question", "name": "Cum folosesc echipele de vânzări AI?", "acceptedAnswer": { "@type": "Answer", "text": "Cazurile care aduc valoare primele sunt cercetarea conturilor, scrierea și personalizarea mesajelor de contact, pregătirea apelurilor, transformarea apelurilor în note de CRM, scrierea follow-up-urilor și prima variantă de propunere." } },
+      { "@type": "Question", "name": "Uneltele AI înlocuiesc reprezentanții de vânzări?", "acceptedAnswer": { "@type": "Answer", "text": "Nu. AI scoate scrisul și administrativul din jurul vânzării, așa că reprezentanții petrec mai mult timp în conversații. Relația, judecata și închiderea rămân ale persoanei." } },
+      { "@type": "Question", "name": "Ce unelte AI ar trebui să folosească o echipă de vânzări?", "acceptedAnswer": { "@type": "Answer", "text": "De obicei asistentul pe care compania îl are deja (ChatGPT, Claude, Gemini sau Copilot) plus funcțiile AI din CRM-ul tău. Unealta contează mai puțin decât configurarea ei pe pipeline-ul și regulile tale." } },
+      { "@type": "Question", "name": "Trainingul AI pentru vânzări e diferit de trainingul AI generic?", "acceptedAnswer": { "@type": "Answer", "text": "Da. Trainingul generic folosește exemple de curs. Trainingul de vânzări folosește conturile, emailurile și apelurile proprii ale echipei și acoperă regulile de ton și confidențialitate care contează când rezultatul ajunge la un client." } }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/ro/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/ro/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Training AI pentru echipe de vânzări" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 8px; }
+    .article-body a { color: var(--red); }
+    .article-body ol { margin: 0 0 22px; padding-left: 0; list-style: none; counter-reset: step; }
+    .article-body ol > li { position: relative; padding-left: 52px; margin-bottom: 20px; counter-increment: step; }
+    .article-body ol > li::before { content: counter(step); position: absolute; left: 0; top: 2px; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,73,49,0.12); color: var(--red); font-family: var(--font-display); font-weight: 800; font-size: 16px; }
+    .article-body ol > li strong { color: var(--text); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 8px; }
+    .lead { font-size: 20px; color: var(--text); }
+    .stat-callout { margin: 32px 0; padding: 24px 28px; background: var(--light-bg); border-left: 4px solid var(--red); border-radius: 12px; }
+    .stat-callout b { display: block; font-family: var(--font-display); font-size: 24px; line-height: 1.25; color: var(--red); }
+    .stat-callout span { display: block; margin-top: 8px; font-size: 15px; color: var(--text-sec); }
+    .faq-item { border-top: 1px solid #ececec; padding: 20px 0; }
+    .faq-item h3 { margin: 0 0 6px; }
+    .faq-item p { margin: 0; font-size: 16.5px; color: var(--text-sec); }
+    .sources { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ececec; font-size: 14.5px; color: var(--text-sec); }
+    .sources h2 { font-size: 18px; margin-bottom: 10px; }
+    .sources li { margin-bottom: 6px; word-break: break-word; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/ro/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/ro/#problema">De ce?</a>
+    <a href="/ro/#cum-functioneaza">Sesiuni</a>
+    <a href="/ro/blog/">Blog</a>
+    <a href="/ro/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Selector limbă">
+      <a href="/ro/blog/training-ai-pentru-echipe-de-vanzari/" class="lang-option is-active" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/ai-training-for-sales-teams/" class="lang-option" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/ro/#contact" class="btn-nav">Rezervă 30 de minute</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/ro/">TVL Academy</a> › <a href="/ro/blog/">Blog</a> › Training AI pentru echipe de vânzări
+  </div>
+
+  <article>
+    <span class="article-kicker">Training AI / Vânzări</span>
+    <h1>Training AI pentru echipe de vânzări: ce acoperi și cum îl faci</h1>
+    <div class="article-meta">
+      <span>de <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-08-30">Actualizat 30 august 2026</time>
+      <span>·</span>
+      <span>7 min de citit</span>
+    </div>
+
+    <div class="article-body">
+      <p class="lead">Un training AI bun pentru o echipă de vânzări e construit pe pipeline-ul real al echipei. Îi învață pe reprezentanți să folosească AI pe munca pe care o fac deja: să cerceteze conturi, să scrie mesaje de contact, să se pregătească de apeluri și să transforme conversațiile în note curate în CRM, fără să lipească date de clienți unde nu trebuie și fără să promită ce produsul nu poate. Ghidul acoperă cazurile de folosire care aduc valoare primele, ce ar trebui să acopere trainingul și cum îl faci ca să rămână.</p>
+
+      <h2>Ce se schimbă pentru o echipă de vânzări</h2>
+      <p>Vânzarea e plină de scris și administrativ care stă în jurul conversației propriu-zise: emailul de follow-up, pregătirea apelului, notele care ar fi trebuit să intre în CRM, dar n-au intrat. AI scoate exact munca asta prima, partea pe care reprezentanții o vor cel mai puțin, și eliberează timp pentru conversația pe care doar o persoană o poate purta. Riscul e specific vânzărilor și merită numit. Rezultatul ajunge la un client, așa că tonul și acuratețea contează mai mult decât într-o sarcină internă, iar o cifră greșită sau o supra-promisiune costă un deal, nu o după-amiază.</p>
+
+      <div class="stat-callout">
+        <b>Antrenează pe pipeline-ul real al echipei, nu pe exemple de curs.</b>
+        <span>Singurul lucru care desparte un training AI de vânzări care rămâne de un workshop uitat până luni: folosește conturi, emailuri și apeluri reale pe care echipa deja le-a gestionat.</span>
+      </div>
+
+      <h2>Cazurile de folosire care aduc valoare primele</h2>
+      <p>Pornește de unde munca se repetă și miza e destul de mică cât să înveți pe ea. În practică, primele câștiguri sunt cam aceleași la majoritatea echipelor de vânzări:</p>
+      <ul class="plain">
+        <li>Cercetarea unui cont înainte de apel, ca reprezentantul să intre pregătit.</li>
+        <li>Scrierea și personalizarea mesajelor de contact care tot sună a om.</li>
+        <li>Pregătirea unui apel de discovery și structurarea întrebărilor.</li>
+        <li>Transformarea unui apel într-o notă scurtă și curată în CRM, fără să o retastezi.</li>
+        <li>Scrierea follow-up-ului cât conversația e încă proaspătă.</li>
+        <li>O primă variantă de propunere pe care apoi o persoană o verifică și o ascute.</li>
+      </ul>
+
+      <h2>Ce ar trebui să acopere trainingul</h2>
+      <p>Un program util e scurt și construit pe munca echipei. Competențele care contează pentru vânzări sunt:</p>
+      <ul class="plain">
+        <li>Uneltele pe care echipa le va folosi efectiv, configurate pe ce vinzi.</li>
+        <li>Cum scrii prompturi pentru mesaje care se citesc a om, nu a șablon.</li>
+        <li>Confidențialitatea datelor: ce informație de client nu intră niciodată într-un tool public.</li>
+        <li>Cum verifici o afirmație, o cifră sau un angajament înainte să ajungă la client.</li>
+        <li>Unde ajută AI și unde trebuie să rămână o persoană în buclă.</li>
+      </ul>
+
+      <h2>Cum îl faci ca să rămână</h2>
+      <ol>
+        <li><strong>Pornește de la o sarcină reală, repetitivă.</strong> Alege o sarcină pe care echipa o face zilnic, cum ar fi emailul de follow-up, și fă din asta primul lucru la care ajută AI.</li>
+        <li><strong>Construiește un asistent de vânzări pe rol.</strong> Configurează un asistent care știe deja ce vinzi, tonul tău și ce nu au voie reprezentanții să promită, ca nimeni să nu re-explice contextul de fiecare dată. Ghidul nostru despre <a href="/ro/blog/asistent-ai-pe-rol/">construirea unui asistent AI pe rol</a> arată mecanismul.</li>
+        <li><strong>Antrenează pe dealurile reale de săptămâna trecută.</strong> Folosește conturi, emailuri și apeluri reale pe care echipa deja le-a gestionat, ca trainingul să se transfere direct în pipeline.</li>
+        <li><strong>Dă un mod de lucru pe o pagină.</strong> Cum scrii un prompt pentru mesaje care sună uman, ce verifici înainte să ajungă la client și ce date de client nu intră niciodată într-un tool public.</li>
+        <li><strong>Ține oamenii pe afirmații și prețuri.</strong> AI scrie și cercetează; o persoană verifică orice afirmație, cifră sau angajament înainte să ajungă la un prospect, fiindcă o promisiune greșită costă un deal.</li>
+        <li><strong>Măsoară prin comportamentul din pipeline.</strong> Urmărește follow-up-uri mai rapide, note de CRM mai curate și mai mult timp petrecut vânzând, nu doar dacă le-a plăcut sesiunea.</li>
+      </ol>
+
+      <h2>AI înlocuiește reprezentanții de vânzări?</h2>
+      <p>Nu. AI scoate scrisul și administrativul din jurul vânzării, așa că reprezentanții petrec mai mult timp în conversații și mai puțin la tastatură. Relația, judecata despre ce să spui în continuare și închiderea rămân ale persoanei.</p>
+
+      <h2>Întrebări frecvente</h2>
+      <div class="faq-item">
+        <h3>Ce ar trebui să acopere un training AI pentru o echipă de vânzări?</h3>
+        <p>Uneltele pe care echipa le va folosi efectiv, cum scrii prompturi pentru mesaje care sună uman, ce date de client nu intră niciodată într-un tool public, cum verifici afirmațiile înainte să ajungă la client și unde ajută AI față de unde trebuie să rămână o persoană în buclă.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Cum folosesc echipele de vânzări AI?</h3>
+        <p>Cazurile care aduc valoare primele sunt cercetarea conturilor, scrierea și personalizarea mesajelor de contact, pregătirea apelurilor, transformarea apelurilor în note de CRM, scrierea follow-up-urilor și prima variantă de propunere.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Uneltele AI înlocuiesc reprezentanții de vânzări?</h3>
+        <p>Nu. AI scoate scrisul și administrativul din jurul vânzării, așa că reprezentanții petrec mai mult timp în conversații. Relația, judecata și închiderea rămân ale persoanei.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ce unelte AI ar trebui să folosească o echipă de vânzări?</h3>
+        <p>De obicei asistentul pe care compania îl are deja (ChatGPT, Claude, Gemini sau Copilot) plus funcțiile AI din CRM-ul tău. Unealta contează mai puțin decât configurarea ei pe pipeline-ul și regulile tale.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Trainingul AI pentru vânzări e diferit de trainingul AI generic?</h3>
+        <p>Da. Trainingul generic folosește exemple de curs. Trainingul de vânzări folosește conturile, emailurile și apelurile proprii ale echipei și acoperă regulile de ton și confidențialitate care contează când rezultatul ajunge la un client.</p>
+      </div>
+
+      <div class="sources">
+        <h2>În legătură</h2>
+        <ul>
+          <li><a href="/ro/blog/asistent-ai-pe-rol/">Cum construiești un asistent AI pentru fiecare rol din companie</a></li>
+          <li><a href="/ro/blog/chatgpt-claude-gemini/">ChatGPT, Claude sau Gemini: cum alegi pentru compania ta</a></li>
+          <li><a href="/ro/blog/eu-ai-act-angajati/">EU AI Act: ce trebuie să demonstreze companiile despre angajați</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h3>Vrei un training AI pe care echipa ta de vânzări chiar îl folosește de luni?</h3>
+      <p>Programul TVL Academy îți antrenează echipa pe propriul pipeline și lasă fiecare reprezentant cu un asistent configurat pe rol, testat pe dealuri reale. Rezervă 30 de minute cu Alexandru Dan.</p>
+      <a href="/ro/#contact" class="btn-primary">Rezervă 30 de minute</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/ro/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/ro/#cum-functioneaza">Sesiuni</a>
+          <a href="/ro/blog/">Blog</a>
+          <a href="/ro/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Termeni</a>
+          <a href="/ro/privacy-policy.html">Privacy Policy</a>
+          <a href="/ro/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Setări cookie</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Preferințe cookie</div>
+      <p>Folosim Google Analytics 4 doar după acordul tău, ca să măsurăm traficul și să îmbunătățim pagina. Vezi <a href="/ro/privacy-policy.html">Privacy Policy</a> și <a href="/ro/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Refuză</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Acceptă analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="ro" defer></script>
+</body>
+</html>
