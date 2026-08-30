@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cum construiești agenți AI cu Claude: ghid 2026 | TVL Academy</title>
+  <meta name="description" content="Cum construiești agenți AI cu Claude: ce este un agent, când ai nevoie de unul și piesele pe care ți le dă Claude — tool use, MCP, Claude Agent SDK și un ghid în șapte pași.">
+  <meta property="og:title" content="Cum construiești agenți AI cu Claude: ghid 2026">
+  <meta property="og:description" content="Ce este un agent AI, când ai nevoie de unul și cum construiești unul cu Claude folosind tool use, MCP și Claude Agent SDK.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/ro/blog/cum-construiesti-agenti-ai-cu-claude/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-08-30">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cum construiești agenți AI cu Claude: ghid 2026">
+  <meta name="twitter:description" content="Ce este un agent AI, când ai nevoie de unul și cum construiești unul cu Claude.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/ro/blog/cum-construiesti-agenti-ai-cu-claude/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/cum-construiesti-agenti-ai-cu-claude/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Cum construiești agenți AI cu Claude: ghid 2026",
+    "description": "Cum construiești agenți AI cu Claude: ce este un agent, când ai nevoie de unul și piesele pe care ți le dă Claude.",
+    "inLanguage": "ro",
+    "datePublished": "2026-08-30",
+    "dateModified": "2026-08-30",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Trainer principal TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "knowsAbout": ["Agenți AI", "Claude", "Model Context Protocol", "Tool use", "Generative AI"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/ro/blog/cum-construiesti-agenti-ai-cu-claude/" },
+    "image": { "@type": "ImageObject", "url": "https://academy.tvl.tech/images/og-training-ai-ro.jpg", "width": 1200, "height": 630 },
+    "about": "Cum construiești agenți AI cu Claude, tool use, Model Context Protocol, Claude Agent SDK"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Cum construiești un agent AI cu Claude",
+    "description": "Un mod în șapte pași de a construi un agent care folosește Claude într-o buclă cu unelte.",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Definește obiectivul și condiția de oprire", "text": "Spune cum arată gata și când ar trebui să se oprească bucla, ca agentul să aibă o țintă clară și să nu ruleze la nesfârșit." },
+      { "@type": "HowToStep", "position": 2, "name": "Dă-i cel mai mic set util de unelte", "text": "Expune doar uneltele de care are nevoie sarcina. Câteva unelte bine alese fac modelul mai de încredere decât un set mare și vag." },
+      { "@type": "HowToStep", "position": 3, "name": "Scrie descrieri clare pentru unelte", "text": "Descrie fiecare unealtă și, mai ales, când să o apeleze. Claude se bazează pe descriere ca să decidă dacă o unealtă se aplică." },
+      { "@type": "HowToStep", "position": 4, "name": "Rulează bucla", "text": "Claude alege o unealtă, codul tău o rulează, tu returnezi rezultatul, iar Claude decide pasul următor. Repetă până se atinge condiția de oprire." },
+      { "@type": "HowToStep", "position": 5, "name": "Adaugă protecții", "text": "Pune acțiunile ireversibile în spatele unei confirmări, validează inputurile și lasă agentul să se recupereze din erorile de unealtă în loc să se blocheze." },
+      { "@type": "HowToStep", "position": 6, "name": "Gestionează contextul", "text": "Modelul are o limită de context, așa că ține bucla suplă: șterge rezultatele vechi de unealtă și rezumă istoricele lungi." },
+      { "@type": "HowToStep", "position": 7, "name": "Testează pe sarcini reale și măsoară", "text": "Rulează agentul pe muncă reală, urmărește unde greșește și strânge uneltele, prompturile și protecțiile pe baza a ce vezi." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Ce este un agent AI, în termeni simpli?", "acceptedAnswer": { "@type": "Answer", "text": "Un agent AI este un model de limbaj care rulează într-o buclă cu unelte. Decide ce să facă, apelează o unealtă, citește rezultatul și repetă până când sarcina e gata, în loc să răspundă într-un singur pas." } },
+      { "@type": "Question", "name": "Trebuie să scriu cod ca să construiesc un agent cu Claude?", "acceptedAnswer": { "@type": "Answer", "text": "Construirea unui agent personalizat implică cod, fiindcă tu definești uneltele și rulezi bucla. Claude Agent SDK se ocupă de buclă, de orchestrarea uneltelor și de context, așa că scrii uneltele și obiectivul, nu instalația." } },
+      { "@type": "Question", "name": "Ce este Claude Agent SDK?", "acceptedAnswer": { "@type": "Answer", "text": "Claude Agent SDK este setul de instrumente de la Anthropic pentru a construi agenți pe Claude. Rulează bucla model-și-unelte, gestionează contextul și conectează uneltele, ca să te concentrezi pe sarcină, nu pe orchestrare." } },
+      { "@type": "Question", "name": "Ce este MCP (Model Context Protocol)?", "acceptedAnswer": { "@type": "Answer", "text": "Model Context Protocol este un standard deschis pentru a conecta modelele AI la unelte și surse de date. În loc de cod special pentru fiecare integrare, un server MCP expune unelte pe care Claude le apelează la fel." } },
+      { "@type": "Question", "name": "Ce model Claude ar trebui să folosesc pentru agenți?", "acceptedAnswer": { "@type": "Answer", "text": "Folosește Claude Opus 4.8 pentru munca agentică cea mai grea și de lungă durată, Claude Sonnet 4.6 pentru un echilibru de viteză și inteligență, și Claude Haiku 4.5 pentru pași simpli, rapizi și sensibili la cost." } },
+      { "@type": "Question", "name": "Prin ce diferă un agent de un chatbot?", "acceptedAnswer": { "@type": "Answer", "text": "Un chatbot îți răspunde la mesaj. Un agent ia acțiuni către un obiectiv prin unelte, pe mai mulți pași, decizând singur ce să facă în continuare până când sarcina e completă." } }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/ro/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/ro/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Cum construiești agenți AI cu Claude" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 8px; }
+    .article-body a { color: var(--red); }
+    .article-body ol { margin: 0 0 22px; padding-left: 0; list-style: none; counter-reset: step; }
+    .article-body ol > li { position: relative; padding-left: 52px; margin-bottom: 20px; counter-increment: step; }
+    .article-body ol > li::before { content: counter(step); position: absolute; left: 0; top: 2px; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,73,49,0.12); color: var(--red); font-family: var(--font-display); font-weight: 800; font-size: 16px; }
+    .article-body ol > li strong { color: var(--text); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 8px; }
+    .lead { font-size: 20px; color: var(--text); }
+    .stat-callout { margin: 32px 0; padding: 24px 28px; background: var(--light-bg); border-left: 4px solid var(--red); border-radius: 12px; }
+    .stat-callout b { display: block; font-family: var(--font-display); font-size: 26px; line-height: 1.2; color: var(--red); }
+    .stat-callout span { display: block; margin-top: 8px; font-size: 15px; color: var(--text-sec); }
+    .faq-item { border-top: 1px solid #ececec; padding: 20px 0; }
+    .faq-item h3 { margin: 0 0 6px; }
+    .faq-item p { margin: 0; font-size: 16.5px; color: var(--text-sec); }
+    .sources { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ececec; font-size: 14.5px; color: var(--text-sec); }
+    .sources h2 { font-size: 18px; margin-bottom: 10px; }
+    .sources li { margin-bottom: 6px; word-break: break-word; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/ro/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/ro/#problema">De ce?</a>
+    <a href="/ro/#cum-functioneaza">Sesiuni</a>
+    <a href="/ro/blog/">Blog</a>
+    <a href="/ro/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Selector limbă">
+      <a href="/ro/blog/cum-construiesti-agenti-ai-cu-claude/" class="lang-option is-active" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/how-to-build-ai-agents-with-claude/" class="lang-option" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/ro/#contact" class="btn-nav">Rezervă 30 de minute</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/ro/">TVL Academy</a> › <a href="/ro/blog/">Blog</a> › Cum construiești agenți AI cu Claude
+  </div>
+
+  <article>
+    <span class="article-kicker">Agenți AI / Claude</span>
+    <h1>Cum construiești agenți AI cu Claude</h1>
+    <div class="article-meta">
+      <span>de <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-08-30">Actualizat 30 august 2026</time>
+      <span>·</span>
+      <span>8 min de citit</span>
+    </div>
+
+    <div class="article-body">
+      <p class="lead">Un agent AI e un model de limbaj care rulează într-o buclă cu unelte: Claude decide ce să facă, apelează o unealtă, citește rezultatul și decide pasul următor, până când sarcina e gata. Ca să construiești unul cu Claude îi dai un obiectiv, un set mic de unelte pe care le poate apela și o condiție care oprește bucla, apoi lași modelul să conducă. Ghidul acoperă ce este de fapt un agent, când ai nevoie de unul și piesele pe care ți le dă Claude ca să îl construiești.</p>
+
+      <h2>Ce este un agent AI?</h2>
+      <p>Un singur prompt răspunde la o întrebare într-un pas. Un workflow fix rulează un script scris de tine, unde ordinea pașilor e decisă dinainte. Un agent e diferit: modelul însuși decide acțiunea următoare la fiecare tur, în funcție de ce a returnat ultima unealtă. Modelul, nu codul tău, conduce fiecare pas, și asta desparte un agent de un script fix.</p>
+
+      <div class="stat-callout">
+        <b>Obiectiv → unealtă → rezultat → repetă</b>
+        <span>Bucla agentului. Claude citește obiectivul și ultimul rezultat, alege următoarea unealtă de apelat și repetă până se atinge condiția de oprire.</span>
+      </div>
+
+      <h2>Când ai de fapt nevoie de un agent</h2>
+      <p>Recomandarea de la Anthropic e să începi simplu, iar majoritatea sarcinilor chiar nu au nevoie de un agent. Un singur apel Claude rezolvă clasificare, extragere și răspuns la întrebări. Un workflow fix rezolvă sarcini în mai mulți pași, unde poți scrie pașii dinainte. Alege un agent doar când sarcina e suficient de deschisă încât nu poți scrie calea în avans, rezultatul merită costul și latența în plus, iar greșelile pot fi prinse și reparate. Dacă vreuna dintre astea nu e adevărată, un design mai simplu e mai de încredere și mai ieftin de rulat.</p>
+
+      <h2>Piesele pe care ți le dă Claude</h2>
+      <p><strong>Tool use.</strong> Acesta e mecanismul pe care rulează toată bucla. Definești unelte ca funcții pe care Claude le poate apela, iar modelul returnează o cerere de a rula una. Codul tău o execută și trece rezultatul înapoi, iar bucla continuă. Tool use e o funcție a Messages API, așa că un agent e o buclă în jurul unor apeluri API obișnuite, nu un produs separat.</p>
+      <p><strong>Model Context Protocol (MCP).</strong> MCP e un standard deschis pentru a conecta modelele la unelte și surse de date. În loc de cod special pentru fiecare integrare, un server MCP expune unelte pe care Claude le apelează la fel, ceea ce face capabilitățile portabile între proiecte și furnizori.</p>
+      <p><strong>Claude Agent SDK.</strong> Să scrii bucla, să gestionezi contextul și să orchestrezi uneltele manual e repetitiv. Claude Agent SDK rulează bucla pentru tine, se ocupă de context și conectează uneltele, ca să scrii uneltele și obiectivul, nu instalația.</p>
+      <p><strong>Claude Code.</strong> Claude Code e un agent pe care îl poți folosi azi pentru muncă de software și e o referință utilă pentru cum se pune la punct un agent capabil: un obiectiv clar, un set focalizat de unelte, permisiuni pe acțiunile riscante și o buclă care merge până e gata treaba.</p>
+
+      <h2>Ghidul: șapte pași ca să construiești unul</h2>
+      <ol>
+        <li><strong>Definește obiectivul și condiția de oprire.</strong> Spune cum arată gata și când ar trebui să se oprească bucla, ca agentul să aibă o țintă clară și să nu ruleze la nesfârșit.</li>
+        <li><strong>Dă-i cel mai mic set util de unelte.</strong> Expune doar uneltele de care are nevoie sarcina. Câteva unelte bine alese fac modelul mai de încredere decât un set mare și vag.</li>
+        <li><strong>Scrie descrieri clare pentru unelte.</strong> Descrie fiecare unealtă și, mai ales, când să o apeleze. Claude se bazează pe descriere ca să decidă dacă o unealtă se aplică, așa că fii precis cu declanșatorul.</li>
+        <li><strong>Rulează bucla.</strong> Claude alege o unealtă, codul tău o rulează, tu returnezi rezultatul, iar Claude decide pasul următor. Repetă până se atinge condiția de oprire.</li>
+        <li><strong>Adaugă protecții.</strong> Pune acțiunile ireversibile în spatele unei confirmări, validează inputurile înainte să acționezi și returnează erorile de unealtă ca agentul să se recupereze, nu să se blocheze.</li>
+        <li><strong>Gestionează contextul.</strong> Modelul are o limită de context. Ține bucla suplă ștergând rezultatele vechi de unealtă și rezumând istoricele lungi, ca agentul să rămână coerent pe sarcini lungi.</li>
+        <li><strong>Testează pe sarcini reale și măsoară.</strong> Rulează agentul pe muncă reală, urmărește unde greșește și strânge uneltele, prompturile și protecțiile pe baza a ce vezi.</li>
+      </ol>
+
+      <h2>Ce model Claude să folosești</h2>
+      <p>Potrivește modelul cu pasul. Claude Opus 4.8 e cea mai bună alegere pentru muncă agentică grea și de lungă durată, unde agentul trebuie să planifice și să acționeze pe mulți pași. Claude Sonnet 4.6 e alegerea echilibrată pentru majoritatea workflow-urilor cu unelte. Claude Haiku 4.5 e opțiunea rapidă și eficientă ca preț pentru pași simpli, de volum mare. Un singur agent poate folosi mai multe modele, păstrând modelul scump pentru deciziile grele și unul mai ieftin pentru sub-sarcinile de rutină.</p>
+
+      <h2>Întrebări frecvente</h2>
+      <div class="faq-item">
+        <h3>Ce este un agent AI, în termeni simpli?</h3>
+        <p>Un agent AI este un model de limbaj care rulează într-o buclă cu unelte. Decide ce să facă, apelează o unealtă, citește rezultatul și repetă până când sarcina e gata, în loc să răspundă într-un singur pas.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Trebuie să scriu cod ca să construiesc un agent cu Claude?</h3>
+        <p>Construirea unui agent personalizat implică cod, fiindcă tu definești uneltele și rulezi bucla. Claude Agent SDK se ocupă de buclă, de orchestrarea uneltelor și de context, așa că scrii uneltele și obiectivul, nu instalația.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ce este Claude Agent SDK?</h3>
+        <p>Claude Agent SDK este setul de instrumente de la Anthropic pentru a construi agenți pe Claude. Rulează bucla model-și-unelte, gestionează contextul și conectează uneltele, ca să te concentrezi pe sarcină, nu pe orchestrare.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ce este MCP (Model Context Protocol)?</h3>
+        <p>Model Context Protocol este un standard deschis pentru a conecta modelele AI la unelte și surse de date. În loc de cod special pentru fiecare integrare, un server MCP expune unelte pe care Claude le apelează la fel.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ce model Claude ar trebui să folosesc pentru agenți?</h3>
+        <p>Folosește Claude Opus 4.8 pentru munca agentică cea mai grea și de lungă durată, Claude Sonnet 4.6 pentru un echilibru de viteză și inteligență, și Claude Haiku 4.5 pentru pași simpli, rapizi și sensibili la cost.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Prin ce diferă un agent de un chatbot?</h3>
+        <p>Un chatbot îți răspunde la mesaj. Un agent ia acțiuni către un obiectiv prin unelte, pe mai mulți pași, decizând singur ce să facă în continuare până când sarcina e completă.</p>
+      </div>
+
+      <div class="sources">
+        <h2>Surse</h2>
+        <ul>
+          <li>Anthropic, Building effective agents. https://www.anthropic.com/engineering/building-effective-agents</li>
+          <li>Anthropic, Claude Docs: Tool use overview. https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview</li>
+          <li>Anthropic, Claude Agent SDK overview. https://docs.claude.com/en/api/agent-sdk/overview</li>
+          <li>Model Context Protocol. https://modelcontextprotocol.io</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h3>Vrei ca echipa ta să construiască cu Claude, nu doar să se uite la demo-uri?</h3>
+      <p>Programul TVL Academy instruiește echipele corporate să folosească și să construiască cu AI pe procesele lor reale, de la prompting la asistenți pe rol și automatizare. Rezervă 30 de minute cu Alexandru Dan.</p>
+      <a href="/ro/#contact" class="btn-primary">Rezervă 30 de minute</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/ro/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/ro/#cum-functioneaza">Sesiuni</a>
+          <a href="/ro/blog/">Blog</a>
+          <a href="/ro/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Termeni</a>
+          <a href="/ro/privacy-policy.html">Privacy Policy</a>
+          <a href="/ro/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Setări cookie</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Preferințe cookie</div>
+      <p>Folosim Google Analytics 4 doar după acordul tău, ca să măsurăm traficul și să îmbunătățim pagina. Vezi <a href="/ro/privacy-policy.html">Privacy Policy</a> și <a href="/ro/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Refuză</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Acceptă analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="ro" defer></script>
+</body>
+</html>
