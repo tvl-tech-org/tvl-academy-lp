@@ -200,7 +200,7 @@
       <p class="lead">An AI agent is a language model running in a loop with tools: Claude decides what to do, calls a tool, reads the result, and decides the next step, until the task is done. To build one with Claude you give it a goal, a small set of tools it can call, and a condition that ends the loop, then let the model drive. This guide covers what an agent actually is, when you need one, and the pieces Claude gives you to build it.</p>
 
       <h2>What is an AI agent?</h2>
-      <p>A single prompt answers a question in one step. A fixed workflow runs a script you wrote, where the order of steps is decided in advance. An agent is different: the model itself decides the next action each turn, based on what the last tool returned. That loop, model chooses a tool, tool runs, result comes back, model chooses again, is the whole idea. Everything else is detail.</p>
+      <p>A single prompt answers a question in one step. A fixed workflow runs a script you wrote, where the order of steps is decided in advance. An agent is different: the model itself decides the next action each turn, based on what the last tool returned. The model, not your code, drives each step, and that is what separates an agent from a fixed script.</p>
 
       <div class="stat-callout">
         <b>Goal → tool → result → repeat</b>
@@ -208,10 +208,10 @@
       </div>
 
       <h2>When you actually need an agent</h2>
-      <p>Most tasks do not need one, and Anthropic's own guidance is to start simple. A single Claude call handles classification, extraction, and question answering. A fixed workflow handles multi-step jobs where you can write the steps down in advance. Reach for an agent only when the task is open-ended enough that you cannot script the path ahead of time, the outcome is worth the extra cost and latency, and mistakes can be caught and recovered from. If any of those is not true, a simpler design is more reliable and cheaper to run.</p>
+      <p>Anthropic's own guidance is to start simple, and most tasks genuinely do not need an agent. A single Claude call handles classification, extraction, and question answering. A fixed workflow handles multi-step jobs where you can write the steps down in advance. Reach for an agent only when the task is open-ended enough that you cannot script the path ahead of time, the outcome is worth the extra cost and latency, and mistakes can be caught and recovered from. If any of those is not true, a simpler design is more reliable and cheaper to run.</p>
 
       <h2>The building blocks Claude gives you</h2>
-      <p><strong>Tool use.</strong> This is the foundation. You define tools as functions Claude can call, and the model returns a request to run one. Your code executes it and passes the result back, and the loop continues. Tool use is a feature of the Messages API, so an agent is a loop around ordinary API calls, not a separate product.</p>
+      <p><strong>Tool use.</strong> This is the mechanism the whole loop runs on. You define tools as functions Claude can call, and the model returns a request to run one. Your code executes it and passes the result back, and the loop continues. Tool use is a feature of the Messages API, so an agent is a loop around ordinary API calls, not a separate product.</p>
       <p><strong>The Model Context Protocol (MCP).</strong> MCP is an open standard for connecting models to tools and data sources. Instead of custom glue for every integration, an MCP server exposes tools that Claude can call the same way, which makes capabilities portable across projects and vendors.</p>
       <p><strong>The Claude Agent SDK.</strong> Writing the loop, managing context, and orchestrating tools by hand is repetitive. The Claude Agent SDK runs the loop for you, handles context, and connects tools, so you write the tools and the goal rather than the plumbing.</p>
       <p><strong>Claude Code.</strong> Claude Code is an agent you can use today for software work, and it is a useful reference for how a capable agent is put together: a clear goal, a focused set of tools, permissions on risky actions, and a loop that keeps going until the job is done.</p>

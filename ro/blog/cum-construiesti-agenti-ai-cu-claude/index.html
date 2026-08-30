@@ -200,7 +200,7 @@
       <p class="lead">Un agent AI e un model de limbaj care rulează într-o buclă cu unelte: Claude decide ce să facă, apelează o unealtă, citește rezultatul și decide pasul următor, până când sarcina e gata. Ca să construiești unul cu Claude îi dai un obiectiv, un set mic de unelte pe care le poate apela și o condiție care oprește bucla, apoi lași modelul să conducă. Ghidul acoperă ce este de fapt un agent, când ai nevoie de unul și piesele pe care ți le dă Claude ca să îl construiești.</p>
 
       <h2>Ce este un agent AI?</h2>
-      <p>Un singur prompt răspunde la o întrebare într-un pas. Un workflow fix rulează un script scris de tine, unde ordinea pașilor e decisă dinainte. Un agent e diferit: modelul însuși decide acțiunea următoare la fiecare tur, în funcție de ce a returnat ultima unealtă. Bucla aceea, modelul alege o unealtă, unealta rulează, rezultatul vine înapoi, modelul alege din nou, e toată ideea. Restul sunt detalii.</p>
+      <p>Un singur prompt răspunde la o întrebare într-un pas. Un workflow fix rulează un script scris de tine, unde ordinea pașilor e decisă dinainte. Un agent e diferit: modelul însuși decide acțiunea următoare la fiecare tur, în funcție de ce a returnat ultima unealtă. Modelul, nu codul tău, conduce fiecare pas, și asta desparte un agent de un script fix.</p>
 
       <div class="stat-callout">
         <b>Obiectiv → unealtă → rezultat → repetă</b>
@@ -208,10 +208,10 @@
       </div>
 
       <h2>Când ai de fapt nevoie de un agent</h2>
-      <p>Majoritatea sarcinilor nu au nevoie de unul, iar recomandarea de la Anthropic e să începi simplu. Un singur apel Claude rezolvă clasificare, extragere și răspuns la întrebări. Un workflow fix rezolvă sarcini în mai mulți pași, unde poți scrie pașii dinainte. Alege un agent doar când sarcina e suficient de deschisă încât nu poți scrie calea în avans, rezultatul merită costul și latența în plus, iar greșelile pot fi prinse și reparate. Dacă vreuna dintre astea nu e adevărată, un design mai simplu e mai de încredere și mai ieftin de rulat.</p>
+      <p>Recomandarea de la Anthropic e să începi simplu, iar majoritatea sarcinilor chiar nu au nevoie de un agent. Un singur apel Claude rezolvă clasificare, extragere și răspuns la întrebări. Un workflow fix rezolvă sarcini în mai mulți pași, unde poți scrie pașii dinainte. Alege un agent doar când sarcina e suficient de deschisă încât nu poți scrie calea în avans, rezultatul merită costul și latența în plus, iar greșelile pot fi prinse și reparate. Dacă vreuna dintre astea nu e adevărată, un design mai simplu e mai de încredere și mai ieftin de rulat.</p>
 
       <h2>Piesele pe care ți le dă Claude</h2>
-      <p><strong>Tool use.</strong> Aceasta e fundația. Definești unelte ca funcții pe care Claude le poate apela, iar modelul returnează o cerere de a rula una. Codul tău o execută și trece rezultatul înapoi, iar bucla continuă. Tool use e o funcție a Messages API, așa că un agent e o buclă în jurul unor apeluri API obișnuite, nu un produs separat.</p>
+      <p><strong>Tool use.</strong> Acesta e mecanismul pe care rulează toată bucla. Definești unelte ca funcții pe care Claude le poate apela, iar modelul returnează o cerere de a rula una. Codul tău o execută și trece rezultatul înapoi, iar bucla continuă. Tool use e o funcție a Messages API, așa că un agent e o buclă în jurul unor apeluri API obișnuite, nu un produs separat.</p>
       <p><strong>Model Context Protocol (MCP).</strong> MCP e un standard deschis pentru a conecta modelele la unelte și surse de date. În loc de cod special pentru fiecare integrare, un server MCP expune unelte pe care Claude le apelează la fel, ceea ce face capabilitățile portabile între proiecte și furnizori.</p>
       <p><strong>Claude Agent SDK.</strong> Să scrii bucla, să gestionezi contextul și să orchestrezi uneltele manual e repetitiv. Claude Agent SDK rulează bucla pentru tine, se ocupă de context și conectează uneltele, ca să scrii uneltele și obiectivul, nu instalația.</p>
       <p><strong>Claude Code.</strong> Claude Code e un agent pe care îl poți folosi azi pentru muncă de software și e o referință utilă pentru cum se pune la punct un agent capabil: un obiectiv clar, un set focalizat de unelte, permisiuni pe acțiunile riscante și o buclă care merge până e gata treaba.</p>
