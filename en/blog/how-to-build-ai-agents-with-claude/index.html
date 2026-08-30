@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Build AI Agents with Claude: a 2026 Guide | TVL Academy</title>
+  <meta name="description" content="How to build AI agents with Claude: what an agent is, when you actually need one, and the building blocks Claude gives you — tool use, MCP, the Claude Agent SDK, and a seven-step playbook.">
+  <meta property="og:title" content="How to Build AI Agents with Claude: a 2026 Guide">
+  <meta property="og:description" content="What an AI agent is, when you actually need one, and how to build one with Claude using tool use, MCP, and the Claude Agent SDK.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-08-30">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Build AI Agents with Claude: a 2026 Guide">
+  <meta name="twitter:description" content="What an AI agent is, when you need one, and how to build one with Claude.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/cum-construiesti-agenti-ai-cu-claude/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Build AI Agents with Claude: a 2026 Guide",
+    "description": "How to build AI agents with Claude: what an agent is, when you actually need one, and the building blocks Claude gives you.",
+    "inLanguage": "en",
+    "datePublished": "2026-08-30",
+    "dateModified": "2026-08-30",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Lead Trainer TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "knowsAbout": ["AI agents", "Claude", "Model Context Protocol", "Tool use", "Generative AI"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/" },
+    "image": { "@type": "ImageObject", "url": "https://academy.tvl.tech/images/og-training-ai-en.jpg", "width": 1200, "height": 630 },
+    "about": "How to build AI agents with Claude, tool use, Model Context Protocol, Claude Agent SDK"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to build an AI agent with Claude",
+    "description": "A seven-step way to build an agent that uses Claude in a loop with tools.",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Define the goal and the stopping condition", "text": "State what done looks like and when the loop should stop, so the agent has a clear target and does not run forever." },
+      { "@type": "HowToStep", "position": 2, "name": "Give it the smallest useful set of tools", "text": "Expose only the tools the task needs. Fewer, well-chosen tools make the model more reliable than a large, vague toolset." },
+      { "@type": "HowToStep", "position": 3, "name": "Write clear tool descriptions", "text": "Describe each tool and, above all, when to call it. Claude relies on the description to decide whether a tool applies." },
+      { "@type": "HowToStep", "position": 4, "name": "Run the loop", "text": "Claude picks a tool, your code runs it, you return the result, and Claude decides the next step. Repeat until the stopping condition is met." },
+      { "@type": "HowToStep", "position": 5, "name": "Add guardrails", "text": "Gate irreversible actions behind confirmation, validate inputs, and let the agent recover from tool errors instead of crashing." },
+      { "@type": "HowToStep", "position": 6, "name": "Manage context", "text": "The model has a context limit, so keep the loop lean by clearing stale tool results and summarizing long histories." },
+      { "@type": "HowToStep", "position": 7, "name": "Test on real tasks and measure", "text": "Run the agent on real work, watch where it fails, and tighten the tools, prompts, and guardrails from what you see." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is an AI agent in simple terms?", "acceptedAnswer": { "@type": "Answer", "text": "An AI agent is a language model running in a loop with tools. It decides what to do, calls a tool, reads the result, and repeats until the task is done, instead of answering in a single step." } },
+      { "@type": "Question", "name": "Do I need to write code to build an agent with Claude?", "acceptedAnswer": { "@type": "Answer", "text": "Building a custom agent involves code, because you define the tools and run the loop. The Claude Agent SDK handles the loop, tool orchestration, and context for you, so you write the tools and the goal rather than the plumbing." } },
+      { "@type": "Question", "name": "What is the Claude Agent SDK?", "acceptedAnswer": { "@type": "Answer", "text": "The Claude Agent SDK is Anthropic's toolkit for building agents on Claude. It runs the model-and-tools loop, manages context, and connects tools, so you focus on the task rather than the orchestration." } },
+      { "@type": "Question", "name": "What is MCP (Model Context Protocol)?", "acceptedAnswer": { "@type": "Answer", "text": "The Model Context Protocol is an open standard for connecting AI models to tools and data sources. Instead of custom glue for every integration, an MCP server exposes tools that Claude can call the same way." } },
+      { "@type": "Question", "name": "Which Claude model should I use for agents?", "acceptedAnswer": { "@type": "Answer", "text": "Use Claude Opus 4.8 for the hardest, long-horizon agentic work, Claude Sonnet 4.6 for a balance of speed and intelligence, and Claude Haiku 4.5 for fast, simple, cost-sensitive steps." } },
+      { "@type": "Question", "name": "How is an agent different from a chatbot?", "acceptedAnswer": { "@type": "Answer", "text": "A chatbot answers your message. An agent takes actions toward a goal through tools, across multiple steps, deciding for itself what to do next until the task is complete." } }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/en/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "How to Build AI Agents with Claude" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 8px; }
+    .article-body a { color: var(--red); }
+    .article-body ol { margin: 0 0 22px; padding-left: 0; list-style: none; counter-reset: step; }
+    .article-body ol > li { position: relative; padding-left: 52px; margin-bottom: 20px; counter-increment: step; }
+    .article-body ol > li::before { content: counter(step); position: absolute; left: 0; top: 2px; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,73,49,0.12); color: var(--red); font-family: var(--font-display); font-weight: 800; font-size: 16px; }
+    .article-body ol > li strong { color: var(--text); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 8px; }
+    .lead { font-size: 20px; color: var(--text); }
+    .stat-callout { margin: 32px 0; padding: 24px 28px; background: var(--light-bg); border-left: 4px solid var(--red); border-radius: 12px; }
+    .stat-callout b { display: block; font-family: var(--font-display); font-size: 26px; line-height: 1.2; color: var(--red); }
+    .stat-callout span { display: block; margin-top: 8px; font-size: 15px; color: var(--text-sec); }
+    .faq-item { border-top: 1px solid #ececec; padding: 20px 0; }
+    .faq-item h3 { margin: 0 0 6px; }
+    .faq-item p { margin: 0; font-size: 16.5px; color: var(--text-sec); }
+    .sources { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ececec; font-size: 14.5px; color: var(--text-sec); }
+    .sources h2 { font-size: 18px; margin-bottom: 10px; }
+    .sources li { margin-bottom: 6px; word-break: break-word; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/en/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/en/#problema">Why?</a>
+    <a href="/en/#cum-functioneaza">Sessions</a>
+    <a href="/en/blog/">Blog</a>
+    <a href="/en/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="/ro/blog/cum-construiesti-agenti-ai-cu-claude/" class="lang-option" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/how-to-build-ai-agents-with-claude/" class="lang-option is-active" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/en/#contact" class="btn-nav">Book 30 minutes</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/en/">TVL Academy</a> › <a href="/en/blog/">Blog</a> › How to Build AI Agents with Claude
+  </div>
+
+  <article>
+    <span class="article-kicker">AI agents / Claude</span>
+    <h1>How to build AI agents with Claude</h1>
+    <div class="article-meta">
+      <span>by <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-08-30">Updated 30 August 2026</time>
+      <span>·</span>
+      <span>8 min read</span>
+    </div>
+
+    <div class="article-body">
+      <p class="lead">An AI agent is a language model running in a loop with tools: Claude decides what to do, calls a tool, reads the result, and decides the next step, until the task is done. To build one with Claude you give it a goal, a small set of tools it can call, and a condition that ends the loop, then let the model drive. This guide covers what an agent actually is, when you need one, and the pieces Claude gives you to build it.</p>
+
+      <h2>What is an AI agent?</h2>
+      <p>A single prompt answers a question in one step. A fixed workflow runs a script you wrote, where the order of steps is decided in advance. An agent is different: the model itself decides the next action each turn, based on what the last tool returned. That loop, model chooses a tool, tool runs, result comes back, model chooses again, is the whole idea. Everything else is detail.</p>
+
+      <div class="stat-callout">
+        <b>Goal → tool → result → repeat</b>
+        <span>The agent loop. Claude reads the goal and the latest result, picks the next tool to call, and repeats until the stopping condition is met.</span>
+      </div>
+
+      <h2>When you actually need an agent</h2>
+      <p>Most tasks do not need one, and Anthropic's own guidance is to start simple. A single Claude call handles classification, extraction, and question answering. A fixed workflow handles multi-step jobs where you can write the steps down in advance. Reach for an agent only when the task is open-ended enough that you cannot script the path ahead of time, the outcome is worth the extra cost and latency, and mistakes can be caught and recovered from. If any of those is not true, a simpler design is more reliable and cheaper to run.</p>
+
+      <h2>The building blocks Claude gives you</h2>
+      <p><strong>Tool use.</strong> This is the foundation. You define tools as functions Claude can call, and the model returns a request to run one. Your code executes it and passes the result back, and the loop continues. Tool use is a feature of the Messages API, so an agent is a loop around ordinary API calls, not a separate product.</p>
+      <p><strong>The Model Context Protocol (MCP).</strong> MCP is an open standard for connecting models to tools and data sources. Instead of custom glue for every integration, an MCP server exposes tools that Claude can call the same way, which makes capabilities portable across projects and vendors.</p>
+      <p><strong>The Claude Agent SDK.</strong> Writing the loop, managing context, and orchestrating tools by hand is repetitive. The Claude Agent SDK runs the loop for you, handles context, and connects tools, so you write the tools and the goal rather than the plumbing.</p>
+      <p><strong>Claude Code.</strong> Claude Code is an agent you can use today for software work, and it is a useful reference for how a capable agent is put together: a clear goal, a focused set of tools, permissions on risky actions, and a loop that keeps going until the job is done.</p>
+
+      <h2>The playbook: seven steps to build one</h2>
+      <ol>
+        <li><strong>Define the goal and the stopping condition.</strong> State what done looks like and when the loop should stop, so the agent has a clear target and does not run forever.</li>
+        <li><strong>Give it the smallest useful set of tools.</strong> Expose only the tools the task needs. A few well-chosen tools make the model more reliable than a large, vague toolset.</li>
+        <li><strong>Write clear tool descriptions.</strong> Describe each tool and, above all, when to call it. Claude leans on the description to decide whether a tool applies, so be prescriptive about the trigger.</li>
+        <li><strong>Run the loop.</strong> Claude picks a tool, your code runs it, you return the result, and Claude decides the next step. Repeat until the stopping condition is met.</li>
+        <li><strong>Add guardrails.</strong> Gate irreversible actions behind confirmation, validate inputs before acting, and return tool errors so the agent can recover rather than crash.</li>
+        <li><strong>Manage context.</strong> The model has a context limit. Keep the loop lean by clearing stale tool results and summarizing long histories, so the agent stays coherent on long tasks.</li>
+        <li><strong>Test on real tasks and measure.</strong> Run the agent on real work, watch where it fails, and tighten the tools, prompts, and guardrails from what you see.</li>
+      </ol>
+
+      <h2>Which Claude model to use</h2>
+      <p>Match the model to the step. Claude Opus 4.8 is the strongest choice for hard, long-horizon agentic work where the agent has to plan and act over many steps. Claude Sonnet 4.6 is the balanced default for most tool-driven workflows. Claude Haiku 4.5 is the fast, cost-effective option for simple, high-volume steps. A single agent can use more than one model, keeping the expensive model for the hard decisions and a cheaper one for routine sub-tasks.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3>What is an AI agent in simple terms?</h3>
+        <p>An AI agent is a language model running in a loop with tools. It decides what to do, calls a tool, reads the result, and repeats until the task is done, instead of answering in a single step.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need to write code to build an agent with Claude?</h3>
+        <p>Building a custom agent involves code, because you define the tools and run the loop. The Claude Agent SDK handles the loop, tool orchestration, and context, so you write the tools and the goal rather than the plumbing.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the Claude Agent SDK?</h3>
+        <p>The Claude Agent SDK is Anthropic's toolkit for building agents on Claude. It runs the model-and-tools loop, manages context, and connects tools, so you focus on the task rather than the orchestration.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is MCP (Model Context Protocol)?</h3>
+        <p>The Model Context Protocol is an open standard for connecting AI models to tools and data sources. Instead of custom glue for every integration, an MCP server exposes tools that Claude can call the same way.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which Claude model should I use for agents?</h3>
+        <p>Use Claude Opus 4.8 for the hardest, long-horizon agentic work, Claude Sonnet 4.6 for a balance of speed and intelligence, and Claude Haiku 4.5 for fast, simple, cost-sensitive steps.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How is an agent different from a chatbot?</h3>
+        <p>A chatbot answers your message. An agent takes actions toward a goal through tools, across multiple steps, deciding for itself what to do next until the task is complete.</p>
+      </div>
+
+      <div class="sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>Anthropic, Building effective agents. https://www.anthropic.com/engineering/building-effective-agents</li>
+          <li>Anthropic, Claude Docs: Tool use overview. https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview</li>
+          <li>Anthropic, Claude Agent SDK overview. https://docs.claude.com/en/api/agent-sdk/overview</li>
+          <li>Model Context Protocol. https://modelcontextprotocol.io</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h3>Want your team to build with Claude, not just watch demos?</h3>
+      <p>The TVL Academy program trains corporate teams to use and build with AI on their own processes, from prompting to per-role assistants to automation. Book 30 minutes with Alexandru Dan.</p>
+      <a href="/en/#contact" class="btn-primary">Book 30 minutes</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/en/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/en/#cum-functioneaza">Sessions</a>
+          <a href="/en/blog/">Blog</a>
+          <a href="/en/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Terms</a>
+          <a href="/en/privacy-policy.html">Privacy Policy</a>
+          <a href="/en/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Cookie settings</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Cookie preferences</div>
+      <p>We use Google Analytics 4 only after your consent, to measure traffic and improve the page. See <a href="/en/privacy-policy.html">Privacy Policy</a> and <a href="/en/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Accept analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="en" defer></script>
+</body>
+</html>

@@ -97,6 +97,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://academy.tvl.tech/ro/blog/cum-construiesti-agenti-ai-cu-claude/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/en/blog/how-to-build-ai-agents-with-claude/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://academy.tvl.tech/ro/skills/</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
