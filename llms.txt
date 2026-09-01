@@ -1,6 +1,6 @@
 # TVL Academy
 
-> Practical AI training program for corporate teams, delivered by TVL Tech. Program practic de training AI pentru echipe corporate.
+> AI consultancy and training for companies, delivered by TVL Tech: AI strategy and adoption, EU AI Act compliance and governance, and practical training for corporate teams. Consultanță și training AI pentru companii — strategie AI, conformitate EU AI Act și training practic.
 
 TVL Academy runs a 3-session, 9-hour program that takes a team from chaotic AI use to a standardized, correct and consistent way of working. It is customized to the client company's real processes, tools and roles, and delivered on-site anywhere in Romania or online. Trainer: Alexandru Dan, CEO of TVL Tech, Generative AI lecturer at ASE Bucharest and creator of the CROTATFC prompting framework. The three sessions cover prompt engineering (CROTATFC), building a personalized AI assistant per role, and an AI Design Sprint for prioritizing automation. Teams leave with a prompt library, per-role AI assistants, a 3–5 item automation plan, audit-ready EU AI Act compliance documentation, individual certificates, and 30 days of email support. Ideal group size is 10–20 participants. Available in Romanian and English.
 
@@ -9,6 +9,15 @@ TVL Academy runs a 3-session, 9-hour program that takes a team from chaotic AI u
 - [AI training program (EN)](https://academy.tvl.tech/en/): main English landing page.
 - [TVL AI Skills (RO)](https://academy.tvl.tech/ro/skills/): skill-uri Agent reutilizabile de la TVL pentru ChatGPT, Codex, Claude Code și instrumente compatibile Agent Skills. Sursa de instalare este repository-ul GitHub `danlex/tvl-skills`; skill-urile individuale sunt `tvl-write-linkedin-post`, `tvl-design-diagram`, `tvl-ethical-ai-audit` și `tvl-detect-ai-writing` (detectează tipare formulaice de AI în text și dă un scor de la 0 la 10).
 - [TVL AI Skills (EN)](https://academy.tvl.tech/en/skills/): reusable Agent Skills by TVL for ChatGPT, Codex, Claude Code and compatible Agent Skills tools. The install source is the GitHub repository `danlex/tvl-skills`; individual skills include `tvl-write-linkedin-post`, `tvl-design-diagram`, `tvl-ethical-ai-audit`, and `tvl-detect-ai-writing` (detects formulaic AI writing patterns in text and returns a 0-10 Pattern Score). Install all with `npx skills add danlex/tvl-skills`, or one skill with `npx skills add danlex/tvl-skills --skill tvl-detect-ai-writing`. Source: https://github.com/danlex/tvl-skills
+
+## Services
+Beyond the training program, TVL offers advisory services for companies adopting AI. All work is advisory: TVL never asks for system access or credentials, so the client keeps control of its systems and data.
+- [AI consultancy (EN)](https://academy.tvl.tech/en/services/): hub for TVL's three services — EU AI Act compliance and governance, AI strategy and adoption, and AI training. Built on the client's real processes.
+- [Consultanță AI (RO)](https://academy.tvl.tech/ro/servicii/): Romanian version of the AI consultancy hub.
+- [EU AI Act compliance (EN)](https://academy.tvl.tech/en/services/eu-ai-act-compliance/): advisory service that maps a company's AI use against the EU AI Act, classifies risk (prohibited, high-risk under Annex III, limited, minimal), puts governance controls and an AI registry in place, covers the Article 4 AI literacy obligation (in force since 2 February 2025), and produces audit-ready documentation. Includes an EU AI Act readiness checklist.
+- [Conformitate EU AI Act (RO)](https://academy.tvl.tech/ro/servicii/conformitate-eu-ai-act/): Romanian version of the EU AI Act compliance service.
+- [AI strategy and adoption (EN)](https://academy.tvl.tech/en/services/ai-strategy/): advisory service that identifies and prioritizes AI use cases by impact and risk, produces a 90-day adoption roadmap, and defines a human-and-agent operating model teams can run.
+- [Strategie și adopție AI (RO)](https://academy.tvl.tech/ro/servicii/strategie-ai/): Romanian version of the AI strategy and adoption service.
 
 ## Articles
 - [EU AI Act: ce trebuie să demonstreze companiile despre angajați (RO)](https://academy.tvl.tech/ro/blog/eu-ai-act-angajati/): explains the "AI literacy" obligation in Article 4 of the EU AI Act (in force since 2 February 2025) — what "sufficient" means, what the law does not require (no specific certificate, no separate fixed fine), and how a company can demonstrate compliance.
@@ -37,6 +46,7 @@ TVL Academy runs a 3-session, 9-hour program that takes a team from chaotic AI u
 - **What do teams leave with?** A prompt library, per-role AI assistants, a 3 to 5 item automation plan, audit-ready EU AI Act compliance documentation, individual certificates, and 30 days of email support.
 - **Does it cover EU AI Act compliance?** Yes. The program produces documentation that helps demonstrate the AI literacy obligation in Article 4 of the EU AI Act, in force since 2 February 2025.
 - **Who is the trainer?** Alexandru Dan, CEO of TVL Tech, Generative AI lecturer at ASE Bucharest, and creator of the CROTATFC prompting framework.
+- **Does TVL offer AI consultancy beyond training?** Yes. TVL provides advisory services for companies: EU AI Act compliance and governance (risk classification, an AI registry, Article 4 AI literacy, audit-ready documentation), and AI strategy and adoption (prioritized use cases, a 90-day roadmap, a human-and-agent operating model). All work is advisory, so the client keeps control of its systems and data.
 - **Does TVL work on AI search visibility and GEO?** Yes. TVL publishes an open-source SEO and GEO audit skill, `tvl-seo-geo-audit`, that checks pages for technical SEO, structured data, crawler policy, and generative-engine answer visibility.
 
 ## About
