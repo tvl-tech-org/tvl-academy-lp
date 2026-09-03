@@ -30,6 +30,7 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="Alexandru Dan, TVL Academy">
 
+  <link rel="preload" as="image" href="/images/curs-ai-team.webp">
   <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
@@ -94,40 +95,114 @@
 
   <link rel="stylesheet" href="/index.css">
   <style>
-    .svc-main { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; }
-    .svc-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 24px; }
-    .svc-breadcrumb a { color: var(--text-sec); text-decoration: none; }
-    .svc-breadcrumb a:hover { color: var(--red); }
-    .svc-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
-    .svc-main h1 { font-family: var(--font-display); font-size: clamp(32px, 5.5vw, 50px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 18px; max-width: 780px; }
-    .svc-lead { font-size: 20px; line-height: 1.6; color: var(--text-sec); max-width: 730px; margin-bottom: 30px; }
-    .svc-body { font-size: 18px; line-height: 1.72; color: #24242b; }
-    .svc-body h2 { font-family: var(--font-display); font-size: 27px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 52px 0 18px; }
-    .svc-body p { margin-bottom: 20px; }
-    .svc-body a { color: var(--red); }
-    .svc-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
-    .svc-body ul.plain li { margin-bottom: 9px; }
-    .svc-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 8px 0 8px; }
-    .svc-card { display: block; text-decoration: none; padding: 26px; border: 1px solid #ececec; border-radius: 12px; transition: border-color .2s, box-shadow .2s; }
-    .svc-card:hover { border-color: var(--red); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
-    .svc-card .k { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--red); }
-    .svc-card h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 9px 0 9px; }
-    .svc-card p { font-size: 15.5px; line-height: 1.6; color: var(--text-sec); margin: 0 0 9px; }
-    .svc-card .go { font-size: 13.5px; font-weight: 700; color: var(--red); }
-    .about-photo { width: 100%; height: auto; border-radius: 14px; display: block; margin: 8px 0 4px; }
-    .about-photo-cap { font-size: 13px; color: var(--text-sec); margin: 0 0 8px; }
-    .faq-item { border-top: 1px solid #ececec; padding: 20px 0; }
-    .faq-item h3 { font-family: var(--font-display); font-size: 20px; margin: 0 0 6px; color: var(--text); }
-    .faq-item p { margin: 0; font-size: 16.5px; color: var(--text-sec); }
-    .svc-cta { margin-top: 48px; padding: 34px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
-    .svc-cta h3 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
-    .svc-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
-    .svc-related { margin-top: 40px; font-size: 16px; color: var(--text-sec); }
-    .svc-related a { color: var(--red); }
-    @media (max-width: 768px) { .svc-main { padding: 96px 20px 60px; } .svc-body { font-size: 17px; } }
+    /* ── About TVL Tech — editorial ─────────────────────────────── */
+    .ad-skip { position: absolute; left: -9999px; top: 0; z-index: 2000; background: var(--red-accessible); color: #fff; padding: 12px 18px; font-weight: 700; border-radius: 0 0 8px 0; }
+    .ad-skip:focus { left: 0; }
+    .ad a:focus-visible, .ad button:focus-visible { outline: 2px solid var(--red-accessible); outline-offset: 3px; border-radius: 3px; }
+    .ad-hero a:focus-visible, .ad-cta a:focus-visible, .ad-founder a:focus-visible { outline-color: #fff; }
+    .ad { color: #24242b; }
+
+    @keyframes adUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+    .ad-anim { opacity: 0; animation: adUp .8s cubic-bezier(.2,.7,.2,1) both; }
+    .d1 { animation-delay: .04s } .d2 { animation-delay: .12s } .d3 { animation-delay: .2s }
+    .d4 { animation-delay: .28s } .d5 { animation-delay: .36s }
+    .ad-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .ad-reveal.is-in { opacity: 1; transform: none; }
+
+    /* HERO */
+    .ad-hero { position: relative; overflow: hidden; background: var(--dark); color: #fff; padding: 132px 24px 84px; }
+    .ad-hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(1100px 560px at 12% 118%, rgba(255,74,61,.16), transparent 58%); }
+    .ad-hero-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+    .ad-crumb { font-size: 12.5px; letter-spacing: .04em; color: rgba(255,255,255,.55); margin-bottom: 26px; }
+    .ad-crumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+    .ad-crumb a:hover { color: #fff; }
+    .ad-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
+    .ad-kicker::before { content: ""; width: 30px; height: 2px; background: var(--red); }
+    .ad-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(46px, 7.6vw, 104px); line-height: .92; letter-spacing: -.035em; margin: 0 0 20px; }
+    .ad-hero-lead { font-size: 18px; line-height: 1.66; color: rgba(255,255,255,.72); max-width: 48ch; margin-bottom: 30px; }
+    .ad-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+    .ad-stats b { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: #fff; }
+    .ad-stats span { position: relative; font-size: 13.5px; color: rgba(255,255,255,.7); padding-left: 22px; }
+    .ad-stats span::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    .ad-figure { position: relative; justify-self: end; width: min(100%, 448px); margin: 0 18px 0 0; }
+    .ad-figure img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 18px 18px 0 0 var(--red); }
+    .ad-figure figcaption { margin-top: 26px; font-size: 12.5px; color: rgba(255,255,255,.55); }
+
+    /* CARDS: what we do */
+    .ad-band { max-width: 1180px; margin: 0 auto; padding: 90px 24px; }
+    .ad-eyebrow { display: inline-flex; align-items: center; gap: 11px; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--red-accessible); margin-bottom: 14px; }
+    .ad-eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--red); }
+    .ad-band > .ad-reveal > h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.02em; line-height: 1.12; color: var(--text); margin: 0 0 14px; max-width: 20ch; }
+    .ad-band .sub { font-size: 18px; line-height: 1.7; color: var(--text-sec); max-width: 62ch; margin: 0 0 40px; }
+    .ad-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .ad-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #e9e4de; border-radius: 16px; padding: 30px; text-decoration: none; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s; }
+    .ad-card:hover { transform: translateY(-5px); border-color: var(--red); box-shadow: 0 22px 48px rgba(0,0,0,.09); }
+    .ad-card .k { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--red-accessible); }
+    .ad-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -.01em; color: var(--text); margin: 12px 0 10px; }
+    .ad-card p { font-size: 15.5px; line-height: 1.6; color: var(--text-sec); margin: 0 0 18px; flex: 1; }
+    .ad-card .go { font-size: 13.5px; font-weight: 700; color: var(--red-accessible); }
+    .ad-card:hover .go { text-decoration: underline; }
+
+    /* NUMBERED sections (light) */
+    .ad-shell { max-width: 1180px; margin: 0 auto; padding: 20px 24px 90px; }
+    .ad-sec { margin-bottom: 46px; max-width: 760px; }
+    .ad-sec:last-child { margin-bottom: 0; }
+    .ad-sec-num { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: .14em; color: var(--red-accessible); display: block; margin-bottom: 12px; }
+    .ad-sec h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3vw, 32px); letter-spacing: -.02em; line-height: 1.14; color: var(--text); margin: 0 0 16px; }
+    .ad-sec p { font-size: 18px; line-height: 1.72; color: #24242b; margin: 0 0 18px; }
+    .ad-sec p:last-child { margin-bottom: 0; }
+
+    /* FOUNDER band */
+    .ad-founder { background: var(--dark); color: #fff; padding: clamp(56px, 8vw, 92px) 24px; }
+    .ad-founder-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 150px 1fr auto; gap: 34px; align-items: center; }
+    .ad-founder img { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 3px solid var(--red); }
+    .ad-founder .fe { display: block; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .ad-founder h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -.01em; margin: 0 0 10px; }
+    .ad-founder p { margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.75); max-width: 56ch; }
+    .ad-founder .prof { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 700; color: #fff; text-decoration: none; border-bottom: 2px solid var(--red); padding-bottom: 2px; }
+    .ad-founder .prof:hover { border-bottom-width: 3px; }
+    .ad-founder-btn { justify-self: end; white-space: nowrap; background: #fff; color: #161616; font-weight: 700; font-size: 15px; padding: 14px 26px; border-radius: 999px; text-decoration: none; transition: transform .3s, box-shadow .3s; }
+    .ad-founder-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(0,0,0,.28); }
+
+    /* CTA */
+    .ad-cta { background: var(--red-accessible); color: #fff; padding: clamp(56px, 8vw, 92px) 24px; }
+    .ad-cta-inner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 30px; }
+    .ad-cta h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -.02em; margin: 0; max-width: 18ch; }
+    .ad-cta p { margin: 14px 0 0; font-size: 16px; color: rgba(255,255,255,.88); max-width: 42ch; }
+    .ad-cta-btn { display: inline-block; background: #fff; color: #161616; font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 999px; text-decoration: none; white-space: nowrap; transition: transform .3s, box-shadow .3s; }
+    .ad-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(0,0,0,.22); }
+
+    /* FAQ */
+    .ad-faq { max-width: 1180px; margin: 0 auto; padding: 88px 24px; }
+    .ad-faq h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3vw, 32px); letter-spacing: -.02em; color: var(--text); margin: 0 0 26px; }
+    .ad-faq-item { display: grid; grid-template-columns: .82fr 1.18fr; gap: 34px; padding: 26px 0; border-top: 1px solid #e6e1db; }
+    .ad-faq-item:last-child { border-bottom: 1px solid #e6e1db; }
+    .ad-faq-item h3 { font-family: var(--font-display); font-weight: 700; font-size: 19px; line-height: 1.3; color: var(--text); margin: 0; }
+    .ad-faq-item p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-sec); }
+
+    @media (max-width: 980px) {
+      .ad-hero { padding: 116px 20px 64px; }
+      .ad-hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .ad-figure { justify-self: start; width: 100%; order: -1; }
+      .ad-band { padding: 64px 20px; }
+      .ad-cards { grid-template-columns: 1fr; }
+      .ad-shell { padding: 8px 20px 64px; }
+      .ad-founder-inner { grid-template-columns: 96px 1fr; gap: 22px; }
+      .ad-founder img { width: 96px; height: 96px; }
+      .ad-founder-btn { grid-column: 1 / -1; justify-self: start; }
+      .ad-faq { padding: 64px 20px; }
+      .ad-faq-item { grid-template-columns: 1fr; gap: 8px; }
+      .ad-cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ad-anim, .ad-reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+      .ad-card, .ad-cta-btn, .ad-founder-btn { transition: none !important; }
+    }
   </style>
 </head>
-<body>
+<body class="ad">
+
+<a class="ad-skip" href="#main">Skip to content</a>
 
 <nav>
   <a aria-label="TVL Academy" class="nav-logo" href="/en/">
@@ -160,81 +235,129 @@
   </div>
 </nav>
 
-<main class="svc-main">
-  <div class="svc-breadcrumb">
-    <a href="/en/">TVL Academy</a> › About
+<main id="main">
+
+  <!-- HERO -->
+  <header class="ad-hero">
+    <div class="ad-hero-inner">
+      <div class="ad-hero-text">
+        <nav class="ad-crumb ad-anim d1" aria-label="Breadcrumb">
+          <a href="/en/">TVL Academy</a> › <span>About</span>
+        </nav>
+        <span class="ad-kicker ad-anim d1">About</span>
+        <h1 class="ad-name ad-anim d2">TVL Tech</h1>
+        <p class="ad-hero-lead ad-anim d3">A Romanian AI company that helps organizations adopt AI correctly. We build automation, advise on AI strategy and EU AI Act compliance, and run the TVL Academy training program, all on your real processes rather than a generic playbook.</p>
+        <div class="ad-stats ad-anim d4">
+          <b>AI automation · consulting · training</b>
+          <span>Founded by Alexandru Dan</span>
+          <span>Romania &amp; EU</span>
+        </div>
+      </div>
+      <figure class="ad-figure ad-anim d3">
+        <img src="/images/curs-ai-team.webp" alt="A TVL Academy training session delivered inside a company" width="1200" height="800" fetchpriority="high" decoding="async">
+        <figcaption>A TVL Academy session delivered on a company's own processes.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <!-- WHAT WE DO -->
+  <section class="ad-band">
+    <div class="ad-reveal">
+      <span class="ad-eyebrow">What we do</span>
+      <h2>Three ways we help companies put AI to work</h2>
+      <p class="sub">Companies do not struggle to hear about AI. They struggle to turn it into everyday work that is correct, safe, and worth the effort. TVL closes that distance, from a first prompt library to an AI strategy a leadership team can act on.</p>
+      <div class="ad-cards">
+        <a class="ad-card" href="/en/#cum-functioneaza">
+          <span class="k">Training</span>
+          <h3>TVL Academy</h3>
+          <p>A practical, three-session program that takes a corporate team from ad-hoc AI use to a standardized, correct, consistent way of working, customized to your tools and roles.</p>
+          <span class="go">See the program →</span>
+        </a>
+        <a class="ad-card" href="/en/services/">
+          <span class="k">Consulting</span>
+          <h3>AI strategy &amp; EU AI Act</h3>
+          <p>Advisory work that prioritizes AI use cases, produces a 90-day roadmap, and gets you ready for the EU AI Act with a registry and audit-ready documentation.</p>
+          <span class="go">See the services →</span>
+        </a>
+        <a class="ad-card" href="/en/skills/">
+          <span class="k">Tools</span>
+          <h3>Open-source AI Skills</h3>
+          <p>Reusable Agent Skills we publish for ChatGPT, Claude, and compatible tools, so the way we work is something you can install and inspect.</p>
+          <span class="go">See the skills →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERED -->
+  <div class="ad-shell">
+    <section class="ad-sec ad-reveal">
+      <span class="ad-sec-num">01 — How we work</span>
+      <h2>Advisory, and built on your real processes</h2>
+      <p>Two principles hold across everything we do. First, we start from your real processes, not a template, so the output fits the way your teams already work. Second, our consulting is advisory: we tell you what to configure, document, and control, and your own administrator applies it. We never ask for system access or credentials, so you keep control of your systems and your data.</p>
+      <p>What you leave with is meant to last: a prompt library, per-role assistants, an automation plan, an AI registry, and documentation you can show to a customer, an auditor, or a regulator.</p>
+    </section>
+
+    <section class="ad-sec ad-reveal">
+      <span class="ad-sec-num">02 — Who we work with</span>
+      <h2>Companies and public institutions across Europe</h2>
+      <p>We work with organizations in Romania and across Europe that want to adopt AI without creating risk, including Romstal, RMT Labs, Arcanna, and Ocean Enterprise. Programs are delivered in Romanian or English, on-site anywhere in Romania or online.</p>
+    </section>
   </div>
 
-  <span class="svc-kicker">About</span>
-  <h1>About TVL Tech</h1>
-  <p class="svc-lead">TVL Tech is a Romanian AI company that helps organizations adopt AI correctly. We build automation, advise on AI strategy and EU AI Act compliance, and run the TVL Academy training program, all on your real processes rather than a generic playbook.</p>
-
-  <div class="svc-body">
-    <h2>What we do</h2>
-    <p>Companies do not struggle to hear about AI. They struggle to turn it into everyday work that is correct, safe, and worth the effort. TVL closes that distance, from a first prompt library to an AI strategy a leadership team can act on.</p>
-    <div class="svc-grid">
-      <a class="svc-card" href="/en/#cum-functioneaza">
-        <span class="k">Training</span>
-        <h3>TVL Academy</h3>
-        <p>A practical, three-session program that takes a corporate team from ad-hoc AI use to a standardized, correct, consistent way of working, customized to your tools and roles.</p>
-        <span class="go">See the program →</span>
-      </a>
-      <a class="svc-card" href="/en/services/">
-        <span class="k">Consulting</span>
-        <h3>AI strategy &amp; EU AI Act</h3>
-        <p>Advisory work that prioritizes AI use cases, produces a 90-day roadmap, and gets you ready for the EU AI Act with a registry and audit-ready documentation.</p>
-        <span class="go">See the services →</span>
-      </a>
-      <a class="svc-card" href="/en/skills/">
-        <span class="k">Tools</span>
-        <h3>Open-source AI Skills</h3>
-        <p>Reusable Agent Skills we publish for ChatGPT, Claude, and compatible tools, so the way we work is something you can install and inspect.</p>
-        <span class="go">See the skills →</span>
-      </a>
+  <!-- FOUNDER -->
+  <section class="ad-founder ad-reveal">
+    <div class="ad-founder-inner">
+      <img src="/images/alex-dan.png" alt="Alexandru Dan, CEO of TVL Tech" width="150" height="150" loading="lazy" decoding="async">
+      <div>
+        <span class="fe">The founder</span>
+        <h2>Led by Alexandru Dan</h2>
+        <p>TVL Tech was founded and is led by Alexandru Dan, its CEO, who has more than 15 years in artificial intelligence. He is the creator of the CROTATFC prompting framework, a Generative AI lecturer at ASE Bucharest, and delivers the TVL Academy program himself.</p>
+        <a class="prof" href="/en/about/alexandru-dan/">Read his full profile</a>
+      </div>
+      <a class="ad-founder-btn" href="/en/about/alexandru-dan/">Meet Alexandru</a>
     </div>
+  </section>
 
-    <h2>How we work</h2>
-    <p>Two principles hold across everything we do. First, we start from your real processes, not a template, so the output fits the way your teams already work. Second, our consulting is advisory: we tell you what to configure, document, and control, and your own administrator applies it. We never ask for system access or credentials, so you keep control of your systems and your data.</p>
-    <p>What you leave with is meant to last: a prompt library, per-role assistants, an automation plan, an AI registry, and documentation you can show to a customer, an auditor, or a regulator.</p>
+  <!-- CTA -->
+  <section class="ad-cta">
+    <div class="ad-cta-inner ad-reveal">
+      <div>
+        <h2>Work with TVL</h2>
+        <p>Book 30 minutes. We will look at where AI can help in your organization and agree the smallest useful first step.</p>
+      </div>
+      <a class="ad-cta-btn" href="/en/#contact">Book 30 minutes</a>
+    </div>
+  </section>
 
-    <h2>Who we work with</h2>
-    <p>We work with companies and public institutions in Romania and across Europe that want to adopt AI without creating risk, including Romstal, RMT Labs, Arcanna, and Ocean Enterprise. Programs are delivered in Romanian or English, on-site anywhere in Romania or online.</p>
+  <!-- FAQ -->
+  <section class="ad-faq">
+    <div class="ad-reveal">
+      <span class="ad-eyebrow">FAQ</span>
+      <h2>Frequently asked questions</h2>
+      <div class="ad-faq-item">
+        <h3>What is TVL Tech?</h3>
+        <p>A Romanian AI company that helps organizations adopt AI correctly. It works in three areas: AI automation, AI strategy and EU AI Act consulting, and practical training through the TVL Academy program.</p>
+      </div>
+      <div class="ad-faq-item">
+        <h3>What is the difference between TVL Tech and TVL Academy?</h3>
+        <p>TVL Tech is the company. TVL Academy is its training program, which takes a corporate team from ad-hoc AI use to a standardized, correct way of working. TVL Tech also offers automation and consulting beyond training.</p>
+      </div>
+      <div class="ad-faq-item">
+        <h3>Who runs TVL Tech?</h3>
+        <p>TVL Tech was founded and is led by Alexandru Dan, its CEO, who has more than 15 years in artificial intelligence and delivers the TVL Academy program himself.</p>
+      </div>
+      <div class="ad-faq-item">
+        <h3>Who does TVL Tech work with?</h3>
+        <p>Companies and public institutions in Romania and across Europe, including Romstal, RMT Labs, Arcanna, and Ocean Enterprise.</p>
+      </div>
+      <div class="ad-faq-item">
+        <h3>How do we start working with TVL?</h3>
+        <p>A 30-minute call. From there we scope training, an automation project, an AI strategy engagement, or EU AI Act compliance work, depending on where you are.</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>The founder</h2>
-    <img class="about-photo" src="/images/curs-ai-team.jpeg" alt="A TVL Academy training session delivered inside a company" width="1200" height="800" loading="lazy" decoding="async">
-    <p class="about-photo-cap">A TVL Academy session delivered on a company's own processes.</p>
-    <p>TVL Tech was founded and is led by <a href="/en/about/alexandru-dan/">Alexandru Dan</a>, its CEO, who has more than 15 years in artificial intelligence as a researcher, a founder, and a teacher. He is the creator of the CROTATFC prompting framework, a Generative AI lecturer at ASE Bucharest, and delivers the TVL Academy program himself. <a href="/en/about/alexandru-dan/">Read his full profile →</a></p>
-
-    <h2>Frequently asked questions</h2>
-    <div class="faq-item">
-      <h3>What is TVL Tech?</h3>
-      <p>A Romanian AI company that helps organizations adopt AI correctly. It works in three areas: AI automation, AI strategy and EU AI Act consulting, and practical training through the TVL Academy program.</p>
-    </div>
-    <div class="faq-item">
-      <h3>What is the difference between TVL Tech and TVL Academy?</h3>
-      <p>TVL Tech is the company. TVL Academy is its training program, which takes a corporate team from ad-hoc AI use to a standardized, correct way of working. TVL Tech also offers automation and consulting beyond training.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Who runs TVL Tech?</h3>
-      <p>TVL Tech was founded and is led by Alexandru Dan, its CEO, who has more than 15 years in artificial intelligence and delivers the TVL Academy program himself.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Who does TVL Tech work with?</h3>
-      <p>Companies and public institutions in Romania and across Europe, including Romstal, RMT Labs, Arcanna, and Ocean Enterprise.</p>
-    </div>
-    <div class="faq-item">
-      <h3>How do we start working with TVL?</h3>
-      <p>A 30-minute call. From there we scope training, an automation project, an AI strategy engagement, or EU AI Act compliance work, depending on where you are.</p>
-    </div>
-
-    <div class="svc-cta">
-      <h3>Work with TVL</h3>
-      <p>Book 30 minutes. We will look at where AI can help in your organization and agree the smallest useful first step.</p>
-      <a href="/en/#contact" class="btn-primary">Book 30 minutes</a>
-    </div>
-
-    <p class="svc-related">More: <a href="/en/about/alexandru-dan/">Alexandru Dan</a> · <a href="/en/services/">AI consultancy services</a> · <a href="/en/#cum-functioneaza">The TVL Academy program</a></p>
-  </div>
 </main>
 
 <footer>
@@ -288,6 +411,22 @@
 </div>
 
 <script src="/index.js"></script>
+<script>
+  (function () {
+    var els = document.querySelectorAll('.ad-reveal');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
         data-endpoint="https://chat.tvl.tech" data-tenant="academy"
         data-accent="#FF4931" data-title="TVL Academy" data-lang="en" defer></script>
