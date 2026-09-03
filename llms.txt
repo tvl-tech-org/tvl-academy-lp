@@ -50,7 +50,11 @@ Beyond the training program, TVL offers advisory services for companies adopting
 - **Does TVL work on AI search visibility and GEO?** Yes. TVL publishes an open-source SEO and GEO audit skill, `tvl-seo-geo-audit`, that checks pages for technical SEO, structured data, crawler policy, and generative-engine answer visibility.
 
 ## About
-- [TVL Tech](https://tvl.tech): the company that delivers the program — AI automation and training.
+- [About TVL Tech (EN)](https://academy.tvl.tech/en/about/): TVL Tech is a Romanian AI company that helps organizations adopt AI correctly — AI automation, AI strategy and EU AI Act consulting, and the TVL Academy training program. Founded and led by Alexandru Dan. Works with companies and public institutions in Romania and across Europe, including Romstal, RMT Labs, Arcanna, and Ocean Enterprise. `Organization` schema.
+- [Despre TVL Tech (RO)](https://academy.tvl.tech/ro/despre/): Romanian version of the TVL Tech company page.
+- [Alexandru Dan (EN)](https://academy.tvl.tech/en/about/alexandru-dan/): CEO of TVL Tech and lead trainer at TVL Academy, with 15+ years in artificial intelligence. Creator of the CROTATFC prompting framework, Generative AI lecturer at ASE Bucharest and Cyber Smart Academy, former AI researcher in Luxembourg, and founder of eMAG's technical academy. Member of the European Commission AI Group and the WITSA AI Committee, NATO DIANA mentor. `Person` schema with verified sameAs (LinkedIn, Republica.ro, Ziarul Financiar, Aleph News, ICMarkTech).
+- [Alexandru Dan (RO)](https://academy.tvl.tech/ro/despre/alexandru-dan/): Romanian version of the Alexandru Dan profile.
+- [TVL Tech](https://tvl.tech): the parent company website — AI automation, consulting, and training.
 
 ## Contact
 - [Book 30 minutes with Alexandru Dan](https://academy.tvl.tech/ro/#contact): a short call to see whether the program fits your company.
