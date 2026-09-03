@@ -5,6 +5,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f0f0f">
   <title>Despre TVL Tech — automatizare AI, consultanță și training | TVL Academy</title>
   <meta name="description" content="TVL Tech este o companie românească de AI care ajută organizațiile să adopte AI corect: automatizare, consultanță de strategie AI și EU AI Act și programul practic de training TVL Academy. Fondată și condusă de Alexandru Dan.">
   <meta property="og:title" content="Despre TVL Tech — automatizare AI, consultanță și training">
@@ -229,6 +230,31 @@
       .ad-marquee-track { animation: none !important; }
       .ad-name .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
       .ad-progress { display: none; }
+    }
+  
+    /* ── v3: cursor, magnetics, tilt, scroll-driven, view transitions ── */
+    :root { scrollbar-color: #c83224 #f1ece5; }
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .3s; }
+    .ad-name::after { content: "."; color: var(--red); display: inline-block; opacity: 0; animation: chIn .5s .9s cubic-bezier(.2,.7,.2,1) forwards; }
+    .ad-cursor { position: fixed; top: 0; left: 0; width: 34px; height: 34px; border: 1.5px solid var(--red); border-radius: 50%; pointer-events: none; z-index: 4000; opacity: 0; transition: width .25s, height .25s, opacity .3s, background .25s; }
+    .ad-cursor.on { opacity: .9; }
+    .ad-cursor.hot { width: 54px; height: 54px; background: rgba(255,74,61,.1); }
+    .is-magnet { transition: transform .18s ease-out !important; will-change: transform; }
+    .ad-press-card, .ad-card { transform-style: preserve-3d; }
+    .ad-marquee:hover .ad-marquee-track { animation-play-state: paused; }
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (animation-timeline: view()) {
+        .ad-quote blockquote { animation: qIn linear both; animation-timeline: view(); animation-range: entry 5% entry 60%; }
+        .ad-sec::before { animation: ghostDrift linear both; animation-timeline: view(); animation-range: entry exit; }
+      }
+    }
+    @keyframes qIn { from { opacity: .15; transform: translateY(44px) scale(.965); } to { opacity: 1; transform: none; } }
+    @keyframes ghostDrift { from { transform: translateY(56px); } to { transform: translateY(-56px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .ad-cursor { display: none; }
+      .ad-name::after { opacity: 1 !important; animation: none !important; }
+      ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
     }
   </style>
 </head>
@@ -536,6 +562,46 @@
       }, { rootMargin: '-30% 0px -55% 0px' });
       Object.keys(map).forEach(function (id) {
         var el = document.getElementById(id); if (el) spy.observe(el);
+      });
+    }
+
+    /* v3: custom cursor, magnetic buttons, card tilt (desktop pointers only) */
+    var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+    if (fine && !reduce) {
+      var cur = document.createElement('div');
+      cur.className = 'ad-cursor'; cur.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(cur);
+      var cx = -100, cy = -100, tx = -100, ty = -100, shown = false;
+      document.addEventListener('mousemove', function (e) {
+        tx = e.clientX; ty = e.clientY;
+        if (!shown) { shown = true; cur.classList.add('on'); }
+      }, { passive: true });
+      document.documentElement.addEventListener('mouseleave', function () { shown = false; cur.classList.remove('on'); });
+      (function loop() {
+        cx += (tx - cx) * 0.18; cy += (ty - cy) * 0.18;
+        cur.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px) translate(-50%,-50%)';
+        requestAnimationFrame(loop);
+      })();
+      document.addEventListener('mouseover', function (e) { if (e.target.closest('a,button')) cur.classList.add('hot'); });
+      document.addEventListener('mouseout', function (e) { if (e.target.closest('a,button')) cur.classList.remove('hot'); });
+
+      document.querySelectorAll('.btn-book, .ad-cta-btn, .ad-founder-btn').forEach(function (b) {
+        b.classList.add('is-magnet');
+        b.addEventListener('mousemove', function (e) {
+          var r = b.getBoundingClientRect();
+          b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.16).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px)';
+        });
+        b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+      });
+
+      document.querySelectorAll('.ad-press-card, .ad-card').forEach(function (c) {
+        c.addEventListener('mousemove', function (e) {
+          var r = c.getBoundingClientRect();
+          var rx = ((e.clientY - r.top) / r.height - .5) * -5;
+          var ry = ((e.clientX - r.left) / r.width - .5) * 7;
+          c.style.transform = 'perspective(700px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translateY(-4px)';
+        });
+        c.addEventListener('mouseleave', function () { c.style.transform = ''; });
       });
     }
   })();
