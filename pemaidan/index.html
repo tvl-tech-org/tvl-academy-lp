@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI aplicat Pe Maidan — Prezentare curs, 3 ore | TVL Tech</title>
+  <meta name="description" content="Curs practic de AI pentru echipa Pe Maidan: de la use case-uri reale la prompturi, dashboarduri și asistenți AI reutilizabili. 3 ore, 4 module plus aplicații.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://academy.tvl.tech/pemaidan/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://academy.tvl.tech/pemaidan/">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="og:title" content="AI aplicat Pe Maidan — Prezentare curs, 3 ore">
+  <meta property="og:description" content="De la use case-uri reale la prompturi, dashboarduri și asistenți AI reutilizabili. TVL Tech × Pe Maidan.">
+  <meta property="og:image" content="https://academy.tvl.tech/images/pemaidan/pasare.jpg">
+  <meta property="og:locale" content="ro_RO">
+
+  <style>
+    /* Self-hosted Open Sans (latin + latin-ext for RO diacritics), same files as the rest of the site. */
+    @font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/opensans-400-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/opensans-400-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/opensans-600-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/opensans-600-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/opensans-700-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/opensans-700-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+    :root {
+      --red: #ff4a3d;
+      --red-dark: #d63a2a;
+      --red-accessible: #c83224;
+      --dark: #0f0f0f;
+      --dark2: #1a1a1a;
+      --light-bg: #f7f6f4;
+      --text: #111111;
+      --text-sec: #4a4a4a;
+      --border: #e6e1db;
+      --maidan-orange: #f0913b;
+      --font: 'Open Sans', 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--light-bg); line-height: 1.6; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--red-accessible); }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 72px 0; }
+
+    .kicker { color: var(--red-accessible); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+    h2 { font-size: clamp(30px, 4.5vw, 46px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
+    h3 { font-size: 20px; font-weight: 700; }
+    .lead { color: var(--text-sec); font-size: 17px; max-width: 640px; }
+
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .card-top { border-top: 3px solid var(--red); }
+    .note { border-left: 4px solid var(--red); background: #fff; border-radius: 10px; padding: 16px 20px; color: var(--text); font-size: 15px; margin-top: 26px; }
+    .note strong { color: var(--red-accessible); }
+    .src { color: #8a857e; font-size: 12.5px; margin-top: 18px; }
+
+    /* Maidan brand tag */
+    .maidan-tag { display: inline-flex; align-items: stretch; margin-bottom: 26px; }
+    .maidan-tag .m1 { background: var(--maidan-orange); color: #14100c; font-weight: 700; font-size: 15px; letter-spacing: 0.24em; padding: 7px 12px; transform: rotate(-1.5deg); }
+    .maidan-tag .m2 { background: #14100c; color: #fff; font-weight: 700; font-size: 8.5px; line-height: 1.25; letter-spacing: 0.08em; padding: 5px 8px; display: flex; align-items: center; transform: rotate(-1.5deg); }
+
+    /* Hero */
+    .hero { background: linear-gradient(180deg, #fff 0%, var(--light-bg) 100%); border-left: 10px solid var(--red); }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: clamp(40px, 6.5vw, 66px); font-weight: 700; line-height: 1.05; letter-spacing: -0.025em; }
+    .hero .sub { color: var(--red-accessible); font-size: clamp(18px, 2.4vw, 24px); font-weight: 700; margin: 14px 0 18px; }
+    .hero .lead { font-size: 18px; }
+    .hero-art { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 18px 50px rgba(0,0,0,0.07); }
+    .hero-meta { margin-top: 30px; color: #8a857e; font-size: 14px; }
+    .hero-meta b { color: var(--text); font-weight: 600; }
+
+    /* Cuprins */
+    .toc-row { display: grid; grid-template-columns: 64px 1.1fr 1.2fr 130px; gap: 18px; align-items: center; background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--red); border-radius: 12px; padding: 18px 22px; margin-bottom: 12px; }
+    .toc-num { color: var(--red-accessible); font-size: 26px; font-weight: 700; }
+    .toc-title { font-weight: 700; font-size: 17px; }
+    .toc-desc { color: var(--text-sec); font-size: 15px; }
+    .toc-time { text-align: right; font-weight: 600; font-size: 14px; color: var(--text); font-variant-numeric: tabular-nums; }
+    .toc-break { text-align: center; color: var(--red-accessible); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; background: #fdeeec; border-radius: 8px; padding: 9px; margin: 16px 0; }
+
+    /* De ce */
+    .why-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 54px; align-items: start; }
+    .why-stat { border-left: 5px solid var(--red); padding-left: 20px; margin-top: 22px; }
+    .why-stat .nums { font-size: clamp(38px, 5vw, 56px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+    .why-stat .now { color: var(--red-accessible); }
+    .why-stat .arrow { color: var(--text-sec); font-weight: 400; padding: 0 6px; }
+    .why-stat .target { color: var(--dark); }
+    .why-stat .labels { display: flex; gap: 12px; color: #8a857e; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .why-stat .caption { font-weight: 700; margin-top: 10px; }
+    .bars h3 { margin-bottom: 4px; }
+    .bars .bsub { color: var(--text-sec); font-size: 14px; margin-bottom: 20px; }
+    .bar-row { display: grid; grid-template-columns: 110px 1fr 64px; gap: 14px; align-items: center; margin-bottom: 14px; font-size: 15px; }
+    .bar-row .blabel { font-weight: 700; }
+    .bar-track { background: #eae5df; border-radius: 99px; height: 14px; overflow: hidden; }
+    .bar-fill { display: block; height: 100%; border-radius: 99px; background: var(--red); }
+    .bar-fill.dark { background: var(--dark); }
+    .bar-val { font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* Steps + tool links */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .step-num { color: var(--red-accessible); font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .band { background: var(--dark); color: #fff; border-left: 6px solid var(--red); border-radius: 12px; padding: 26px 30px; margin: 26px 0; }
+    .band .bk { color: var(--red); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; }
+    .band .bq { font-size: clamp(20px, 3vw, 30px); font-weight: 700; line-height: 1.25; }
+    .tool-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .tool-links a { display: block; background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; text-decoration: none; }
+    .tool-links a b { color: var(--text); display: block; font-size: 15px; }
+    .tool-links a span { color: #8a857e; font-size: 13px; }
+    .tool-links a:hover { border-color: var(--red); }
+
+    /* Trainer */
+    .trainer { background: #fff; }
+    .trainer-grid { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 48px; align-items: start; }
+    .trainer-photo { border-radius: 16px; box-shadow: 0 18px 50px rgba(0,0,0,0.10); }
+    .trainer h2 { margin-bottom: 4px; }
+    .trainer .role { color: var(--text-sec); font-weight: 600; margin-bottom: 22px; }
+    .emag { display: flex; align-items: center; gap: 18px; background: var(--light-bg); border-left: 5px solid var(--red); border-radius: 10px; padding: 16px 20px; margin-bottom: 22px; flex-wrap: wrap; }
+    .emag .tag { color: var(--red-accessible); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; }
+    .emag .nums { font-size: 26px; font-weight: 700; white-space: nowrap; }
+    .emag .exp { color: var(--text-sec); font-size: 14px; flex: 1; min-width: 200px; }
+    .tstats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
+    .tstats .ts b { display: block; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+    .tstats .ts span { color: var(--text-sec); font-size: 14px; }
+    .tline { border-left: 3px solid var(--red); padding-left: 14px; margin-bottom: 14px; }
+    .tline b { display: block; }
+    .tline span { color: var(--text-sec); font-size: 14px; }
+    .tco { margin-top: 20px; }
+    .tco .kicker { margin-bottom: 4px; }
+    .tco p { color: var(--text-sec); font-size: 14.5px; }
+
+    /* Module dividers */
+    .module { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .module-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 48px; align-items: center; }
+    .module h2 { font-size: clamp(38px, 6vw, 60px); }
+    .module .lead { margin-top: 8px; }
+    .module-art { max-width: 340px; justify-self: center; }
+
+    /* History timeline */
+    .hist { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px; }
+    .hist .h-card { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--red); border-radius: 12px; padding: 16px; }
+    .hist .h-year { display: inline-block; background: var(--dark); color: #fff; font-size: 12.5px; font-weight: 700; border-radius: 6px; padding: 2px 8px; margin-bottom: 10px; }
+    .hist .h-tag { color: var(--red-accessible); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 3px; }
+    .hist .h-title { font-weight: 700; font-size: 14.5px; line-height: 1.35; margin-bottom: 6px; }
+    .hist .h-who { color: #8a857e; font-size: 12.5px; line-height: 1.45; }
+
+    /* Definition quote */
+    .defq { font-size: clamp(24px, 3.6vw, 38px); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; max-width: 900px; margin: 0 auto; text-align: center; }
+    .defq em { font-style: normal; color: var(--red-accessible); }
+
+    /* Domain cards */
+    .dom-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 26px; }
+    .dom { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--red); border-radius: 12px; padding: 22px; }
+    .dom h3 { margin-bottom: 10px; }
+    .dom ul { list-style: none; }
+    .dom li { padding-left: 16px; position: relative; font-size: 15px; color: var(--text); margin-bottom: 5px; }
+    .dom li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+    /* GenAI capability cards */
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+    .cap { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+    .cap .ck { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+    .cap p { color: var(--text-sec); font-size: 14px; margin-bottom: 8px; }
+    .cap .cw { font-size: 13px; font-weight: 600; }
+
+    /* Tools */
+    .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; margin-top: 20px; }
+    .tool { display: block; border-bottom: 1px solid var(--border); padding: 16px 0; }
+    .tool .tk { color: var(--red-accessible); font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .tool b { display: block; font-size: 18px; }
+    .tool span { color: var(--text-sec); font-size: 14.5px; }
+
+    /* CROTATFC + metaprompt */
+    .cro-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: start; margin-top: 26px; }
+    .cro-list { list-style: none; }
+    .cro-list li { font-size: 19px; font-weight: 700; padding: 9px 0 9px 18px; border-left: 3px solid var(--red); margin-bottom: 8px; background: #fff; border-radius: 0 8px 8px 0; padding-right: 14px; }
+    .cro-list li small { display: block; font-size: 13px; font-weight: 400; color: var(--text-sec); }
+    .meta-block { background: var(--dark); color: #e8e6e3; border-radius: 14px; padding: 28px; font-size: 15px; line-height: 1.75; }
+    .meta-block .mk { color: var(--red); font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 14px; }
+    .meta-block p + p { margin-top: 14px; }
+    .rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+    .rules .card { border-top: 3px solid var(--red); }
+    .rules b { display: block; margin-bottom: 4px; }
+    .rules p { color: var(--text-sec); font-size: 14.5px; }
+
+    /* Firul principal / numbered steps */
+    .flow { counter-reset: fl; margin-top: 26px; }
+    .flow li { list-style: none; counter-increment: fl; display: flex; gap: 16px; align-items: baseline; background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; font-size: 16px; }
+    .flow li::before { content: counter(fl, decimal-leading-zero); color: var(--red-accessible); font-weight: 700; font-size: 18px; }
+
+    /* Exercises */
+    .ex-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 26px; }
+    .ex { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--red); border-radius: 12px; padding: 22px; }
+    .ex .ek { color: var(--red-accessible); font-size: 11.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 6px; }
+    .ex h3 { margin-bottom: 10px; }
+    .ex ul { list-style: none; margin-bottom: 0; }
+    .ex li { padding-left: 16px; position: relative; font-size: 14.5px; margin-bottom: 5px; color: var(--text); }
+    .ex li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+    .ex .exnote { border-left: 3px solid var(--red); background: var(--light-bg); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; color: var(--text-sec); margin-top: 14px; }
+    .ex .stat8 { text-align: center; background: #fdeeec; border-radius: 10px; padding: 14px; margin-top: 14px; }
+    .ex .stat8 b { color: var(--red-accessible); font-size: 30px; font-weight: 700; display: block; line-height: 1.1; }
+    .ex .stat8 span { color: #8a857e; font-size: 12.5px; }
+    .iro { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+    .iro div { background: var(--light-bg); border-top: 3px solid var(--red); border-radius: 8px; padding: 10px 12px; }
+    .iro b { display: block; font-size: 13.5px; }
+    .iro span { font-size: 12.5px; color: var(--text-sec); }
+
+    /* Journey */
+    .journey { background: #fff; }
+    .journey-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+    .j-step { background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .j-num { display: inline-block; background: var(--maidan-orange); color: #14100c; font-weight: 700; font-size: 15px; border-radius: 6px; padding: 2px 10px; transform: rotate(-1.5deg); margin-bottom: 12px; }
+    .j-step b { display: block; font-size: 16px; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 4px; }
+    .j-step p { color: var(--text-sec); font-size: 14.5px; }
+    .j-note { display: inline-block; background: var(--maidan-orange); color: #14100c; font-weight: 700; padding: 8px 14px; transform: rotate(-1deg); margin-top: 28px; }
+    .rebels { font-weight: 700; font-style: italic; margin-top: 18px; }
+
+    footer { background: var(--dark); color: #b8b4af; padding: 40px 0; font-size: 14px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer b { color: #fff; }
+    footer a { color: #fff; }
+
+    @media (max-width: 860px) {
+      section { padding: 52px 0; }
+      .hero-grid, .why-grid, .trainer-grid, .module-grid, .cro-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-art, .module-art { max-width: 320px; }
+      .hist { grid-template-columns: repeat(2, 1fr); }
+      .grid-3, .cap-grid, .tool-links, .rules, .journey-grid { grid-template-columns: 1fr 1fr; }
+      .tools-grid, .dom-grid, .ex-grid { grid-template-columns: 1fr; }
+      .toc-row { grid-template-columns: 48px 1fr 100px; }
+      .toc-desc { display: none; }
+    }
+    @media (max-width: 560px) {
+      .grid-3, .cap-grid, .tool-links, .rules, .journey-grid, .tstats, .iro { grid-template-columns: 1fr; }
+      .hist { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 88px 1fr 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero — slide 1 -->
+  <header class="hero">
+    <div class="wrap" style="padding-top:84px; padding-bottom:84px;">
+      <div class="hero-grid">
+        <div>
+          <div class="maidan-tag" aria-label="Maidan — în felul tău">
+            <span class="m1">MAIDAN</span>
+            <span class="m2">ÎN<br>FELUL<br>TĂU</span>
+          </div>
+          <h1>AI aplicat<br>Pe Maidan</h1>
+          <p class="sub">Prezentare curs, 3 ore</p>
+          <p class="lead">De la use case-uri reale la prompturi, dashboarduri și asistenți AI reutilizabili.</p>
+          <p class="hero-meta"><b>TVL Tech</b> &nbsp;|&nbsp; × &nbsp;<b>Pe Maidan</b></p>
+        </div>
+        <div class="hero-art">
+          <img src="/images/pemaidan/pasare.jpg" alt="Pasăre stilizată cu motive populare românești" width="478" height="681" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cuprins — slide 2 -->
+  <section id="cuprins">
+    <div class="wrap">
+      <p class="kicker">Cuprinsul cursului · 3 ore · 4 module + aplicații</p>
+      <h2>Practică AI, pas cu pas</h2>
+      <div style="margin-top:26px;">
+        <div class="toc-row">
+          <span class="toc-num">01</span>
+          <span class="toc-title">Înțelege AI</span>
+          <span class="toc-desc">Ce este AI, Generative AI și LLM</span>
+          <span class="toc-time">00:10–00:50</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">02</span>
+          <span class="toc-title">AI-ul lucrează pentru tine</span>
+          <span class="toc-desc">Prompturi clare și exerciții practice</span>
+          <span class="toc-time">00:50–01:35</span>
+        </div>
+        <div class="toc-break">Pauză · 10 minute · 01:35–01:45</div>
+        <div class="toc-row">
+          <span class="toc-num">03</span>
+          <span class="toc-title">AI în viața și în munca ta</span>
+          <span class="toc-desc">Activități zilnice, departamente și instrumente</span>
+          <span class="toc-time">01:45–02:20</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">04</span>
+          <span class="toc-title">Folosește AI în siguranță</span>
+          <span class="toc-desc">Halucinații, deepfake și verificare</span>
+          <span class="toc-time">02:20–02:55</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- De ce — slide 3 -->
+  <section id="de-ce" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="wrap">
+      <div class="why-grid">
+        <div>
+          <h2 style="font-size:clamp(40px,6vw,64px);">De ce?</h2>
+          <div class="why-stat">
+            <p class="kicker" style="margin-bottom:2px;">România</p>
+            <p class="nums"><span class="now">5,2%</span><span class="arrow">→</span><span class="target">52%</span></p>
+            <p class="labels"><span>Acum</span><span style="margin-left:52px;">Țintă</span></p>
+            <p class="caption">companii care folosesc AI</p>
+          </div>
+        </div>
+        <div class="bars">
+          <h3>Europa accelerează</h3>
+          <p class="bsub">Companii care folosesc tehnologii AI, 2025</p>
+          <div class="bar-row"><span class="blabel">Media UE</span><span class="bar-track"><span class="bar-fill dark" style="width:40%;"></span></span><span class="bar-val">20,0%</span></div>
+          <div class="bar-row"><span class="blabel">1. Danemarca</span><span class="bar-track"><span class="bar-fill" style="width:84%;"></span></span><span class="bar-val">42,0%</span></div>
+          <div class="bar-row"><span class="blabel">2. Finlanda</span><span class="bar-track"><span class="bar-fill" style="width:75.6%;"></span></span><span class="bar-val">37,8%</span></div>
+          <div class="bar-row"><span class="blabel">3. Suedia</span><span class="bar-track"><span class="bar-fill" style="width:70%;"></span></span><span class="bar-val">35,0%</span></div>
+          <p class="src">Sursa: <a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai" rel="noopener">Eurostat, 2025</a> · companii cu cel puțin 10 angajați · set de date isoc_eb_ai</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Primul test — slide 4 -->
+  <section id="primul-test">
+    <div class="wrap">
+      <p class="kicker">Primul contact cu AI · demo rapid · 2 minute</p>
+      <h2>Primul tău test în ChatGPT</h2>
+      <div class="grid-3" style="margin-top:26px;">
+        <div class="card card-top">
+          <p class="step-num">1</p>
+          <h3>Deschide ChatGPT</h3>
+          <p style="font-size:14.5px;"><a href="https://chatgpt.com" rel="noopener">chatgpt.com</a></p>
+        </div>
+        <div class="card card-top">
+          <p class="step-num">2</p>
+          <h3>Creează cont sau autentifică-te</h3>
+          <p style="color:var(--text-sec); font-size:14.5px;">Folosește metoda disponibilă pentru tine.</p>
+        </div>
+        <div class="card card-top">
+          <p class="step-num">3</p>
+          <h3>Deschide un chat</h3>
+          <p style="color:var(--text-sec); font-size:14.5px;">Scrie o întrebare în limbaj natural.</p>
+        </div>
+      </div>
+      <div class="band">
+        <p class="bk">Întreabă</p>
+        <p class="bq">Cum poate AI schimba România în următorii 5 ani?</p>
+      </div>
+      <div class="tool-links">
+        <a href="https://chatgpt.com" rel="noopener"><b>ChatGPT</b><span>chatgpt.com</span></a>
+        <a href="https://claude.ai" rel="noopener"><b>Claude</b><span>claude.ai</span></a>
+        <a href="https://gemini.google.com" rel="noopener"><b>Gemini</b><span>gemini.google.com</span></a>
+        <a href="https://chat.mistral.ai" rel="noopener"><b>Mistral</b><span>chat.mistral.ai</span></a>
+        <a href="https://perplexity.ai" rel="noopener"><b>Perplexity</b><span>perplexity.ai</span></a>
+        <a href="https://copilot.microsoft.com" rel="noopener"><b>Copilot</b><span>copilot.microsoft.com</span></a>
+      </div>
+      <p style="font-weight:700; margin-top:20px;">Observă oportunitățile, riscurile și acțiunile propuse.</p>
+    </div>
+  </section>
+
+  <!-- Trainer — slide 5 -->
+  <section id="trainer" class="trainer" style="border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="wrap">
+      <div class="trainer-grid">
+        <img class="trainer-photo" src="/images/alex-dan.webp" alt="Alexandru Dan, trainerul cursului" width="480" height="600" loading="lazy">
+        <div>
+          <p class="kicker">Trainerul cursului</p>
+          <h2>Alexandru Dan</h2>
+          <p class="role">Fondator și CEO, TVL Tech · AI Strategist · lector</p>
+          <div class="emag">
+            <span class="tag">EMAG</span>
+            <span class="nums">7M <span style="color:var(--red-accessible);">→</span> 1B</span>
+            <span class="exp">Experiență directă în scalarea companiei și a echipelor.</span>
+          </div>
+          <div class="tstats">
+            <div class="ts"><b>25+</b><span>ani în tehnologie</span></div>
+            <div class="ts"><b>40+</b><span>echipe tehnice construite</span></div>
+            <div class="ts"><b>70+</b><span>proiecte livrate</span></div>
+          </div>
+          <div class="tline"><b>Lector Generative AI</b><span>ASE · Cyber Smart Academy</span></div>
+          <div class="tline"><b>Mentor și evaluator de startupuri</b><span>NATO DIANA · Luxembourg Startup Association · Techcelerator Vanguard</span></div>
+          <div class="tco">
+            <p class="kicker">Companii și startupuri construite sau susținute</p>
+            <p>TVL Tech · RMT Labs · Arcanna AI · Brainactive AI · MediMint · AiGIA · Ocean Enterprise · Space Acceleration · RealNose AI</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modul 1 divider — slide 6 -->
+  <section class="module">
+    <div class="wrap">
+      <div class="module-grid">
+        <div>
+          <p class="kicker">Modul 1 · 00:10–00:50</p>
+          <h2>Înțelege AI</h2>
+          <p class="lead">Ce este AI, Generative AI și LLM.</p>
+        </div>
+        <img class="module-art" src="/images/pemaidan/taur.jpg" alt="Taur stilizat cu motive populare românești" width="448" height="756" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Definiție — slide 7 -->
+  <section id="definitie">
+    <div class="wrap">
+      <p class="kicker" style="text-align:center;">Definiție</p>
+      <p class="defq"><em>Inteligența artificială</em> este un sistem informatic capabil să îndeplinească sarcini care necesită, în mod normal, <em>inteligență umană</em>.</p>
+    </div>
+  </section>
+
+  <!-- Istorie — slides 8–9 -->
+  <section id="istorie" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="wrap">
+      <p class="kicker">Partea 1 · Fundamentele AI · 8 momente · 1950–1997</p>
+      <h2>A Short History of AI</h2>
+      <p class="lead">De la întrebarea lui Turing la primele sisteme care înțeleg limbajul, învață și înving campioni.</p>
+      <div class="hist">
+        <div class="h-card"><span class="h-year">1950</span><p class="h-tag">Turing Test</p><p class="h-title">Pot mașinile să gândească?</p><p class="h-who">Alan Turing</p></div>
+        <div class="h-card"><span class="h-year">1956</span><p class="h-tag">Dartmouth Workshop</p><p class="h-title">Se naște domeniul AI</p><p class="h-who">John McCarthy · Marvin Minsky · Claude Shannon · Nathaniel Rochester</p></div>
+        <div class="h-card"><span class="h-year">1958</span><p class="h-tag">Mark I Perceptron</p><p class="h-title">O mașină începe să învețe</p><p class="h-who">Frank Rosenblatt · Charles W. Wightman</p></div>
+        <div class="h-card"><span class="h-year">1966</span><p class="h-tag">ELIZA</p><p class="h-title">Primul chatbot conversațional</p><p class="h-who">Joseph Weizenbaum</p></div>
+        <div class="h-card"><span class="h-year">1972</span><p class="h-tag">SHRDLU</p><p class="h-title">Limbajul natural controlează o lume virtuală</p><p class="h-who">Terry Winograd</p></div>
+        <div class="h-card"><span class="h-year">1980</span><p class="h-tag">Expert Systems · XCON</p><p class="h-title">AI intră în companii</p><p class="h-who">John McDermott · Digital Equipment Corporation</p></div>
+        <div class="h-card"><span class="h-year">1986</span><p class="h-tag">Backpropagation</p><p class="h-title">Rețelele învață din erori</p><p class="h-who">David Rumelhart · Geoffrey Hinton · Ronald Williams</p></div>
+        <div class="h-card"><span class="h-year">1997</span><p class="h-tag">IBM Deep Blue</p><p class="h-title">AI învinge campionul mondial</p><p class="h-who">Garry Kasparov · Feng-hsiung Hsu · Murray Campbell</p></div>
+      </div>
+
+      <p class="kicker" style="margin-top:54px;">Partea 2 · Deep Learning și Generative AI · 8 momente · 2009–2026</p>
+      <p class="lead">De la date și deep learning la Transformer, DALL·E, ChatGPT și modele multimodale.</p>
+      <div class="hist">
+        <div class="h-card"><span class="h-year">2009</span><p class="h-tag">ImageNet</p><p class="h-title">Datele accelerează viziunea AI</p><p class="h-who">Fei-Fei Li · Jia Deng</p></div>
+        <div class="h-card"><span class="h-year">2012</span><p class="h-tag">AlexNet</p><p class="h-title">Începe era deep learning</p><p class="h-who">Alex Krizhevsky · Ilya Sutskever · Geoffrey Hinton</p></div>
+        <div class="h-card"><span class="h-year">2014</span><p class="h-tag">Generative Adversarial Networks</p><p class="h-title">AI învață să genereze</p><p class="h-who">Ian Goodfellow · Yoshua Bengio</p></div>
+        <div class="h-card"><span class="h-year">2016</span><p class="h-tag">AlphaGo</p><p class="h-title">AI învinge un campion de Go</p><p class="h-who">Lee Sedol · Demis Hassabis · David Silver</p></div>
+        <div class="h-card"><span class="h-year">2017</span><p class="h-tag">Transformer</p><p class="h-title">Atenția schimbă arhitectura AI</p><p class="h-who">Ashish Vaswani · Noam Shazeer · Niki Parmar · echipa Google Brain</p></div>
+        <div class="h-card"><span class="h-year">2021</span><p class="h-tag">DALL·E</p><p class="h-title">Textul devine imagine</p><p class="h-who">Aditya Ramesh · Mikhail Pavlov · Gabriel Goh · Ilya Sutskever</p></div>
+        <div class="h-card"><span class="h-year">Nov. 2022</span><p class="h-tag">Lansarea publică ChatGPT 3.5</p><p class="h-title">AI conversațional pentru publicul larg</p><p class="h-who">Mira Murati · Sam Altman · echipa OpenAI</p></div>
+        <div class="h-card"><span class="h-year">2023→2026</span><p class="h-tag">Generative AI &amp; Multimodal</p><p class="h-title">Text, imagine, voce, video și cod</p><p class="h-who">Sam Altman · Dario Amodei · Demis Hassabis</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI ≠ ChatGPT — slide 10 -->
+  <section id="ai-nu-e-chatgpt" style="background:var(--dark); padding:84px 0;">
+    <div class="wrap" style="text-align:center;">
+      <p class="kicker" style="color:var(--red);">Ideea de reținut</p>
+      <p style="font-size:clamp(44px,8vw,84px); font-weight:700; letter-spacing:-0.02em; line-height:1.05;">
+        <span style="color:#fff;">AI</span>
+        <span style="color:#8a857e; padding:0 10px;">≠</span>
+        <span style="color:var(--red);">ChatGPT</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Subdomenii — slides 11–12 -->
+  <section id="subdomenii">
+    <div class="wrap">
+      <p class="kicker">Subdomeniile AI · date, imagini, limbaj și sunet</p>
+      <h2>AI percepe și înțelege</h2>
+      <p class="lead">Vocea procesează semnalul audio și vorbitorul. NLP procesează sensul limbajului.</p>
+      <div class="dom-grid">
+        <div class="dom">
+          <h3>Machine Learning</h3>
+          <ul>
+            <li>Prognoza cererii</li>
+            <li>Detectarea fraudei</li>
+            <li>Recomandări personalizate</li>
+            <li>Detectarea anomaliilor</li>
+            <li>Mentenanță predictivă</li>
+            <li>Scoring de risc</li>
+          </ul>
+        </div>
+        <div class="dom">
+          <h3>Viziune computerizată</h3>
+          <ul>
+            <li>Detectarea leziunilor în radiografii</li>
+            <li>Segmentarea tumorilor în RMN și CT</li>
+            <li>Monitorizarea pacienților</li>
+            <li>Controlul calității în fabrici</li>
+            <li>Recunoașterea obiectelor</li>
+            <li>Inspecția infrastructurii</li>
+          </ul>
+        </div>
+        <div class="dom">
+          <h3>Procesarea limbajului natural</h3>
+          <ul>
+            <li>Rezumarea documentelor</li>
+            <li>Extragerea informațiilor</li>
+            <li>Analiza sentimentului</li>
+            <li>Clasificarea mesajelor</li>
+            <li>Căutarea semantică</li>
+            <li>Răspunsuri din documente</li>
+          </ul>
+        </div>
+        <div class="dom">
+          <h3>Vorbire și audio</h3>
+          <ul>
+            <li>Transcriere automată</li>
+            <li>Identificarea vorbitorului</li>
+            <li>Sinteză vocală</li>
+            <li>Traducere vocală în timp real</li>
+            <li>Separarea vocilor</li>
+            <li>Detectarea evenimentelor audio</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="kicker" style="margin-top:54px;">Subdomeniile AI · acțiune, reguli, planificare și creație</p>
+      <h2>AI decide, acționează și creează</h2>
+      <p class="lead">Aceste arii combină percepția, cunoașterea și obiectivele.</p>
+      <div class="dom-grid">
+        <div class="dom">
+          <h3>Robotică</h3>
+          <ul>
+            <li>Roboți industriali</li>
+            <li>Roboți chirurgicali</li>
+            <li>Roboți logistici</li>
+            <li>Drone autonome</li>
+            <li>Vehicule autonome</li>
+            <li>Roboți agricoli</li>
+          </ul>
+        </div>
+        <div class="dom">
+          <h3>Sisteme expert</h3>
+          <ul>
+            <li>Recomandări clinice bazate pe reguli</li>
+            <li>Evaluarea eligibilității</li>
+            <li>Depanare tehnică</li>
+            <li>Verificarea conformității</li>
+            <li>Configurarea produselor</li>
+            <li>Evaluarea riscului</li>
+          </ul>
+        </div>
+        <div class="dom">
+          <h3>Planificare și optimizare</h3>
+          <ul>
+            <li>Optimizarea rutelor</li>
+            <li>Programarea turelor</li>
+            <li>Alocarea resurselor</li>
+            <li>Planificarea producției</li>
+            <li>Optimizarea stocurilor</li>
+            <li>Programarea livrărilor</li>
+          </ul>
+        </div>
+        <div class="dom">
+          <h3>Generative AI</h3>
+          <ul>
+            <li>Creare de text</li>
+            <li>Generare de imagini și video</li>
+            <li>Scriere de cod</li>
+            <li>Generare de voce și muzică</li>
+            <li>Prototipuri și design</li>
+            <li>Date sintetice</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Generative AI — slide 13 -->
+  <section id="generative-ai" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="wrap">
+      <p class="kicker">Schimbarea produsă de Generative AI</p>
+      <h2>What is Generative AI?</h2>
+      <p class="lead"><b>AI care nu doar analizează informația. Poate genera ceva nou.</b> Generative AI este o categorie de AI care poate crea conținut nou, pornind de la instrucțiuni și informațiile pe care le primește.</p>
+      <div class="cap-grid">
+        <div class="cap"><p class="ck">Text</p><p>Scrie, rezumă, traduce, explică</p><p class="cw">ChatGPT · Claude · Gemini · Mistral</p></div>
+        <div class="cap"><p class="ck">Imagini</p><p>Creează și modifică imagini</p><p class="cw">GPT Image · Midjourney · Adobe Firefly</p></div>
+        <div class="cap"><p class="ck">Voice &amp; Audio</p><p>Generează voce, conversații și sunet</p><p class="cw">ElevenLabs · Gemini Live</p></div>
+        <div class="cap"><p class="ck">Video</p><p>Creează și editează secvențe video</p><p class="cw">Sora · Veo · Runway</p></div>
+        <div class="cap"><p class="ck">Programare</p><p>Scrie, explică și modifică software</p><p class="cw">GitHub Copilot · Claude Code · Codex</p></div>
+        <div class="cap"><p class="ck">Documente &amp; Multimodal</p><p>Înțelege PDF-uri, imagini, tabele și grafice</p><p class="cw">ChatGPT · Gemini · Claude</p></div>
+      </div>
+      <div class="band" style="margin-bottom:0;">
+        <p class="bk">Schimbarea importantă</p>
+        <p style="font-size:17px;">Înainte trebuia să înveți cum să folosești software-ul. <b style="color:var(--red);">Acum poți spune AI-ului, în limbaj natural, ce vrei să obții.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modul 2 divider — slide 16 -->
+  <section class="module">
+    <div class="wrap">
+      <div class="module-grid">
+        <div>
+          <p class="kicker">Modul 2 · 00:50–01:35</p>
+          <h2>AI-ul lucrează pentru tine</h2>
+          <p class="lead">Prompturi clare și exerciții practice.</p>
+        </div>
+        <img class="module-art" src="/images/pemaidan/cerb.jpg" alt="Cerb stilizat cu motive populare românești" width="288" height="495" loading="lazy" style="max-width:260px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool-uri — slides 14–15 -->
+  <section id="tooluri">
+    <div class="wrap">
+      <p class="kicker">Trusa de zi cu zi · instrumente utile</p>
+      <h2>Tool-uri utile pentru oricine</h2>
+      <p class="lead">Prezentări, research, imagini, video, scris și creație, fără competențe tehnice.</p>
+      <div class="tools-grid">
+        <div class="tool"><span class="tk">Dictare</span><b>Wispr Flow</b><span>Vorbești, iar textul apare direct în orice aplicație.</span></div>
+        <div class="tool"><span class="tk">Prezentări</span><b>Gamma</b><span>Transformă o idee într-o prezentare clară și vizuală.</span></div>
+        <div class="tool"><span class="tk">Documente</span><b>NotebookLM</b><span>Înțelege sursele tale și răspunde cu citări.</span></div>
+        <div class="tool"><span class="tk">Imagini</span><b>Nano Banana</b><span>Creează și modifică imagini prin conversație.</span></div>
+        <div class="tool"><span class="tk">Imagini</span><b>Midjourney</b><span>Generează concepte, imagini și stiluri vizuale dintr-o descriere.</span></div>
+        <div class="tool"><span class="tk">Video și efecte</span><b>Higgsfield</b><span>Creează video, reclame și efecte vizuale din text sau imagini.</span></div>
+        <div class="tool"><span class="tk">Muzică și audio</span><b>Suno</b><span>Creează muzică și cântece pornind de la o descriere.</span></div>
+        <div class="tool"><span class="tk">Design</span><b>Canva AI</b><span>Creează rapid materiale, postări și documente vizuale.</span></div>
+        <div class="tool"><span class="tk">Traducere</span><b>DeepL</b><span>Traduce documente și reformulează texte mai clar.</span></div>
+        <div class="tool"><span class="tk">Organizare</span><b>Notion AI</b><span>Organizează note, proiecte și informații într-un singur loc.</span></div>
+      </div>
+      <div class="note"><strong>Începe simplu.</strong> Alege unul pentru productivitate și unul pentru creație.</div>
+
+      <p class="kicker" style="margin-top:54px;">Trusa de zi cu zi, 2 din 2</p>
+      <h2>Mai puțină muncă repetitivă</h2>
+      <p class="lead">Șase instrumente simple pentru creație, comunicare, colaborare și automatizare.</p>
+      <div class="tools-grid">
+        <div class="tool"><span class="tk">Video</span><b>CapCut</b><span>Editează video, generează subtitrări și transformă o idee într-un clip.</span></div>
+        <div class="tool"><span class="tk">Comunicare</span><b>Loom AI</b><span>Înregistrează ecranul și transformă video-ul în rezumat și document.</span></div>
+        <div class="tool"><span class="tk">Scris</span><b>Grammarly</b><span>Corectează, reformulează și adaptează tonul mesajelor.</span></div>
+        <div class="tool"><span class="tk">Colaborare</span><b>Miro AI</b><span>Transformă ideile în hărți, planuri, procese și workshop-uri vizuale.</span></div>
+        <div class="tool"><span class="tk">Aplicații și site-uri</span><b>Lovable</b><span>Construiește un site sau o aplicație pornind de la o descriere.</span></div>
+        <div class="tool"><span class="tk">Automatizare</span><b>Make.com</b><span>Conectează aplicații și automatizează procese fără programare.</span></div>
+      </div>
+      <div class="note"><strong>Regula.</strong> Nu începe cu tool-ul. Începe cu task-ul.</div>
+    </div>
+  </section>
+
+  <!-- CROTATFC + metaprompt — slides 17–18 -->
+  <section id="crotatfc" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="wrap">
+      <p class="kicker">Structura standard pentru prompturi reutilizabile</p>
+      <h2>Frameworkul CROTATFC</h2>
+      <div class="cro-grid">
+        <ul class="cro-list">
+          <li>Context</li>
+          <li>Role</li>
+          <li>Obiectiv</li>
+          <li>Tasks</li>
+          <li>Audience</li>
+          <li>Tone</li>
+          <li>Format</li>
+          <li>Constraints</li>
+        </ul>
+        <div>
+          <div class="meta-block">
+            <p class="mk">Metapromptul de curs · participanții descriu contextul, AI generează promptul final</p>
+            <p>Acționează ca un expert în prompt engineering. Pornind exclusiv de la descrierea contextului de mai jos și de la fișierele sau datele furnizate, construiește un prompt clar și reutilizabil.</p>
+            <p>Generează promptul final folosind framework-ul CROTATFC: Context, Role, Obiectiv, Tasks, Audience, Tone, Format și Constraints, plus secțiuni separate pentru Legal și Ethical AI. Nu inventa date. Separă faptele de ipoteze și recomandări. Include verificare umană pentru rezultate cu impact financiar, operațional, contractual, de personal, calitate sau siguranță alimentară.</p>
+            <p>Descriere context: [se completează în curs]</p>
+          </div>
+          <div class="rules">
+            <div class="card"><b>Regula 1</b><p>Contextul descrie situația, nu soluția.</p></div>
+            <div class="card"><b>Regula 2</b><p>Promptul cere verificarea datelor.</p></div>
+            <div class="card"><b>Regula 3</b><p>Omul validează decizia.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="note">CROTATFC nu este doar o listă. Este o disciplină de lucru: mai întâi clarificăm procesul, apoi cerem AI-ului să producă un rezultat verificabil.</div>
+    </div>
+  </section>
+
+  <!-- Modul 3 divider — slide 19 -->
+  <section class="module">
+    <div class="wrap">
+      <div class="module-grid">
+        <div>
+          <p class="kicker">Modul 3 · 01:45–02:20</p>
+          <h2>AI în munca ta</h2>
+          <p class="lead">Use case-uri reale Pe Maidan, pe departamente și procese.</p>
+        </div>
+        <img class="module-art" src="/images/pemaidan/urs.jpg" alt="Urs stilizat cu motive populare românești" width="424" height="639" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Firul principal — slide 20 -->
+  <section id="firul-principal">
+    <div class="wrap">
+      <p class="kicker">Alegem câteva cazuri care se leagă între ele</p>
+      <h2>Firul principal al cursului</h2>
+      <ol class="flow">
+        <li>Sales generează un draft de ofertă pentru client.</li>
+        <li>Bucătăria definește meniul și rețetarele necesare.</li>
+        <li>Achizițiile verifică materiile prime, furnizorii și stocurile.</li>
+        <li>Producția compară rețetarul cu consumul real.</li>
+        <li>Financiarul validează costurile și P&amp;L-ul.</li>
+        <li>Managementul vede dashboardul și alege pilotul.</li>
+      </ol>
+      <div class="note"><strong>Acest fir face prezentarea coerentă</strong> și arată cum AI conectează departamentele.</div>
+
+      <!-- Exerciții — slides 21–26 -->
+      <div class="ex-grid">
+        <div class="ex">
+          <p class="ek">Construim un prompt pentru planificarea meniului</p>
+          <h3>Exercițiul 1 — Meniu Makita pe 3 luni</h3>
+          <ul>
+            <li>Istoric meniu</li>
+            <li>Lista produse</li>
+            <li>Rețetar</li>
+            <li>Materii prime</li>
+            <li>Calorii</li>
+            <li>Costuri</li>
+          </ul>
+          <div class="exnote">Rezultat: meniu propus pe 3 luni · varietate și rotație rețete · limite de producție și validare umană.</div>
+        </div>
+        <div class="ex">
+          <p class="ek">Trecem de la generare la decizie economică</p>
+          <h3>Exercițiul 2 — optimizare sub 8 lei</h3>
+          <ul>
+            <li>Calculăm costul estimat per porție.</li>
+            <li>Identificăm ingredientele care cresc costul.</li>
+            <li>Propunem alternative doar din lista de produse disponibilă.</li>
+            <li>Păstrăm numărul de calorii și constrângerile de produs.</li>
+            <li>Marcăm ce trebuie validat de producție și financiar.</li>
+          </ul>
+          <div class="stat8"><b>&lt; 8 lei</b><span>preț maxim per porție</span></div>
+        </div>
+        <div class="ex">
+          <p class="ek">Verificăm deviațiile și impactul pe food cost</p>
+          <h3>Exercițiul 3 — rețetar vs. consum real</h3>
+          <ul>
+            <li>Consum teoretic din rețetar.</li>
+            <li>Consum real din datele de producție.</li>
+            <li>Abateri absolute și procentuale.</li>
+            <li>Impact financiar, doar dacă datele permit.</li>
+            <li>Unități, perioadă și formule.</li>
+            <li>Calitate date și abaterile.</li>
+            <li>Substituții sau pierderi tehnologice.</li>
+            <li>Decizii de impact pe costuri și producție.</li>
+          </ul>
+          <div class="exnote">AI nu decide cauza abaterii. AI formulează ipoteze, iar echipa verifică în producție, stocuri și financiar.</div>
+        </div>
+        <div class="ex">
+          <p class="ek">Din brief de client către prompt simplu și rule-set</p>
+          <h3>Exercițiul 4 — ofertare și website</h3>
+          <ul>
+            <li>Draft ofertă pentru client, cu meniuri și condiții aprobate.</li>
+            <li>Calcul estimativ de cost și profitabilitate.</li>
+            <li>Reguli pentru cereri simple care pot fi automatizate.</li>
+            <li>Reguli de trimitere către sales pentru cereri complexe.</li>
+            <li>Nicio ofertă contractuală fără aprobare și reguli comerciale clare.</li>
+          </ul>
+          <div class="iro">
+            <div><b>Input</b><span>Brief client, număr persoane, locație, tip serviciu</span></div>
+            <div><b>Reguli</b><span>Prețuri aprobate, marjă minimă, excepții</span></div>
+            <div><b>Output</b><span>Draft ofertă sau transfer către sales</span></div>
+          </div>
+        </div>
+        <div class="ex">
+          <p class="ek">Website-ul trebuie să fie ușor de înțeles de către AI</p>
+          <h3>Exercițiul 5 — GEO pentru maidan.ro</h3>
+          <ul>
+            <li>Cine este Pe Maidan și pentru cine lucrează.</li>
+            <li>Servicii, meniuri, evenimente, catering corporate și ready meals.</li>
+            <li>Întrebări frecvente ale clienților și răspunsuri clare.</li>
+            <li>Pagini care pot fi citate de motoarele de răspuns AI.</li>
+            <li>Date structurate, surse verificabile și exemple concrete.</li>
+          </ul>
+          <div class="exnote">Nu inventăm afirmații despre companie. Optimizăm doar informațiile aprobate.</div>
+        </div>
+        <div class="ex">
+          <p class="ek">Managementul vede evoluția costurilor și profitabilității</p>
+          <h3>Exercițiul 6 — dashboard P&amp;L pe business unit</h3>
+          <ul>
+            <li>P&amp;L-ul vine calculat și validat de Financiar.</li>
+            <li>AI explică evoluția pe business unit, client sau perioadă.</li>
+            <li>Dashboardul evidențiază costuri, marjă, profitabilitate și deviații.</li>
+            <li>Drill down pe componentele care explică variațiile importante.</li>
+            <li>AI nu modifică P&amp;L-ul fără reguli, formule și aprobare.</li>
+          </ul>
+          <div class="exnote">Cel mai valoros dashboard nu este cel care arată multe grafice, ci cel care ajută managementul să formuleze întrebări mai bune.</div>
+        </div>
+      </div>
+
+      <!-- Asistent reutilizabil — slide 27 -->
+      <div style="margin-top:54px;">
+        <p class="kicker">La final, un caz poate deveni Custom GPT sau Claude Project</p>
+        <h2>De la prompt la asistent reutilizabil</h2>
+        <ol class="flow">
+          <li>Încărcăm documentele aprobate sau fișierul model.</li>
+          <li>Definim formatul standard al rezultatului.</li>
+          <li>Testăm cu date anonimizate.</li>
+          <li>Corectăm promptul după erorile observate.</li>
+          <li>Stabilim cine validează și cine decide pilotul.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modul 4 — slide 28 -->
+  <section id="siguranta" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="wrap">
+      <p class="kicker">Modul 4 · 02:20–02:55 · regulile sunt parte din prompt, nu un add-on separat</p>
+      <h2>Legal, Ethical AI și control uman</h2>
+      <div class="grid-2" style="margin-top:26px;">
+        <div class="dom">
+          <h3>La ce suntem atenți</h3>
+          <ul>
+            <li>Date personale și informații comerciale sensibile.</li>
+            <li>Costuri, formule, surse și unități.</li>
+            <li>Ipoteze prezentate ca fapte.</li>
+            <li>Concluzii cu impact financiar sau operațional.</li>
+          </ul>
+        </div>
+        <div class="dom">
+          <h3>Cum lucrăm</h3>
+          <ul>
+            <li>Anonimizare înainte de curs.</li>
+            <li>Validare umană pe decizii importante.</li>
+            <li>Separare clară între fapte, ipoteze și recomandări.</li>
+            <li>Integrare separată pentru Food.OS, SAGA, CRM sau e-mail.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">AI poate accelera analiza. <strong>Responsabilitatea rămâne la echipa</strong> care cunoaște datele, procesul și riscul.</div>
+    </div>
+  </section>
+
+  <!-- Logistică & rezultat — slides 29–31 -->
+  <section id="logistica">
+    <div class="wrap">
+      <p class="kicker">Pentru ca trainingul să fie practic, nu demonstrativ</p>
+      <h2>Ce pregătim înainte de curs</h2>
+      <ol class="flow">
+        <li>Excel anonimizat pentru meniu, rețetar, costuri sau P&amp;L.</li>
+        <li>Definiții KPI și formule aprobate.</li>
+        <li>Lista de produse, materii prime, calorii și prețuri aprobate.</li>
+        <li>Exemple de oferte, briefuri de client sau fișe de eveniment.</li>
+        <li>Acces la ChatGPT sau Claude, cu drepturile necesare.</li>
+        <li>Reguli privind datele confidențiale și validarea rezultatelor.</li>
+      </ol>
+
+      <p class="kicker" style="margin-top:54px;">Participanții pleacă cu materiale și o direcție clară de pilot</p>
+      <h2>Rezultatul sesiunii</h2>
+      <div class="grid-2" style="margin-top:26px;">
+        <div class="dom" style="grid-column:1/-1;">
+          <ul>
+            <li>Prompturi CROTATFC pentru use case-urile lucrate în curs.</li>
+            <li>Un dashboard sau raport generat din date anonimizate.</li>
+            <li>O structură de asistent reutilizabil în ChatGPT sau Claude.</li>
+            <li>Lista scurtă de use case-uri pilot, ordonate după impact și fezabilitate.</li>
+            <li>Reguli de validare pentru date, calcule, Legal și Ethical AI.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note"><strong>Trainingul produce prototipuri și capabilitate internă</strong>, integrarea în producție se estimează separat.</div>
+
+      <p class="kicker" style="margin-top:54px;">Transformăm materialele în setup-ul final și demo-uri reale</p>
+      <h2>Următorul pas</h2>
+      <ol class="flow">
+        <li>Fixăm cele 5 sau 6 exerciții care intră efectiv în cele 3 ore.</li>
+        <li>Pregătim fișiere anonimizate pentru fiecare exercițiu.</li>
+        <li>Adăugăm metaprompturile scurte pe slide-uri.</li>
+        <li>Pregătim prompturile finale ca material de lucru.</li>
+        <li>Alegem criteriile pentru pilotul de după curs.</li>
+      </ol>
+      <div class="note"><strong>Propunere:</strong> Makita meniu, cost sub 8 lei, rețetar vs. consum real, ofertare, GEO, dashboard P&amp;L.</div>
+    </div>
+  </section>
+
+  <!-- Drumul — slide 32 -->
+  <section id="drumul" class="journey" style="border-top:1px solid var(--border);">
+    <div class="wrap">
+      <p class="kicker">Ce urmează? · curs pentru companii</p>
+      <h2>Drumul de la primul contact la strategie AI</h2>
+      <p class="lead">Un parcurs simplu și practic, pas cu pas.</p>
+      <div class="journey-grid">
+        <div class="j-step"><span class="j-num">01</span><b>AI Awareness</b><p>Ce este AI și de ce contează. Nivelul acestui curs.</p></div>
+        <div class="j-step"><span class="j-num">02</span><b>AI Adoption</b><p>Folosește AI în viața și munca ta.</p></div>
+        <div class="j-step"><span class="j-num">03</span><b>AI Literacy</b><p>Înțelege capabilitățile, limitele, riscurile și verificarea.</p></div>
+        <div class="j-step"><span class="j-num">04</span><b>AI Governance</b><p>AI Act, protecția datelor și utilizare responsabilă.</p></div>
+        <div class="j-step"><span class="j-num">05</span><b>AI Engineering</b><p>Automatizări, Claude Code și agenți AI.</p></div>
+        <div class="j-step"><span class="j-num">06</span><b>AI Strategy</b><p>Priorități, investiții, transformare și scalare.</p></div>
+      </div>
+      <p class="j-note">De la primele teste la rezultate reale în compania ta.</p>
+      <p class="rebels">Noi suntem rebeli.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><b>TVL Tech</b> × <b>Pe Maidan</b> · AI aplicat Pe Maidan</p>
+      <p><a href="https://academy.tvl.tech" rel="noopener">academy.tvl.tech</a> · <a href="https://alexandrudan.com" rel="noopener">alexandrudan.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
