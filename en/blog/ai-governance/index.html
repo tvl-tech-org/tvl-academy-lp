@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Governance: what it is and how to build a framework for your company | TVL Academy</title>
+  <meta name="description" content="What AI governance is, what it covers in practice, and how the three frameworks you will hear about fit together: NIST AI RMF, ISO/IEC 42001 and the EU AI Act. Practical guide for companies.">
+  <meta property="og:title" content="AI Governance: what it is and how to build it in your company">
+  <meta property="og:description" content="What AI governance covers and how NIST AI RMF, ISO/IEC 42001 and the EU AI Act fit together. Practical guide for companies.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/en/blog/ai-governance/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-09-20">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Governance: what it is and how to build it in your company">
+  <meta name="twitter:description" content="What AI governance covers and how NIST AI RMF, ISO/IEC 42001 and the EU AI Act fit together.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/en/blog/ai-governance/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/guvernanta-ai/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/ai-governance/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/ai-governance/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "AI Governance: what it is and how to build it in your company",
+    "description": "What AI governance is, what it covers in practice, and how the three frameworks you will hear about fit together: NIST AI RMF, ISO/IEC 42001 and the EU AI Act.",
+    "inLanguage": "en",
+    "datePublished": "2026-09-20",
+    "dateModified": "2026-09-20",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Lead Trainer TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "knowsAbout": ["AI governance", "EU AI Act", "AI strategy for companies", "AI risk management", "AI adoption"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/en/blog/ai-governance/" },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://academy.tvl.tech/images/og-training-ai-en.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "about": "AI governance, NIST AI RMF, ISO/IEC 42001, EU AI Act, AI risk management"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/en/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "AI Governance" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is AI governance?", "acceptedAnswer": { "@type": "Answer", "text": "AI governance is the set of rules, roles and checks a company uses to decide how it applies AI responsibly: who owns each system, what data it can touch, how you verify its outputs and how you document everything for audit." } },
+      { "@type": "Question", "name": "What is the difference between NIST AI RMF, ISO/IEC 42001 and the EU AI Act?", "acceptedAnswer": { "@type": "Answer", "text": "NIST AI RMF is a voluntary framework that helps you identify and manage risk. ISO/IEC 42001 is a certifiable standard for an AI management system. The EU AI Act is law and imposes obligations based on each system's risk level. The first two help you meet the third." } },
+      { "@type": "Question", "name": "Where does a company start with AI governance?", "acceptedAnswer": { "@type": "Answer", "text": "Start with an inventory of the AI systems already in use and an owner for each one. Add a few simple rules about permitted data and where human review is required, then extend toward a more formal framework only where the risk calls for it." } }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body a { color: var(--red); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 10px; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    .article-related { margin-top: 36px; font-size: 16px; color: var(--text-sec); }
+    .article-related a { color: var(--red); }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/en/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/en/#problema">Why?</a>
+    <a href="/en/#cum-functioneaza">Sessions</a>
+    <a href="/en/blog/">Blog</a>
+    <a href="/en/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="/ro/blog/guvernanta-ai/" class="lang-option" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/ai-governance/" class="lang-option is-active" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/en/#contact" class="btn-nav">Book 30 minutes</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/en/">TVL Academy</a> › <a href="/en/blog/">Blog</a> › AI Governance
+  </div>
+
+  <article>
+    <span class="article-kicker">AI Governance / Compliance</span>
+    <h1>AI Governance: what it is and how to build it in your company</h1>
+    <div class="article-meta">
+      <span>by <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-09-20">20 September 2026</time>
+      <span>·</span>
+      <span>8 min read</span>
+    </div>
+
+    <div class="article-body">
+      <p>An AI tool sees data it should not have. A wrong output reaches a client. An auditor asks who is responsible for a system and nobody knows. Usually you think about AI governance only after a moment like that. Its whole job is to keep you from getting there.</p>
+      <p>You do not need to build something heavy. An AI governance framework can be as simple as an inventory of the systems in use, a few clear rules, and an owner for each initiative. The rest gets added only where the risk actually calls for it.</p>
+
+      <h2>What AI governance is</h2>
+      <p>AI governance is the set of rules, roles and checks a company uses to decide how it applies AI responsibly. It answers a few concrete questions: who owns each system, what data it can touch, how you verify that it produces correct results, and how you document everything so you can later prove what you decided and why.</p>
+      <p>Governance is about how you use AI without exposing yourself to risks you cannot afford. AI strategy is about something else: where you use AI to cut costs or save time. You need both, and they solve different problems.</p>
+
+      <h2>What it covers, in practice</h2>
+      <p>A governance framework that actually works touches a few areas that otherwise belong to no one:</p>
+      <ul class="plain">
+        <li><strong>The inventory.</strong> A list of the AI systems used across the company, what they are for, and who owns each one. Without it, there is nothing to govern.</li>
+        <li><strong>The data.</strong> Clear rules about what data AI systems can touch and what never leaves the company.</li>
+        <li><strong>Human review.</strong> Where a person needs to confirm the result before it counts, especially in decisions about people, money or clients.</li>
+        <li><strong>Risk and accuracy.</strong> How you test that a system does what it should, and what happens when it gets something wrong.</li>
+        <li><strong>Documentation.</strong> A written trail of the decisions, so you can answer an audit without rebuilding everything from memory.</li>
+      </ul>
+
+      <h2>The three frameworks you will hear about</h2>
+      <p>Three frameworks come up constantly in AI governance discussions: NIST AI RMF, ISO/IEC 42001 and the EU AI Act. They are not competing, and you do not have to choose between them, because they cover different things.</p>
+      <ul class="plain">
+        <li><strong>NIST AI RMF</strong> is a voluntary framework published by the US standards institute. It helps you identify and manage risk across four functions: govern, map, measure, manage. It is a good starting point because it is practical and requires no certification.</li>
+        <li><strong>ISO/IEC 42001</strong> is the first international standard for an AI management system, published in 2023. It is similar to ISO 27001 for information security: it describes how you build a repeatable process, and it can be certified by an external auditor. It is useful when you want to show clients or partners that you take this seriously.</li>
+        <li><strong>The EU AI Act</strong> is law, not a recommendation. It classifies systems by risk and imposes different obligations for each level, from banned practices to strict requirements for high-risk systems. It applies if you sell or use AI in the European Union.</li>
+      </ul>
+
+      <h2>How they fit together</h2>
+      <p>The EU AI Act tells you what you are required to do, while NIST AI RMF and ISO/IEC 42001 give you the working method to get there. If you already run a well-built risk-management process, a large part of what the law requires is already covered.</p>
+      <p>In practice, you start from what the law requires, adopt a voluntary framework so you have a working method, and consider certification only if a client or a market asks for it. You can read separately about the <a href="/en/blog/eu-ai-act-deadlines-2026/">EU AI Act deadlines</a> and about what <a href="/en/services/eu-ai-act-compliance/">EU AI Act compliance</a> looks like in practice.</p>
+
+      <h2>Where to start</h2>
+      <p>You do not need a six-month project to get going. The first steps are small enough to do in a few weeks, and important enough to change how exposed you are right away.</p>
+      <ul class="plain">
+        <li>Make an inventory of the AI systems already in use, official or not, and give each one an owner.</li>
+        <li>Write a few short rules about permitted data and where human review is mandatory.</li>
+        <li>Pick one or two higher-risk systems and treat them more carefully, instead of trying to cover everything at once.</li>
+        <li>Write decisions down as you make them, so the documentation is ready when you need it.</li>
+      </ul>
+      <p>Who owns all of this matters as much as the rules themselves. In many companies the responsibility lands with a <a href="/en/blog/what-is-a-chief-ai-officer/">Chief AI Officer</a> or an existing executive who takes on the role. AI adoption in Romanian companies remains well below the EU average, according to Eurostat data, so a clear owner for governance makes the difference between a framework the company actually follows and one last opened at setup.</p>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>What is AI governance?</strong><br>AI governance is the set of rules, roles and checks a company uses to decide how it applies AI responsibly: who owns each system, what data it can touch, how you verify its outputs and how you document everything for audit.</p>
+      <p><strong>What is the difference between NIST AI RMF, ISO/IEC 42001 and the EU AI Act?</strong><br>NIST AI RMF is a voluntary framework that helps you manage risk. ISO/IEC 42001 is a certifiable standard for an AI management system. The EU AI Act is law and imposes obligations based on each system's risk level. The first two help you meet the third.</p>
+      <p><strong>Where does a company start with AI governance?</strong><br>Start with an inventory of the AI systems already in use and an owner for each one. Add a few simple rules about permitted data and human review, then extend toward a more formal framework only where the risk calls for it.</p>
+    </div>
+
+    <div class="article-cta">
+      <h3>Build an AI governance framework that holds up to an audit</h3>
+      <p>We help you classify systems, write the rules and prepare the documentation the EU AI Act requires. Book 30 minutes with Alexandru Dan.</p>
+      <a href="/en/#contact" class="btn-primary">Book 30 minutes</a>
+    </div>
+
+    <p class="article-related">Related: <a href="/en/services/eu-ai-act-compliance/">EU AI Act compliance</a> · <a href="/en/blog/eu-ai-act-deadlines-2026/">EU AI Act deadlines (2026)</a> · <a href="/en/blog/what-is-a-chief-ai-officer/">Chief AI Officer (CAIO)</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/en/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/en/about/alexandru-dan/">Alexandru Dan</a>
+          <a href="/en/#cum-functioneaza">Sessions</a>
+          <a href="/en/blog/">Blog</a>
+          <a href="/en/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Terms</a>
+          <a href="/en/privacy-policy.html">Privacy Policy</a>
+          <a href="/en/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Cookie settings</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Cookie preferences</div>
+      <p>We use Google Analytics 4 only after your consent, to measure traffic and improve the page. See our <a href="/en/privacy-policy.html">Privacy Policy</a> and <a href="/en/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Accept analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="en" defer></script>
+</body>
+</html>
