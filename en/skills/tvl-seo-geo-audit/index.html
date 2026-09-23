@@ -137,6 +137,8 @@
       .section-pad { padding: 56px 0; }
       .rule-table { display: block; overflow-x: auto; }
     }
+    .panel ol { padding-left: 20px; margin: 0; display: grid; gap: 8px; }
+    #install .btn-primary { display: inline-block; margin: 6px 0 4px; }
   </style>
 </head>
 <body>
@@ -250,10 +252,23 @@
       <div class="section-title-center fade-in">
         <span class="red-label">Install and run</span>
         <h2 class="section-h2">Add the SEO/GEO skill</h2>
-        <p>Use the public TVL Skills repository with the Agent Skills CLI.</p>
+        <p>Upload the skill to claude.ai in a couple of clicks, or install it from the command line with the Agent Skills CLI.</p>
       </div>
       <div class="content-grid">
         <article class="panel wide fade-in">
+          <h3>Install on claude.ai</h3>
+          <p>No command line. Upload the skill as a zip and Claude runs it automatically when you ask it to audit a page for SEO and GEO. Works on Free, Pro, Max, Team and Enterprise plans; requires code execution to be enabled.</p>
+          <p><a class="btn-primary" href="https://github.com/danlex/tvl-skills/releases/latest/download/tvl-seo-geo-audit.zip">Download the skill (.zip)</a></p>
+          <ol>
+            <li>Download <code>tvl-seo-geo-audit.zip</code> above.</li>
+            <li>In claude.ai, enable code execution under <strong>Settings &rarr; Capabilities</strong> (one-time).</li>
+            <li>Open <strong>Customize &rarr; Skills</strong>, then click <strong>+ &rarr; Create skill &rarr; Upload a skill</strong>.</li>
+            <li>Select the zip, then ask Claude to audit a page &mdash; the skill activates on its own.</li>
+          </ol>
+        </article>
+        <article class="panel wide fade-in">
+          <h3>Or install from the command line</h3>
+          <p>For Claude Code, Codex, Cursor and other agents that load skills from disk. Uses the Agent Skills CLI.</p>
           <h3>Install only this skill</h3>
           <div class="code-block"><span class="prompt">$ </span>npx skills add danlex/tvl-skills --skill tvl-seo-geo-audit</div>
           <h3>Install all TVL skills</h3>
