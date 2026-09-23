@@ -248,7 +248,7 @@
       <div class="section-title-center fade-in">
         <span class="red-label">Audit scope</span>
         <h2 class="section-h2">The 14 failure modes it checks</h2>
-        <p>The rubric groups AI integrity risks into four families. The core problem it addresses: a confident answer and a correct answer look identical.</p>
+        <p>The rubric groups AI integrity risks into five families. The core problem it addresses: a confident answer and a correct answer look identical.</p>
       </div>
       <div class="panel fade-in">
         <table class="rule-table">
@@ -268,8 +268,8 @@
             <tr><td>Trust &amp; calibration</td><td>Automation bias</td><td>Trusting machine output without verifying the source.</td></tr>
             <tr><td>Trust &amp; calibration</td><td>Overconfidence</td><td>Stated certainty exceeding the actual evidence.</td></tr>
             <tr><td>Trust &amp; calibration</td><td>Prompt injection</td><td>Obeying hidden instructions embedded in content.</td></tr>
-            <tr><td>Trust &amp; calibration</td><td>Scope creep</td><td>Undisclosed, irreversible changes beyond the request.</td></tr>
-            <tr><td>Trust &amp; calibration</td><td>Specification gaming</td><td>Satisfying the metric while breaking the intent.</td></tr>
+            <tr><td>Scope &amp; behaviour</td><td>Scope creep</td><td>Undisclosed, irreversible changes beyond the request.</td></tr>
+            <tr><td>Scope &amp; behaviour</td><td>Specification gaming</td><td>Satisfying the metric while breaking the intent.</td></tr>
           </tbody>
         </table>
       </div>
@@ -310,7 +310,7 @@
       <div class="content-grid">
         <article class="panel fade-in">
           <h3>The rubric lives at ethicalai.alexandrudan.com</h3>
-          <p><a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a> defines the 14 failure modes, a prevention prompt for each, and a 100-mode catalogue mapping AI failures to human cognitive patterns. The skill loads this rubric as its source of truth, so the two always stay in sync.</p>
+          <p><a href="https://ethicalai.alexandrudan.com/" target="_blank" rel="noopener">EthicalAI</a> defines the 14 failure modes, a prevention prompt for each, and a 100-mode catalogue mapping AI failures to human cognitive patterns. The skill vendors this rubric as its source of truth — it is versioned from the catalogue, updated deliberately rather than live-synced.</p>
         </article>
         <article class="panel fade-in">
           <h3>Each mode has an AI Integrity Contract</h3>
@@ -318,7 +318,7 @@
         </article>
         <article class="panel fade-in">
           <h3>From judge agents to one skill</h3>
-          <p>The framework can run a panel of specialized judge agents (each advisory: PASS / FLAG / BLOCK) via the EthicalHive plugin, with logging and governance. This skill packages the same rubric into one inline audit — PASS / REVISE / BLOCK — you can run anywhere, locally, with no data leaving your machine.</p>
+          <p>The framework can run a panel of specialized judge agents (each advisory: PASS / FLAG / BLOCK) via the EthicalHive plugin, with logging and governance. This skill packages the same rubric into one inline audit — PASS / REVISE / BLOCK — that runs in any Claude-compatible agent. It adds no telemetry of its own; what leaves your machine is only what your model runtime and the sources you choose to verify already send.</p>
         </article>
       </div>
       <div class="link-row">
