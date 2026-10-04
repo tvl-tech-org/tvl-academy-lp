@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ce este AI generativ? Cum funcționează și unde ajută | TVL Academy</title>
+  <meta name="description" content="Ce este AI-ul generativ, cum funcționează modelele mari de limbaj și modelele fundamentale, prin ce diferă de AI-ul predictiv mai vechi și unde ajută companiile. Ghid clar, fără matematică.">
+  <meta property="og:title" content="Ce este AI generativ? Cum funcționează și unde ajută">
+  <meta property="og:description" content="Cum funcționează AI-ul generativ, modelele mari de limbaj și modelele fundamentale, prin ce diferă de AI-ul predictiv și unde ajută companiile.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/ro/blog/ce-este-ai-generativ/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-10-04">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ce este AI generativ? Cum funcționează și unde ajută">
+  <meta name="twitter:description" content="Cum funcționează AI-ul generativ, modelele mari de limbaj și modelele fundamentale, și unde ajută companiile.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/ro/blog/ce-este-ai-generativ/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/ce-este-ai-generativ/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/what-is-generative-ai/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/what-is-generative-ai/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ce este AI generativ? Cum funcționează și unde ajută",
+    "description": "Ce este AI-ul generativ, cum funcționează modelele mari de limbaj și modelele fundamentale, prin ce diferă de AI-ul predictiv mai vechi și unde ajută companiile.",
+    "inLanguage": "ro",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Lead Trainer TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "knowsAbout": ["AI generativ", "Modele mari de limbaj", "Modele fundamentale", "AI pentru companii", "Prompt engineering"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/ro/blog/ce-este-ai-generativ/" },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://academy.tvl.tech/images/og-training-ai-ro.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "about": "AI generativ, modele mari de limbaj, modele fundamentale, transformer, AI predictiv"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/ro/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/ro/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Ce este AI generativ?" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Care e diferența dintre AI generativ și AI?", "acceptedAnswer": { "@type": "Answer", "text": "AI-ul generativ este o ramură a inteligenței artificiale. AI este domeniul larg al sistemelor care deduc cum să producă un rezultat. AI-ul generativ este partea care creează conținut nou, precum text, imagini, audio sau cod, la cerere; AI-ul predictiv, mai vechi, doar etichetează, evaluează sau ordonează conținut care există deja." } },
+      { "@type": "Question", "name": "ChatGPT este AI generativ?", "acceptedAnswer": { "@type": "Answer", "text": "Da. ChatGPT este construit pe un model mare de limbaj, care este un tip de AI generativ. Claude și Gemini sunt același fel de sistem de la alți furnizori. Toate trei generează text bucată cu bucată, pe baza cererii pe care le-o dai." } },
+      { "@type": "Question", "name": "AI-ul generativ poate greși?", "acceptedAnswer": { "@type": "Answer", "text": "Da, și adesea cu deplină siguranță. Un model generativ prezice conținut plauzibil, nu fapte verificate, așa că poate inventa o statistică, un citat sau o sursă care nu există. Această eroare se numește halucinație și este motivul pentru care orice rezultat important are nevoie de verificare umană." } }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body a { color: var(--red); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 10px; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    .article-related { margin-top: 36px; font-size: 16px; color: var(--text-sec); }
+    .article-related a { color: var(--red); }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/ro/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/ro/#problema">De ce?</a>
+    <a href="/ro/#cum-functioneaza">Sesiuni</a>
+    <a href="/ro/blog/">Blog</a>
+    <a href="/ro/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Selector limbă">
+      <a href="/ro/blog/ce-este-ai-generativ/" class="lang-option is-active" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/what-is-generative-ai/" class="lang-option" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/ro/#contact" class="btn-nav">Rezervă 30 de minute</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/ro/">TVL Academy</a> › <a href="/ro/blog/">Blog</a> › Ce este AI generativ?
+  </div>
+
+  <article>
+    <span class="article-kicker">AI generativ / Fundamente</span>
+    <h1>Ce este AI generativ? Cum funcționează și unde ajută</h1>
+    <div class="article-meta">
+      <span>de <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-10-04">4 octombrie 2026</time>
+      <span>·</span>
+      <span>7 min de citit</span>
+    </div>
+
+    <div class="article-body">
+      <p>AI-ul generativ este inteligență artificială care produce conținut nou, precum text, imagini, audio sau cod, la cerere, în loc să doar sorteze sau să evalueze conținut care există deja. Îi ceri să rezume un contract și scrie un rezumat; ceri același lucru unui sistem mai vechi și, în cel mai bun caz, îți etichetează un document pe care deja îl ai. Este o ramură a <a href="/ro/blog/ce-este-inteligenta-artificiala/">inteligenței artificiale</a>, iar ce îl deosebește este că face ceva ce nu exista înainte.</p>
+
+      <h2>Cum funcționează, fără matematică</h2>
+      <p>Cele mai multe sisteme de text de azi sunt modele mari de limbaj construite pe o arhitectură numită transformer, introdusă într-o lucrare de cercetare din 2017, intitulată <a href="https://arxiv.org/abs/1706.03762">"Attention Is All You Need"</a>. Nu ai nevoie de detaliile interne, ci doar de ideea din spate.</p>
+      <p>Un model mare de limbaj generează text prezicând în mod repetat următoarea bucată de scris, pornind de la ce a venit înainte. Scrii "capitala Franței este" și răspunde "Paris", pentru că acea continuare este covârșitor de probabilă în textul din care a învățat. Fă asta câte un pas mic pe rând, la scară uriașă, și același mecanism poate să poarte o conversație, să rescrie un paragraf sau să producă cod funcțional. Generatoarele de imagini, audio și video sunt și ele AI generativ, dar sunt construite pe metode diferite, precum modelele de difuzie, așa că AI-ul generativ este o familie de abordări, nu o singură arhitectură.</p>
+
+      <h2>Modelele fundamentale și de ce o unealtă face multe treburi</h2>
+      <p>Acum un deceniu, fiecare sarcină cerea de regulă propriul model: unul pentru traducere, altul pentru spam, altul pentru sentiment. Saltul care a făcut AI-ul generativ să pară general este că un singur model mare, antrenat o dată pe date diverse, poate fi folosit apoi pentru multe sarcini diferite fără să fie reconstruit. Cercetătorii de la Stanford le-au numit <a href="https://crfm.stanford.edu/report.html">"modele fundamentale"</a> într-un raport din 2021, pentru că atât de multe se construiesc deasupra unei singure baze.</p>
+      <p>În practică, de aceea același asistent poate să redacteze un anunț de angajare, să explice o formulă dintr-un tabel și să traducă un e-mail. Un singur model, multe utilizări, și de aceea alegerea între <a href="/ro/blog/chatgpt-claude-gemini/">ChatGPT, Claude și Gemini</a> este o decizie reală, nu una cosmetică.</p>
+
+      <h2>AI generativ față de AI predictiv</h2>
+      <p>Tipul mai vechi și mai tăcut de AI clasifică sau prezice. Un model de fraudă răspunde la "este suspectă această tranzacție". Un model de credit răspunde la "cât de probabil e ca această persoană să ramburseze". Amândouă sortează lumea care există deja în categorii sau scoruri.</p>
+      <p>AI-ul generativ răspunde la un alt fel de cerere: "scrie e-mailul către client care explică blocarea". Aceeași companie, aceleași date, dar un sistem ia o decizie și celălalt produce o schiță. Să știi cu care tip ai de-a face îți spune cum să-l folosești și cum poate să greșească: o clasificare greșită și un fapt inventat sunt probleme foarte diferite.</p>
+
+      <h2>Unde ajută într-o companie</h2>
+      <p>AI-ul generativ dă roade cel mai repede la munca ce pornește de la o pagină goală sau de la un document lung, iar tiparele se repetă de la o echipă la alta:</p>
+      <ul class="plain">
+        <li><strong>Redactarea.</strong> Primele versiuni de e-mailuri, fișe de post, propuneri și rapoarte, pe care apoi un om le editează.</li>
+        <li><strong>Rezumarea.</strong> Transformarea unui fir lung, a unei ședințe sau a unui contract în cele câteva rânduri care contează.</li>
+        <li><strong>Căutarea în propriile documente.</strong> Pui o întrebare și primești un răspuns extras din fișiere interne, în loc să derulezi.</li>
+        <li><strong>Traducerea și tonul.</strong> Mutarea textului între limbi sau ajustarea lui pentru un public diferit.</li>
+        <li><strong>Codul.</strong> Scripturi și funcții la nivel de primă schiță, pe care un dezvoltator le revizuiește, și care stau și la baza <a href="/ro/blog/cum-construiesti-agenti-ai-cu-claude/">agenților AI</a>.</li>
+      </ul>
+      <p>În fiecare caz, rezultatul e un punct de pornire pe care cineva îl îmbunătățește, nu un produs finit trimis mai departe nebăgat în seamă.</p>
+
+      <h2>Partea delicată</h2>
+      <p>Pentru că un model de limbaj prezice text plauzibil, nu text verificat, poate produce un răspuns sigur pe el care e pur și simplu greșit, inclusiv fapte, citate și surse inventate. Eroarea asta are un nume, <a href="/ro/blog/halucinatii-ai/">halucinația</a>, și este cea mai importantă limită de înțeles înainte să te bazezi pe rezultat.</p>
+      <p>Mai e o parte delicată, de data asta organizațională, nu tehnică. În funcție de unealtă și de setările ei, ce scrii poate fi stocat sau folosit ca să îmbunătățească serviciul, așa că datele sensibile au nevoie de reguli clare despre ce unelte le pot atinge. Asta ține de <a href="/ro/blog/guvernanta-ai/">guvernanța AI</a> și e mult mai ușor de limpezit înainte ca adopția să se extindă decât după.</p>
+
+      <h2>Întrebări frecvente</h2>
+      <p><strong>Care e diferența dintre AI generativ și AI?</strong><br>AI-ul generativ este o ramură a inteligenței artificiale. AI este domeniul larg al sistemelor care deduc cum să producă un rezultat. AI-ul generativ este partea care creează conținut nou, precum text, imagini, audio sau cod, la cerere; AI-ul predictiv, mai vechi, doar etichetează, evaluează sau ordonează conținut care există deja.</p>
+      <p><strong>ChatGPT este AI generativ?</strong><br>Da. ChatGPT este construit pe un model mare de limbaj, care este un tip de AI generativ. Claude și Gemini sunt același fel de sistem de la alți furnizori. Toate trei generează text bucată cu bucată, pe baza cererii pe care le-o dai.</p>
+      <p><strong>AI-ul generativ poate greși?</strong><br>Da, și adesea cu deplină siguranță. Un model generativ prezice conținut plauzibil, nu fapte verificate, așa că poate inventa o statistică, un citat sau o sursă care nu există. Această eroare se numește halucinație și este motivul pentru care orice rezultat important are nevoie de verificare umană.</p>
+
+      <h2>Surse</h2>
+      <ul class="plain">
+        <li>Vaswani et al., <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a> (2017), lucrarea care a introdus transformer-ul.</li>
+        <li>Bommasani et al., Stanford CRFM, <a href="https://crfm.stanford.edu/report.html">On the Opportunities and Risks of Foundation Models</a> (2021).</li>
+        <li>OECD, <a href="https://oecd.ai/en/wonk/ai-system-definition-update">Updates to the OECD's definition of an AI system, explained</a> (2023).</li>
+      </ul>
+    </div>
+
+    <div class="article-cta">
+      <h3>Pune AI-ul generativ la treabă pe sarcinile reale ale echipei</h3>
+      <p>Pregătim echipe din companii să folosească AI-ul generativ acolo unde dă roade și să-l verifice acolo unde contează, pe propriile documente și fluxuri. Rezervă 30 de minute cu Alexandru Dan.</p>
+      <a href="/ro/#contact" class="btn-primary">Rezervă 30 de minute</a>
+    </div>
+
+    <p class="article-related">Conex: <a href="/ro/blog/ce-este-inteligenta-artificiala/">Ce este AI?</a> · <a href="/ro/blog/halucinatii-ai/">Ce sunt halucinațiile AI?</a> · <a href="/ro/blog/chatgpt-claude-gemini/">ChatGPT, Claude sau Gemini</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/ro/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/ro/despre/alexandru-dan/">Alexandru Dan</a>
+          <a href="/ro/#cum-functioneaza">Sesiuni</a>
+          <a href="/ro/blog/">Blog</a>
+          <a href="/ro/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Termeni</a>
+          <a href="/ro/privacy-policy.html">Privacy Policy</a>
+          <a href="/ro/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Setări cookie</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Preferințe cookie</div>
+      <p>Folosim Google Analytics 4 doar după acordul tău, ca să măsurăm traficul și să îmbunătățim pagina. Vezi <a href="/ro/privacy-policy.html">Privacy Policy</a> și <a href="/ro/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Refuză</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Acceptă analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="ro" defer></script>
+</body>
+</html>

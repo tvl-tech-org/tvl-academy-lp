@@ -14,9 +14,45 @@
   </url>
   <url>
     <loc>https://academy.tvl.tech/ro/blog/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/ro/blog/ce-este-inteligenta-artificiala/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/en/blog/what-is-ai/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/ro/blog/ce-este-ai-generativ/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/en/blog/what-is-generative-ai/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/ro/blog/halucinatii-ai/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://academy.tvl.tech/en/blog/what-are-ai-hallucinations/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://academy.tvl.tech/ro/blog/guvernanta-ai/</loc>
@@ -62,7 +98,7 @@
   </url>
   <url>
     <loc>https://academy.tvl.tech/en/blog/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
