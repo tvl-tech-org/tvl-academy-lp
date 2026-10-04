@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is Jev? TypeSafe AI's structured-decision model explained | TVL Academy</title>
+  <meta name="description" content="Jev is a decision-making AI model from TypeSafe AI that returns typed, structured outputs instead of free-form text. What its choice, score and noul primitives do, a ticket-routing example, and where it can still be wrong.">
+  <meta property="og:title" content="What is Jev? TypeSafe AI's structured-decision model explained">
+  <meta property="og:description" content="Jev is a decision-making AI model from TypeSafe AI that returns typed, structured outputs instead of free-form text. Its primitives, a ticket-routing example, and its limits.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/en/blog/what-is-jev/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-10-04">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Jev? TypeSafe AI's structured-decision model explained">
+  <meta name="twitter:description" content="Jev is a decision-making AI model from TypeSafe AI that returns typed, structured outputs instead of free-form text.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/en/blog/what-is-jev/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/ce-este-jev/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/what-is-jev/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/what-is-jev/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What is Jev? TypeSafe AI's structured-decision model explained",
+    "description": "Jev is a decision-making AI model from TypeSafe AI that returns typed, structured outputs instead of free-form text. What its choice, score and noul primitives do, a ticket-routing example, and where it can still be wrong.",
+    "inLanguage": "en",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Lead Trainer TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "knowsAbout": ["Artificial intelligence", "Machine learning", "Structured outputs", "Decision models", "AI for companies"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/en/blog/what-is-jev/" },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://academy.tvl.tech/images/og-training-ai-en.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "about": "Jev, TypeSafe AI, System One models, structured outputs, decision AI, AI for companies"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/en/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "What is Jev?" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is Jev in simple terms?", "acceptedAnswer": { "@type": "Answer", "text": "Jev is a decision-making AI model from TypeSafe AI. You give it some input, and it returns a typed, structured value: a choice from a fixed set, a score, or a yes/no probability, rather than writing free-form text. It is built to make small, repeatable decisions that software can act on directly." } },
+      { "@type": "Question", "name": "How is Jev different from a generative AI like ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "A generative model produces free-form text and can, in principle, say anything. Jev only returns a value from a set you define in advance: a choice, a score, or a yes/no probability. Generative models can be constrained to return structured output too, but Jev has no free-text mode at all, which is the main difference TypeSafe AI draws." } },
+      { "@type": "Question", "name": "Can Jev be wrong if it cannot hallucinate?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. TypeSafe AI's claim that the model cannot hallucinate means the output always matches the schema you asked for, so it cannot invent prose or an option outside your set. It does not mean the decision is correct. A type-correct answer can still be the wrong one, and the confidence score is a signal to validate on your own data, not a guarantee." } }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body a { color: var(--red); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 10px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-size: 16px; }
+    .article-body th, .article-body td { text-align: left; padding: 10px 12px; border: 1px solid #e4e4e4; vertical-align: top; }
+    .article-body thead th { background: var(--light-bg); font-family: var(--font-display); font-weight: 700; }
+    .article-body .table-note { font-size: 14px; color: var(--text-sec); margin-bottom: 22px; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    .article-related { margin-top: 36px; font-size: 16px; color: var(--text-sec); }
+    .article-related a { color: var(--red); }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } .article-body table { font-size: 14px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/en/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/en/#problema">Why?</a>
+    <a href="/en/#cum-functioneaza">Sessions</a>
+    <a href="/en/blog/">Blog</a>
+    <a href="/en/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="/ro/blog/ce-este-jev/" class="lang-option" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/what-is-jev/" class="lang-option is-active" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/en/#contact" class="btn-nav">Book 30 minutes</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/en/">TVL Academy</a> › <a href="/en/blog/">Blog</a> › What is Jev?
+  </div>
+
+  <article>
+    <span class="article-kicker">AI Models / Decision AI</span>
+    <h1>What is Jev? TypeSafe AI's structured-decision model explained</h1>
+    <div class="article-meta">
+      <span>by <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-10-04">4 October 2026</time>
+      <span>·</span>
+      <span>6 min read</span>
+    </div>
+
+    <div class="article-body">
+      <p>Jev is a decision-making AI model made by <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">TypeSafe AI</a>. You give it some input and a fixed set of possible answers, and it returns one of those answers as a typed, structured value, with a probability attached. Unlike a generative language model such as ChatGPT or Claude, it does not write free-form text. It chooses, scores or answers yes/no within the shape you define in advance, and that output drops straight into software.</p>
+
+      <h2>What "System One" means here</h2>
+      <p>TypeSafe AI groups models like Jev under a category it calls System One models, which it describes as "a new class of frontier models built to make fast, structured decisions that software can use directly". The name nods to the idea of fast, automatic thinking, but it is the vendor's own product label, not an established scientific taxonomy, and not a claim that the model thinks the way a person does. The company says Jev is its first public model in this category and, at the time of writing, offers it in early access.</p>
+
+      <h2>The three things Jev can return</h2>
+      <p>According to its documentation, Jev answers in one of three shapes, which TypeSafe AI calls primitives:</p>
+      <ul class="plain">
+        <li><strong>Choice</strong> picks one option from a defined set. The docs put the limit at up to 255 options, and the answer comes back as the most likely option, the full probability distribution across every option, and a confidence score.</li>
+        <li><strong>Score</strong> rates something against ordered, descriptive levels, for example a severity from 0 to 2. The result can land between levels, such as 1.43, and again carries per-level probabilities and a confidence value.</li>
+        <li><strong>Noul</strong> answers a yes/no question as a single number between 0 and 1, the probability that the answer is yes. Unlike Choice and Score, it comes back as that single probability, with no separate confidence field. The docs give the example of an <em>is_human_escalation</em> question that returns 0.99 for a customer who has asked three times to speak to a person.</li>
+      </ul>
+
+      <h2>A ticket-routing example</h2>
+      <p>A support queue shows where a model like this fits. Say a message arrives: "My running shoes arrived in the wrong size." You define a Choice with three options, <em>returns</em>, <em>shipping</em> and <em>billing</em>, and send Jev the message. It returns the chosen option, the distribution and a confidence score.</p>
+      <p>An illustrative result, with hypothetical numbers, might be: returns 0.82, shipping 0.13, billing 0.05, so the chosen option is <em>returns</em> at a probability of 0.82. Confidence is a separate number here, not the same as that top probability: the docs compute it from how the distribution is spread, with the formula (p_max − 1/n) / (1 − 1/n), so three options with a top probability of 0.82 work out to roughly 0.73 confidence. Your own code then decides what to do with that: route the ticket automatically when confidence clears a threshold you set, and send it to a person when it does not. Those numbers are invented here to show the shape of the output, not measured results.</p>
+
+      <h2>How it compares with a generative LLM</h2>
+      <table>
+        <thead>
+          <tr><th scope="col">&nbsp;</th><th scope="col">Generative LLM</th><th scope="col">Jev (a System One model)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Main output</th><td>Free-form text, or schema-constrained output when requested</td><td>A typed value: a choice, a score, or a probability</td></tr>
+          <tr><th scope="row">Answer set</th><td>Open-ended, or fixed when you constrain the output</td><td>Fixed by you in advance</td></tr>
+          <tr><th scope="row">Can it produce prose outside the options?</th><td>Yes by default; can be constrained to stop it</td><td>No free-text mode at all</td></tr>
+          <tr><th scope="row">Uncertainty</th><td>Depends on the model, API and technique</td><td>Probabilities with every answer; a separate confidence score for Choice and Score</td></tr>
+          <tr><th scope="row">Fits best</th><td>Drafting, summarising, open conversation</td><td>Classifying, routing, scoring, yes/no checks inside software</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">The line is not absolute. Generative LLMs can also be told to return structured output, through JSON mode, function calling or constrained "structured outputs". The difference TypeSafe AI draws is that Jev only ever produces a typed value and has no free-text mode to fall back on.</p>
+
+      <h2>What it does well, and where it can still be wrong</h2>
+      <p>Because Jev can only return one of the options you defined or a number in the range you set, it cannot invent an answer outside that set or produce fluent, wrong prose. TypeSafe AI puts this strongly, saying the model "can't hallucinate" because "schema matching is guaranteed". That claim is about the shape of the output, not its truth. A well-formed answer can still be the wrong answer: labelling a shipping problem as <em>billing</em> is a type-correct mistake.</p>
+      <p>The confidence number needs the same caution. The vendor says it trains for calibration, with a method it calls Reinforcement Learning for Calibrated Decisions, and states that higher confidence means higher accuracy. Its own documentation is more careful: confidence is "one reasonable way to summarize a distribution", the right thresholds "depend on your domain", and you should "test with your own data". Validate the confidence score against your own cases before you wire it into an automatic decision. As with any <a href="/en/blog/what-is-ai/">AI system</a>, the output is a starting point a person checks where it matters.</p>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>What is Jev in simple terms?</strong><br>Jev is a decision-making AI model from TypeSafe AI. You give it some input, and it returns a typed, structured value: a choice from a fixed set, a score, or a yes/no probability, rather than writing free-form text. It is built to make small, repeatable decisions that software can act on directly.</p>
+      <p><strong>How is Jev different from a generative AI like ChatGPT?</strong><br>A generative model produces free-form text and can, in principle, say anything. Jev only returns a value from a set you define in advance: a choice, a score, or a yes/no probability. Generative models can be constrained to return structured output too, but Jev has no free-text mode at all, which is the main difference TypeSafe AI draws.</p>
+      <p><strong>Can Jev be wrong if it cannot hallucinate?</strong><br>Yes. TypeSafe AI's claim that the model cannot hallucinate means the output always matches the schema you asked for, so it cannot invent prose or an option outside your set. It does not mean the decision is correct. A type-correct answer can still be the wrong one, and the confidence score is a signal to validate on your own data, not a guarantee.</p>
+
+      <h2>Sources</h2>
+      <ul class="plain">
+        <li>TypeSafe AI, <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">Introducing System One Models and Jev</a>.</li>
+        <li>TypeSafe AI, <a href="https://docs.typesafe.ai/primitives/choice">Documentation: the Choice primitive</a>.</li>
+        <li>TypeSafe AI, <a href="https://docs.typesafe.ai/primitives/score">Documentation: the Score primitive</a>.</li>
+        <li>TypeSafe AI, <a href="https://docs.typesafe.ai/primitives/noul">Documentation: the Noul primitive</a>.</li>
+        <li>TypeSafe AI, <a href="https://docs.typesafe.ai/confidence">Documentation: confidence</a>.</li>
+      </ul>
+    </div>
+
+    <div class="article-cta">
+      <h3>Help your team tell the AI tools apart</h3>
+      <p>We run practical AI training for corporate teams, from what AI actually is to which kind of model fits which task. Book 30 minutes with Alexandru Dan.</p>
+      <a href="/en/#contact" class="btn-primary">Book 30 minutes</a>
+    </div>
+
+    <p class="article-related">Related: <a href="/en/blog/what-is-ai/">What is AI?</a> · <a href="/en/blog/what-is-generative-ai/">What is generative AI?</a> · <a href="/en/blog/what-are-ai-hallucinations/">What are AI hallucinations?</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/en/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/en/about/alexandru-dan/">Alexandru Dan</a>
+          <a href="/en/#cum-functioneaza">Sessions</a>
+          <a href="/en/blog/">Blog</a>
+          <a href="/en/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Terms</a>
+          <a href="/en/privacy-policy.html">Privacy Policy</a>
+          <a href="/en/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Cookie settings</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Cookie preferences</div>
+      <p>We use Google Analytics 4 only after your consent, to measure traffic and improve the page. See our <a href="/en/privacy-policy.html">Privacy Policy</a> and <a href="/en/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Accept analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="en" defer></script>
+</body>
+</html>
