@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ce este Cloudflare Clef? Modelul de decizie cu ponderi deschise explicat | TVL Academy</title>
+  <meta name="description" content="Cloudflare Clef este un model de decizie: îi dai o intrare și întrebări tipizate, iar el returnează probabilități în loc de text. Ce fac Clef și Clef-flash, tipurile de întrebări noul, choice și score, legătura cu Jev și limitele de verificat.">
+  <meta property="og:title" content="Ce este Cloudflare Clef? Modelul de decizie cu ponderi deschise explicat">
+  <meta property="og:description" content="Cloudflare Clef citește o intrare și un set de întrebări tipizate și returnează câte o probabilitate pentru fiecare răspuns permis, ca să poată decide codul tău. Cum funcționează Clef și Clef-flash, cele trei tipuri de întrebări și limitele.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/ro/blog/ce-este-cloudflare-clef/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-10-05">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ce este Cloudflare Clef? Modelul de decizie cu ponderi deschise explicat">
+  <meta name="twitter:description" content="Cloudflare Clef returnează câte o probabilitate pentru fiecare răspuns permis, în loc de text liber. Cum funcționează Clef și Clef-flash, cele trei tipuri de întrebări și limitele de verificat.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/ro/blog/ce-este-cloudflare-clef/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/ce-este-cloudflare-clef/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/what-is-cloudflare-clef/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/what-is-cloudflare-clef/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ce este Cloudflare Clef? Modelul de decizie cu ponderi deschise explicat",
+    "description": "Cloudflare Clef este un model de decizie: îi dai o intrare și întrebări tipizate, iar el returnează probabilități în loc de text. Ce fac Clef și Clef-flash, tipurile de întrebări noul, choice și score, legătura cu Jev și limitele de verificat.",
+    "inLanguage": "ro",
+    "datePublished": "2026-10-05",
+    "dateModified": "2026-10-05",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Trainer principal TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "knowsAbout": ["Inteligență artificială", "Modele de decizie", "Cloudflare Workers AI", "Agenți AI", "AI pentru companii"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/ro/blog/ce-este-cloudflare-clef/" },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://academy.tvl.tech/images/og-training-ai-ro.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "about": "Cloudflare Clef, Clef-flash, modele de decizie, Workers AI, Jev, AI pentru companii"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/ro/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/ro/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Ce este Cloudflare Clef?" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Ce este Cloudflare Clef, pe scurt?", "acceptedAnswer": { "@type": "Answer", "text": "Un model de decizie de la Cloudflare. Îi dai o intrare și un set de întrebări tipizate, iar el returnează câte o probabilitate pentru fiecare răspuns permis, în loc să scrie text înapoi, astfel încât propriul tău cod să poată direcționa, escalada sau amâna. Vine ca două modele cu ponderi deschise, Clef și varianta mai mică Clef-flash, găzduite pe Workers AI și lansate pe 1 octombrie 2026." } },
+      { "@type": "Question", "name": "Prin ce diferă Clef de un chatbot sau de un LLM?", "acceptedAnswer": { "@type": "Answer", "text": "Un chatbot general este folosit de obicei ca să genereze text sau cod și poate fi constrâns să scoată și JSON structurat. Clef face o singură trecere și returnează probabilități peste opțiunile pe care le-ai definit, fără text liber. Totuși are un model lingvistic în interior, un model de bază Qwen pe care Cloudflare l-a antrenat suplimentar, dar îndreptat spre clasificare, nu spre scris, iar aplicația din jurul lui este cea care acționează pe baza deciziei." } },
+      { "@type": "Question", "name": "Poate Clef să înlocuiască un om în decizii?", "acceptedAnswer": { "@type": "Answer", "text": "Nu de unul singur. Clef clasifică și returnează probabilități; aplicația ta decide ce face cu ele și deține autorizarea pentru orice acțiune. Poate clasifica greșit, iar încrederea lui nu este o garanție de acuratețe, așa că păstrează verificarea umană pentru acțiunile cu miză mare și stabilește-ți pragurile pe propriile tale date." } }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body a { color: var(--red); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 10px; }
+    .article-body code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; background: var(--light-bg); padding: 2px 6px; border-radius: 4px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-size: 16px; }
+    .article-body th, .article-body td { text-align: left; padding: 10px 12px; border: 1px solid #e4e4e4; vertical-align: top; }
+    .article-body thead th { background: var(--light-bg); font-family: var(--font-display); font-weight: 700; }
+    .article-body .table-note { font-size: 14px; color: var(--text-sec); margin-bottom: 22px; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    .article-related { margin-top: 36px; font-size: 16px; color: var(--text-sec); }
+    .article-related a { color: var(--red); }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } .article-body table { font-size: 14px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/ro/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/ro/#problema">De ce?</a>
+    <a href="/ro/#cum-functioneaza">Sesiuni</a>
+    <a href="/ro/blog/">Blog</a>
+    <a href="/ro/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Selector limbă">
+      <a href="/ro/blog/ce-este-cloudflare-clef/" class="lang-option is-active" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/what-is-cloudflare-clef/" class="lang-option" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/ro/#contact" class="btn-nav">Rezervă 30 de minute</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/ro/">TVL Academy</a> › <a href="/ro/blog/">Blog</a> › Ce este Cloudflare Clef?
+  </div>
+
+  <article>
+    <span class="article-kicker">Modele AI / AI de decizie</span>
+    <h1>Ce este Cloudflare Clef? Modelul de decizie cu ponderi deschise explicat</h1>
+    <div class="article-meta">
+      <span>de <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-10-05">5 octombrie 2026</time>
+      <span>·</span>
+      <span>7 min de citit</span>
+    </div>
+
+    <div class="article-body">
+      <p>Cloudflare Clef este un model de decizie: îi dai o intrare și o listă de întrebări tipizate, iar el returnează câte o probabilitate pentru fiecare răspuns permis, în loc să-ți scrie o propoziție înapoi. Vine ca două modele cu ponderi deschise, Clef și varianta mai mică Clef-flash, ambele găzduite pe <a href="https://developers.cloudflare.com/workers-ai/models/clef/">Workers AI</a> și lansate pe <a href="https://blog.cloudflare.com/clef-decision-models/">1 octombrie 2026</a>. Are un scop îngust: clasifică, astfel încât propriul tău cod să poată decide ce urmează.</p>
+
+      <p>Cloudflare îl documentează pe <a href=”https://developers.cloudflare.com/workers-ai/models/clef/”>pagina modelului din Workers AI</a> și în <a href=”https://huggingface.co/Cloudflare/clef”>fișa modelului de pe Hugging Face</a>, care spun amândouă că nu există generare de text liber și nimic de interpretat din ieșire.</p>
+
+      <h2>Prin ce diferă de un chatbot</h2>
+      <p>Un model lingvistic mare este de uz general. Cel mai des este folosit ca să genereze text sau cod și poate fi constrâns să scoată și ieșire structurată, de pildă JSON care respectă o schemă. Clef este mai îngust: folosește un cap de decizie care punctează fiecare opțiune permisă într-o singură trecere și nu produce deloc text liber, citind probabilitățile direct din reprezentările interne ale modelului de bază. Dedesubt rămâne totuși un model lingvistic: Cloudflare l-a antrenat suplimentar pornind de la un <a href="https://huggingface.co/Cloudflare/clef">model de bază Qwen</a> și i-a adăugat un mic cap de scorare, îndreptat spre o singură sarcină. Și, indiferent ce model folosești, aplicația sau codul din jurul lui execută un apel de instrument sau o acțiune, nu modelul însuși; Clef returnează doar decizia.</p>
+
+      <h2>Cele trei tipuri de întrebări</h2>
+      <p>Descrii fiecare decizie ca pe o întrebare tipizată și poți pune până la 64 într-o cerere. Clef folosește aceleași tipuri ca API-ul System One cu care este compatibil (<a href="https://developers.cloudflare.com/changelog/product-group/ai/">changelog Cloudflare</a>):</p>
+      <ul class="plain">
+        <li><strong><code>noul</code></strong> este o întrebare da/nu. Returnează probabilitatea ca răspunsul să fie „da”, între 0 și 1; probabilitatea este răspunsul, nu există un număr separat de încredere aici.</li>
+        <li><strong><code>choice</code></strong> alege o opțiune dintr-un set pe care îl definești. Returnează opțiunea aleasă, o probabilitate pentru fiecare opțiune și o valoare de încredere. Opțiunea aleasă este cea cu probabilitatea cea mai mare, în timp ce încrederea este o valoare separată, pe care merită s-o citești în sine, nu să presupui că este egală cu probabilitatea de vârf.</li>
+        <li><strong><code>score</code></strong> evaluează intrarea după o grilă ordonată pe care o oferi, de pildă „Fără impact, Minor, Major, Critic”. Returnează o probabilitate pentru fiecare nivel și un scor ponderat cu probabilități, care poate cădea între niveluri, nu neapărat pe unul anume. Acel scor este estimarea ponderată a modelului, nu o măsurătoare obiectivă.</li>
+      </ul>
+
+      <h2>Un exemplu de triere a tichetelor de suport</h2>
+      <p>Exemplul propriu al Cloudflare este o coadă de suport. Un tichet spune că plata online a eșuat pentru fiecare client în ultima oră; trimiți acel text ca stare și trei întrebări: este urgent (<code>noul</code>), ce echipă ar trebui să îl preia, facturare, tehnic sau vânzări (<code>choice</code>), și cât de grav este impactul (<code>score</code>). Clef returnează o probabilitate pentru urgență, o echipă aleasă cu o probabilitate pentru fiecare opțiune și un scor ponderat de gravitate.</p>
+
+      <p>Clef ia decizia, dar nu acționează pe baza ei. Codul tău citește numerele și decide, direcționând peste un prag de probabilitate stabilit de tine, alertând pe cineva când scorul de gravitate trece de un prag pe care l-ai validat și trimițând orice este neclar către un om. O cerere de rambursare poate fi semnalată, dar rambursarea ar trebui să treacă prin propriile tale reguli de autorizare, nu să pornească pentru că o probabilitate a depășit o linie: modelul doar deduce, iar execuția rămâne la aplicația ta. (Pragurile de aici sunt ilustrative; Clef nu vine cu un prag universal.)</p>
+
+      <h2>Clef, Clef-flash și ponderile deschise</h2>
+      <p>Clef este modelul mai mare, de 27B, pe care Cloudflare îl poziționează pentru deciziile cu precizie maximă; Clef-flash este un model de 9B pentru decizii rapide, acolo unde latența contează cel mai mult. Ambele sunt antrenate suplimentar pornind de la modele de bază Qwen, 27B pentru Clef și 9B pentru Clef-flash, și ambele au un codificator de imagini, așa că pot citi imagini ca parte a stării. Ambele sunt publicate sub <a href="https://huggingface.co/Cloudflare/clef-flash">licența Apache 2.0</a>, cu ponderi deschise pe care le poți rula singur. Ponderile deschise nu înseamnă un serviciu găzduit gratuit: rularea Clef pe Workers AI este un API cu plată, iar varianta cu ponderi deschise înseamnă să îl găzduiești pe hardware-ul tău.</p>
+
+      <h2>Câtă intrare citește</h2>
+      <p>Pagina modelului listează o fereastră de context de 65.536 de tokeni pentru ambele modele. API-ul găzduit notează că o stare lungă de intrare este trunchiată ca să încapă în limita de tokeni a modelului, așa că verifică exact cum se comportă endpointul ales pe intrări de dimensiunea pe care o trimiți în realitate. Funcția din ponderile deschise este o chestiune separată: pasul ei de codificare are o valoare implicită de 16.384 de tokeni, o limită implicită a funcției care diferă de capacitatea modelului, nu un plafon strict. La celelalte intrări, API-ul găzduit documentează până la patru imagini încorporate pe cerere, cu limite de dimensiune și fără adrese URL de imagini. Videoul este acceptat în ponderile deschise, dar nu există un parametru de video documentat pentru serviciul găzduit, deci nu presupune că videoul funcționează prin API-ul găzduit.</p>
+
+      <h2>Clef și Jev</h2>
+      <p>Clef este compatibil la nivel de API cu <a href="/ro/blog/ce-este-jev/">Jev</a>, primul model System One de la TypeSafe, și folosește aceleași tipuri de întrebări, <code>noul</code>, <code>choice</code> și <code>score</code> (<a href="https://docs.typesafe.ai/">documentația TypeSafe</a>), iar Cloudflare spune că poți muta o integrare Jev existentă pe Clef schimbând adresa și numele modelului. O diferență clară ține de licențiere: Clef și Clef-flash sunt publicate cu ponderi deschise, sub Apache 2.0, în timp ce Jev este modelul proprietar al TypeSafe. Compatibil nu înseamnă însă identic: două modele diferite pot da probabilități, valori de încredere și calibrări diferite pe aceeași intrare, prin urmare validează o migrare pe propriile tale date, nu o lua ca pe o înlocuire în care te poți încrede orbește.</p>
+
+      <h2>Ce nu promite</h2>
+      <p>O probabilitate este o afirmație a unui model, nu un fapt măsurat, iar Clef poate greși: poate clasifica greșit, poate fi împins de intrări adversariale sau neobișnuite și poate prelua bias din datele de antrenament. O încredere returnată de 0,9 nu este o garanție că eticheta este corectă în nouă cazuri din zece; Cloudflare a antrenat pentru calibrare cu un obiectiv de scor Brier și un pas de învățare prin întărire, dar calibrarea pe datele lor nu se transferă automat pe ale tale. Stabilește pragurile de acțiune pornind de la propriul tău set de validare, păstrează verificarea umană pentru acțiunile cu miză mare precum rambursări, modificări de cont sau blocări de securitate și păstrează permisiunile în aplicația ta. Citește benchmarkurile ca pe niște cifre raportate de furnizor, specifice unui anumit tip de muncă, nu ca pe rezultate independente, și testează pe cazuri ca ale tale. Serviciul de fine-tuning care îl ajustează pentru un anumit flux este în stadiul de partener de design, nu disponibil în autoservire pentru oricine.</p>
+
+      <h2>Întrebări frecvente</h2>
+      <p><strong>Ce este Cloudflare Clef, pe scurt?</strong><br>Un model de decizie de la Cloudflare. Îi dai o intrare și un set de întrebări tipizate, iar el returnează câte o probabilitate pentru fiecare răspuns permis, în loc să scrie text înapoi, astfel încât propriul tău cod să poată direcționa, escalada sau amâna. Vine ca două modele cu ponderi deschise, Clef și varianta mai mică Clef-flash, găzduite pe Workers AI și lansate pe 1 octombrie 2026.</p>
+      <p><strong>Prin ce diferă Clef de un chatbot sau de un LLM?</strong><br>Un chatbot general este folosit de obicei ca să genereze text sau cod și poate fi constrâns să scoată și JSON structurat. Clef face o singură trecere și returnează probabilități peste opțiunile pe care le-ai definit, fără text liber. Totuși are un model lingvistic în interior, un model de bază Qwen pe care Cloudflare l-a antrenat suplimentar, dar îndreptat spre clasificare, nu spre scris, iar aplicația din jurul lui este cea care acționează pe baza deciziei.</p>
+      <p><strong>Poate Clef să înlocuiască un om în decizii?</strong><br>Nu de unul singur. Clef clasifică și returnează probabilități; aplicația ta decide ce face cu ele și deține autorizarea pentru orice acțiune. Poate clasifica greșit, iar încrederea lui nu este o garanție de acuratețe, așa că păstrează verificarea umană pentru acțiunile cu miză mare și stabilește-ți pragurile pe propriile tale date.</p>
+
+      <h2>Surse</h2>
+      <ul class="plain">
+        <li>Blog Cloudflare, <a href="https://blog.cloudflare.com/clef-decision-models/">Introducing Clef: our open-source decision models, and new RL fine-tuning platform</a>, 1 octombrie 2026.</li>
+        <li>Documentația Cloudflare Workers AI, <a href="https://developers.cloudflare.com/workers-ai/models/clef/">clef</a> și <a href="https://developers.cloudflare.com/workers-ai/models/clef-flash/">clef-flash</a> (parametri, fereastră de context, limite de intrare).</li>
+        <li>Fișele de model Hugging Face, <a href="https://huggingface.co/Cloudflare/clef">Cloudflare/clef</a> și <a href="https://huggingface.co/Cloudflare/clef-flash">Cloudflare/clef-flash</a> (model de bază, ieșiri, licență Apache 2.0).</li>
+        <li>Changelog Cloudflare, <a href="https://developers.cloudflare.com/changelog/product-group/ai/">grupul de produse AI</a> (tipurile de întrebări și API-ul).</li>
+        <li>TypeSafe, <a href="https://docs.typesafe.ai/">documentația System One</a> și <a href="https://typesafe.ai/">typesafe.ai</a> (Jev și tipurile de întrebări comune).</li>
+      </ul>
+    </div>
+
+    <div class="article-cta">
+      <h3>Training AI practic pentru echipa ta, despre modele de decizie și agenți</h3>
+      <p>Facem training AI practic pentru echipe din companii, de la ce sunt cu adevărat aceste instrumente până la cum le pui într-un flux fără să le dai mai multă autoritate decât ar trebui. Rezervă 30 de minute cu Alexandru Dan.</p>
+      <a href="/ro/#contact" class="btn-primary">Rezervă 30 de minute</a>
+    </div>
+
+    <p class="article-related">Conex: <a href="/ro/blog/ce-este-jev/">Ce este Jev?</a> · <a href="/ro/blog/ce-este-un-agent-ai/">Ce este un agent AI?</a> · <a href="/ro/blog/ce-este-prompt-injection/">Ce este prompt injection?</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/ro/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/ro/despre/alexandru-dan/">Alexandru Dan</a>
+          <a href="/ro/#cum-functioneaza">Sesiuni</a>
+          <a href="/ro/blog/">Blog</a>
+          <a href="/ro/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Termeni</a>
+          <a href="/ro/privacy-policy.html">Privacy Policy</a>
+          <a href="/ro/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Setări cookie</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Preferințe cookie</div>
+      <p>Folosim Google Analytics 4 doar după acordul tău, ca să măsurăm traficul și să îmbunătățim pagina. Vezi <a href="/ro/privacy-policy.html">Privacy Policy</a> și <a href="/ro/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Refuză</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Acceptă analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="ro" defer></script>
+</body>
+</html>
