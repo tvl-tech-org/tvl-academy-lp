@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is an AI agent, and how is it different from a chatbot? | TVL Academy</title>
+  <meta name="description" content="An AI agent works toward a goal by choosing its own next steps: it picks a tool, reads the result, and decides what to do next. A chatbot is a conversational interface. The practical difference, a plain example, and when a company actually needs one.">
+  <meta property="og:title" content="What is an AI agent, and how is it different from a chatbot?">
+  <meta property="og:description" content="An AI agent decides its own next steps toward a goal; a chatbot is a conversational interface. The two are not opposites. A plain guide, an everyday example, and when a company actually needs an agent.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/en/blog/what-is-an-ai-agent/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-10-04">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is an AI agent, and how is it different from a chatbot?">
+  <meta name="twitter:description" content="An AI agent decides its own next steps toward a goal; a chatbot is a conversational interface. A plain guide, an everyday example, and when a company actually needs an agent.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-en.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/en/blog/what-is-an-ai-agent/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/ce-este-un-agent-ai/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/what-is-an-ai-agent/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/what-is-an-ai-agent/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What is an AI agent, and how is it different from a chatbot?",
+    "description": "An AI agent works toward a goal by choosing its own next steps: it picks a tool, reads the result, and decides what to do next. A chatbot is a conversational interface. The practical difference, a plain example, and when a company actually needs one.",
+    "inLanguage": "en",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Lead Trainer TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "knowsAbout": ["Artificial intelligence", "AI agents", "Chatbots", "Large language models", "AI for companies"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/en/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/en/blog/what-is-an-ai-agent/" },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://academy.tvl.tech/images/og-training-ai-en.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "about": "AI agent, chatbot, workflow, large language model, AI for companies"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/en/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "What is an AI agent?" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the difference between an AI agent and a chatbot?", "acceptedAnswer": { "@type": "Answer", "text": "A chatbot is a way to talk to a system in natural language, so the word describes an interface. An AI agent is a system that chooses its own next steps toward a goal, so the word describes how it operates. That is why they are not opposites: a simple assistant waits and answers turn by turn, an agent chooses steps on its own, and one product can be a chat interface and an agent underneath at the same time. The useful question is not chatbot or agent, but whether the system directs its own steps or waits for yours." } },
+      { "@type": "Question", "name": "Is an AI agent the same as a large language model?", "acceptedAnswer": { "@type": "Answer", "text": "No. A large language model generates text and can produce structured output, but on its own it cannot reach your systems. An AI agent is the model plus a harness, the surrounding software that gives it tools, holds credentials, executes its tool calls, and enforces its permissions. The model is the decision-maker inside the loop; the harness is what lets it act, and where most of the controls live." } },
+      { "@type": "Question", "name": "When does a company actually need an AI agent instead of a chatbot or automation?", "acceptedAnswer": { "@type": "Answer", "text": "When reaching the goal needs choices the model has to make case by case, rather than a path you can specify in advance. If a question has a standard answer, a conversational assistant is enough; if the task is well-defined, ordinary automation is often cheaper and more predictable. An agent can add cost and latency compared with a simpler solution, and a wrong step early can compound, so there is no guaranteed return or reliability. Pilot narrowly, measure against a simpler baseline, and keep human review on consequential actions." } }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body a { color: var(--red); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 10px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-size: 16px; }
+    .article-body th, .article-body td { text-align: left; padding: 10px 12px; border: 1px solid #e4e4e4; vertical-align: top; }
+    .article-body thead th { background: var(--light-bg); font-family: var(--font-display); font-weight: 700; }
+    .article-body .table-note { font-size: 14px; color: var(--text-sec); margin-bottom: 22px; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    .article-related { margin-top: 36px; font-size: 16px; color: var(--text-sec); }
+    .article-related a { color: var(--red); }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } .article-body table { font-size: 12px; table-layout: fixed; } .article-body th, .article-body td { padding: 8px 6px; overflow-wrap: break-word; hyphens: auto; } .article-body table th:first-child, .article-body table td:first-child { width: 28%; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/en/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/en/#problema">Why?</a>
+    <a href="/en/#cum-functioneaza">Sessions</a>
+    <a href="/en/blog/">Blog</a>
+    <a href="/en/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="/ro/blog/ce-este-un-agent-ai/" class="lang-option" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/what-is-an-ai-agent/" class="lang-option is-active" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/en/#contact" class="btn-nav">Book 30 minutes</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/en/">TVL Academy</a> › <a href="/en/blog/">Blog</a> › What is an AI agent?
+  </div>
+
+  <article>
+    <span class="article-kicker">AI Agents / Plain Guide</span>
+    <h1>What is an AI agent, and how is it different from a chatbot?</h1>
+    <div class="article-meta">
+      <span>by <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-10-04">4 October 2026</time>
+      <span>·</span>
+      <span>7 min read</span>
+    </div>
+
+    <div class="article-body">
+      <p>An AI agent is a software system that works toward a goal you give it by deciding its own next steps: it picks an action or a tool, carries it out, reads the result, and uses that to choose what to do next, repeating until it reaches a stopping point or hands back to a person. A chatbot, by contrast, is a conversational interface, a way to talk to a system in natural language. The two words describe different things: "chatbot" names an interface, while "agent" names how a system operates. A simple assistant waits for you and answers turn by turn; an agent chooses its own steps between your requests. The two can be combined, so one product can be a chat interface and an agent underneath at the same time.</p>
+
+      <h2>Why this matters now</h2>
+      <p>Companies are giving these systems real permissions, so the distinction has moved from a labelling question to a safety one. On 11 September 2026, Australia's Australian Signals Directorate (ASD) published guidance on <a href="https://www.cyber.gov.au/business-government/secure-design/artificial-intelligence/agentic-ai-harnesses">agentic AI harnesses</a>, the software layer above the model that actually runs an agent's tool calls and enforces its permissions, and warned that some risks cannot be addressed within the model alone. For a company weighing one, that means judging the whole system around the model, not the model alone.</p>
+
+      <h2>The loop, in plain terms</h2>
+      <p>A modern business agent runs a simple loop. You give it a goal. It chooses a step or a tool. It observes the result. It repeats. It stops when the goal is met, a budget runs out, or it reaches a point where a person should decide. Anthropic's engineering guide <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a> (19 December 2024) defines agents as systems where the model "dynamically direct[s] their own processes and tool usage," in contrast to workflows, where "LLMs and tools are orchestrated through predefined code paths." The model is the decision-maker inside the loop; the harness, the surrounding software, is what executes the tool calls, holds the credentials, and enforces what the agent is and is not allowed to do. Terminology varies across the industry; this article uses Anthropic's architectural distinction.</p>
+
+      <h2>One request, a few ways to handle it</h2>
+      <p>Picture a customer who asks to change the delivery address on an order. Whether that change is allowed at all is set by company policy and authorization; it is not something the system should assume. The example is hypothetical, meant only to show the shape of each approach.</p>
+      <p>A baseline first: ordinary automation is a fixed script that applies a rule the company already approved, and it may use no AI at all. An LLM workflow runs along code paths fixed in advance that can branch and can call a model at set points. An agent chooses its next step itself. Applied to the address change, the three look like this:</p>
+      <ul class="plain">
+        <li>A <strong>conversational assistant</strong> answers. It explains the address-change policy and points to the right page, and may look up the order through a connected tool. The conversation is the product; a person still makes any change.</li>
+        <li>A <strong>workflow</strong> runs. Its code paths are fixed in advance but can branch and call a model, for example to read and classify the request, so a shipped order and an unshipped one follow different designed branches, each ending where policy says it should.</li>
+        <li>An <strong>agent</strong> chooses the next step. Within the permissions and policy it was given, it checks the order, sees it has partly shipped, proposes splitting the change across shipped and unshipped items, and routes the consequential part to a person for approval. The path was not fixed in advance; the agent chose it from what it found.</li>
+      </ul>
+      <p>Only the last is an agent in the narrow sense used here, and a conversational assistant, ordinary automation, or a workflow is often the right answer.</p>
+
+      <table>
+        <thead>
+          <tr><th>&nbsp;</th><th>Conversational assistant</th><th>Workflow</th><th>Agent</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Who picks the steps</strong></td><td>A person, in chat</td><td>Code paths set ahead</td><td>The model, at run time</td></tr>
+          <tr><td><strong>Path through a task</strong></td><td>Varies by talk</td><td>Branches defined ahead</td><td>Varies with findings</td></tr>
+          <tr><td><strong>Best when</strong></td><td>Answers, guidance</td><td>Well-specified rules</td><td>Needs model-driven choices</td></tr>
+          <tr><td><strong>Main trade-off</strong></td><td>Limited action</td><td>Exceptions need designed handling</td><td>Can add cost and latency</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">These are three ways to build the same task, not mutually exclusive product classes; a real product can combine them. Ordinary automation, a fixed script with no AI, is a simpler fourth option. A conversational assistant can also use tools, and a well-built agent can pause for a person.</p>
+
+      <h2>What counts as an agent, and what does not</h2>
+      <p>A few boundaries keep the term useful. An agent is not the model on its own: a language model generates text and can produce structured output, but it cannot reach your systems until a harness gives it tools and permissions. A chat interface alone does not make an agent, and neither does connecting a single tool. A decision-making component, such as <a href="/en/blog/what-is-jev/">Jev</a>, is one piece of an agent, not a complete agent on its own. The broader term "AI agent" also covers older systems that were never language models; this article is about the modern, LLM-powered kind a company is most likely to deploy now. And autonomy is bounded: an agent does not have to run in the background, keep a persistent memory, or hold permission to take consequential actions. A narrow, supervised pilot is a practical way to start.</p>
+
+      <h2>Where an agent helps, and where it does not</h2>
+      <p>The tasks where an agent earns its place share a shape: the goal is clear, but reaching it needs choices the model has to make case by case, rather than a path you can specify in advance. Research and document gathering, internal support that looks across several systems, and coding by exploring a codebase and proposing a change are common examples, and none of them come with a product guarantee. Where the task is well-defined, simpler options usually win: a conversational assistant for questions with a standard answer, and ordinary automation, which is often cheaper and more predictable, for steps you can specify up front. Compared with a simpler solution, an agent can add cost and latency, and because it acts in a loop, a wrong step early can compound. There is no guaranteed return and no guaranteed reliability; measure against a simpler baseline before you widen its reach.</p>
+
+      <h2>Controls to assess before deployment</h2>
+      <p>Because an agent acts, not just answers, these controls matter as much as the capability. They reduce risk rather than remove it; weigh them before you deploy.</p>
+      <ul class="plain">
+        <li><strong>Permissions and data boundaries.</strong> Give the agent the narrowest access its task needs, and decide in your own code, not by trusting the model, which actions it may take.</li>
+        <li><strong>Validate tools independently.</strong> Check that an action is allowed in your access rules before it runs, rather than letting the model's say-so authorise it.</li>
+        <li><strong>Human review of consequential actions.</strong> Require a person to approve anything destructive, financial, or hard to reverse.</li>
+        <li><strong>Logs, with access control and redaction.</strong> Keep records of prompts, tool calls, and decisions, but limit who can read them and redact secrets, since full logs can hold sensitive data.</li>
+        <li><strong>Stop conditions, budgets, and testing.</strong> Cap iterations and spend, and run adversarial tests against your own setup before you widen its reach.</li>
+      </ul>
+      <p>One risk deserves its own line: <a href="/en/blog/what-is-prompt-injection/">prompt injection</a>. Because an agent reads outside content, web pages, emails, documents, a planted instruction can steer it, and even a read-only agent can be made to disclose data it can see. Whether you are <a href="/en/blog/how-to-build-ai-agents-with-claude/">building an agent</a> or designing the <a href="/en/blog/ai-governance/">AI governance</a> around it, decide in advance what the system may touch, and assume the content it reads may try to steer it.</p>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>What is the difference between an AI agent and a chatbot?</strong><br>A chatbot is a way to talk to a system in natural language, so the word describes an interface. An AI agent is a system that chooses its own next steps toward a goal, so the word describes how it operates. That is why they are not opposites: a simple assistant waits and answers turn by turn, an agent chooses steps on its own, and one product can be a chat interface and an agent underneath at the same time. The useful question is not chatbot or agent, but whether the system directs its own steps or waits for yours.</p>
+      <p><strong>Is an AI agent the same as a large language model?</strong><br>No. A large language model generates text and can produce structured output, but on its own it cannot reach your systems. An AI agent is the model plus a harness, the surrounding software that gives it tools, holds credentials, executes its tool calls, and enforces its permissions. The model is the decision-maker inside the loop; the harness is what lets it act, and where most of the controls live.</p>
+      <p><strong>When does a company actually need an AI agent instead of a chatbot or automation?</strong><br>When reaching the goal needs choices the model has to make case by case, rather than a path you can specify in advance. If a question has a standard answer, a conversational assistant is enough; if the task is well-defined, ordinary automation is often cheaper and more predictable. An agent can add cost and latency compared with a simpler solution, and a wrong step early can compound, so there is no guaranteed return or reliability. Pilot narrowly, measure against a simpler baseline, and keep human review on consequential actions.</p>
+
+      <h2>Sources</h2>
+      <ul class="plain">
+        <li>Anthropic, <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a>, 19 December 2024.</li>
+        <li>Australian Signals Directorate (ASD), <a href="https://www.cyber.gov.au/business-government/secure-design/artificial-intelligence/agentic-ai-harnesses">Agentic AI Harnesses: the layer above the model</a>, first published 11 September 2026.</li>
+        <li>Australian Signals Directorate (ASD), <a href="https://www.cyber.gov.au/about-us/view-all-content/news/asd-releases-new-guidance-on-the-agentic-ai-harnesses">ASD releases new guidance on the agentic AI harnesses</a>, 11 September 2026.</li>
+        <li>ISACA, <a href="https://www.isaca.org/resources/white-papers/2026/cybersecurity-recommendations-for-securing-ai-agents">Cybersecurity Recommendations for Securing AI Agents</a>, 15 September 2026.</li>
+      </ul>
+    </div>
+
+    <div class="article-cta">
+      <h3>Decide where an agent helps, and where it does not</h3>
+      <p>We run practical AI training for corporate teams, from what AI actually is to when an agent is worth the cost and how to deploy one without handing it more power than it needs. Book 30 minutes with Alexandru Dan.</p>
+      <a href="/en/#contact" class="btn-primary">Book 30 minutes</a>
+    </div>
+
+    <p class="article-related">Related: <a href="/en/blog/how-to-build-ai-agents-with-claude/">How to build AI agents with Claude</a> · <a href="/en/blog/what-is-prompt-injection/">What is prompt injection?</a> · <a href="/en/blog/ai-governance/">AI governance</a> · <a href="/en/blog/what-is-jev/">What is Jev?</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/en/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/en/about/alexandru-dan/">Alexandru Dan</a>
+          <a href="/en/#cum-functioneaza">Sessions</a>
+          <a href="/en/blog/">Blog</a>
+          <a href="/en/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Terms</a>
+          <a href="/en/privacy-policy.html">Privacy Policy</a>
+          <a href="/en/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Cookie settings</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Cookie preferences</div>
+      <p>We use Google Analytics 4 only after your consent, to measure traffic and improve the page. See our <a href="/en/privacy-policy.html">Privacy Policy</a> and <a href="/en/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Accept analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="en" defer></script>
+</body>
+</html>

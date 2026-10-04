@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ce este un agent AI și prin ce diferă de un chatbot? | TVL Academy</title>
+  <meta name="description" content="Un agent AI lucrează spre un obiectiv alegându-și singur pașii: ia o acțiune sau un tool, citește rezultatul și decide ce urmează. Un chatbot este o interfață de conversație. Diferența practică, un exemplu simplu și când are nevoie o companie de un agent.">
+  <meta property="og:title" content="Ce este un agent AI și prin ce diferă de un chatbot?">
+  <meta property="og:description" content="Un agent AI își decide singur pașii spre un obiectiv; un chatbot este o interfață de conversație. Cele două nu sunt opuse. Un ghid simplu, un exemplu de zi cu zi și când are chiar nevoie o companie de un agent.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://academy.tvl.tech/ro/blog/ce-este-un-agent-ai/">
+  <meta property="og:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="TVL Academy">
+  <meta property="article:published_time" content="2026-10-04">
+  <meta property="article:author" content="Alexandru Dan">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ce este un agent AI și prin ce diferă de un chatbot?">
+  <meta name="twitter:description" content="Un agent AI își decide singur pașii spre un obiectiv; un chatbot este o interfață de conversație. Un ghid simplu, un exemplu de zi cu zi și când are chiar nevoie o companie de un agent.">
+  <meta name="twitter:image" content="https://academy.tvl.tech/images/og-training-ai-ro.jpg">
+
+  <link rel="canonical" href="https://academy.tvl.tech/ro/blog/ce-este-un-agent-ai/">
+  <link rel="alternate" hreflang="ro" href="https://academy.tvl.tech/ro/blog/ce-este-un-agent-ai/">
+  <link rel="alternate" hreflang="en" href="https://academy.tvl.tech/en/blog/what-is-an-ai-agent/">
+  <link rel="alternate" hreflang="x-default" href="https://academy.tvl.tech/en/blog/what-is-an-ai-agent/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alexandru Dan, TVL Academy">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-400-latin-ext.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/opensans-700-latin-ext.woff2" crossorigin>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ce este un agent AI și prin ce diferă de un chatbot?",
+    "description": "Un agent AI lucrează spre un obiectiv alegându-și singur pașii: ia o acțiune sau un tool, citește rezultatul și decide ce urmează. Un chatbot este o interfață de conversație. Diferența practică, un exemplu simplu și când are nevoie o companie de un agent.",
+    "inLanguage": "ro",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandru Dan",
+      "jobTitle": "CEO TVL Tech · Trainer principal TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "knowsAbout": ["Inteligență artificială", "Agenți AI", "Chatboți", "Modele lingvistice mari", "AI pentru companii"],
+      "sameAs": ["https://tvl.tech", "https://www.linkedin.com/in/alexandrudan/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TVL Academy",
+      "url": "https://academy.tvl.tech/ro/",
+      "logo": { "@type": "ImageObject", "url": "https://academy.tvl.tech/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://academy.tvl.tech/ro/blog/ce-este-un-agent-ai/" },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://academy.tvl.tech/images/og-training-ai-ro.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "about": "Agent AI, chatbot, workflow, model lingvistic mare, AI pentru companii"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TVL Academy", "item": "https://academy.tvl.tech/ro/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://academy.tvl.tech/ro/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Ce este un agent AI?" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Care este diferența dintre un agent AI și un chatbot?", "acceptedAnswer": { "@type": "Answer", "text": "Un chatbot este un mod de a vorbi cu un sistem în limbaj natural, așa că termenul descrie o interfață. Un agent AI este un sistem care își alege singur pașii următori spre un obiectiv, așa că termenul descrie modul în care operează. De aceea nu sunt opuse: un asistent simplu așteaptă și răspunde pe rând, un agent își alege singur pașii, iar un singur produs poate fi, în același timp, o interfață de chat și un agent dedesubt. Întrebarea utilă nu este chatbot sau agent, ci dacă sistemul își dirijează singur pașii sau îi așteaptă pe ai tăi." } },
+      { "@type": "Question", "name": "Un agent AI este același lucru cu un model lingvistic mare?", "acceptedAnswer": { "@type": "Answer", "text": "Nu. Un model lingvistic mare generează text și poate produce rezultate structurate, dar singur nu poate ajunge la sistemele tale. Un agent AI este modelul plus un harness, software-ul din jur care îi dă tool-uri, păstrează credențialele, execută apelurile către tool-uri și impune permisiunile. Modelul este cel care decide în interiorul buclei; harness-ul este cel care îi permite să acționeze și acolo stau majoritatea controalelor." } },
+      { "@type": "Question", "name": "Când are chiar nevoie o companie de un agent AI, și nu de un chatbot sau de o automatizare?", "acceptedAnswer": { "@type": "Answer", "text": "Atunci când atingerea obiectivului cere alegeri pe care modelul trebuie să le facă de la caz la caz, nu un traseu pe care îl poți specifica dinainte. Dacă o întrebare are un răspuns standard, un asistent conversațional este suficient; dacă sarcina este bine definită, o automatizare obișnuită este deseori mai ieftină și mai predictibilă. Un agent poate adăuga cost și latență față de o soluție mai simplă, iar un pas greșit la început se poate amplifica, deci nu există un randament sau o fiabilitate garantate. Pilotează îngust, măsoară față de o variantă mai simplă și păstrează revizuirea umană pentru acțiunile cu consecințe." } }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .article-main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+    .article-breadcrumb { font-size: 13px; color: var(--text-sec); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--text-sec); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--red); }
+    .article-kicker { display: inline-block; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-main h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-sec); padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid #ebebeb; }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+    .article-body { font-size: 18px; line-height: 1.72; color: #24242b; }
+    .article-body p { margin-bottom: 22px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 44px 0 16px; }
+    .article-body a { color: var(--red); }
+    .article-body ul.plain { margin: 0 0 22px; padding-left: 22px; }
+    .article-body ul.plain li { margin-bottom: 10px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-size: 16px; }
+    .article-body th, .article-body td { text-align: left; padding: 10px 12px; border: 1px solid #e4e4e4; vertical-align: top; }
+    .article-body thead th { background: var(--light-bg); font-family: var(--font-display); font-weight: 700; }
+    .article-body .table-note { font-size: 14px; color: var(--text-sec); margin-bottom: 22px; }
+    .article-cta { margin-top: 48px; padding: 32px; background: var(--light-bg); border-radius: 12px; border: 1px solid #ececec; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .article-cta p { font-size: 16px; color: var(--text-sec); margin-bottom: 20px; }
+    .article-cta .btn-primary { display: inline-block; }
+    .article-related { margin-top: 36px; font-size: 16px; color: var(--text-sec); }
+    .article-related a { color: var(--red); }
+    @media (max-width: 768px) { .article-main { padding: 96px 20px 60px; } .article-body { font-size: 17px; } .article-body table { font-size: 12px; table-layout: fixed; } .article-body th, .article-body td { padding: 8px 6px; overflow-wrap: break-word; hyphens: auto; } .article-body table th:first-child, .article-body table td:first-child { width: 28%; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a aria-label="TVL Academy" class="nav-logo" href="/ro/">
+    <svg height="40" width="36" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+      <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+      <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+      <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+      <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+      <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+      <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+      <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+    </svg>
+    <span class="nav-logo-text">ACADEMY</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+    <a href="/ro/#problema">De ce?</a>
+    <a href="/ro/#cum-functioneaza">Sesiuni</a>
+    <a href="/ro/blog/">Blog</a>
+    <a href="/ro/skills/">Skills</a>
+    <div class="lang-switch" aria-label="Selector limbă">
+      <a href="/ro/blog/ce-este-un-agent-ai/" class="lang-option is-active" lang="ro" hreflang="ro">RO</a>
+      <a href="/en/blog/what-is-an-ai-agent/" class="lang-option" lang="en" hreflang="en">EN</a>
+    </div>
+    <a href="/ro/#contact" class="btn-nav">Rezervă 30 de minute</a>
+  </div>
+</nav>
+
+<main class="article-main">
+  <div class="article-breadcrumb">
+    <a href="/ro/">TVL Academy</a> › <a href="/ro/blog/">Blog</a> › Ce este un agent AI?
+  </div>
+
+  <article>
+    <span class="article-kicker">Agenți AI / Ghid pe înțelesul tuturor</span>
+    <h1>Ce este un agent AI și prin ce diferă de un chatbot?</h1>
+    <div class="article-meta">
+      <span>de <strong>Alexandru Dan</strong></span>
+      <span>·</span>
+      <time datetime="2026-10-04">4 octombrie 2026</time>
+      <span>·</span>
+      <span>7 min de citit</span>
+    </div>
+
+    <div class="article-body">
+      <p>Un agent AI este un sistem software care lucrează spre un obiectiv pe care i-l dai, decizând singur pașii următori: alege o acțiune sau un tool, o execută, citește rezultatul și folosește rezultatul ca să aleagă ce face în continuare, repetând până ajunge la un punct de oprire sau predă unei persoane. Un chatbot, în schimb, este o interfață de conversație, un mod de a vorbi cu un sistem în limbaj natural. Cele două cuvinte descriu lucruri diferite: „chatbot" numește o interfață, iar „agent" numește modul în care operează un sistem. Un asistent simplu te așteaptă și răspunde pe rând; un agent își alege singur pașii între cererile tale. Cele două pot fi combinate, așa că un singur produs poate fi, în același timp, o interfață de chat și un agent dedesubt.</p>
+
+      <h2>De ce contează acum</h2>
+      <p>Companiile dau acestor sisteme permisiuni reale, așa că distincția a trecut de la o chestiune de etichetă la una de siguranță. Pe 11 septembrie 2026, Australian Signals Directorate (ASD) din Australia a publicat un ghid despre <a href="https://www.cyber.gov.au/business-government/secure-design/artificial-intelligence/agentic-ai-harnesses">harness-urile AI agentice</a>, stratul software de deasupra modelului care execută efectiv apelurile agentului către tool-uri și impune permisiunile, și a avertizat că unele riscuri nu pot fi rezolvate doar în interiorul modelului. Pentru o companie care cântărește un agent, asta înseamnă să judece întregul sistem din jurul modelului, nu doar modelul.</p>
+
+      <h2>Bucla, pe înțelesul tuturor</h2>
+      <p>Un agent de business modern rulează o buclă simplă. Îi dai un obiectiv. Alege un pas sau un tool. Observă rezultatul. Repetă. Se oprește când obiectivul este atins, când se termină un buget sau când ajunge la un punct în care ar trebui să decidă o persoană. Ghidul de inginerie al Anthropic, <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a> (19 decembrie 2024), definește agenții ca sisteme în care modelul „își dirijează dinamic propriile procese și folosirea tool-urilor", spre deosebire de workflow-uri, unde „modelele și tool-urile sunt orchestrate prin trasee de cod prestabilite". Modelul este cel care decide în interiorul buclei; harness-ul, software-ul din jur, este cel care execută apelurile către tool-uri, păstrează credențialele și impune ce are și ce nu are voie să facă agentul. Terminologia variază în industrie; acest articol folosește distincția arhitecturală a Anthropic.</p>
+
+      <h2>O singură cerere, câteva moduri de a o rezolva</h2>
+      <p>Imaginează-ți un client care cere schimbarea adresei de livrare a unei comenzi. Dacă schimbarea este permisă sau nu ține de politica și autorizările companiei; nu este ceva ce sistemul ar trebui să presupună. Exemplul este ipotetic, menit doar să arate forma fiecărei abordări.</p>
+      <p>Mai întâi, un reper: automatizarea obișnuită este un script fix care aplică o regulă deja aprobată de companie și poate funcționa fără niciun pic de AI. Un workflow cu LLM rulează pe trasee de cod fixate dinainte, care pot avea ramificații și pot apela un model în puncte stabilite. Un agent își alege singur pasul următor. Aplicate la schimbarea adresei, cele trei arată așa:</p>
+      <ul class="plain">
+        <li>Un <strong>asistent conversațional</strong> răspunde. Explică politica de schimbare a adresei și trimite către pagina potrivită, și poate căuta comanda printr-un tool conectat. Conversația este produsul; orice schimbare o face tot o persoană.</li>
+        <li>Un <strong>workflow</strong> rulează. Traseele lui de cod sunt fixate dinainte, dar pot avea ramificații și pot apela un model, de exemplu ca să citească și să clasifice cererea, așa că o comandă expediată și una neexpediată urmează ramuri diferite, proiectate, fiecare oprindu-se unde spune politica.</li>
+        <li>Un <strong>agent</strong> alege pasul următor. În limitele permisiunilor și ale politicii primite, verifică comanda, vede că a fost expediată parțial, propune împărțirea schimbării între articolele expediate și cele neexpediate și trimite partea cu consecințe spre aprobarea unei persoane. Traseul nu a fost fixat dinainte; agentul l-a ales din ce a găsit.</li>
+      </ul>
+      <p>Doar ultimul este un agent în sensul restrâns folosit aici, iar un asistent conversațional, o automatizare obișnuită sau un workflow este deseori răspunsul corect.</p>
+
+      <table>
+        <thead>
+          <tr><th>&nbsp;</th><th>Asistent conversațional</th><th>Workflow</th><th>Agent</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Cine alege pașii</strong></td><td>O persoană, în chat</td><td>Trasee de cod fixate</td><td>Modelul, în timp real</td></tr>
+          <tr><td><strong>Traseul prin sarcină</strong></td><td>Variază cu discuția</td><td>Ramuri stabilite dinainte</td><td>Variază cu ce găsește</td></tr>
+          <tr><td><strong>Bun când</strong></td><td>Răspunsuri, ghidare</td><td>Reguli bine definite</td><td>Cere alegeri ale modelului</td></tr>
+          <tr><td><strong>Compromis principal</strong></td><td>Acțiune limitată</td><td>Excepțiile cer tratare proiectată</td><td>Poate adăuga cost și latență</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Acestea sunt trei moduri de a construi aceeași sarcină, nu clase de produs care se exclud reciproc; un produs real le poate combina. Automatizarea obișnuită, un script fix fără AI, este o a patra opțiune, mai simplă. Un asistent conversațional poate folosi și tool-uri, iar un agent bine construit poate face pauză pentru o persoană.</p>
+
+      <h2>Ce înseamnă agent și ce nu</h2>
+      <p>Câteva limite păstrează termenul util. Un agent nu este modelul în sine: un model lingvistic generează text și poate produce rezultate structurate, dar nu poate ajunge la sistemele tale până când un harness nu îi dă tool-uri și permisiuni. O interfață de chat singură nu face un agent și nici conectarea unui singur tool. O componentă de decizie, cum este <a href="/ro/blog/ce-este-jev/">Jev</a>, este o piesă dintr-un agent, nu un agent complet în sine. Termenul mai larg „agent AI" acoperă și sisteme mai vechi, care nu au fost niciodată modele lingvistice; articolul de față este despre varianta modernă, bazată pe LLM, pe care o companie are cele mai mari șanse să o folosească acum. Iar autonomia este limitată: un agent nu trebuie neapărat să ruleze în fundal, să țină o memorie persistentă sau să aibă permisiunea de a lua acțiuni cu consecințe. Un pilot îngust și supravegheat este un mod practic de a începe.</p>
+
+      <h2>Unde ajută un agent și unde nu</h2>
+      <p>Sarcinile în care un agent își merită locul au o formă comună: obiectivul este clar, dar ca să-l atingi e nevoie de alegeri pe care modelul trebuie să le facă de la caz la caz, nu de un traseu pe care îl poți specifica dinainte. Cercetarea și strângerea de documente, suportul intern care caută în mai multe sisteme și programarea prin explorarea unui cod și propunerea unei modificări sunt exemple frecvente, iar niciunul nu vine cu o garanție de produs. Acolo unde sarcina este bine definită, câștigă de obicei opțiunile mai simple: un asistent conversațional pentru întrebări cu răspuns standard și o automatizare obișnuită, deseori mai ieftină și mai predictibilă, pentru pași pe care îi poți specifica dinainte. Față de o soluție mai simplă, un agent poate adăuga cost și latență, iar fiindcă acționează în buclă, un pas greșit la început se poate amplifica. Nu există un randament garantat și nici o fiabilitate garantată; măsoară față de o variantă mai simplă înainte să îi lărgești raza de acțiune.</p>
+
+      <h2>Controale de evaluat înainte de implementare</h2>
+      <p>Pentru că un agent acționează, nu doar răspunde, aceste controale contează la fel de mult ca și capacitatea. Ele reduc riscul, nu îl elimină; evaluează-le înainte să implementezi.</p>
+      <ul class="plain">
+        <li><strong>Permisiuni și limite de date.</strong> Dă agentului accesul cel mai îngust de care are nevoie sarcina și decide în propriul tău cod, nu bazându-te pe model, ce acțiuni poate face.</li>
+        <li><strong>Validează tool-urile independent.</strong> Verifică în regulile tale de acces că o acțiune este permisă înainte să ruleze, în loc să lași cuvântul modelului să o autorizeze.</li>
+        <li><strong>Revizuire umană pentru acțiunile cu consecințe.</strong> Cere ca o persoană să aprobe orice este distructiv, financiar sau greu de dat înapoi.</li>
+        <li><strong>Loguri, cu control al accesului și redactare.</strong> Păstrează înregistrări ale prompturilor, apelurilor către tool-uri și deciziilor, dar limitează cine le poate citi și redactează secretele, pentru că logurile complete pot conține date sensibile.</li>
+        <li><strong>Condiții de oprire, bugete și testare.</strong> Limitează numărul de iterații și cheltuielile și rulează teste adversariale pe propriul tău montaj înainte să îi lărgești raza de acțiune.</li>
+      </ul>
+      <p>Un risc merită un rând al lui: <a href="/ro/blog/ce-este-prompt-injection/">prompt injection</a>. Pentru că un agent citește conținut din exterior, pagini web, e-mailuri, documente, o instrucțiune strecurată îl poate dirija, iar chiar și un agent doar-citire poate fi făcut să divulge date la care are acces. Fie că <a href="/ro/blog/cum-construiesti-agenti-ai-cu-claude/">construiești un agent</a>, fie că proiectezi <a href="/ro/blog/guvernanta-ai/">guvernanța AI</a> din jurul lui, decide dinainte ce poate atinge sistemul și presupune că tot ce citește ar putea încerca să îl dirijeze.</p>
+
+      <h2>Întrebări frecvente</h2>
+      <p><strong>Care este diferența dintre un agent AI și un chatbot?</strong><br>Un chatbot este un mod de a vorbi cu un sistem în limbaj natural, așa că termenul descrie o interfață. Un agent AI este un sistem care își alege singur pașii următori spre un obiectiv, așa că termenul descrie modul în care operează. De aceea nu sunt opuse: un asistent simplu așteaptă și răspunde pe rând, un agent își alege singur pașii, iar un singur produs poate fi, în același timp, o interfață de chat și un agent dedesubt. Întrebarea utilă nu este chatbot sau agent, ci dacă sistemul își dirijează singur pașii sau îi așteaptă pe ai tăi.</p>
+      <p><strong>Un agent AI este același lucru cu un model lingvistic mare?</strong><br>Nu. Un model lingvistic mare generează text și poate produce rezultate structurate, dar singur nu poate ajunge la sistemele tale. Un agent AI este modelul plus un harness, software-ul din jur care îi dă tool-uri, păstrează credențialele, execută apelurile către tool-uri și impune permisiunile. Modelul este cel care decide în interiorul buclei; harness-ul este cel care îi permite să acționeze și acolo stau majoritatea controalelor.</p>
+      <p><strong>Când are chiar nevoie o companie de un agent AI, și nu de un chatbot sau de o automatizare?</strong><br>Atunci când atingerea obiectivului cere alegeri pe care modelul trebuie să le facă de la caz la caz, nu un traseu pe care îl poți specifica dinainte. Dacă o întrebare are un răspuns standard, un asistent conversațional este suficient; dacă sarcina este bine definită, o automatizare obișnuită este deseori mai ieftină și mai predictibilă. Un agent poate adăuga cost și latență față de o soluție mai simplă, iar un pas greșit la început se poate amplifica, deci nu există un randament sau o fiabilitate garantate. Pilotează îngust, măsoară față de o variantă mai simplă și păstrează revizuirea umană pentru acțiunile cu consecințe.</p>
+
+      <h2>Surse</h2>
+      <ul class="plain">
+        <li>Anthropic, <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a>, 19 decembrie 2024.</li>
+        <li>Australian Signals Directorate (ASD), <a href="https://www.cyber.gov.au/business-government/secure-design/artificial-intelligence/agentic-ai-harnesses">Agentic AI Harnesses: the layer above the model</a>, publicat prima dată pe 11 septembrie 2026.</li>
+        <li>Australian Signals Directorate (ASD), <a href="https://www.cyber.gov.au/about-us/view-all-content/news/asd-releases-new-guidance-on-the-agentic-ai-harnesses">ASD releases new guidance on the agentic AI harnesses</a>, 11 septembrie 2026.</li>
+        <li>ISACA, <a href="https://www.isaca.org/resources/white-papers/2026/cybersecurity-recommendations-for-securing-ai-agents">Cybersecurity Recommendations for Securing AI Agents</a>, 15 septembrie 2026.</li>
+      </ul>
+    </div>
+
+    <div class="article-cta">
+      <h3>Hotărăște unde ajută un agent și unde nu</h3>
+      <p>Ținem training AI practic pentru echipe din companii, de la ce este AI-ul cu adevărat până la când merită costul un agent și cum îl pui în funcțiune fără să îi dai mai multă putere decât îi trebuie. Rezervă 30 de minute cu Alexandru Dan.</p>
+      <a href="/ro/#contact" class="btn-primary">Rezervă 30 de minute</a>
+    </div>
+
+    <p class="article-related">Citește și: <a href="/ro/blog/cum-construiesti-agenti-ai-cu-claude/">Cum construiești agenți AI cu Claude</a> · <a href="/ro/blog/ce-este-prompt-injection/">Ce este prompt injection?</a> · <a href="/ro/blog/guvernanta-ai/">Guvernanța AI</a> · <a href="/ro/blog/ce-este-jev/">Ce este Jev?</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a aria-label="TVL Academy" href="/ro/" class="nav-logo" style="text-decoration:none;">
+        <svg height="48" width="43" viewBox="107 107 786 786" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M892.95 447.19L552.77 107.06V106.92H106.92V552.81L447.19 893.07H893.08L892.95 447.18V447.19ZM868.91 447.19H552.78V131.19L868.91 447.18V447.19ZM123.99 123.99H535.71V447.19H447.19V535.75H123.99V123.99ZM535.71 464.25V535.75H464.25V464.25H535.71ZM131.04 552.81H447.19V868.94L131.04 552.81ZM876.01 876.01H464.25V552.81H552.77V464.25H876.01V876.01Z" fill="#FF4931"/>
+          <path d="M290.55 255.08V272.11H273.12V389.18H255.88V281.12L236.53 272.11V255.08H290.55Z" fill="#FF4931"/>
+          <path d="M366.8 255.08L346.7 389.18H321.03L300.92 255.08H318.53L329.85 330.57L331.7 342.92H336.02L337.88 330.57L349.19 255.08H366.8Z" fill="#FF4931"/>
+          <path d="M424.68 372.12V389.18H382.92V255.08H400.17V372.12H424.68Z" fill="#FF4931"/>
+          <path d="M552.77 641.5L572.22 650.55V759.11H589.54V658.63V641.5H607.06V624.37H552.77V641.5Z" fill="#FF4931"/>
+          <path d="M642.28 700.21H668.27V683.08H642.28L641.92 641.5H668.84V624.37H636.12H624.96V641.5V651.53V759.11H626.91H668.84H669.45V741.98H642.28V700.21Z" fill="#FF4931"/>
+          <path d="M687.35 741.98V759.11H729.89V741.98H704.67V641.5H729.89V624.37H687.35V741.98Z" fill="#FF4931"/>
+          <path d="M788.8 624.37V683.08H767.63V624.37H750.3V759.11H767.63V700.21H788.8V759.11H806.12V624.37H788.8Z" fill="#FF4931"/>
+        </svg>
+        <span class="nav-logo-text">ACADEMY</span>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://tvl.tech" target="_blank" rel="noopener">TVL Tech</a>
+          <a href="/ro/despre/alexandru-dan/">Alexandru Dan</a>
+          <a href="/ro/#cum-functioneaza">Sesiuni</a>
+          <a href="/ro/blog/">Blog</a>
+          <a href="/ro/#contact">Contact</a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="https://www.tvl.tech/terms-and-conditions" target="_blank" rel="noopener">Termeni</a>
+          <a href="/ro/privacy-policy.html">Privacy Policy</a>
+          <a href="/ro/cookie-policy.html">Cookie Policy</a>
+          <button type="button" class="footer-link-button" id="openCookieSettings">Setări cookie</button>
+        </div>
+        <p>© <span id="year"></span> TVL Tech</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-copy">
+      <div class="cookie-banner-kicker">Preferințe cookie</div>
+      <p>Folosim Google Analytics 4 doar după acordul tău, ca să măsurăm traficul și să îmbunătățim pagina. Vezi <a href="/ro/privacy-policy.html">Privacy Policy</a> și <a href="/ro/cookie-policy.html">Cookie Policy</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" id="declineAnalytics">Refuză</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="acceptAnalytics">Acceptă analytics</button>
+    </div>
+  </div>
+</div>
+
+<script src="/index.js"></script>
+<script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+        data-endpoint="https://chat.tvl.tech" data-tenant="academy"
+        data-accent="#FF4931" data-title="TVL Academy" data-lang="ro" defer></script>
+</body>
+</html>
